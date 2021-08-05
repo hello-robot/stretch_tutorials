@@ -26,3 +26,5 @@ If a you are unable to dual boot and install ubuntu on your local machine, an al
 
 ## Installing Noetic on Stretch
 Instructions on installing Noetic can be found in our open source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md).
+
+**Next Tutorial:** [Gazebo Basics](gazebo_basics.md)

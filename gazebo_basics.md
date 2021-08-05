@@ -42,3 +42,5 @@ roslaunch stretch_gazebo stretch_willowgarage_world.launch
 ```
 
 ![image](images/stretch_willowgarage_world.png)
+
+**Next Tutorial:** [Teleoperating Stretch](teleoperating_stretch.md)

@@ -72,3 +72,5 @@ You're ready to go! A few things to try:
 * Try delivering an object to a person
 
 If you're done, hold down the Shutdown PC button for 2 seconds. This will cause the PC to turn off. You can then power down the robot.
+
+**Next Tutorial:** [Internal State of Stretch](internal_state_of_stretch.md)
