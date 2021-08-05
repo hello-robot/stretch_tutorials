@@ -47,6 +47,6 @@ rqt_graph
 ```
 ![image](images/rosgraph.png)
 
-The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This is method can also be utilized to debug communication issues.
+The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.
 
 **Next Tutorial:** [Rviz Basics](rviz_basics.md)
