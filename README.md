@@ -6,9 +6,10 @@ This repo provides instructions on the installation and use of code on the Stret
 1. [Getting Started](getting_started.md)
 2. [Gazebo Basics](gazebo_basics.md)
 3. [Teleoperating Stretch](teleoperating_stretch.md)
-4. [Rviz Basics]
-5. [Navigation Stack]
-6. [FUNMAP]
-7. [Perception]
-8. [MoveIt! Basics]
-9. [Microphone Array]
+4. [Internal State of Stretch](internal_state_of_stretch.md)
+5. [Rviz Basics]
+6. [Navigation Stack]
+7. [FUNMAP]
+8. [Perception]
+9. [MoveIt! Basics]
+10. [Microphone Array]
