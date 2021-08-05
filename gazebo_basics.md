@@ -27,9 +27,12 @@ Modify the value for the world name argument like the following
 Use the images below for further reference.
 
 **BEFORE**
+
 ![image](images/before_launch_file_edit.png)
 
+
 **AFTER**
+
 ![image](images/after_launch_file_edit.png)
 
 Make sure to save the file. Also, you can make the modifications to the file using your preferred text editor. Now you can run the new launch file with a Stretch robot in the willowgarage.world.
