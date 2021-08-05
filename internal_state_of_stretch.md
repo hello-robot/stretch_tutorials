@@ -4,7 +4,7 @@ Begin by starting up [Stretch in simulation](getting_started) and the [keyboard 
 ```
 rostopic echo /joint_states -n1
 ```
-Note that the flag, `-n1`, at the end of the command, defines the count of how many times you wish to publish the current topic information. If you prefer to print the topic for debugging purposes continuously, then remove the flag.
+Note that the flag, `-n1`, at the end of the command, defines the count of how many times you wish to publish the current topic information. If you prefer to continuously print the topic for debugging purposes, then remove the flag.
 
 Your terminal will then output the information associated with the `/joint_states` topic. Your `header`, `position`, `velocity`, and `effort` information may vary from what is printed below.
 ```
