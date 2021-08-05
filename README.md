@@ -5,9 +5,10 @@ This repo provides instructions on the installation and use of code on the Stret
 ## Stretch ROS Tutorials
 1. [Getting Started](getting_started.md)
 2. [Gazebo Basics](gazebo_basics.md)
-3. [Using Stretch from ROS and Python]
+3. [Teleoperating Stretch](teleoperating_stretch.md)
 4. [Rviz Basics]
 5. [Navigation Stack]
 6. [FUNMAP]
 7. [Perception]
 8. [MoveIt! Basics]
+9. [Microphone Array]
