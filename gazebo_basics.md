@@ -20,7 +20,7 @@ cd catkin_ws/src/stretch_ros/stretch_gazebo/launch/
 cp gazebo.launch stretch_willowgarage_world.launch
 ```
 
-Modify the value for the world name argument like the following
+You can use your preferred text editor to modify the value for the world name argument like the following
 ```
 <arg name="world_name" value="worlds/willowgarage.world" />
 ```
@@ -35,7 +35,7 @@ Use the images below for further reference.
 
 ![image](images/after_launch_file_edit.png)
 
-Make sure to save the file. Also, you can make the modifications to the file using your preferred text editor. Now you can run the new launch file with a Stretch robot in the willowgarage.world.
+Make sure to save the file. Now you can run the new launch file with a Stretch robot in the willowgarage.world.
 
 ```
 roslaunch stretch_gazebo stretch_willowgarage_world.launch
