@@ -6,17 +6,20 @@ Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stre
 
 ## ROS Setup on Local Computer
 
-Hello Robot is currently running Stretch on Ubuntu 20.04 and on ROS Noetic.  To begin the setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) package to your preferred workspace, then build the workspace.
+Hello Robot is currently running Stretch on Ubuntu 20.04 and on ROS Noetic.  To begin the setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
 ```
-cd catkin_ws/src/
-git clone https://github.com/hello-robot/stretch_ros.git
-cd ..
-catkin build
+cd ~/catkin_ws/src
+git clone https://github.com/hello-robot/stretch_ros
+git clone https://github.com/pal-robotics/realsense_gazebo_plugin
+cd ~/catkin_ws
+rosdep install --from-paths src --ignore-src -r -y
+catkin_make
 ```
 
 ## RoboMaker
 
-If a user is unable to dual boot and install ubuntu their local machine, an alternative is to use [AWS RoboMaker](https://aws.amazon.com/robomaker/) for simulation and testing the Stretch RE1 platform.
+If a you are unable to dual boot and install ubuntu on your local machine, an alternative is to use [AWS RoboMaker](https://aws.amazon.com/robomaker/). AWS RoboMaker extends the ROS framework with cloud services. The service provides a robotics simulation service, allowing for testing of the Stretch RE1 platform. If you are a first-time user of AWS RoboMaker, follow the [guide here](https://docs.aws.amazon.com/robomaker/latest/dg/what-is-robomaker.html) to get up and running with the service.
+
 
 ## Installing Noetic on Stretch
 Instructions on installing Noetic can be found in our open source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md).
