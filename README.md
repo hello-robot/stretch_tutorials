@@ -7,7 +7,7 @@ This repo provides instructions on the installation and use of code on the Stret
 2. [Gazebo Basics](gazebo_basics.md)
 3. [Teleoperating Stretch](teleoperating_stretch.md)
 4. [Internal State of Stretch](internal_state_of_stretch.md)
-5. [Rviz Basics]
+5. [Rviz Basics](rviz_basics.md)
 6. [Navigation Stack]
 7. [FUNMAP]
 8. [Perception]
