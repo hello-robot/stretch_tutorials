@@ -23,7 +23,7 @@ effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ---
 ```
 
-Let's say you are intersted in only seeing the `header` component of the `/joint_states` topic, you can parse this within the rostopic command-line tool by typing the following command.
+Let's say you are interested in only seeing the `header` component of the `/joint_states` topic, you can output this within the rostopic command-line tool by typing the following command.
 ```
 rostopic echo /joint_states/header -n1
 ```
@@ -49,4 +49,4 @@ rqt_graph
 
 The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.
 
-**Next Tutorial:** [Rviz Basics](rviz_basics.md)
+**Next Tutorial:** [RViz Basics](rviz_basics.md)
