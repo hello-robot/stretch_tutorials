@@ -1,13 +1,13 @@
 ## Example 3
 
-![image](images/balloon.gif)
-
+![image](images/balloon.png)
 
 
 ```
 python marker.py
 ```
 
+![image](images/balloon.gif)
 
 ```python
 #!/usr/bin/env python
