@@ -19,4 +19,4 @@ This repo provides instructions on the installation and use of code on the Stret
 
 1. [Teleoperate Stretch with a Node](example_1.md) - Use a python script that sends velocity commands.  
 2. Mobile Base Collision Avoidance - Stop stretch from running into a wall.
-3. Give Stretch a Balloon - Create a "ballon" marker that goes where ever it goes.
+3. [Give Stretch a Balloon](example_3.md) - Create a "balloon" marker that goes where ever it goes.
