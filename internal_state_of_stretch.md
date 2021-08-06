@@ -1,4 +1,4 @@
-## Getting the State of the robot
+## Getting the State of the Robot
 
 Begin by starting up [Stretch in simulation](getting_started) and the [keyboard teleoperation](teleoperating_stretch.md). Then utilize the ROS command-line tool, [rostopic](http://wiki.ros.org/rostopic), to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
 ```

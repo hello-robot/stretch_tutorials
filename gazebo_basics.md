@@ -11,7 +11,7 @@ This will bringup the robot in the gazebo simulation similar to the image shown 
 ![image](images/stretch_gazebo_empty_world.png)
 
 ### Custom World Simulation
-With a modification of the gazebo launch file, you can spawn the Stretch robot in a custom world. In this instance, we will spawn Stretch in one of gazebo's world files named *willowgarage.world*.
+With a modification of the gazebo launch file, you can spawn the Stretch robot in a custom world. In this instance, we will spawn Stretch in gazebo's world files named *willowgarage.world*.
 
 To preserve the original gazebo.launch file, we will copy the file and rename it to the following.
 
@@ -35,7 +35,7 @@ Use the images below for further reference.
 
 ![image](images/after_launch_file_edit.png)
 
-Make sure to save the file. Now you can run the new launch file with a Stretch robot in the willowgarage.world.
+Make sure to save the file. Now you can run the new launch file with a Stretch robot in the willowgarage world.
 
 ```
 roslaunch stretch_gazebo stretch_willowgarage_world.launch
