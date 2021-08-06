@@ -1,6 +1,6 @@
 ## Teleoperating in Gazebo
 
-First, [startup Stretch in simulation](gazebo_basics.md). Then type the following the command for teleoperating a Stretch robot's mobile base with the keyboard.
+First, [startup Stretch in simulation](gazebo_basics.md). Then in a separate terminal type the following the command for teleoperating a Stretch robot's mobile base with the keyboard.
 
 ```
 roslaunch stretch_gazebo teleop_keyboard.launch
@@ -37,7 +37,7 @@ currently:	speed 0.5	turn 1.0
 
 The keyboard teleop node remaps the *cmd_vel* topics to */stretch_diff_drive_controller/cmd_vel*, which the robot takes velocity commands from.
 
-An alternative for robot base teleoperation is to use an xbox controller. Connect the xbox controller device to your local machine either through cable or dongle and run the following command.
+An alternative for robot base teleoperation is to use an Xbox controller. Start by stopping the keyboard teleoperation node by typing **Ctrl** + **c** in the terminal where the command was executed. Then connect the Xbox controller device to your local machine through cable or dongle and run the following command.
 
 ```
 roslaunch stretch_gazebo teleop_joy.launch
