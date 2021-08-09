@@ -2,7 +2,7 @@
 
 ### Empty World Simulation
 To spawn the Stretch in gazebo's default empty world run the following command in your terminal.
-```
+```bash
 roslaunch stretch_gazebo gazebo.launch
 ```
 This will bringup the robot in the gazebo simulation similar to the image shown below.
@@ -15,13 +15,13 @@ With a modification of the gazebo launch file, you can spawn the Stretch robot i
 
 To preserve the original gazebo.launch file, we will copy the file and rename it to the following.
 
-```
+```bash
 cd catkin_ws/src/stretch_ros/stretch_gazebo/launch/
 cp gazebo.launch stretch_willowgarage_world.launch
 ```
 
 You can use your preferred text editor to modify the value for the world name argument like the following
-```
+```html
 <arg name="world_name" value="worlds/willowgarage.world" />
 ```
 Use the images below for further reference.
@@ -37,7 +37,7 @@ Use the images below for further reference.
 
 Make sure to save the file. Now you can run the new launch file with a Stretch robot in the willowgarage world.
 
-```
+```bash
 roslaunch stretch_gazebo stretch_willowgarage_world.launch
 ```
 

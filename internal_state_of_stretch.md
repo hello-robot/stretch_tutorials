@@ -1,7 +1,7 @@
 ## Getting the State of the Robot
 
 Begin by starting up [Stretch in simulation](getting_started) and the [keyboard teleoperation](teleoperating_stretch.md). Then utilize the ROS command-line tool, [rostopic](http://wiki.ros.org/rostopic), to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
-```
+```bash
 rostopic echo /joint_states -n1
 ```
 Note that the flag, `-n1`, at the end of the command, defines the count of how many times you wish to publish the current topic information. If you prefer to continuously print the topic for debugging purposes, then remove the flag.
@@ -24,7 +24,7 @@ effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ```
 
 Let's say you are interested in only seeing the `header` component of the `/joint_states` topic, you can output this within the rostopic command-line tool by typing the following command.
-```
+```bash
 rostopic echo /joint_states/header -n1
 ```
 Your terminal will then output something similar to this:

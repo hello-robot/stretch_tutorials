@@ -2,7 +2,7 @@
 
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
-```
+```bash
 roslaunch stretch_gazebo stretch_willowgarage_world.launch rviz:=true
 ```
 the `rviz` flag will open an RViz window  to visualize a variety of ROS topics.

@@ -2,7 +2,7 @@
 
 First, [startup Stretch in simulation](gazebo_basics.md). Then in a separate terminal type the following the command for teleoperating a Stretch robot's mobile base with the keyboard.
 
-```
+```bash
 roslaunch stretch_gazebo teleop_keyboard.launch
 ```
 Below is the keyboard commands that allow a user to move Stretch.  
@@ -39,7 +39,7 @@ The keyboard teleop node remaps the *cmd_vel* topics to */stretch_diff_drive_con
 
 An alternative for robot base teleoperation is to use an Xbox controller. Start by stopping the keyboard teleoperation node by typing **Ctrl** + **c** in the terminal where the command was executed. Then connect the Xbox controller device to your local machine through cable or dongle and run the following command.
 
-```
+```bash
 roslaunch stretch_gazebo teleop_joy.launch
 ```
 Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless it is being pressed. For an Logitech F310 joystick this button is A.
