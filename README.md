@@ -9,7 +9,7 @@ This repo provides instructions on the installation and use of code on the Stret
 4. [Internal State of Stretch](internal_state_of_stretch.md)
 5. [RViz Basics](rviz_basics.md)
 6. [Navigation Stack](navigation_stack.md)
-7. [MoveIt! Basics]
+7. [MoveIt! Basics](moveit_basics.md)
 8. [Perception]
 9. [Microphone Array]
 10. [FUNMAP]
