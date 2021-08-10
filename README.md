@@ -13,9 +13,14 @@ This repo provides instructions on the installation and use of code on the Stret
 8. [Perception]
 9. [Microphone Array]
 10. [FUNMAP]
+11. [ROS testing]
+12. [Other Nav Stack Features]
+13. [FollowJoint Trajectory Commands]
+14. [4 Modes of Stretch]
 
 
 ## Other ROS Examples
+To help get you get started on your software development, here are examples of nodes to have the stretch perform simple tasks.
 
 1. [Teleoperate Stretch with a Node](example_1.md) - Use a python script that sends velocity commands.  
 2. Mobile Base Collision Avoidance - Stop stretch from running into a wall.
