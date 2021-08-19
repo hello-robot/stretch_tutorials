@@ -35,7 +35,7 @@ echo "Source the catkin_ws/devel/setup.bash"
 ![image](images/aws-robomaker.png)
 
 
-If a you are unable to dual boot and install ubuntu on your local machine, an alternative is to use [AWS RoboMaker](https://aws.amazon.com/robomaker/). AWS RoboMaker extends the ROS framework with cloud services. The service provides a robotics simulation service, allowing for testing of the Stretch RE1 platform. If you are a first-time user of AWS RoboMaker, follow the [guide here](https://docs.aws.amazon.com/robomaker/latest/dg/what-is-robomaker.html) to get up and running with the service.
+If a you are unable to dual boot and install ubuntu on your local machine, an alternative is to use [AWS RoboMaker](https://aws.amazon.com/robomaker/). AWS RoboMaker extends the ROS framework with cloud services. The service provides a robotics simulation service, allowing for testing of the Stretch RE1 platform. If you are a first-time user of AWS RoboMaker, follow the [guide here](https://github.com/aws-robotics/aws-robomaker-robotics-curriculum/blob/main/getting-started-with-aws-robomaker/_modules/mod-2a-aws.md) to get up and running with the service.
 
 
 ## Installing Noetic on Stretch
