@@ -6,7 +6,15 @@ Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stre
 
 ## ROS Setup on Local Computer
 
-Hello Robot is currently running Stretch on Ubuntu 20.04 and on ROS Noetic.  To begin the setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
+Hello Robot is currently running Stretch on Ubuntu 20.04 and on ROS Noetic.  To begin the setup, begin with [installing Ubnutu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) on your local machine. Then follow the [installation guide for ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) on your system.
+
+Currently, the Realsense2_description package isn't installed by rosdep and requires a user to manually install the package. Run the following command in your terminal
+
+```bash
+sudo apt-get install ros-Noetic-realsense2-camera
+```
+
+After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
 ```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_ros
@@ -14,6 +22,12 @@ git clone https://github.com/pal-robotics/realsense_gazebo_plugin
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
+```
+
+
+Then source your workspace with the following command
+```bash
+echo "Source the catkin_ws/devel/setup.bash"
 ```
 
 ## RoboMaker
