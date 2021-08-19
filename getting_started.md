@@ -27,7 +27,7 @@ catkin_make
 
 Then source your workspace with the following command
 ```bash
-echo "Source the catkin_ws/devel/setup.bash"
+echo "source catkin_ws/devel/setup.bash"
 ```
 
 ## RoboMaker
