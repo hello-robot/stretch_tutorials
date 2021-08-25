@@ -9,9 +9,8 @@ from geometry_msgs.msg import Twist
 class Move:
 	def __init__(self):
 		# Setup a publisher that will send the velocity commands for the Stretch
-		# This will publish on a topic called "/stretch_diff_drive_controller/cmd_vel"
-		# with a message type Twist.
-		self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queue_size=1)
+		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
+		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
 	def move_forward(self):
 		# Make a Twist message.  We're going to set all of the elements, since we
