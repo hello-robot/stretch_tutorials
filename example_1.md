@@ -3,19 +3,25 @@
 ![image](images/move_stretch.gif)
 
 
-The goal of this example to give you an enhance understanding how to control the mobile base by sending `Twist` messages to a Stretch robot.
+The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
 
- To drive the robot forward, type the following in the terminal.
+Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
 
-<!-- Open a new terminal and go into the *src* folder where the [move](src/move.py) node is located.  -->
+```bash
+rosparam set /stretch_driver/mode "navigation"
+roslaunch stretch_core stretch_driver.launch
+```
+
+To drive the robot forward with the move node, type the following in a new terminal.
 
 ```
 cd catkin_ws/src/stretch_ros_turotials/src/
 python move.py
 ```
+To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### The Code
-Below is the code and it will drive the robot forward.
+Below is the code which will send *Twist* messages to drive the robot forward.
 
 
 ```python
@@ -47,12 +53,6 @@ if __name__ == '__main__':
 		rate.sleep()
 ```
 
-<!-- Don't forget to make the node executable:
-
-```
-chmod +x move.py
-``` -->
-
 ### The Code Explained
 
 Now let's break the code down.
@@ -67,13 +67,13 @@ Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at
 import rospy
 from geometry_msgs.msg import Twist
 ```
-You need to import rospy if you are writing a ROS Node. The geometry_msgs.msg import is so that we can send velocities for to the robot.
+You need to import rospy if you are writing a ROS Node. The geometry_msgs.msg import is so that we can send velocity commands to the robot.
 
 
 ```python
 class Move:
 	def __init__(self):
-		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1)
+		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1)#/stretch_diff_drive_controller/cmd_vel for gazebo
 ```
 This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1) declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist. The queue_size argument limits the amount of queued messages if any subscriber is not receiving them fast enough.
 
@@ -97,7 +97,7 @@ command.angular.x = 0.0
 command.angular.y = 0.0
 command.angular.z = 0.0
 ```
-A Twist also has three rotational velocities (in radians per second).
+A *Twist* also has three rotational velocities (in radians per second).
 The Stretch will only respond to rotations around the z (vertical) axis.
 
 
@@ -126,4 +126,16 @@ This loop is a fairly standard rospy construct: checking the rospy.is_shutdown()
 ## Move Stretch in Simulation
 ![image](images/move.gif)
 
-First, bringup [Stretch in the empty world simulation](getting_started).
+Using your preferred text editor, modify the topic name of the published *Twist* messages. Please review the edit in the **move.py** script below.
+
+```python
+self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queue_size=1)
+```
+
+After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the follwing in a new terminal
+
+```
+cd catkin_ws/src/stretch_ros_turotials/src/
+python3 move.py
+```
+To stop the node from sending twist messages, type **Ctrl** + **c**.
