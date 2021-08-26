@@ -14,7 +14,7 @@ Hello Robot is currently running Stretch on Ubuntu 20.04 and on ROS Noetic.  To 
 Currently, the Realsense2_description package isn't installed by rosdep and requires a user to manually install the package. Run the following command in your terminal
 
 ```bash
-sudo apt-get install ros-Noetic-realsense2-camera
+sudo apt-get install ros-noetic-realsense2-camera
 ```
 
 After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
