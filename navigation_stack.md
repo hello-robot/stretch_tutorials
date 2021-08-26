@@ -1,8 +1,7 @@
-## Navigation
+## Navigation Stack with Actual robot
 
 stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive the stretch RE1 around a mapped space. Running this code will require the robot to be untethered.
 
-First, bringing up [Stretch in the willowgarage world](gazebo_basics.md).  
 
 Then run the following commands to map the space that the robot will navigate in.
 ```bash
@@ -27,5 +26,24 @@ Rviz will show the robot in the previously mapped space, however, it's likely th
 
 It is also possible to send 2D Pose Estimates and Nav Goals programatically. In your own launch file, you may include `navigation.launch` to bring up the navigation stack. Then, you can send `move_base_msgs::MoveBaseGoal` messages in order to navigate the robot programatically.
 
+
+<!-- ## Navigation Stack in Gazebo
+
+To test Stretch Navigation in simulation there is a `mapping_gazebo.launch` and `navigation_gazebo.launch` files on the [feature/navigation_updates](https://github.com/hello-robot/stretch_ros/tree/feature/navigation_updates/stretch_navigation/launch) branch. Note that this branch works on ROS Melodic. Navigate to the branch by running the following
+
+```
+roscd stretch_navigation
+git checkout feature/navigation_updates
+```
+Then bringup [Stretch in the willowgarage world](gazebo_basics.md) and in a new terminal run the following command to build a map of the Willow Garage world
+
+```
+roslaunch stretch_navigation mapping_gazebo.launch gazebo_visualize_lidar:=true gazebo_world:=worlds/willowgarage.world
+```
+
+```
+roslaunch stretch_navigation teleop_keyboard.launch
+```
+ -->
 
 **Next Tutorial:** [MoveIt! Basics](moveit_basics.md)
