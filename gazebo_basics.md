@@ -11,34 +11,16 @@ This will bringup the robot in the gazebo simulation similar to the image shown 
 ![image](images/stretch_gazebo_empty_world.png)
 
 ### Custom World Simulation
-With a modification of the gazebo launch file, you can spawn the Stretch robot in a custom world. In this instance, we will spawn Stretch in gazebo's world files named *willowgarage.world*.
-
-To preserve the original gazebo.launch file, we will copy the file and rename it to the following.
-
-```bash
-cd catkin_ws/src/stretch_ros/stretch_gazebo/launch/
-cp gazebo.launch stretch_willowgarage_world.launch
+In gazebo, you are able to spawn Stretch in various worlds. First, source the gazebo world files by running the following command in a terminal
+```BASH
+echo "source /usr/share/gazebo/setup.sh"
 ```
 
-You can use your preferred text editor to modify the value for the world name argument like the following
-```html
-<arg name="world_name" value="worlds/willowgarage.world" />
-```
-Use the images below for further reference.
 
-**BEFORE**
-
-![image](images/before_launch_file_edit.png)
-
-
-**AFTER**
-
-![image](images/after_launch_file_edit.png)
-
-Make sure to save the file. Now you can run the new launch file with a Stretch robot in the willowgarage world.
+Then using the world argument, you can spawn the stretch in the willowgarage world by running the following
 
 ```bash
-roslaunch stretch_gazebo stretch_willowgarage_world.launch
+roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world
 ```
 
 ![image](images/stretch_willowgarage_world.png)
