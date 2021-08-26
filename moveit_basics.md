@@ -1,6 +1,20 @@
-## MoveIt! Basics
+# MoveIt! Basics
 
-To begin running MoveIt! on stretch, turn the demo launch file. This doesn't require any simulator or robot to run.
+## MoveIt! on Stretch
+
+To run MoveIt with the actual hardware, (assuming `stretch_driver` is already running) simply run
+
+```bash
+roslaunch stretch_moveit_config move_group.launch
+```
+
+This will runs all of the planning capabilities, but without the setup, simulation and interface that the above demo provides. In order to create plans for the robot with the same interface as the offline demo, you can run
+```bash
+roslaunch stretch_moveit_config moveit_rviz.launch
+```
+
+## MoveIt! Without Hardware
+To begin running MoveIt! on stretch, run the demo launch file. This doesn't require any simulator or robot to run.
 
 ```bash
 roslaunch stretch_moveit_config demo.launch
