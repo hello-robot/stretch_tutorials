@@ -1,6 +1,11 @@
 ## Getting the State of the Robot
 
-Begin by starting up [Stretch in simulation](getting_started) and the [keyboard teleoperation](teleoperating_stretch.md). Then utilize the ROS command-line tool, [rostopic](http://wiki.ros.org/rostopic), to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
+Begin by starting up the stretch driver launch file by typing the following in a terminal.
+```bash
+roslaunch stretch_core stretch_driver.launch
+```
+
+Then utilize the ROS command-line tool, [rostopic](http://wiki.ros.org/rostopic), to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
 ```bash
 rostopic echo /joint_states -n1
 ```
@@ -45,7 +50,7 @@ A powerful tool to visualize the ROS communication is the ROS [rqt_graph package
 ```
 rqt_graph
 ```
-![image](images/rosgraph.png)
+![image](images/rqt_graph.png)
 
 The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.
 
