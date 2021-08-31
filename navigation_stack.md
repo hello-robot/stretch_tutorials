@@ -9,8 +9,9 @@ roslaunch stretch_navigation mapping.launch
 ```
 Rviz will show the robot and the map that is being constructed. With the terminal open, use the instructions printed by the teleop package to teleoperate the robot around the room. Avoid sharp turns and revisit previously visited spots to form loop closures.
 
-![image](images/mapping.gif)
-
+<p align="center">
+  <img src="images/mapping.gif"/>
+</p>
 
 In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to `stretch_user/`.
 
