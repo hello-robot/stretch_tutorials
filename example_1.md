@@ -16,7 +16,7 @@ To drive the robot forward with the move node, type the following in a new termi
 
 ```
 cd catkin_ws/src/stretch_ros_turotials/src/
-python move.py
+python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
