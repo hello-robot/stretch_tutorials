@@ -1,7 +1,7 @@
 ## Example 1
-
-![image](images/move_stretch.gif)
-
+<p align="center">
+  <img src="images/move_stretch.gif"/>
+</p>
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
 
@@ -124,7 +124,9 @@ This loop is a fairly standard rospy construct: checking the rospy.is_shutdown()
 
 
 ## Move Stretch in Simulation
-![image](images/move.gif)
+<p align="center">
+  <img src="images/move.gif"/>
+</p>
 
 Using your preferred text editor, modify the topic name of the published *Twist* messages. Please review the edit in the **move.py** script below.
 
