@@ -1,6 +1,6 @@
 # Introduction
 
-This repo provides instructions on the installation and use of code on the Stretch RE1 robot. The goal is to provide a user familiar with ROS with the tools to operate a Stretch robot in simulation and the actual robot.
+This repo provides instructions on the installation and use of code on the Stretch RE1 robot. The goal is to provide a user familiar with ROS with the tools to operate a Stretch robot and in simulation.
 
 ## Stretch ROS Tutorials
 1. [Getting Started](getting_started.md)
@@ -24,5 +24,5 @@ To help get you get started on your software development, here are examples of n
 
 1. [Teleoperate Stretch with a Node](example_1.md) - Use a python script that sends velocity commands.  
 2. [Filter Laser Scans](example_2.md) - Publish new scan ranges that are directly in front of Stretch.
-3. Mobile Base Collision Avoidance - Stop Stretch from running into a wall.
-4. [Give Stretch a Balloon](example_3.md) - Create a "balloon" marker that goes where ever it goes.
+3. [Mobile Base Collision Avoidance](example_3.md) - Stop Stretch from running into a wall.
+4. [Give Stretch a Balloon](example_4.md) - Create a "balloon" marker that goes where ever it goes.
