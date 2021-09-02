@@ -10,7 +10,6 @@ from sensor_msgs.msg import LaserScan
 class Scanfilter:
 	def __init__(self):
 		# We're going to assume that the robot is pointing up the x-axis, so that
-
 		# any points with y coordinates further than half of the defined
 		# width (1 meter) from the axis are not considered.
 		self.width = 1
