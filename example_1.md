@@ -14,7 +14,7 @@ roslaunch stretch_core stretch_driver.launch
 
 To drive the robot forward with the move node, type the following in a new terminal.
 
-```
+```bash
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ```
@@ -141,3 +141,6 @@ cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
+
+
+**Next Tutorial:** [Example 2](example_2.md)
