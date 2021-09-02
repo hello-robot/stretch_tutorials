@@ -20,17 +20,17 @@ class Avoider:
         self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
 
         # We're going to assume that the robot is pointing up the x-axis, so that
-
         # any points with y coordinates further than half of the defined
         # width (1 meter) from the axis are not considered.
         self.width = 1
         self.extent = self.width / 2.0
 
-
+        # We want the robot to drive foward or backwards until it is 0.5 m from
+        # the closest obstacle measured in front of it.
         self.distance = 0.5
 
-        # Alocate a Twist to use, and set everything to zero.  We're going to do this here, to save some time in
-        # the callback.
+        # Alocate a Twist to use, and set everything to zero.  We're going to do
+        # this here, to save some time in the callback function, set_speed().
         self.twist = Twist()
         self.twist.linear.x = 0.0
         self.twist.linear.y = 0.0
@@ -51,14 +51,24 @@ class Avoider:
         # If we're close to the x axis, keep the range, otherwise use inf, which means "no return".
         new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 
+		# Calculate the difference of the closest measured scan and where we want the robot to stop.
         error = min(new_ranges) - self.distance
 
-        # Using hyperbolic tanget for speed regulation
+        # Using hyperbolic tanget for speed regulation, with a threshold to stop
+        # and driving when it is close to the desired distance.
         self.twist.linear.x = tanh(error) if (error > 0.05 or error < -0.05) else 0
-        self.pub.publish(self.twist)		# Publish the command using the global publisher
+
+        # Publish the command using the publisher
+        self.pub.publish(self.twist)
 
 if __name__ == '__main__':
+    # Initialize the node, and call it "avoider".
     rospy.init_node('avoider')
+
+	# Setup Avoider class
     Avoider()
 
+    # Give control to ROS.  This will allow the callback to be called whenever new
+    # messages come in.  If we don't put this line in, then the node will not work,
+    # and ROS will not process any messages.
     rospy.spin()
