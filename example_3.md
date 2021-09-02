@@ -17,7 +17,7 @@ To activate the avoider node, type the following in a new terminal.
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 avoider.py
 ```
-To stop the node from sending twist messages, type **Ctrl** + **c**.
+To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 
 <p align="center">
   <img height=600 src="images/avoider.gif"/>
@@ -103,7 +103,7 @@ self.width = 1
 self.extent = self.width / 2.0
 self.distance = 0.5
 ```
-*self.width* is the width of the laser scan we want in front of Stretch. Since Stretch's front is pointing in the x-axis, any points with y coordinates further than half of the defined width (*self.extent*) from the x-axis are not considered. *self.distance* deinfest the stopping distance from an object.
+*self.width* is the width of the laser scan we want in front of Stretch. Since Stretch's front is pointing in the x-axis, any points with y coordinates further than half of the defined width (*self.extent*) from the x-axis are not considered. *self.distance* defines the stopping distance from an object.
 
 
 ```python
@@ -122,7 +122,7 @@ angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
 new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 ```
-This line of code utilizes linspace to compute each angle of the subscribed scan. Here we are computing the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
+This line of code utilizes linspace to compute each angle of the subscribed scan. Here we  compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
 
 
 ```python
