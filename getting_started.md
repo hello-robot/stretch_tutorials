@@ -5,7 +5,14 @@
 Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stretch RE1 platform. If you are unfamiliar with the operating system, we encourage you to review a [tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provided by Ubuntu. Additionally, the Linux command line, BASH, is used to execute commands and is needed to run ROS on the Stretch robot. Here is a [tutorial](https://ryanstutorials.net/linuxtutorial/) on getting started with BASH.
 
 ## Installing Noetic on Stretch
-Instructions on installing Noetic can be found in our open source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md).
+Instructions on installing Noetic can be found in our open source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md). Once your system is setup, clone the [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git) to your workspace. Then build the packages in your workspace.
+
+```
+cd ~/catkin_ws/src
+git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
+cd ~/catkin_ws
+catkin_make
+```
 
 ## ROS Setup on Local Computer
 
@@ -17,11 +24,12 @@ Currently, the Realsense2_description package isn't installed by rosdep and requ
 sudo apt-get install ros-noetic-realsense2-camera
 ```
 
-After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git) and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
+After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git), [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git), and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace. Then install dependencies and build the packages.
 ```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_ros
 git clone https://github.com/pal-robotics/realsense_gazebo_plugin
+git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
