@@ -10,12 +10,12 @@ This repo provides instructions on the installation and use of code on the Stret
 5. [RViz Basics](rviz_basics.md)
 6. [Navigation Stack](navigation_stack.md)
 7. [MoveIt! Basics](moveit_basics.md)
-8. Perception
+8. [Follow Joint Trajectory Commands](follow_joint_trajectory.md)
 9. Microphone Array
 10. FUNMAP
 11. ROS testing
 12. Other Nav Stack Features
-13. FollowJoint Trajectory Commands
+13. Perception
 14. 4 Modes of Stretch
 
 
