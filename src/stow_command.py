@@ -47,6 +47,7 @@ class StowCommand(hm.HelloNode):
         # for the result before it exits the python script.
         self.trajectory_client.send_goal(trajectory_goal)
         rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+        self.trajectory_client.wait_for_result()
 
     # Create a funcion, main(), to do all of the setup the hm.HelloNode class
     # and issue the stow command.
