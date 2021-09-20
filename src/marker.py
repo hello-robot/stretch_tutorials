@@ -3,9 +3,8 @@
 # This node will publish a spherical marker above the current robot position, as
 # it drives around the world.
 
-# Import rospy and sys, as usual
+# Import rospy and sys
 import rospy
-import sys
 
 # Import the Marker message type from the visualization_msgs package.
 from visualization_msgs.msg import Marker
@@ -62,7 +61,7 @@ class Balloon():
 
 if __name__ == '__main__':
 	# Initialize the node, as usual
-	rospy.init_node('marker', argv=sys.argv)
+	rospy.init_node('marker')
 
 	ballon = Balloon()
 
