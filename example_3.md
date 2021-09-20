@@ -153,4 +153,4 @@ Setup Avoider class with `Avioder()`
 
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
-**Next Tutorial:** [Example 4](example_4.md)
+**Next Example:** [Example 4](example_4.md)
