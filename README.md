@@ -11,8 +11,8 @@ This repo provides instructions on the installation and use of code on the Stret
 6. [Navigation Stack](navigation_stack.md)
 7. [MoveIt! Basics](moveit_basics.md)
 8. [Follow Joint Trajectory Commands](follow_joint_trajectory.md)
-9. Microphone Array
-10. FUNMAP
+9. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
+10. Microphone Array
 11. ROS testing
 12. Other Nav Stack Features
 13. Perception
@@ -25,4 +25,4 @@ To help get you get started on your software development, here are examples of n
 1. [Teleoperate Stretch with a Node](example_1.md) - Use a python script that sends velocity commands.  
 2. [Filter Laser Scans](example_2.md) - Publish new scan ranges that are directly in front of Stretch.
 3. [Mobile Base Collision Avoidance](example_3.md) - Stop Stretch from running into a wall.
-4. [Give Stretch a Balloon](example_4.md) - Create a "balloon" marker that goes where ever it goes.
+4. [Give Stretch a Balloon](example_4.md) - Create a "balloon" marker that goes where ever Stretch goes.
