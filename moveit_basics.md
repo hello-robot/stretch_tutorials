@@ -53,3 +53,5 @@ This will launch an Rviz instance that visualizes the joints with markers and an
 
 
 ![image](images/gazebo_moveit.gif)
+
+**Next Tutorial:** [Follow Joint Trajectory Commands](follow_joint_trajectory.md)
