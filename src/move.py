@@ -1,16 +1,21 @@
 #!/usr/bin/env python
 
-# Every python controller needs these lines
-import rospy
+### This node is still WIP, proceed with caution
 
-# The Twist message is used to send velocities to the robot.
+# Import rclpy so its Node class can be used.
+import threading
+import rclpy
+from rclpy.node import Node
+
+# Imports the built-in Twist message type that the node uses to structure the velocity data that it passes on the topic.
 from geometry_msgs.msg import Twist
 
-class Move:
+# The Move class is created, which inherits from (or is a subclass of) Node
+class Move(Node):
 	def __init__(self):
 		# Setup a publisher that will send the velocity commands for the Stretch
 		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
-		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
+		self.publisher = self.create_publisher(Twist, '/stretch/cmd_vel', 10) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
 	def move_forward(self):
 		# Make a Twist message.  We're going to set all of the elements, since we
@@ -30,23 +35,30 @@ class Move:
 		command.angular.y = 0.0
 		command.angular.z = 0.0
 
-		# Publish the Twist commands
-		self.pub.publish(command)
+		# Publish the Twist message
+		self.publisher.publish(command)
 
 if __name__ == '__main__':
+	# First the rclpy library is initialized
+	rclpy.init(args=args)
+	
 	# Initialize the node, and call it "move".
-	rospy.init_node('move')
-
+	node = rclpy.create_node('move')
+	
 	# Setup Move class to base_motion
 	base_motion = Move()
-
-	# Rate allows us to control the (approximate) rate at which we publish things.
+	
+	# Spin in a separate thread
+	thread = threading.Thread(target=rclpy.spin, args=(node, ), daemon=True)
+	thread.start()
+	
+	# create_rate allows us to control the (approximate) rate at which we publish things.
 	# For this example, we want to publish at 10Hz.
-	rate = rospy.Rate(10)
+	rate = node.create_rate(10)
 
 	# This will loop until ROS shuts down the node.  This can be done on the
 	# command line with a ctrl-C, or automatically from roslaunch.
-	while not rospy.is_shutdown():
+	while rclpy.ok():
 		# Run the move_foward function in the Move class
 		base_motion.move_forward()
 
@@ -55,3 +67,6 @@ if __name__ == '__main__':
 		# available CPU resources.  This will also add a lot of network traffic,
 		# possibly slowing down other things.
 		rate.sleep()
+		
+	rclpy.shutdown()
+	thread.join()
