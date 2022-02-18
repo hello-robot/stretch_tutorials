@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ### This node is still WIP, proceed with caution
 
 # Import rclpy so its Node class can be used.
-import threading
+from time import sleep
 import rclpy
 from rclpy.node import Node
 
@@ -13,11 +13,9 @@ from geometry_msgs.msg import Twist
 # The Move class is created, which inherits from (or is a subclass of) Node
 class Move(Node):
 	def __init__(self):
-		# Setup a publisher that will send the velocity commands for the Stretch
-		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
-		self.publisher = self.create_publisher(Twist, '/stretch/cmd_vel', 10) #/stretch_diff_drive_controller/cmd_vel for gazebo
+		print("Starting to move in circle")
 
-	def move_forward(self):
+	def move_around(self):
 		# Make a Twist message.  We're going to set all of the elements, since we
 		# can't depend on them defaulting to safe values.
 		command = Twist()
@@ -33,40 +31,33 @@ class Move(Node):
 		# The Stretch will only respond to rotations around the z (vertical) axis.
 		command.angular.x = 0.0
 		command.angular.y = 0.0
-		command.angular.z = 1.0
+		command.angular.z = 0.5
 
 		# Publish the Twist message
-		self.publisher.publish(command)
+		self.publisher_.publish(command)
+		
+	def main(self, args=None):
+		# First the rclpy library is initialized
+		rclpy.init(args=args)
+		
+		# Initialize the node, and call it "move".
+		node = rclpy.create_node('move')
+		# Setup a publisher that will send the velocity commands for the Stretch
+		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
+		self.publisher_ = node.create_publisher(Twist, '/stretch/cmd_vel', 10) #/stretch_diff_drive_controller/cmd_vel for gazebo
+		
+
+		# This will loop until ROS shuts down the node.  This can be done on the
+		# command line with a ctrl-C, or automatically from roslaunch.
+		while rclpy.ok():
+			# Run the move_foward function in the Move class
+			base_motion.move_around()
+			sleep(1.0)
+	
+		base_motion.destroy_node()	
+		rclpy.shutdown()
 
 if __name__ == '__main__':
-	# First the rclpy library is initialized
-	rclpy.init(args=args)
-	
-	# Initialize the node, and call it "move".
-	node = rclpy.create_node('move')
-	
 	# Setup Move class to base_motion
 	base_motion = Move()
-	
-	# Spin in a separate thread
-	thread = threading.Thread(target=rclpy.spin, args=(node, ), daemon=True)
-	thread.start()
-	
-	# create_rate allows us to control the (approximate) rate at which we publish things.
-	# For this example, we want to publish at 10Hz.
-	rate = node.create_rate(10)
-
-	# This will loop until ROS shuts down the node.  This can be done on the
-	# command line with a ctrl-C, or automatically from roslaunch.
-	while rclpy.ok():
-		# Run the move_foward function in the Move class
-		base_motion.move_forward()
-
-		# Do an idle wait to control the publish rate.  If we don't control the
-		# rate, the node will publish as fast as it can, and consume all of the
-		# available CPU resources.  This will also add a lot of network traffic,
-		# possibly slowing down other things.
-		rate.sleep()
-		
-	rclpy.shutdown()
-	thread.join()
+	base_motion.main()
