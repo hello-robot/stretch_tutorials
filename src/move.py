@@ -25,7 +25,7 @@ class Move(Node):
 		# A Twist has three linear velocities (in meters per second), along each of the axes.
 		# For Stretch, it will only pay attention to the x velocity, since it can't
 		# directly move in the y direction or the z direction.
-		command.linear.x = 0.1
+		command.linear.x = 0.0
 		command.linear.y = 0.0
 		command.linear.z = 0.0
 
@@ -33,7 +33,7 @@ class Move(Node):
 		# The Stretch will only respond to rotations around the z (vertical) axis.
 		command.angular.x = 0.0
 		command.angular.y = 0.0
-		command.angular.z = 0.0
+		command.angular.z = 1.0
 
 		# Publish the Twist message
 		self.publisher.publish(command)
