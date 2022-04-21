@@ -1,28 +1,21 @@
 #!/usr/bin/env python
 
 # Every python controller needs these lines
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf
 from math import sin
+
 # We're going to subscribe to a LaserScan message.
 from sensor_msgs.msg import LaserScan
 
-class Scanfilter:
+class Scanfilter(Node):
 	def __init__(self):
 		# We're going to assume that the robot is pointing up the x-axis, so that
 		# any points with y coordinates further than half of the defined
 		# width (1 meter) from the axis are not considered.
 		self.width = 1
 		self.extent = self.width / 2.0
-
-		# Set up a subscriber.  We're going to subscribe to the topic "scan",
-		# looking for LaserScan messages.  When a message comes in, ROS is going
-		# to pass it to the function "callback" automatically.
-		self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
-
-		# Set up a publisher.  This will publish on a topic called "filtered_scan",
-		# with a LaserScan message type.
-		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
 
 	def callback(self,msg):
 		# Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
@@ -39,14 +32,31 @@ class Scanfilter:
 		msg.ranges = new_ranges
 		self.pub.publish(msg)
 
+	def main(self, args=None):
+		# First the rclpy library is initialized
+		rclpy.init(args=args)
+		
+		# Initialize the node, and call it "move".
+		node = rclpy.create_node('scan_filter')
+
+		# Set up a publisher.  This will publish on a topic called "filtered_scan",
+		# with a LaserScan message type.
+		self.pub = node.create_publisher(LaserScan, '/filtered_scan', 10) #/stretch_diff_drive_controller/cmd_vel for gazebo
+
+		# Set up a subscriber.  We're going to subscribe to the topic "scan",
+		# looking for LaserScan messages.  When a message comes in, ROS is going
+		# to pass it to the function "callback" automatically.
+		self.sub = node.create_subscription(LaserScan, '/scan', self.callback, 10)
+
+		# Give control to ROS.  This will allow the callback to be called whenever new
+		# messages come in.  If we don't put this line in, then the node will not work,
+		# and ROS will not process any messages.
+		rclpy.spin(node)
+
+		self.destroy_node()
+		rclpy.shutdown()
+
 if __name__ == '__main__':
-	# Initialize the node, and call it "scan_filter".
-	rospy.init_node('scan_filter')
-
 	# Setup Scanfilter class
-	Scanfilter()
-
-	# Give control to ROS.  This will allow the callback to be called whenever new
-	# messages come in.  If we don't put this line in, then the node will not work,
-	# and ROS will not process any messages.
-	rospy.spin()
+	sf = Scanfilter()
+	sf.main()
