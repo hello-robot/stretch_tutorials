@@ -1,17 +1,17 @@
 ## Getting the State of the Robot
 
-Begin by starting up the stretch driver launch file by typing the following in a terminal.
-```bash
+Begin by starting up the stretch driver launch file.
+```
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then utilize the ROS command-line tool, [rostopic](http://wiki.ros.org/rostopic), to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
-```bash
+```
 rostopic echo /joint_states -n1
 ```
-Note that the flag, `-n1`, at the end of the command, defines the count of how many times you wish to publish the current topic information. If you prefer to continuously print the topic for debugging purposes, then remove the flag.
+Note that the flag, `-n1`, at the end of the command defines the count of how many times you wish to publish the current topic information. Remove the flag if you prefer to continuously print the topic for debugging purposes.
 
-Your terminal will then output the information associated with the `/joint_states` topic. Your `header`, `position`, `velocity`, and `effort` information may vary from what is printed below.
+Your terminal will output the information associated with the `/joint_states` topic. Your `header`, `position`, `velocity`, and `effort` information may vary from what is printed below.
 ```
 header:
   seq: 70999
@@ -29,7 +29,7 @@ effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ```
 
 Let's say you are interested in only seeing the `header` component of the `/joint_states` topic, you can output this within the rostopic command-line tool by typing the following command.
-```bash
+```
 rostopic echo /joint_states/header -n1
 ```
 Your terminal will then output something similar to this:
@@ -43,9 +43,9 @@ frame_id: ''
 ---
 ```
 
-Additionally, if you were to type `rostopic echo /` in the terminal, then press your *Tab* key on your keyboard, you will see the list of active topics being published.
+Additionally, if you were to type `rostopic echo /` in the terminal, then press your *Tab* key on your keyboard, you will see the list of published active topics.
 
-A powerful tool to visualize the ROS communication is the ROS [rqt_graph package](http://wiki.ros.org/rqt_graph). You can see a graph of topics being communicated between nodes by typing the following.
+A powerful tool to visualize the ROS communication is the ROS [rqt_graph package](http://wiki.ros.org/rqt_graph). By typing the following, you can see a graph of topics being communicated between nodes.
 
 ```
 rqt_graph
