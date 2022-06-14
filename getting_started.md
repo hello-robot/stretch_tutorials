@@ -24,7 +24,7 @@ Currently, the Realsense2_description package isn't installed by rosdep and requ
 sudo apt-get install ros-noetic-realsense2-camera
 ```
 
-After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git), [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git), and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your preferred workspace.
+After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git), [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git), and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your **src** folder in your preferred workspace.
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_ros
@@ -33,7 +33,7 @@ git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
 ```
 
 
-Change the directory to that of your catkin workspace and install system dependencies of the ROS packages. Then build your workspace. You can do all this by running the following commands in your terminal.
+Change the directory to that of your catkin workspace and install system dependencies of the ROS packages. Then build your workspace.
 ```
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
@@ -41,7 +41,7 @@ catkin_make
 ```
 
 
-Then source your workspace and `.bashrc` file with the following command
+Once `caktin_make` has finished compiling,source your workspace and **.bashrc** file
 ```
 echo "source /home/USER_NAME/catkin_ws/devel/setup.bash"
 source ~/.bashrc
