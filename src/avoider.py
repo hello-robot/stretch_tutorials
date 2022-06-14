@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 # Every python controller needs these lines
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf, tanh
 from math import sin
 
@@ -11,14 +12,8 @@ from geometry_msgs.msg import Twist
 # We're going to subscribe to a LaserScan message.
 from sensor_msgs.msg import LaserScan
 
-class Avoider:
+class Avoider(Node):
     def __init__(self):
-        # Set up a publisher and a subscriber.  We're going to call the subscriber
-        # "scan", and filter the ranges similar to what we did in example 2.
-        # For the publisher, we're going to use the topic name /stretch/cmd_vel.
-        self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
-        self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
-
         # We're going to assume that the robot is pointing up the x-axis, so that
         # any points with y coordinates further than half of the defined
         # width (1 meter) from the axis are not considered.
@@ -29,7 +24,7 @@ class Avoider:
         # the closest obstacle measured in front of it.
         self.distance = 0.5
 
-        # Alocate a Twist to use, and set everything to zero.  We're going to do
+        # Allocate a Twist to use, and set everything to zero.  We're going to do
         # this here, to save some time in the callback function, set_speed().
         self.twist = Twist()
         self.twist.linear.x = 0.0
@@ -59,16 +54,31 @@ class Avoider:
         self.twist.linear.x = tanh(error) if (error > 0.05 or error < -0.05) else 0
 
         # Publish the command using the publisher
-        self.pub.publish(self.twist)
+        self.publisher_.publish(self.twist)
+
+    def main():
+        # First the rclpy library is initialized
+		rclpy.init(args=args)
+        
+        # Initialize the node, and call it "avoider".
+		node = rclpy.create_node('avoider')
+
+        # Set up a publisher and a subscriber.  We're going to call the subscriber
+        # "scan", and filter the ranges similar to what we did in example 2.
+        # For the publisher, we're going to use the topic name /stretch/cmd_vel.
+        self.publisher_ = node.create_publisher(Twist, '/stretch/cmd_vel', 1) #/stretch_diff_drive_controller/cmd_vel for gazebo
+        self.subscriber_ = node.create_subscription(LaserScan, '/scan', self.set_speed, 10)
+
+        # Give control to ROS.  This will allow the callback to be called whenever new
+        # messages come in.  If we don't put this line in, then the node will not work,
+        # and ROS will not process any messages.
+        rclpy.spin(node)
+
+        self.destroy_node()
+		rclpy.shutdown()
 
 if __name__ == '__main__':
-    # Initialize the node, and call it "avoider".
-    rospy.init_node('avoider')
+    # Setup Avoider object
+    avoider = Avoider()
+    avoider.main()
 
-	# Setup Avoider class
-    Avoider()
-
-    # Give control to ROS.  This will allow the callback to be called whenever new
-    # messages come in.  If we don't put this line in, then the node will not work,
-    # and ROS will not process any messages.
-    rospy.spin()

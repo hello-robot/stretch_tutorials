@@ -4,23 +4,22 @@
 # it drives around the world.
 
 # Import rospy and sys
-import rospy
+from time import sleep
+import rclpy
+from rclpy.node import Node
 
 # Import the Marker message type from the visualization_msgs package.
 from visualization_msgs.msg import Marker
 
-class Balloon():
+class Balloon(Node):
 	def __init__(self):
-		# Set up a publisher.  We're going to publish on a topic called balloon.
-		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
-
 		# Create a marker.  Markers of all shapes share a common type.
 		self.marker = Marker()
 
 		# Set the frame ID and type.  The frame ID is the frame in which the position of the marker
 		# is specified.  The type is the shape of the marker, detailed on the wiki page.
 		self.marker.header.frame_id = '/base_link'
-		self.marker.header.stamp = rospy.Time()
+		self.marker.header.stamp = self.get_clock().now().to_msg()
 		self.marker.type = self.marker.SPHERE
 
 		# Each marker has a unique ID number. If you have more than one marker that
@@ -56,19 +55,30 @@ class Balloon():
 
 	def publish_marker(self):
 		# publisher the marker
-		self.publisher.publish(self.marker)
+		self.publisher_.publish(self.marker)
+
+	def main():
+		# First the rclpy library is initialized
+		rclpy.init(args=args)
+		
+		# Initialize the node, as usual
+		node = rclpy.create_node('marker')
+
+		ballon = Balloon()
+
+		# Set up a publisher.  We're going to publish on a topic called balloon.
+		self.publisher_ = rclpy.create_publisher(Marker, 'balloon', 10)
+
+		# This will loop until ROS shuts down the node.  This can be done on the
+		# command line with a ctrl-C, or automatically from roslaunch.
+		while rclpy.ok():
+			ballon.publish_marker()
+			sleep(1.0)
+	
+		self.destroy_node()	
+		rclpy.shutdown()
 
 
 if __name__ == '__main__':
-	# Initialize the node, as usual
-	rospy.init_node('marker')
-
-	ballon = Balloon()
-
-	# Set a rate.
-	rate = rospy.Rate(10)
-
-	# Publish the marker at 10Hz.
-	while not rospy.is_shutdown():
-		ballon.publish_marker()
-		rate.sleep()
+	balloon = Balloon()
+	balloon.main()
