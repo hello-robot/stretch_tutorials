@@ -34,23 +34,39 @@ It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In
 
 
 
-<!-- ## Navigation Stack in Gazebo
+## Running in Simulation
 
-To test Stretch Navigation in simulation there is a `mapping_gazebo.launch` and `navigation_gazebo.launch` files on the [feature/navigation_updates](https://github.com/hello-robot/stretch_ros/tree/feature/navigation_updates/stretch_navigation/launch) branch. Note that this branch works on ROS Melodic. Navigate to the branch by running the following
-
-```
-roscd stretch_navigation
-git checkout feature/navigation_updates
-```
-Then bringup [Stretch in the willowgarage world](gazebo_basics.md) and in a new terminal run the following command to build a map of the Willow Garage world
+To perform mapping and navigation in the Gazebo simulation of Stretch, substitute the `mapping_gazebo.launch` and `navigation_gazebo.launch` launch files into the commands above. The default Gazebo environment is the Willow Garage HQ. Use the "world" ROS argument to specify the Gazebo world within which to spawn Stretch.
 
 ```
-roslaunch stretch_navigation mapping_gazebo.launch gazebo_visualize_lidar:=true gazebo_world:=worlds/willowgarage.world
+roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:=worlds/willowgarage.world
 ```
 
+### Teleop using a Joystick Controller
+
+The mapping launch files, `mapping.launch` and `mapping_gazebo.launch` expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch RE1 is plugged into your computer, the following command will launch mapping with joystick teleop:
+
 ```
-roslaunch stretch_navigation teleop_keyboard.launch
+roslaunch stretch_navigation mapping.launch teleop_type:=joystick
 ```
- -->
+
+<p align="center">
+  <img height=600 src="images/gazebo_mapping.gif"/>
+</p>
+
+### Using ROS Remote Master
+
+If you have set up [ROS Remote Master](https://docs.hello-robot.com/untethered_operation/#ros-remote-master) for [untethered operation](https://docs.hello-robot.com/untethered_operation/), you can use Rviz and teleop locally with the following commands:
+
+```bash
+# On Robot
+roslaunch stretch_navigation mapping.launch rviz:=false teleop_type:=none
+
+# On your machine, Terminal 1:
+rviz -d `rospack find stretch_navigation`/rviz/mapping.launch
+# On your machine, Terminal 2:
+roslaunch stretch_core teleop_twist.launch teleop_type:=keyboard # or use teleop_type:=joystick if you have a controller
+```
+
 
 **Next Tutorial:** [MoveIt! Basics](moveit_basics.md)
