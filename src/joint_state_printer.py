@@ -1,48 +1,79 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/env python
 
 # Import ROS Python basic API and sys
 import rospy
 import sys
 
-# We're going to subscribe to 64-bit integers, so we need to import the defintion
+# We're going to subscribe to 64-bit integers, so we need to import the definition
 # for them.
 from sensor_msgs.msg import JointState
 
-
-# This is a function that is called whenever a new message is received.  The
-# message is passed to the function as a parameter.
-def callback(msg):
+class JointStatePublisher():
 	"""
-	Callback function to deal with incoming messages.
-	:param msg: The JointState message.
+	A class that prints the positions of desired joints in Stretch.
 	"""
-	names = list(msg.name)
-	positions = list(msg.position)
-	# The value of the integer is stored in the data attribute of the message.
-	joints = ["joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_lift" ]
 
-	joint_positions = []
+	def __init__(self):
+		"""
+		Function that initializes the subsriber.
+		:param self: The self reference
+		"""
+		# Set up a subscriber. We're going to subscribe to the topic "joint_states"
+		self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 
-	for i in range(len(joints)):
-		index = names.index(joints[i])
-		joint_positions.append(positions[index])
+	def callback(self, msg):
+		"""
+		Callback function to deal with the incoming JointState messages.
+		:param self: The self reference
+		:param msg: The JointState message.
+		"""
+		# Store th joint messages for later use
+		self.joint_states = msg
 
-	print(joint_positions)
-	rospy.signal_shutdown("done")
-	sys.exit(0)
+
+	def print_states(self, joints):
+		"""
+		print_states function to deal with the incoming JointState messages.
+		:param self: The self reference.
+		:param joints: A list of joint names
+		"""
+		# Create an empty list that will store the positions of the requested joints
+		joint_positions = []
+
+		# Use of forloop to parse the positions of the requested joints.
+		# The index() function returns the index at the first occurence of
+		# the name of the requested joint in the self.joint_states.name list.
+		for i in range(len(joints)):
+			index = self.joint_states.name.index(joints[i])
+			joint_positions.append(self.joint_states.position[index])
+
+		# Print the joint position values to the terminal
+		print(joint_positions)
+
+		# Sends a signal to rospy to shutdown the ROS interfaces
+		rospy.signal_shutdown("done")
+
+		# Exit the Python interpreter
+		sys.exit(0)
 
 
 
 if __name__ == '__main__':
 	# Initialize the node.
-	rospy.init_node('joint_sate_printer', anonymous=True)
+	rospy.init_node('joint_state_printer', anonymous=True)
 
-	# Set up a subscriber.  We're going to subscribe to the topic "counter",
-	# looking for Int64 messages.  When a message comes in, ROS is going to pass
-	# it to the function "callback" automatically.
-	# for i in range()
-	subscriber = rospy.Subscriber('joint_states', JointState, callback)
+	# Set JointStatePublisher to JSP
+	JSP = JointStatePublisher()
+
+	# Use the rospy.sleep() function to allow the class to initialize before
+	# requesting to publish joint_positions of desered joints (running the
+	# print_states() function).
+	rospy.sleep(.1)
+
+	# Create a list of the joints and name them joints. These will be an argument
+	# for the print_states() function.
+	joints = ["joint_lift", "joint_arm_l0", "joint_wrist_yaw"]
+	JSP.print_states(joints)
 
 	# Give control to ROS.  This will allow the callback to be called whenever new
 	# messages come in.  If we don't put this line in, then the node will not work,
