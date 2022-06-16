@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-# This node will publish a spherical marker above the current robot position, as
-# it drives around the world.
-
 # Import rospy and sys
 import rospy
 
@@ -10,9 +7,16 @@ import rospy
 from visualization_msgs.msg import Marker
 
 class Balloon():
+	"""
+	A class that attaches a Sphere marker directly above the Stretch robot.
+	"""
 	def __init__(self):
+		"""
+		Function that initializes the markers features.
+		:param self: The self reference
+		"""
 		# Set up a publisher.  We're going to publish on a topic called balloon.
-		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
+		self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
 
 		# Create a marker.  Markers of all shapes share a common type.
 		self.marker = Marker()
@@ -55,8 +59,14 @@ class Balloon():
 		self.marker.pose.position.z = 2.0
 
 	def publish_marker(self):
+		"""
+		Function that publishes the sphere marker
+		:param self: The self reference
+
+		:publishes self.marker: Marker message
+		"""
 		# publisher the marker
-		self.publisher.publish(self.marker)
+		self.pub.publish(self.marker)
 
 
 if __name__ == '__main__':
