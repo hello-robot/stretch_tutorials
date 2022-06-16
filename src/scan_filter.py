@@ -8,6 +8,10 @@ from math import sin
 from sensor_msgs.msg import LaserScan
 
 class Scanfilter:
+	"""
+	A class that implements a LaserScan filter that removes all of the points
+	that are not infront of the robot
+	"""
 	def __init__(self):
 		# We're going to assume that the robot is pointing up the x-axis, so that
 		# any points with y coordinates further than half of the defined
@@ -25,6 +29,13 @@ class Scanfilter:
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
 
 	def callback(self,msg):
+		"""
+		Callback function to deal with incoming laserscan messages.
+		:param self: The self reference.
+		:param msg: The subscribed laserscan message.
+
+		:publishes msg: updated laserscan message.
+		"""
 		# Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
 		# laser, with different numbers of beams.
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))

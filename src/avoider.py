@@ -12,7 +12,15 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 
 class Avoider:
+    """
+    A class that implements both a LaserScan filter and base velocity control
+    for collision avoidance.
+    """
     def __init__(self):
+        """
+		Function that initializes the subsriber, publisher, and marker features.
+		:param self: The self reference
+		"""
         # Set up a publisher and a subscriber.  We're going to call the subscriber
         # "scan", and filter the ranges similar to what we did in example 2.
         # For the publisher, we're going to use the topic name /stretch/cmd_vel.
@@ -41,6 +49,13 @@ class Avoider:
 
     # Called every time we get a LaserScan message from ROS.
     def set_speed(self,msg):
+        """
+		Callback function to deal with incoming laserscan messages.
+		:param self: The self reference.
+		:param msg: The subscribed laserscan message.
+
+		:publishes self.twist: Twist message.
+		"""
         # Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
         # laser, with different numbers of beams.
         angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))

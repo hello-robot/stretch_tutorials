@@ -7,12 +7,25 @@ import rospy
 from geometry_msgs.msg import Twist
 
 class Move:
+	"""
+	A class that sends Twist messages to move the Stretch robot foward.
+	"""
 	def __init__(self):
+		"""
+		Function that initializes the subsriber.
+		:param self: The self reference
+		"""
 		# Setup a publisher that will send the velocity commands for the Stretch
 		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
 	def move_forward(self):
+		"""
+		Function that publishes Twist messages
+		:param self: The self reference.
+
+		:publishes command: Twist message
+		"""
 		# Make a Twist message.  We're going to set all of the elements, since we
 		# can't depend on them defaulting to safe values.
 		command = Twist()
