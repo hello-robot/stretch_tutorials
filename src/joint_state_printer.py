@@ -40,8 +40,8 @@ class JointStatePublisher():
 		# Create an empty list that will store the positions of the requested joints
 		joint_positions = []
 
-		# Use of forloop to parse the positions of the requested joints.
-		# The index() function returns the index at the first occurence of
+		# Use of forloop to parse the names of the requested joints list.
+		# The index() function returns the index at the first occurrence of
 		# the name of the requested joint in the self.joint_states.name list.
 		for i in range(len(joints)):
 			index = self.joint_states.name.index(joints[i])
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 	JSP = JointStatePublisher()
 
 	# Use the rospy.sleep() function to allow the class to initialize before
-	# requesting to publish joint_positions of desered joints (running the
+	# requesting to publish joint_positions of desired joints (running the
 	# print_states() function).
 	rospy.sleep(.1)
 
