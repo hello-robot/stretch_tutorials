@@ -12,7 +12,7 @@ class Move:
 	"""
 	def __init__(self):
 		"""
-		Function that initializes the subsriber.
+		Function that initializes the publisher.
 		:param self: The self reference
 		"""
 		# Setup a publisher that will send the velocity commands for the Stretch

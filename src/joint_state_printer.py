@@ -24,7 +24,7 @@ class JointStatePublisher():
 	def callback(self, msg):
 		"""
 		Callback function to deal with the incoming JointState messages.
-		:param self: The self reference
+		:param self: The self reference.
 		:param msg: The JointState message.
 		"""
 		# Store th joint messages for later use
@@ -35,7 +35,7 @@ class JointStatePublisher():
 		"""
 		print_states function to deal with the incoming JointState messages.
 		:param self: The self reference.
-		:param joints: A list of joint names
+		:param joints: A list of joint names.
 		"""
 		# Create an empty list that will store the positions of the requested joints
 		joint_positions = []

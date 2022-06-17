@@ -27,7 +27,7 @@ class MultiPointCommand(hm.HelloNode):
     def issue_multipoint_command(self):
         """
     	Function that makes an action call and sends multiple joint trajectory goals.
-        :param self: The self reference
+        :param self: The self reference.
     	"""
       # Set point0 as a JointTrajectoryPoint().
       point0 = JointTrajectoryPoint()
@@ -88,8 +88,8 @@ class MultiPointCommand(hm.HelloNode):
     # and issue the stow command.
     def main(self):
         """
-        Function that initiates the multipoint_command function
-        :param self: The self reference
+        Function that initiates the multipoint_command function.
+        :param self: The self reference.
         """
         # The arguments of the main function of the hm.HelloNode class are the
         # node_name, node topic namespace, and boolean (default value is true).

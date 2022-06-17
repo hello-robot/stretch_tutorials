@@ -18,8 +18,8 @@ class Avoider:
     """
     def __init__(self):
         """
-		Function that initializes the subsriber, publisher, and marker features.
-		:param self: The self reference
+		Function that initializes the subscriber, publisher, and marker features.
+		:param self: The self reference.
 		"""
         # Set up a publisher and a subscriber.  We're going to call the subscriber
         # "scan", and filter the ranges similar to what we did in example 2.
