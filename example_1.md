@@ -17,7 +17,7 @@ To drive the robot forward with the move node, type the following in a new termi
 
 ```bash
 # Terminal 3
-cd catkin_ws/src/stretch_ros_turotials/src/
+cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
@@ -151,8 +151,8 @@ self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queu
 
 After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the follwing in a new terminal
 
-```
-cd catkin_ws/src/stretch_ros_turotials/src/
+```bash
+cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.

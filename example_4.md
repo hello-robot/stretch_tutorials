@@ -5,12 +5,14 @@
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
 ```bash
+# Terminal 1
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
 the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to create a marker.
 
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
+# Terminal 2
+cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 marker.py
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
@@ -26,7 +28,14 @@ import rospy
 from visualization_msgs.msg import Marker
 
 class Balloon():
+	"""
+	A class that attaches a Sphere marker directly above the Stretch robot.
+	"""
 	def __init__(self):
+		"""
+		Function that initializes the markers features.
+		:param self: The self reference
+		"""
 		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
 		self.marker = Marker()
 		self.marker.header.frame_id = '/base_link'
@@ -46,6 +55,12 @@ class Balloon():
 		self.marker.pose.position.z = 2.0
 
 	def publish_marker(self):
+		"""
+		Function that publishes the sphere marker
+		:param self: The self reference
+
+		:publishes self.marker: Marker message
+		"""
 		self.publisher.publish(self.marker)
 
 

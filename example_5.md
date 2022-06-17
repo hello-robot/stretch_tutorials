@@ -1,15 +1,17 @@
 ## Example 5
 
-![image]()
+Begin by starting up the stretch driver launch file.
 
 
 ```bash
-roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
+# Terminal 1
+roslaunch stretch_core stretch_driver.launch
 ```
 
 
+
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
+cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 marker.py
 ```
 .
@@ -131,7 +133,7 @@ The use of the `rospy.sleep()` function is to allow the *JSP* class to initializ
 joints = ["joint_lift", "joint_arm_l0", "joint_wrist_yaw"]
 JSP.print_states(joints)
 ```
-Create a list of the desired joints that you want positions to be printed. Then use that list as an argument for the `print_states()` function. 
+Create a list of the desired joints that you want positions to be printed. Then use that list as an argument for the `print_states()` function.
 
 ```python
 rospy.spin()

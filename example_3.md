@@ -2,19 +2,22 @@
 
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
+Begin by running `roscore` in a terminal. Then set the ros parameter to *manipulation* mode  by running the following commands in a new terminal.
 
 ```bash
-rosparam set /stretch_driver/mode "navigation"
+# Terminal 1
+rosparam set /stretch_driver/mode "manipulation"
 roslaunch stretch_core stretch_driver.launch
 ```
 Then in a new terminal type the following to activate the LiDAR sensor.
 ```bash
+# Terminal 2
 roslaunch stretch_core rplidar.launch
 ```
 To activate the avoider node, type the following in a new terminal.
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
+# Terminal 3
+cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 avoider.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
@@ -35,7 +38,15 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 
 class Avoider:
+    """
+    A class that implements both a LaserScan filter and base velocity control
+    for collision avoidance.
+    """
     def __init__(self):
+        """
+        Function that initializes the subscriber, publisher, and marker features.
+        :param self: The self reference
+        """
         self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
         self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
 
@@ -52,6 +63,13 @@ class Avoider:
         self.twist.angular.z = 0.0
 
     def set_speed(self,msg):
+        """
+        Callback function to deal with incoming laserscan messages.
+        :param self: The self reference.
+        :param msg: The subscribed laserscan message.
+
+        :publishes self.twist: Twist message.
+        """
         angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
         points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
         new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
