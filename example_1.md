@@ -8,6 +8,7 @@ The goal of this example is to give you an enhanced understanding of how to cont
 Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
 
 ```bash
+# Terminal 2
 rosparam set /stretch_driver/mode "navigation"
 roslaunch stretch_core stretch_driver.launch
 ```
@@ -15,6 +16,7 @@ roslaunch stretch_core stretch_driver.launch
 To drive the robot forward with the move node, type the following in a new terminal.
 
 ```bash
+# Terminal 3
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ```
@@ -31,10 +33,23 @@ import rospy
 from geometry_msgs.msg import Twist
 
 class Move:
+	"""
+	A class that sends Twist messages to move the Stretch robot foward.
+	"""
 	def __init__(self):
+		"""
+		Function that initializes the subscriber.
+		:param self: The self reference
+		"""
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
 	def move_forward(self):
+		"""
+		Function that publishes Twist messages
+		:param self: The self reference.
+
+		:publishes command: Twist message
+		"""
 		command = Twist()
 		command.linear.x = 0.1
 		command.linear.y = 0.0
