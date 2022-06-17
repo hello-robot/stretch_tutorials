@@ -7,7 +7,7 @@ Hello Robot utilizes Ubuntu, an open-source Linux operating system, for the Stre
 ## Installing Noetic on Stretch
 Instructions on installing Noetic can be found in our open-source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md). Then create a catkin workspace for your ROS packages. Here is an [installation guide for creating a workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace). Once your system is set up, clone the [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git) to your workspace and build the package in your workspace. This can be done by copying the commands below and pasting them into your terminal.
 
-```
+```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
 cd ~/catkin_ws
@@ -20,12 +20,12 @@ Hello Robot is currently running Stretch on Ubuntu 20.04 and ROS Noetic. To begi
 
 Currently, the Realsense2_description package isn't installed by rosdep and requires a user to install the package manually. Run the following command in your terminal
 
-```
+```bash
 sudo apt-get install ros-noetic-realsense2-camera
 ```
 
 After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git), [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git), and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your **src** folder in your preferred workspace.
-```
+```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_ros
 git clone https://github.com/pal-robotics/realsense_gazebo_plugin
@@ -34,7 +34,7 @@ git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
 
 
 Change the directory to that of your catkin workspace and install system dependencies of the ROS packages. Then build your workspace.
-```
+```bash
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
@@ -42,7 +42,7 @@ catkin_make
 
 
 Once `caktin_make` has finished compiling,source your workspace and **.bashrc** file
-```
+```bash
 echo "source /home/USER_NAME/catkin_ws/devel/setup.bash"
 source ~/.bashrc
 ```

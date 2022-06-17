@@ -231,7 +231,7 @@ Seeing that there are similarities between the multipoint and stow command nodes
 point0 = JointTrajectoryPoint()
 point0.positions = [0.2, 0.0, 3.4]
 ```
-Sett *point0* as a `JointTrajectoryPoint`and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively.
+Set *point0* as a `JointTrajectoryPoint`and provide desired positions. These are the positions of the lift, wrist extension, and yaw of the wrist, respectively. The lift and wrist extension positions are expressed in meters, where as the wrist yaw is in radians.
 
 
 
@@ -243,7 +243,7 @@ Provide desired velocity of the lift (m/s), wrist extension (m/s), and wrist yaw
 ```python
 point0.accelerations = [1.0, 1.0, 3.5]
 ```
-Provide desired velocity of the lift (m/s^2), wrist extension (m/s^2), and wrist yaw (rad/s^2).
+Provide desired accelerations of the lift (m/s^2), wrist extension (m/s^2), and wrist yaw (rad/s^2).
 
 **IMPORTANT NOTE**: The lift and wrist extension can only go up to 0.2 m/s. If you do not provide any velocities or accelerations for the lift or wrist extension, then they go to their default values. However, the Velocity and Acceleration of the wrist yaw will stay the same from the previous value unless updated.
 

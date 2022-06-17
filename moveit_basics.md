@@ -43,7 +43,7 @@ Additionally, the demo allows a user to select from the three groups, *stretch_a
 # Terminal 1:
 roslaunch stretch_gazebo gazebo.launch
 # Terminal 2:
-roslaunch stretch_gazebo teleop_keyboard.launch # or use teleop_joy.launch if you have a controller
+roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=keyboard # or use teleop_type:=joystick if you have a controller
 # Terminal 3
 roslaunch stretch_moveit_config demo_gazebo.launch
 ```

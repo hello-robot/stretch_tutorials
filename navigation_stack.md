@@ -4,7 +4,7 @@ stretch_navigation provides the standard ROS navigation stack as two launch file
 
 
 Then run the following commands to map the space that the robot will navigate in.
-```
+```bash
 roslaunch stretch_navigation mapping.launch
 ```
 Rviz will show the robot and the map that is being constructed. With the terminal open, use the instructions printed by the teleop package to teleoperate the robot around the room. Avoid sharp turns and revisit previously visited spots to form loop closures.
@@ -15,7 +15,7 @@ Rviz will show the robot and the map that is being constructed. With the termina
 
 In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to `stretch_user/`.
 
-```
+```bash
 mkdir -p ~/stretch_user/maps
 rosrun map_server map_saver -f ${HELLO_FLEET_PATH}/maps/<map_name>
 ```
@@ -24,7 +24,7 @@ The `<map_name>` does not include an extension. Map_saver will save two files as
 
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
-```
+```bash
 roslaunch stretch_navigation navigation.launch map_yaml:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
@@ -38,7 +38,8 @@ It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In
 
 To perform mapping and navigation in the Gazebo simulation of Stretch, substitute the `mapping_gazebo.launch` and `navigation_gazebo.launch` launch files into the commands above. The default Gazebo environment is the Willow Garage HQ. Use the "world" ROS argument to specify the Gazebo world within which to spawn Stretch.
 
-```
+```bash
+# Terminal 1
 roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:=worlds/willowgarage.world
 ```
 
@@ -46,7 +47,8 @@ roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:=worlds/willowga
 
 The mapping launch files, `mapping.launch` and `mapping_gazebo.launch` expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch RE1 is plugged into your computer, the following command will launch mapping with joystick teleop:
 
-```
+```bash
+# Terminal 2
 roslaunch stretch_navigation mapping.launch teleop_type:=joystick
 ```
 
