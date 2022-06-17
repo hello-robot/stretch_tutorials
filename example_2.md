@@ -5,11 +5,8 @@ The aim of this example is to provide instruction on how to filter scan messages
 For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](http://wiki.ros.org/sensor_msgs) package called [LaserScan](http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html) to hold information about a given scan. Let's take a look at the message specification itself:
 
 ```
-#
-# Laser scans angles are measured counter clockwise,
-# with Stretch's LiDAR having both angle_min and angle_max facing forward
-# (very closely along the x-axis) of the device frame
-#
+# Laser scans angles are measured counter clockwise, with Stretch's LiDAR having
+# both angle_min and angle_max facing forward (very closely along the x-axis)
 
 Header header
 float32 angle_min        # start angle of the scan [rad]
@@ -43,23 +40,27 @@ Knowing the orientation of the LiDAR allows us to filter the scan values for a d
 First, open a terminal and run the stretch driver launch file.
 
 ```bash
+# Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then in a new terminal run the rplidar launch file from `stretch_core`.
 ```bash
+# Terminal 2
 roslaunch stretch_core rplidar.launch
 ```
 
 To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.
 
 ```bash
+# Terminal 3
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 scan_filter.py
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 ```bash
+# Terminal 5
 rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 ```
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
@@ -79,6 +80,10 @@ from math import sin
 from sensor_msgs.msg import LaserScan
 
 class Scanfilter:
+  """
+  A class that implements a LaserScan filter that removes all of the points
+  that are not infront of the robot
+  """
 	def __init__(self):
 		self.width = 1.0
 		self.extent = self.width / 2.0
@@ -86,6 +91,13 @@ class Scanfilter:
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
 
 	def callback(self,msg):
+    """
+		Callback function to deal with incoming laserscan messages.
+		:param self: The self reference.
+		:param msg: The subscribed laserscan message.
+
+		:publishes msg: updated laserscan message.
+		"""
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 		points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
 		new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
