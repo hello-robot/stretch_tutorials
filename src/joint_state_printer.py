@@ -21,6 +21,7 @@ class JointStatePublisher():
 		# Set up a subscriber. We're going to subscribe to the topic "joint_states"
 		self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 
+
 	def callback(self, msg):
 		"""
 		Callback function to deal with the incoming JointState messages.

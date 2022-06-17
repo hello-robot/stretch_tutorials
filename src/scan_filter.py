@@ -28,6 +28,7 @@ class Scanfilter:
 		# with a LaserScan message type.
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
 
+
 	def callback(self,msg):
 		"""
 		Callback function to deal with incoming laserscan messages.

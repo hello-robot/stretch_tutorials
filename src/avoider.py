@@ -18,9 +18,9 @@ class Avoider:
     """
     def __init__(self):
         """
-		Function that initializes the subscriber, publisher, and marker features.
-		:param self: The self reference.
-		"""
+        Function that initializes the subscriber, publisher, and marker features.
+        :param self: The self reference.
+        """
         # Set up a publisher and a subscriber.  We're going to call the subscriber
         # "scan", and filter the ranges similar to what we did in example 2.
         # For the publisher, we're going to use the topic name /stretch/cmd_vel.
@@ -47,15 +47,16 @@ class Avoider:
         self.twist.angular.y = 0.0
         self.twist.angular.z = 0.0
 
+
     # Called every time we get a LaserScan message from ROS.
     def set_speed(self,msg):
         """
-		Callback function to deal with incoming laserscan messages.
-		:param self: The self reference.
-		:param msg: The subscribed laserscan message.
+        Callback function to deal with incoming laserscan messages.
+        :param self: The self reference.
+        :param msg: The subscribed laserscan message.
 
-		:publishes self.twist: Twist message.
-		"""
+        :publishes self.twist: Twist message.
+        """
         # Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
         # laser, with different numbers of beams.
         angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
@@ -66,7 +67,7 @@ class Avoider:
         # If we're close to the x axis, keep the range, otherwise use inf, which means "no return".
         new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 
-		# Calculate the difference of the closest measured scan and where we want the robot to stop.
+        # Calculate the difference of the closest measured scan and where we want the robot to stop.
         error = min(new_ranges) - self.distance
 
         # Using hyperbolic tanget for speed regulation, with a threshold to stop

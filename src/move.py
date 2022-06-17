@@ -19,6 +19,7 @@ class Move:
 		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist.
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
+
 	def move_forward(self):
 		"""
 		Function that publishes Twist messages

@@ -17,18 +17,19 @@ import hello_helpers.hello_misc as hm
 
 class StowCommand(hm.HelloNode):
     '''
-	A class that sends a joint trajectory goal to stow the Stretch's arm.
-	'''
+    A class that sends a joint trajectory goal to stow the Stretch's arm.
+    '''
 
     # Initialize the inhereted hm.Hellonode class.
     def __init__(self):
         hm.HelloNode.__init__(self)
 
+
     def issue_stow_command(self):
         '''
-    	Function that makes an action call and sends stow postion goal.
+        Function that makes an action call and sends stow postion goal.
         :param self: The self reference.
-    	'''
+        '''
         # Set stow_point as a JointTrajectoryPoint().
         stow_point = JointTrajectoryPoint()
         stow_point.time_from_start = rospy.Duration(0.000)

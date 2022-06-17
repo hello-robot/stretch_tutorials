@@ -58,6 +58,7 @@ class Balloon():
 		self.marker.pose.position.y = 0.0
 		self.marker.pose.position.z = 2.0
 
+
 	def publish_marker(self):
 		"""
 		Function that publishes the sphere marker
