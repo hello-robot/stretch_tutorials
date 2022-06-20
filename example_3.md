@@ -2,21 +2,21 @@
 
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *manipulation* mode  by running the following commands in a new terminal.
+Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
 
 ```bash
-# Terminal 1
-rosparam set /stretch_driver/mode "manipulation"
+# Terminal 2
+rosparam set /stretch_driver/mode "navigation"
 roslaunch stretch_core stretch_driver.launch
 ```
 Then in a new terminal type the following to activate the LiDAR sensor.
 ```bash
-# Terminal 2
+# Terminal 3
 roslaunch stretch_core rplidar.launch
 ```
 To activate the avoider node, type the following in a new terminal.
 ```bash
-# Terminal 3
+# Terminal 4
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python3 avoider.py
 ```

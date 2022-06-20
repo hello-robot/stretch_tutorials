@@ -60,7 +60,7 @@ python3 scan_filter.py
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 ```bash
-# Terminal 5
+# Terminal 4
 rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 ```
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
