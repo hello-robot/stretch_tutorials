@@ -49,7 +49,8 @@ class JointStatePublisher():
 			joint_positions.append(self.joint_states.position[index])
 
 		# Print the joint position values to the terminal
-		print(joint_positions)
+		print("name: " + str(joints))
+		print("position: " + str(joint_positions))
 
 		# Sends a signal to rospy to shutdown the ROS interfaces
 		rospy.signal_shutdown("done")
