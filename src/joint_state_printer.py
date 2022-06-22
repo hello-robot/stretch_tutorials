@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
 	# Create a list of the joints and name them joints. These will be an argument
 	# for the print_states() function.
-	joints = ["joint_lift", "joint_arm_l0", "joint_wrist_yaw"]
+	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_13", "joint_wrist_yaw"]
 	JSP.print_states(joints)
 
 	# Give control to ROS.  This will allow the callback to be called whenever new
