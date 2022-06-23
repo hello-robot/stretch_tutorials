@@ -1,22 +1,32 @@
 ## Example 5
 
-Begin by starting up the stretch driver launch file.
+In this example, we will review a Python script that prints out the positions of a selected group of Stretch's joints. This script is helpful if you need the joint positions after you teleoperated Stretch with the Xbox controller or physically moved the robot to the desired configuration after hitting the run stop button.
 
+If you are looking for a continuous print of the joint states while Stretch is in action, then you can use the [rostopic command-line tool](http://wiki.ros.org/rostopic) shown in the [Internal State of Stretch Tutorial](internal_state_of_stretch.md).
+
+Begin by starting up the stretch driver launch file.
 
 ```bash
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
-
+You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to print the joint positions of the lift, arm, and wrist.
 
 ```bash
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python3 marker.py
+python joint_state_printer.py
 ```
-.
+Your terminal will output the `position` information of the previously mentioned joints shown below.
+```
+name: ['joint_lift', 'joint_arm_l0', 'joint_arm_l1', 'joint_arm_l2', 'joint_arm_l3', 'joint_wrist_yaw']
+position: [0.1999999331290245, 1.7717894271534963e-08, -1.7970681569147034e-07, -1.749529388492682e-07, -1.2771705341686828e-07, 3.1399999740257574]
 
-![image]()
+```
+
+It's important to note that the arm 4 collinear joints and the sum of these positions gives the wrist extension distance. Here is an image for reference:
+
+![image](images/joints.png)
 
 
 ### The Code
@@ -56,7 +66,8 @@ class JointStatePublisher():
 		for i in range(len(joints)):
 			index = self.joint_states.name.index(joints[i])
 			joint_positions.append(self.joint_states.position[index])
-		print(joint_positions)
+		print("name: " + str(joints))
+		print("position: " + str(joint_positions))
 		rospy.signal_shutdown("done")
 		sys.exit(0)
 
@@ -64,7 +75,8 @@ if __name__ == '__main__':
 	rospy.init_node('joint_state_printer', anonymous=True)
 	JSP = JointStatePublisher()
 	rospy.sleep(.1)
-	joints = ["joint_lift", "joint_arm_l0", "joint_wrist_yaw"]
+	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_13", "joint_wrist_yaw"]
+	#joints = ["joint_head_pan","joint_head_tilt", joint_gripper_finger_left", "joint_gripper_finger_right"]
 	JSP.print_states(joints)
 	rospy.spin()
 ```
@@ -130,7 +142,8 @@ Setup `JointStatePublisher()` class as *JSP*
 The use of the `rospy.sleep()` function is to allow the *JSP* class to initialize all of its features before requesting to publish joint positions of desired joints (running the `print_states()` function).
 
 ```python
-joints = ["joint_lift", "joint_arm_l0", "joint_wrist_yaw"]
+joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_13", "joint_wrist_yaw"]
+#joints = ["joint_head_pan","joint_head_tilt", joint_gripper_finger_left", "joint_gripper_finger_right"]
 JSP.print_states(joints)
 ```
 Create a list of the desired joints that you want positions to be printed. Then use that list as an argument for the `print_states()` function.
@@ -139,3 +152,5 @@ Create a list of the desired joints that you want positions to be printed. Then 
 rospy.spin()
 ```
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
+
+**Previous Example** [Example 4](example_4.md)

@@ -169,3 +169,6 @@ while not rospy.is_shutdown():
 ```
 
 This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop.
+
+**Previous Example:** [Example 3](example_3.md)
+**Next Example:** [Example 5](example_5.md)
