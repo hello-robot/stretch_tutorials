@@ -24,7 +24,7 @@ position: [1.004518435897309, 0.12361581673760723, 0.023224914142933994, 0.07758
 
 ```
 
-It's important to note that the arm 4 collinear joints and the sum of these positions gives the wrist extension distance. The wrist extension is needed when sending [joint trajectory commands](follow_joint_trajectory.md) to the robot. Here is an image of the arm joints for reference:
+It's important to note that the arm has 4 collinear joints and the sum of these positions gives the wrist extension distance. The wrist extension is needed when sending [joint trajectory commands](follow_joint_trajectory.md) to the robot. Here is an image of the arm joints for reference:
 
 ![image](images/joints.png)
 
