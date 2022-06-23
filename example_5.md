@@ -20,11 +20,11 @@ python joint_state_printer.py
 Your terminal will output the `position` information of the previously mentioned joints shown below.
 ```
 name: ['joint_lift', 'joint_arm_l0', 'joint_arm_l1', 'joint_arm_l2', 'joint_arm_l3', 'joint_wrist_yaw']
-position: [0.1999999331290245, 1.7717894271534963e-08, -1.7970681569147034e-07, -1.749529388492682e-07, -1.2771705341686828e-07, 3.1399999740257574]
+position: [1.004518435897309, 0.12361581673760723, 0.023224914142933994, 0.07758496706423101, 0.12309362763409384, 1.8771004095879587]
 
 ```
 
-It's important to note that the arm 4 collinear joints and the sum of these positions gives the wrist extension distance. Here is an image for reference:
+It's important to note that the arm 4 collinear joints and the sum of these positions gives the wrist extension distance. The wrist extension is needed when sending [joint trajectory commands](follow_joint_trajectory.md) to the robot. Here is an image of the arm joints for reference:
 
 ![image](images/joints.png)
 
