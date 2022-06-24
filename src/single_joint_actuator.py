@@ -82,7 +82,7 @@ class SingleJointActuator(hm.HelloNode):
 
 if __name__ == '__main__':
 	try:
-	# Initialize the MultiPointCommand() class and set it to node and run the
+	# Initialize the SingleJointActuator() class and set it to node and run the
 	# main() function.
 		node = SingleJointActuator()
 		node.main()
