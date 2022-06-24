@@ -10,6 +10,7 @@ Stretch ROS driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api
 Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
 
 ```bash
+# Terminal 2
 rosparam set /stretch_driver/mode "position"
 roslaunch stretch_core stretch_driver.launch
 ```
@@ -17,6 +18,7 @@ roslaunch stretch_core stretch_driver.launch
 In a new terminal type the following commands.
 
 ```bash
+# Terminal 3
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python stow_command.py
 ```
@@ -159,6 +161,7 @@ Initialize the `StowCommand()` class and set it to *node* and run the `main()` f
 Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
 
 ```bash
+# Terminal 2
 rosparam set /stretch_driver/mode "position"
 roslaunch stretch_core stretch_driver.launch
 ```
@@ -166,6 +169,7 @@ roslaunch stretch_core stretch_driver.launch
 In a new terminal type the following commands.
 
 ```bash
+# Terminal 3
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python multipoint_command.py
 ```
@@ -191,7 +195,8 @@ class MultiPointCommand(hm.HelloNode):
 
   def issue_multipoint_command(self):
     """
-    Function that makes an action call and sends multiple joint trajectory goals.
+    Function that makes an action call and sends multiple joint trajectory goals
+    to the joint_lift, wrist_extension, and joint_wrist_yaw.
     :param self: The self reference.
     """
     point0 = JointTrajectoryPoint()
@@ -244,7 +249,7 @@ if __name__ == '__main__':
 
 ```
 
-### The Code Explained.
+### The Code Explained
 Seeing that there are similarities between the multipoint and stow command nodes, we will only breakdown the different components of the multipoint_command node.
 
 ```python
@@ -252,7 +257,6 @@ point0 = JointTrajectoryPoint()
 point0.positions = [0.2, 0.0, 3.4]
 ```
 Set *point0* as a `JointTrajectoryPoint`and provide desired positions. These are the positions of the lift, wrist extension, and yaw of the wrist, respectively. The lift and wrist extension positions are expressed in meters, where as the wrist yaw is in radians.
-
 
 
 ```python
@@ -276,3 +280,26 @@ trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
 Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.
+
+## Single Joint Actuator
+
+```
+##########################
+### Group: stretch_arm ###
+##########################
+joint_lift:      lower_limit =  0.00,  upper_limit =  1.10   # in meters
+wrist_extension: lower_limit =  0.00,  upper_limit =  0.51   # in meters
+joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00   # in radians
+
+##############################
+### Group: stretch_gripper ###
+##############################
+joint_gripper_finger_left:  lower_limit = -0.60,  upper_limit =  0.60  # in radians
+joint_gripper_finger_right: lower_limit = -0.60,  upper_limit =  0.60  # in radians
+
+###########################
+### Group: stretch_head ###
+###########################
+joint_head_pan:  lower_limit = -3.90, upper_limit =  1.50  # in radians
+joint_head_tilt: lower_limit = -1.53, upper_limit =  0.79  # in radians
+```
