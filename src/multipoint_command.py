@@ -26,7 +26,8 @@ class MultiPointCommand(hm.HelloNode):
 
 	def issue_multipoint_command(self):
 		"""
-		Function that makes an action call and sends multiple joint trajectory goals.
+		Function that makes an action call and sends multiple joint trajectory goals
+		to the joint_lift, wrist_extension, and joint_wrist_yaw.
 		:param self: The self reference.
 		"""
 		# Set point0 as a JointTrajectoryPoint().
