@@ -63,7 +63,7 @@ class SingleJointActuator(hm.HelloNode):
 		# Make the action call and send the goal. The last line of code waits
 		# for the result before it exits the python script.
 		self.trajectory_client.send_goal(trajectory_goal)
-		rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+		rospy.loginfo('Sent goal = {0}'.format(trajectory_goal))
 		self.trajectory_client.wait_for_result()
 
 	def main(self):

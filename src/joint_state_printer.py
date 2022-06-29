@@ -28,7 +28,7 @@ class JointStatePublisher():
 		:param self: The self reference.
 		:param msg: The JointState message.
 		"""
-		# Store th joint messages for later use
+		# Store the joint messages for later use
 		self.joint_states = msg
 
 
