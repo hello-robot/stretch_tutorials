@@ -284,9 +284,9 @@ Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint name
 ## Single Joint Actuator
 
 
-<!-- <p align="center">
-  <img src="images/"/>
-</p> -->
+<p align="center">
+  <img src="images/single_joint_actuator.gif"/>
+</p>
 
 You can also actuate a single joint for the Stretch. Below are the list of joints and their position limit that can be moved in the *position* mode.
 
@@ -314,7 +314,7 @@ In a new terminal type the following commands.
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python multipoint_command.py
+python single_joint_actuator.py
 ```
 
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
@@ -399,11 +399,11 @@ point0.positions = [0.65]
 # point1 = JointTrajectoryPoint()
 # point1.positions = [0.5]
 ```
-Set *point0* as a `JointTrajectoryPoint`and provide desired position.
+Set *point0* as a `JointTrajectoryPoint`and provide desired position. You also have the option to send multiple point positions rather than one.
 
 ```python
 trajectory_goal.trajectory.points = [point0]#, point1]
 trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
-Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.
+Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` set by your list of points. Specify the coordinate frame that we want (base_link) and set the time to be now.
