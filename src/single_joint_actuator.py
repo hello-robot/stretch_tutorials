@@ -31,19 +31,18 @@ class SingleJointActuator(hm.HelloNode):
 		"""
 		# Here is a list of joints and their recommended position limits:
 		############################# Joint limits #############################
-		# joint_lift:      lower_limit =  0.00,  upper_limit =  1.10   # in meters
-		# wrist_extension: lower_limit =  0.00,  upper_limit =  0.50   # in meters
-		# joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00   # in radians
+		# joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
+		# wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
+		# joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
+		# joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
+		# joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
 		# joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
-		# joint_gripper_finger_right: lower_limit = -0.35,  upper_limit =  0.165  # in radians
-		# joint_head_pan:  lower_limit = -2.80, upper_limit =  2.90  # in radians
-		# joint_head_tilt: lower_limit = -1.60, upper_limit =  0.40  # in radians
 		########################################################################
 
 		# Set trajectory_goal as a FollowJointTrajectoryGoal and define
 		# the joint name.
 		trajectory_goal = FollowJointTrajectoryGoal()
-		trajectory_goal.trajectory.joint_names = ['joint_lift']
+		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
 
 		# Provide desired positions for joint name.
 		# Set positions for the following 5 trajectory points.
@@ -51,7 +50,7 @@ class SingleJointActuator(hm.HelloNode):
 		point0.positions = [0.65]
 
 		# point1 = JointTrajectoryPoint()
-		# point1.positions = [0.5]
+		# point1.positions = [-1.50]
 
 		# Then trajectory_goal.trajectory.points is set as a list of the joint
 		# trajectory points
