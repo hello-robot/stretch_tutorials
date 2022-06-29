@@ -23,7 +23,7 @@ cd catkin_ws/src/stretch_ros_tutorials/src/
 python stow_command.py
 ```
 
-This will send a FollowJointTrajectory command to stow Stretch's arm.
+This will send a `FollowJointTrajectory` command to stow Stretch's arm.
 ### The Code
 
 ```python
@@ -174,7 +174,7 @@ cd catkin_ws/src/stretch_ros_tutorials/src/
 python multipoint_command.py
 ```
 
-This will send a list of JointTrajectoryPoint's to move Stretch's arm.
+This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
 
 ### The Code
 ```python
@@ -283,23 +283,127 @@ Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint name
 
 ## Single Joint Actuator
 
-```
-##########################
-### Group: stretch_arm ###
-##########################
-joint_lift:      lower_limit =  0.00,  upper_limit =  1.10   # in meters
-wrist_extension: lower_limit =  0.00,  upper_limit =  0.51   # in meters
-joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00   # in radians
 
-##############################
-### Group: stretch_gripper ###
-##############################
-joint_gripper_finger_left:  lower_limit = -0.60,  upper_limit =  0.60  # in radians
-joint_gripper_finger_right: lower_limit = -0.60,  upper_limit =  0.60  # in radians
+<!-- <p align="center">
+  <img src="images/"/>
+</p> -->
 
-###########################
-### Group: stretch_head ###
-###########################
-joint_head_pan:  lower_limit = -3.90, upper_limit =  1.50  # in radians
-joint_head_tilt: lower_limit = -1.53, upper_limit =  0.79  # in radians
+You can also actuate a single joint for the Stretch. Below are the list of joints and their position limit that can be moved in the *position* mode.
+
 ```
+############################# Joint limits #############################
+joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
+wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
+joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
+joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
+joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
+joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
+########################################################################
+```
+
+Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
+
+```bash
+# Terminal 2
+rosparam set /stretch_driver/mode "position"
+roslaunch stretch_core stretch_driver.launch
+```
+
+In a new terminal type the following commands.
+
+```bash
+# Terminal 3
+cd catkin_ws/src/stretch_ros_tutorials/src/
+python multipoint_command.py
+```
+
+This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
+
+
+The joint, *joint_gripper_finger_left*, is only needed when actuating the gripper.
+
+
+### The Code
+```python
+#!/usr/bin/env python
+
+import rospy
+import time
+from control_msgs.msg import FollowJointTrajectoryGoal
+from trajectory_msgs.msg import JointTrajectoryPoint
+import hello_helpers.hello_misc as hm
+
+class SingleJointActuator(hm.HelloNode):
+	"""
+	A class that sends multiple joint trajectory goals to a single joint.
+	"""
+	def __init__(self):
+		hm.HelloNode.__init__(self)
+
+	def issue_command(self):
+		"""
+		Function that makes an action call and sends joint trajectory goals
+		to a single joint
+		:param self: The self reference.
+		"""
+		trajectory_goal = FollowJointTrajectoryGoal()
+		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
+
+		point0 = JointTrajectoryPoint()
+		point0.positions = [0.65]
+
+		# point1 = JointTrajectoryPoint()
+		# point1.positions = [0.5]
+
+		trajectory_goal.trajectory.points = [point0]#, point1]
+		trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
+		trajectory_goal.trajectory.header.frame_id = 'base_link'
+		self.trajectory_client.send_goal(trajectory_goal)
+		rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+		self.trajectory_client.wait_for_result()
+
+	def main(self):
+		"""
+		Function that initiates the issue_command function.
+		:param self: The self reference.
+		"""
+		hm.HelloNode.main(self, 'issue_command', 'issue_command', wait_for_first_pointcloud=False)
+		rospy.loginfo('issuing command...')
+		self.issue_command()
+		time.sleep(2)
+
+
+if __name__ == '__main__':
+	try:
+		node = SingleJointActuator()
+		node.main()
+	except KeyboardInterrupt:
+		rospy.loginfo('interrupt received, so shutting down')
+```
+### The Code Explained
+
+Since the code is quite similar to the multipoint_command code, we will only review the parts that differ.
+
+Now let's break the code down.
+
+```python
+trajectory_goal = FollowJointTrajectoryGoal()
+trajectory_goal.trajectory.joint_names = ['joint_head_pan']
+```
+Here we only input joint name that we want to actuate. In this instance, we will actuate the *joint_head_pan*.
+
+```python
+point0 = JointTrajectoryPoint()
+point0.positions = [0.65]
+
+# point1 = JointTrajectoryPoint()
+# point1.positions = [0.5]
+```
+Set *point0* as a `JointTrajectoryPoint`and provide desired position.
+
+```python
+trajectory_goal.trajectory.points = [point0]#, point1]
+trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
+trajectory_goal.trajectory.header.frame_id = 'base_link'
+```
+Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.
