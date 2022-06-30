@@ -44,8 +44,8 @@ class JointStatePublisher():
 		# Use of forloop to parse the names of the requested joints list.
 		# The index() function returns the index at the first occurrence of
 		# the name of the requested joint in the self.joint_states.name list.
-		for i in range(len(joints)):
-			index = self.joint_states.name.index(joints[i])
+		for joint in joints:
+			index = self.joint_states.name.index(joint)
 			joint_positions.append(self.joint_states.position[index])
 
 		# Print the joint position values to the terminal
