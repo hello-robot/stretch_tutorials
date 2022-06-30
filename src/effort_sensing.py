@@ -45,7 +45,8 @@ class SingleJointActuator(hm.HelloNode):
         # Create path to save effort and position values
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_ros_tutorials/stored_data'
 
-        self.export = True
+        self.export_data = False
+
 
     def callback(self, msg):
         """
@@ -57,12 +58,11 @@ class SingleJointActuator(hm.HelloNode):
         self.joint_states = msg
 
 
-
     def issue_command(self):
         """
         Function that makes an action call and sends joint trajectory goals
         to a single joint
-        :param self: The self reference.hello2020
+        :param self: The self reference.
         """
 
         # Set trajectory_goal as a FollowJointTrajectoryGoal and define
@@ -73,14 +73,11 @@ class SingleJointActuator(hm.HelloNode):
         # Provide desired positions for joint name.
         # Set positions for the following 5 trajectory points.
         point0 = JointTrajectoryPoint()
-        point0.positions = [0.4]
-
-        # point1 = JointTrajectoryPoint()
-        # point1.positions = [0.30]
+        point0.positions = [0.9]
 
         # Then trajectory_goal.trajectory.points is set as a list of the joint
         # trajectory points
-        trajectory_goal.trajectory.points = [point0]#, point1]
+        trajectory_goal.trajectory.points = [point0]
 
         # Specify the coordinate frame that we want (base_link) and set the time to be now.
         trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
@@ -98,29 +95,38 @@ class SingleJointActuator(hm.HelloNode):
         :param self: The self reference.
         :param joints: A list of joint names.
         """
-        # # Create an empty list that will store the positions of the requested joints
-        # joint_effort = []
+
+        if 'wrist_extension' in self.joints:
+            self.joints.remove('wrist_extension')
+            self.joints.append('joint_arm_l0')
+
+        # create an empty list of current effort values that will be appended
+        # to the overall joint_effort
+        current_effort = []
 
         # Use of forloop to parse the names of the requested joints list.
         # The index() function returns the index at the first occurrence of
         # the name of the requested joint in the self.joint_states.name list.
-        for i in range(len(self.joints)):
-            index = self.joint_states.name.index(self.joints[i])
-            self.joint_effort.append(self.joint_states.effort[index])
-            self.joint_positions.append(self.joint_states.position[index])
+        for joint in self.joints:
+            index = self.joint_states.name.index(joint)
+            current_effort.append(self.joint_states.effort[index])
 
-            # # Print the joint position values to the terminal
-            # print("name: " + str(self.joints))
-            # print("effort: " + str(joint_effort))
+        if not self.export_data:
+            # Print the joint position values to the terminal
+            print("name: " + str(self.joints))
+            print("effort: " + str(current_effort))
+
+        else:
+            self.joint_effort.append(current_effort)
 
 
     def done_callback(self,status, result):
         if status == actionlib.GoalStatus.SUCCEEDED:
-            rospy.loginfo('Suceeded with result {0}'.format(result.SUCCESSFUL))
+            rospy.loginfo('Suceeded')
         else:
-            rospy.loginfo('Failed with result {0}'.format(result.INVALID_GOAL))
+            rospy.loginfo('Failed')
 
-        if self.export:
+        if self.export_data:
             file_name = datetime.now().strftime("%Y-%m-%d_%I:%M:%S-%p")
             completeName = os.path.join(self.save_path, file_name)
 
@@ -128,8 +134,8 @@ class SingleJointActuator(hm.HelloNode):
 
             with open(completeName, "w") as f:
                 writer = csv.writer(f)
-                for row in rows:
-                    writer.writerow(row)
+                writer.writerow(self.joints)
+                writer.writerows(self.joint_effort)
 
 
     def main(self):
