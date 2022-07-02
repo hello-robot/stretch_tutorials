@@ -3,9 +3,15 @@
 <package format="3">
   <name>stretch_ros_tutorials</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="cdesai@hello-robot.com">chintan</maintainer>
-  <license>TODO: License declaration</license>
+  <description>This package contains a set of ROS tutorials for Stretch beginners</description>
+  <maintainer email="cdesai@hello-robot.com">Chintan Desai</maintainer>
+  <license>Apache License 2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

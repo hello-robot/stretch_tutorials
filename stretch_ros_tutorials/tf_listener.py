@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.time import Time
 
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
@@ -18,11 +19,13 @@ class FrameListener(Node):
         self.target_frame = self.get_parameter(
             'target_frame').get_parameter_value().string_value
 
+        # Start a Tf buffer that will store the tf information for a few seconds
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
         # Call on_timer function every second
-        self.timer = self.create_timer(1.0, self.on_timer)
+        time_period = 1.0 # seconds
+        self.timer = self.create_timer(time_period, self.on_timer)
 
     def on_timer(self):
         # Store frame names in variables that will be used to
@@ -30,9 +33,9 @@ class FrameListener(Node):
         from_frame_rel = self.target_frame
         to_frame_rel = 'fk_link_mast'
 
-        # Look up for the transformation between target_frame and link_mast frames
+        # Look up the transformation between target_frame and link_mast frames
         try:
-            now = rclpy.time.Time()
+            now = Time()
             trans = self.tf_buffer.lookup_transform(
                 to_frame_rel,
                 from_frame_rel,
@@ -53,5 +56,8 @@ def main():
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-
     rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
