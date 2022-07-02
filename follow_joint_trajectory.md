@@ -226,7 +226,7 @@ class MultiPointCommand(hm.HelloNode):
     trajectory_goal.trajectory.header.frame_id = 'base_link'
 
     self.trajectory_client.send_goal(trajectory_goal)
-    rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+    rospy.loginfo('Sent list of goals = {0}'.format(trajectory_goal))
     self.trajectory_client.wait_for_result()
 
   def main(self):
@@ -359,7 +359,7 @@ class SingleJointActuator(hm.HelloNode):
 		trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 		trajectory_goal.trajectory.header.frame_id = 'base_link'
 		self.trajectory_client.send_goal(trajectory_goal)
-		rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+		rospy.loginfo('Sent goal = {0}'.format(trajectory_goal))
 		self.trajectory_client.wait_for_result()
 
 	def main(self):

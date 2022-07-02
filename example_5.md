@@ -63,8 +63,8 @@ class JointStatePublisher():
 		:param joints: A list of joint names
 		"""
 		joint_positions = []
-		for i in range(len(joints)):
-			index = self.joint_states.name.index(joints[i])
+		for joint in joints:
+			index = self.joint_states.name.index(joint)
 			joint_positions.append(self.joint_states.position[index])
 		print("name: " + str(joints))
 		print("position: " + str(joint_positions))
@@ -117,8 +117,8 @@ def print_states(self, joints):
 This is the *print_states()* function which takes in a list of joints of interest as its argument. the is also an empty list set as *joint_positions* and this is where the positions of the requested joints will be appended.
 
 ```python
-for i in range(len(joints)):
-	index = self.joint_states.name.index(joints[i])
+for joint in joints:
+	index = self.joint_states.name.index(joint)
 	joint_positions.append(self.joint_states.position[index])
 print(joint_positions)
 ```
