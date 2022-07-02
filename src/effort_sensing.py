@@ -99,7 +99,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         from the trajectory_client. Although, in this function, we do not use the
         feedback information.
         :param self: The self reference.
-        :param feedback: FollowJointTrajectoryActilnFeedback message.
+        :param feedback: FollowJointTrajectoryActionFeedback message.
         """
         # Conditional statement for replacement of joint names if wrist_extension
         # is in the self.joint_names list.
@@ -135,7 +135,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         The done_callback function will be called when the joint action is complete.
         Within this function we export the data to a .txt file in  the /stored_data directory.
         :param self: The self reference.
-        :param feedback: FollowJointTrajectoryActionFeedback message.
+        :param status: status attribute from FollowJointTrajectoryActionResult message.
+        :param result: result attribute from FollowJointTrajectoryActionResult message.
         """
         # Conditional statemets to notify whether the action succeeded or failed.
         if status == actionlib.GoalStatus.SUCCEEDED:
