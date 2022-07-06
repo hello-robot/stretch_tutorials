@@ -7,21 +7,24 @@ Stretch ROS driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api
   <img src="images/stow_command.gif"/>
 </p>
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
+
+
+Begin by running the following command in the terminal in a terminal.
 
 ```bash
-# Terminal 2
-rosparam set /stretch_driver/mode "position"
+# Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
-In a new terminal type the following commands.
+Switch the mode to *manipulation* mode using a rosservice call. Then run the stow command node.
 
 ```bash
-# Terminal 3
+# Terminal 2
+rosservice call /switch_to_manipulation_mode
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python stow_command.py
 ```
+
 
 This will send a `FollowJointTrajectory` command to stow Stretch's arm.
 ### The Code
@@ -158,18 +161,18 @@ Initialize the `StowCommand()` class and set it to *node* and run the `main()` f
   <img src="images/multipoint.gif"/>
 </p>
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
+Begin by running the following command in the terminal in a terminal.
 
 ```bash
-# Terminal 2
-rosparam set /stretch_driver/mode "position"
+# Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
-In a new terminal type the following commands.
+Switch the mode to *manipulation* mode using a rosservice call. Then run the multipoint command node.
 
 ```bash
-# Terminal 3
+# Terminal 2
+rosservice call /switch_to_manipulation_mode
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python multipoint_command.py
 ```
@@ -301,18 +304,18 @@ joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in rad
 ########################################################################
 ```
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *position* mode  by running the following commands in a new terminal.
+Begin by running the following command in the terminal in a terminal.
 
 ```bash
-# Terminal 2
-rosparam set /stretch_driver/mode "position"
+# Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
-In a new terminal type the following commands.
+Switch the mode to *manipulation* mode using a rosservice call. Then run the single joint actuator node.
 
 ```bash
-# Terminal 3
+# Terminal 2
+rosservice call /switch_to_manipulation_mode
 cd catkin_ws/src/stretch_ros_tutorials/src/
 python single_joint_actuator.py
 ```
