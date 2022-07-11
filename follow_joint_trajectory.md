@@ -152,7 +152,7 @@ if __name__ == '__main__':
         rospy.loginfo('interrupt received, so shutting down')
 
 ```
-Initialize the `StowCommand()` class and set it to *node* and run the `main()` function.
+Declare object, *node*, from the `StowCommand()` class. Then run the `main()` function.
 
 
 ## Multipoint Command Example

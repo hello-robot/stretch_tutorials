@@ -79,7 +79,7 @@ from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 
-class Scanfilter:
+class ScanFilter:
   """
   A class that implements a LaserScan filter that removes all of the points
   that are not infront of the robot
@@ -89,6 +89,7 @@ class Scanfilter:
 		self.extent = self.width / 2.0
 		self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
+    rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
 
 	def callback(self,msg):
     """
@@ -106,7 +107,7 @@ class Scanfilter:
 
 if __name__ == '__main__':
 	rospy.init_node('scan_filter')
-	Scanfilter()
+	ScanFilter()
 	rospy.spin()
 ```
 
@@ -168,11 +169,11 @@ Substitute in the new ranges in the original message, and republish it.
 
 ```python
 rospy.init_node('scan_filter')
-Scanfilter()
+ScanFilter()
 ```
 The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Setup Scanfilter class with `Scanfilter()`
+Instantiate the class with `ScanFilter()`
 
 ```python
 rospy.spin()

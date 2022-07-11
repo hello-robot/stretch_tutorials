@@ -172,8 +172,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
 
 if __name__ == '__main__':
 	try:
-    	# Initialize the SingleJointActuator() class and set it to node and run the
-    	# main() function.
+    	# Declare object, node, from JointActuatorEffortSensor class
 		node = JointActuatorEffortSensor()
 		node.main()
 	except KeyboardInterrupt:

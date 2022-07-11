@@ -12,14 +12,14 @@ from control_msgs.msg import FollowJointTrajectoryGoal
 # robot trajectories.
 from trajectory_msgs.msg import JointTrajectoryPoint
 
-# Import hello_misc script for handling trajecotry goals with an action client.
+# Import hello_misc script for handling trajecotry goals with an action client
 import hello_helpers.hello_misc as hm
 
 class SingleJointActuator(hm.HelloNode):
 	"""
 	A class that sends multiple joint trajectory goals to a single joint.
 	"""
-	# Initialize the inhereted hm.Hellonode class.
+	# Initialize the inhereted hm.Hellonode class
 	def __init__(self):
 		hm.HelloNode.__init__(self)
 
@@ -40,12 +40,12 @@ class SingleJointActuator(hm.HelloNode):
 		########################################################################
 
 		# Set trajectory_goal as a FollowJointTrajectoryGoal and define
-		# the joint name.
+		# the joint name
 		trajectory_goal = FollowJointTrajectoryGoal()
 		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
 
 		# Provide desired positions for joint name.
-		# Set positions for the following 5 trajectory points.
+		# Set positions for the following 5 trajectory points
 		point0 = JointTrajectoryPoint()
 		point0.positions = [0.65]
 
@@ -61,7 +61,7 @@ class SingleJointActuator(hm.HelloNode):
 		trajectory_goal.trajectory.header.frame_id = 'base_link'
 
 		# Make the action call and send the goal. The last line of code waits
-		# for the result before it exits the python script.
+		# for the result before it exits the python script
 		self.trajectory_client.send_goal(trajectory_goal)
 		rospy.loginfo('Sent goal = {0}'.format(trajectory_goal))
 		self.trajectory_client.wait_for_result()
@@ -72,7 +72,7 @@ class SingleJointActuator(hm.HelloNode):
 		:param self: The self reference.
 		"""
 		# The arguments of the main function of the hm.HelloNode class are the
-		# node_name, node topic namespace, and boolean (default value is true).
+		# node_name, node topic namespace, and boolean (default value is true)
 		hm.HelloNode.main(self, 'issue_command', 'issue_command', wait_for_first_pointcloud=False)
 		rospy.loginfo('issuing command...')
 		self.issue_command()
@@ -81,8 +81,8 @@ class SingleJointActuator(hm.HelloNode):
 
 if __name__ == '__main__':
 	try:
-	# Initialize the SingleJointActuator() class and set it to node and run the
-	# main() function.
+		# Declare object from the SingleJointActuator class. Then execute the
+		# main() method/function
 		node = SingleJointActuator()
 		node.main()
 	except KeyboardInterrupt:

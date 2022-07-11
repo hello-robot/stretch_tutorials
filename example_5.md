@@ -137,7 +137,7 @@ rospy.sleep(.1)
 ```
 The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Setup `JointStatePublisher()` class as *JSP*
+Declare object, *JSP*, from the `JointStatePublisher` class.
 
 The use of the `rospy.sleep()` function is to allow the *JSP* class to initialize all of its features before requesting to publish joint positions of desired joints (running the `print_states()` function).
 

@@ -53,6 +53,7 @@ class Balloon():
 		self.marker.pose.position.x = 0.0
 		self.marker.pose.position.y = 0.0
 		self.marker.pose.position.z = 2.0
+		rospy.loginfo("Publishing the balloon topic. Use RViz to visualize.")
 
 	def publish_marker(self):
 		"""
@@ -66,11 +67,11 @@ class Balloon():
 
 if __name__ == '__main__':
 	rospy.init_node('marker', argv=sys.argv)
-	ballon = Balloon()
+	balloon = Balloon()
 	rate = rospy.Rate(10)
 
 	while not rospy.is_shutdown():
-		ballon.publish_marker()
+		balloon.publish_marker()
 		rate.sleep()		
 ```
 
@@ -151,20 +152,20 @@ Publish the Marker data structure to be visualized in RViz.
 
 ```python
 rospy.init_node('marker', argv=sys.argv)
-ballon = Balloon()
+balloon = Balloon()
 rate = rospy.Rate(10)
 ```
 
 The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Setup Balloon class with `Balloon()`
+Instantiate class with `Balloon()`
 
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
 
 ```python
 while not rospy.is_shutdown():
-	ballon.publish_marker()
+	balloon.publish_marker()
 	rate.sleep()
 ```
 

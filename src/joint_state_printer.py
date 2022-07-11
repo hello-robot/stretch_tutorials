@@ -5,7 +5,7 @@ import rospy
 import sys
 
 # We're going to subscribe to 64-bit integers, so we need to import the definition
-# for them.
+# for them
 from sensor_msgs.msg import JointState
 
 class JointStatePublisher():
@@ -43,7 +43,7 @@ class JointStatePublisher():
 
 		# Use of forloop to parse the names of the requested joints list.
 		# The index() function returns the index at the first occurrence of
-		# the name of the requested joint in the self.joint_states.name list.
+		# the name of the requested joint in the self.joint_states.name list
 		for joint in joints:
 			index = self.joint_states.name.index(joint)
 			joint_positions.append(self.joint_states.position[index])
@@ -64,21 +64,21 @@ if __name__ == '__main__':
 	# Initialize the node.
 	rospy.init_node('joint_state_printer', anonymous=True)
 
-	# Set JointStatePublisher to JSP
+	# Declare object from JointStatePublisher class
 	JSP = JointStatePublisher()
 
 	# Use the rospy.sleep() function to allow the class to initialize before
 	# requesting to publish joint_positions of desired joints (running the
-	# print_states() function).
+	# print_states() function)
 	rospy.sleep(.1)
 
 	# Create a list of the joints and name them joints. These will be an argument
-	# for the print_states() function.
+	# for the print_states() function
 	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_l3", "joint_wrist_yaw"]
 	# joints = ["joint_head_pan","joint_head_tilt", "joint_gripper_finger_left", "joint_gripper_finger_right"]
 	JSP.print_states(joints)
 
 	# Give control to ROS.  This will allow the callback to be called whenever new
 	# messages come in.  If we don't put this line in, then the node will not work,
-	# and ROS will not process any messages.
+	# and ROS will not process any messages
 	rospy.spin()

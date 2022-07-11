@@ -24,7 +24,7 @@ class Plotter():
         ####################### Copy the file name here! #######################
         file_name = '2022-06-30_11:26:20-AM'
 
-        # Complete name of directory to pull from.
+        # Complete name of directory to pull from
         self.completeName = os.path.join(dir_path, file_name)
 
         # Store dataframe
