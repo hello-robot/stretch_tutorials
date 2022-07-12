@@ -82,7 +82,7 @@ from sensor_msgs.msg import LaserScan
 class ScanFilter:
   """
   A class that implements a LaserScan filter that removes all of the points
-  that are not infront of the robot
+  that are not infront of the robot.
   """
 	def __init__(self):
 		self.width = 1.0

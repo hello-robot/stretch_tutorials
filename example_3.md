@@ -47,7 +47,7 @@ class Avoider:
     def __init__(self):
         """
         Function that initializes the subscriber, publisher, and marker features.
-        :param self: The self reference
+        :param self: The self reference.
         """
         self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
         self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)

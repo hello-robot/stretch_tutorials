@@ -44,14 +44,14 @@ class JointStatePublisher():
 	def __init__(self):
 		"""
 		Function that initializes the subsriber.
-		:param self: The self reference
+		:param self: The self reference.
 		"""
 		self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 
 	def callback(self, msg):
 		"""
 		Callback function to deal with the incoming JointState messages.
-		:param self: The self reference
+		:param self: The self reference.
 		:param msg: The JointState message.
 		"""
 		self.joint_states = msg
@@ -60,7 +60,7 @@ class JointStatePublisher():
 		"""
 		print_states function to deal with the incoming JointState messages.
 		:param self: The self reference.
-		:param joints: A list of joint names
+		:param joints: A list of joint names.
 		"""
 		joint_positions = []
 		for joint in joints:

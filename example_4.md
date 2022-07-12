@@ -34,7 +34,7 @@ class Balloon():
 	def __init__(self):
 		"""
 		Function that initializes the markers features.
-		:param self: The self reference
+		:param self: The self reference.
 		"""
 		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
 		self.marker = Marker()
@@ -57,10 +57,10 @@ class Balloon():
 
 	def publish_marker(self):
 		"""
-		Function that publishes the sphere marker
-		:param self: The self reference
+		Function that publishes the sphere marker.
+		:param self: The self reference.
 
-		:publishes self.marker: Marker message
+		:publishes self.marker: Marker message.
 		"""
 		self.publisher.publish(self.marker)
 

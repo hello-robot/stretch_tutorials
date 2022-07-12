@@ -66,7 +66,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
     def issue_command(self):
         """
         Function that makes an action call and sends joint trajectory goals
-        to a single joint
+        to a single joint.
         :param self: The self reference.
         """
         trajectory_goal = FollowJointTrajectoryGoal()

@@ -38,7 +38,7 @@ class Move:
 	def __init__(self):
 		"""
 		Function that initializes the subscriber.
-		:param self: The self reference
+		:param self: The self reference.
 		"""
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
 
@@ -47,7 +47,7 @@ class Move:
 		Function that publishes Twist messages
 		:param self: The self reference.
 
-		:publishes command: Twist message
+		:publishes command: Twist message.
 		"""
 		command = Twist()
 		command.linear.x = 0.1
@@ -152,7 +152,7 @@ After saving the edited node, bringup [Stretch in the empty world simulation](ga
 
 ```bash
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python3 move.py
+python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
