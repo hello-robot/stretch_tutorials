@@ -42,7 +42,7 @@ class MultiPointCommand(hm.HelloNode):
 		# IMPORTANT NOTE: The lift and wrist extension can only go up to 0.2 m/s!
 		point0.velocities = [0.2, 0.2, 2.5]
 
-		# Provide desired velocity of the lift (m/s^2), wrist extension (m/s^2),
+		# Provide desired accelerations of the lift (m/s^2), wrist extension (m/s^2),
 		# and wrist yaw (rad/s^2)
 		point0.accelerations = [1.0, 1.0, 3.5]
 

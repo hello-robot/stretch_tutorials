@@ -5,26 +5,25 @@
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
+Begin by running the following command in a new terminal.
 
 ```bash
-# Terminal 2
-rosparam set /stretch_driver/mode "navigation"
+# Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
 
-To drive the robot forward with the move node, type the following in a new terminal.
+Switch the mode to *navigation* mode using a rosservice call. Then drive the robot forward with the move node.
 
 ```bash
-# Terminal 3
+# Terminal 2
+rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python3 move.py
+python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### The Code
 Below is the code which will send *Twist* messages to drive the robot forward.
-
 
 ```python
 #!/usr/bin/env python

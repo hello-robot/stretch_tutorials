@@ -13,7 +13,7 @@ the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python3 marker.py
+python marker.py
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
 

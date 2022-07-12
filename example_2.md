@@ -55,7 +55,7 @@ To filter the lidar scans for ranges that are directly in front of Stretch (widt
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_ros_tutorials/src/
-python3 scan_filter.py
+python scan_filter.py
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
