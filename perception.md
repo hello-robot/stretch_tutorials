@@ -2,7 +2,7 @@
 
 The Stretch robot is equipped with the Intel RealSense D435i camera, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.
 
-Begin by switching your stretch_ros repository to the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view). The physical configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
+Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the stretch_ros repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
 
 ```bash
 cd ~/catkin_ws/src/stretch_ros/stretch_core
