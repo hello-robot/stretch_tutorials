@@ -29,22 +29,22 @@ Within this tutorial package, there is an RViz config file with the topics for p
 rosrun rviz rviz -d /catkin_ws/src/stretch_ros_tutorials/rviz/perception_example.rviz
 ```
 
-
+## PointCloud Display
 <p align="center">
   <img src="images/perception_rviz.gif"/>
 </p>
 
-
+## Image Display
 <p align="center">
   <img src="images/perception_image.gif"/>
 </p>
 
-
+## Camera Display
 <p align="center">
   <img src="images/perception_camera.gif"/>
 </p>
 
-
+## DepthCloud Display
 <p align="center">
   <img src="images/perception_depth.gif"/>
 </p>
