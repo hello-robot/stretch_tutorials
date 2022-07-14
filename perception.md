@@ -26,20 +26,28 @@ Within this tutorial package, there is an RViz config file with the topics for p
 
 ```bash
 # Terminal 3
-rosrun rviz rviz -d /catkin_ws/src/stretch_ros_tutorials/rviz/perception_example.rviz
+rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_ros_tutorials/rviz/perception_example.rviz
 ```
 
-## PointCloud Display
+## PointCloud2 Display
+
+A list of displays on the left side of the interface can visualize the camera data. Each display has its properties and status that notify a user if topic messages are received.
+
+For the `PointCloud2` display, a [sensor_msgs/pointCloud2](http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/PointCloud2.html) message named */camera/depth/color/points*, is received and the gif below demonstrates the various display properties when visualizing the data.
+
+
 <p align="center">
   <img src="images/perception_rviz.gif"/>
 </p>
 
 ## Image Display
+The `Image` display visualizes a [sensor_msgs/Image](http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/Image.html) messaged, */camera/color/image/raw*, in a new window that pops up when you click on the check box next to the display name. This feature shows the image data from the camera; however, the image comes out sideways. Thus, you can select the */camera/color/image/raw_upright_view* from the **Image Topic** options to get an upright view of the image.
 <p align="center">
   <img src="images/perception_image.gif"/>
 </p>
 
 ## Camera Display
+The `Camera` display is similar to that of the `Image` display
 <p align="center">
   <img src="images/perception_camera.gif"/>
 </p>
@@ -48,8 +56,3 @@ rosrun rviz rviz -d /catkin_ws/src/stretch_ros_tutorials/rviz/perception_example
 <p align="center">
   <img src="images/perception_depth.gif"/>
 </p>
-
-```bash
-# Terminal 4
-rosrun stretch_core keyboard_teleop
-```
