@@ -79,17 +79,17 @@ extra:
       link: https://linkedin.com/company/hello-robot-inc
 
 nav:
-  - Overview: README.md
-  - Getting Started:
-      - Quick Start: getting_started/quick_start_guide.md
-      - Robot Safety: getting_started/robot_safety_guide.md
-      - Best Practices: getting_started/best_practices.md
-      - Untethered Operation: getting_started/untethered_operation.md
-      - Updating Software: getting_started/updating_software.md
+  - Getting to Know Stretch:
+      - Quick Start: docs/getting_started/quick_start_guide.md
+      - Robot Safety: docs/getting_started/robot_safety_guide.md
+      - Best Practices: docs/getting_started/best_practices.md
+      - Untethered Operation: docs/getting_started/untethered_operation.md
+      - Updating Software: docs/getting_started/updating_software.md
   - Stretch Body:
     - Basics:
       - Commanding Joint Motion: Foo.md
   - ROS1:
+    - Overview: README.md
     - Basics:
       - Getting Started: getting_started.md
       - Gazebo Basics:  gazebo_basics.md
