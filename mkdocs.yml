@@ -1,0 +1,115 @@
+site_name: Stretch Tutorials
+site_url: https://docs.hello-robot.com/stretch_tutorials
+site_description: "Hello Robot Stretch Tutorials"
+copyright: 'Copyright &copy; 2022 Hello Robot Inc'
+site_author: Hello Robot Inc
+use_directory_urls: True
+docs_dir: .
+site_dir: ../site
+
+theme:
+ name: material
+ #font: Arial
+ palette:
+  - scheme: default
+    primary: hello-robot-light
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to dark mode
+  - scheme: slate
+    primary: hello-robot-dark
+    toggle:
+      icon: material/lightbulb
+      name: Switch to light mode
+ logo: images/hello_robot_logo_light.png
+ favicon: images/hello_robot_favicon.png
+ features:
+  - navigation.instant
+
+extra_css:
+  - ./docs/extra.css
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - admonition
+
+plugins:
+  - same-dir
+#  - simple:
+#      merge_docs_dir: true
+#      include_extensions: [".css", ".png"]
+#      include_folders: ['../hello_helpers']
+  - mike:
+      # these fields are all optional; the defaults are as below...
+      version_selector: true   # set to false to leave out the version selector
+      css_dir: css             # the directory to put the version selector's CSS
+      javascript_dir: js       # the directory to put the version selector's JS
+      canonical_version: null  # the version for <link rel="canonical">; `null`
+      # uses the version specified via `mike deploy`
+  - search
+  - tags
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: numpy
+          rendering:
+            show_root_heading: true
+            show_source: false
+            members_order: source
+            heading_level: 3
+            show_if_no_docstring: true
+
+extra:
+  version:
+    provider: mike
+    default: latest
+  social:
+    - icon: material/home
+      link: https://hello-robot.com
+    - icon: material/twitter
+      link: https://twitter.com/HelloRobotInc
+    - icon: material/github
+      link: https://github.com/hello-robot
+    - icon: material/linkedin
+      link: https://linkedin.com/company/hello-robot-inc
+
+nav:
+  - Overview: README.md
+  - Getting Started:
+      - Quick Start: getting_started/quick_start_guide.md
+      - Robot Safety: getting_started/robot_safety_guide.md
+      - Best Practices: getting_started/best_practices.md
+      - Untethered Operation: getting_started/untethered_operation.md
+      - Updating Software: getting_started/updating_software.md
+  - Stretch Body:
+    - Basics:
+      - Commanding Joint Motion: Foo.md
+  - ROS1:
+    - Basics:
+      - Getting Started: getting_started.md
+      - Gazebo Basics:  gazebo_basics.md
+      - Teleoperating Stretch: teleoperating_stretch.md
+      - Internal State of Stretch: internal_state_of_stretch.md
+      - RViz Basics: rviz_basics.md
+      - Navigation Stack: navigation_stack.md
+      - MoveIt! Basics: moveit_basics.md
+      - Follow Joint Trajectory Commands: follow_joint_trajectory.md
+      - FUNMAP: foo.md
+      - Perception: foo.md
+      - Microphone Array: foo.md
+      - ROS testing: foo.md
+      - Other Nav Stack Features: foo.md
+    - Other Examples:
+      - Teleoperate Stretch with a Node: example_1.md
+      - Filter Laser Scans: example_2.md
+      - Mobile Base Collision Avoidance: example_3.md
+      - Give Stretch a Balloon: example_4.md
+      - Print Joint States: example_5.md
+      - Store Effort Values: example_6.md
+  - ROS2:
+    - Nav Stack: foo.md
