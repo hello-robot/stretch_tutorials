@@ -41,18 +41,19 @@ For the `PointCloud2` display, a [sensor_msgs/pointCloud2](http://docs.ros.org/e
 </p>
 
 ## Image Display
-The `Image` display visualizes a [sensor_msgs/Image](http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/Image.html) messaged, */camera/color/image/raw*, in a new window that pops up when you click on the check box next to the display name. This feature shows the image data from the camera; however, the image comes out sideways. Thus, you can select the */camera/color/image/raw_upright_view* from the **Image Topic** options to get an upright view of the image.
+The `Image` display when toggled creates a new rendering window that visualizes a [sensor_msgs/Image](http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/Image.html) messaged, */camera/color/image/raw*. This feature shows the image data from the camera; however, the image comes out sideways. Thus, you can select the */camera/color/image/raw_upright_view* from the **Image Topic** options to get an upright view of the image.
 <p align="center">
   <img src="images/perception_image.gif"/>
 </p>
 
 ## Camera Display
-The `Camera` display is similar to that of the `Image` display
+The `Camera` display is similar to that of the `Image` display. In this setting, the rendering window also visualizes other displays, such as the PointCloud2, the RobotModel, and Grid Displays. The **visibility** property can toggle what displays your are interested in visualizing.
 <p align="center">
   <img src="images/perception_camera.gif"/>
 </p>
 
 ## DepthCloud Display
+The `DepthCloud` display is visualized in the main RViz window. This display takes in the depth image and RGB image, provided by the RealSense,  to visualize and register a point cloud. 
 <p align="center">
   <img src="images/perception_depth.gif"/>
 </p>
