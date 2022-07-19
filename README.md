@@ -11,8 +11,8 @@ This repo provides instructions on installing and using code on the Stretch RE1 
 6. [Navigation Stack](navigation_stack.md)
 7. [MoveIt! Basics](moveit_basics.md)
 8. [Follow Joint Trajectory Commands](follow_joint_trajectory.md)
-9. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
-10. [Perception](perception.md)
+9. [Perception](perception.md)
+10. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
 11. Microphone Array
 11. ROS testing
 12. Other Nav Stack Features
