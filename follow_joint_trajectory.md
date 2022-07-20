@@ -21,7 +21,7 @@ Switch the mode to *manipulation* mode using a rosservice call. Then run the sto
 ```bash
 # Terminal 2
 rosservice call /switch_to_manipulation_mode
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python stow_command.py
 ```
 
@@ -173,7 +173,7 @@ Switch the mode to *manipulation* mode using a rosservice call. Then run the mul
 ```bash
 # Terminal 2
 rosservice call /switch_to_manipulation_mode
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python multipoint_command.py
 ```
 
@@ -316,7 +316,7 @@ Switch the mode to *manipulation* mode using a rosservice call. Then run the sin
 ```bash
 # Terminal 2
 rosservice call /switch_to_manipulation_mode
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python single_joint_actuator.py
 ```
 

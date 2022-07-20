@@ -1,7 +1,9 @@
 ## Teleoperating Stretch
 
 ### Xbox Controller Teleoperating
-![image](images/xbox_controller_commands.png)
+<p align="center">
+  <img src="images/xbox_controller_commands.png"/>
+</p>
 
 Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot capabilities by teleoperating it with an Xbox Controller.
 

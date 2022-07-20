@@ -14,11 +14,15 @@ rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 ```
 An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.
 
-![image](images/simple_rviz.png)
+<p align="center">
+  <img src="images/simple_rviz.png"/>
+</p>
 
 If you want the visualize Stretch's [tf transform tree](http://wiki.ros.org/rviz/DisplayTypes/TF), you need to add the display type to the RViz window. First, click the *Add* button and include the *TF*  type in the display. You will then see all of the transform frames of the Stretch robot, and the visualization can be toggled off and on by clicking the checkbox next to the tree. Below is a gif for reference.
 
-![image](images/rviz_adding_tf.gif)
+<p align="center">
+  <img src="images/rviz_adding_tf.gif"/>
+</p>
 
 There are further tutorials for RViz and can be found [here](http://wiki.ros.org/rviz/Tutorials).
 
@@ -31,7 +35,9 @@ roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=tr
 ```
 the `rviz` flag will open an RViz window  to visualize a variety of ROS topics.
 
-![image](images/willowgarage_with_rviz.png)
+<p align="center">
+  <img src="images/willowgarage_with_rviz.png"/>
+</p>
 
 Bringup the [keyboard teleop](teleoperating_stretch.md) to drive Stretch and observe its sensor input.
 
