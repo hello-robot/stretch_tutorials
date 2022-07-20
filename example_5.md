@@ -14,7 +14,7 @@ roslaunch stretch_core stretch_driver.launch
 You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to print the joint positions of the lift, arm, and wrist.
 
 ```bash
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python joint_state_printer.py
 ```
 Your terminal will output the `position` information of the previously mentioned joints shown below.
@@ -26,8 +26,9 @@ position: [1.004518435897309, 0.12361581673760723, 0.023224914142933994, 0.07758
 
 It's important to note that the arm has 4 prismatic joints and the sum of these positions gives the wrist extension distance. The wrist extension is needed when sending [joint trajectory commands](follow_joint_trajectory.md) to the robot. Here is an image of the arm joints for reference:
 
-![image](images/joints.png)
-
+<p align="center">
+  <img src="images/joints.png"/>
+</p>
 
 ### The Code
 ```python

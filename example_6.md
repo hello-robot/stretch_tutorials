@@ -2,8 +2,9 @@
 
 In this example, we will review a Python script that prints out and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [rostopic command-line tool](http://wiki.ros.org/rostopic) shown in the [Internal State of Stretch Tutorial](internal_state_of_stretch.md).
 
-
-![image](images/effort_sensing.gif)
+<p align="center">
+  <img src="images/effort_sensing.gif"/>
+</p>
 
 
 Begin by running the following command in the terminal in a terminal.
@@ -18,7 +19,7 @@ Switch the mode to *manipulation* mode using a rosservice call. Then run the sin
 ```bash
 # Terminal 2
 rosservice call /switch_to_manipulation_mode
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python effort_sensing.py
 ```
 
@@ -52,7 +53,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
         self.joints = ['joint_lift']
         self.joint_effort = []
-        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_ros_tutorials/stored_data'
+        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
         self.export_data = False
 
     def callback(self, msg):
@@ -148,7 +149,7 @@ if __name__ == '__main__':
 
 
 ### The Code Explained
-This code is similar to that of the [multipoint_command](https://github.com/hello-sanchez/stretch_ros_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-sanchez/stretch_ros_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from that tutorial. Now let's break the code down.
+This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from that tutorial. Now let's break the code down.
 
 ```python
 #!/usr/bin/env python
@@ -195,7 +196,7 @@ self.joints = ['joint_lift']
 Set up a subscriber.  We're going to subscribe to the topic "joint_states", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically. Create a list of the desired joints you want to print.
 ```Python
 self.joint_effort = []
-self.save_path = '/home/hello-robot/catkin_ws/src/stretch_ros_tutorials/stored_data'
+self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 self.export_data = False
 ```
 
@@ -285,9 +286,12 @@ A conditional statement is used to export the data to a .txt file. The file's na
 
 ### Plotting/Animating Effort Data
 
-![image](stored_data/2022-06-30_11:26:20-AM.png)
+<p align="center">
+  <img src="stored_data/2022-06-30_11:26:20-AM.png"/>
+</p>
 
-We added a simple python script, [stored_data_plotter.py](https://github.com/hello-sanchez/stretch_ros_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. Note you have to change the name of the file you wish to see in the python script. This is shown below:
+
+We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. Note you have to change the name of the file you wish to see in the python script. This is shown below:
 
 ```Python
 ####################### Copy the file name here! #######################
@@ -297,7 +301,7 @@ file_name = '2022-06-30_11:26:20-AM'
 Once you have changed the file name, then run the following in a new command.
 
 ```bash
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python stored_data_plotter.py
 
 ```

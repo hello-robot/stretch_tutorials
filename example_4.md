@@ -1,6 +1,9 @@
 ## Example 4
+<p align="center">
+  <img src="images/balloon.png"/>
+</p>
 
-![image](images/balloon.png)
+
 
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
@@ -12,13 +15,14 @@ the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. 
 
 ```bash
 # Terminal 2
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python marker.py
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
 
-![image](images/balloon.gif)
-
+<p align="center">
+  <img src="images/balloon.gif"/>
+</p>
 
 ### The Code
 ```python

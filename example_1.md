@@ -17,7 +17,7 @@ Switch the mode to *navigation* mode using a rosservice call. Then drive the rob
 ```bash
 # Terminal 2
 rosservice call /switch_to_navigation_mode
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
@@ -151,7 +151,7 @@ self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queu
 After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the follwing in a new terminal
 
 ```bash
-cd catkin_ws/src/stretch_ros_tutorials/src/
+cd catkin_ws/src/stretch_tutorials/src/
 python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
