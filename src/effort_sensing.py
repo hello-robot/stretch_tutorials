@@ -47,7 +47,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.joint_effort = []
 
         # Create path to save effort and position values
-        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_ros_tutorials/stored_data'
+        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 
         # Create boolean data type for conditional statements if you want to export effort data.
         self.export_data = False

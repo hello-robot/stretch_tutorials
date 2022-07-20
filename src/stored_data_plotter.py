@@ -19,7 +19,7 @@ class Plotter():
         :param animate: Boolean to determine animation plotting.
         """
         # Create path to save effort and position values
-        dir_path = '/home/hello-robot/catkin_ws/src/stretch_ros_tutorials/stored_data'
+        dir_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 
         ####################### Copy the file name here! #######################
         file_name = '2022-06-30_11:26:20-AM'
