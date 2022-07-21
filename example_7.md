@@ -63,7 +63,7 @@ In this section, you can use a Python node to capture an image from the RealSens
 
 ```bash
 # Terminal 4
-cd ~/catkin_ws/src/stretch_ros/stretch_core/src
+cd ~/catkin_ws/src/stretch_tutorials/src
 python capture_image.py
 ```
 
@@ -213,7 +213,7 @@ In this section we highlight a node that utilizes the [Canny Edge filter](https:
 
 ```bash
 # Terminal 4
-cd ~/catkin_ws/src/stretch_ros/stretch_core/src
+cd ~/catkin_ws/src/stretch_tutorials/src
 python edge_detection.py
 ```
 
