@@ -70,12 +70,12 @@ class EdgeDetection:
 
 if __name__ == '__main__':
     # Initialize the node and name it edge detection
-	rospy.init_node('edge_detection', argv=sys.argv)
+    rospy.init_node('edge_detection', argv=sys.argv)
 
     # Instantiate the EdgeDetection Class
-	EdgeDetection()
+    EdgeDetection()
 
     # Give control to ROS.  This will allow the callback to be called whenever new
     # messages come in.  If we don't put this line in, then the node will not work,
     # and ROS will not process any messages
-	rospy.spin()
+    rospy.spin()
