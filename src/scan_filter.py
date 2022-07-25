@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Every python controller needs these lines
+# Import modules
 import rospy
 from numpy import linspace, inf
 from math import sin

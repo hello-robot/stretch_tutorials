@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Import rospy and sys
+# Import modules
 import rospy
 
 # Import the Marker message type from the visualization_msgs package.

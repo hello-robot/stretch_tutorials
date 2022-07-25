@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Every python controller needs these lines
+# Import modules
 import rospy
 
 # The Twist message is used to send velocities to the robot
