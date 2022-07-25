@@ -12,7 +12,7 @@ from control_msgs.msg import FollowJointTrajectoryGoal
 # robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
-# Import hello_misc script for handling trajecotry goals with an action client
+# Import hello_misc script for handling trajectory goals with an action client
 import hello_helpers.hello_misc as hm
 
 class MultiPointCommand(hm.HelloNode):

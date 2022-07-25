@@ -12,7 +12,7 @@ from control_msgs.msg import FollowJointTrajectoryGoal
 # robot trajectories.
 from trajectory_msgs.msg import JointTrajectoryPoint
 
-# Import hello_misc script for handling trajecotry goals with an action client
+# Import hello_misc script for handling trajectory goals with an action client
 import hello_helpers.hello_misc as hm
 
 class SingleJointActuator(hm.HelloNode):
@@ -36,18 +36,19 @@ class SingleJointActuator(hm.HelloNode):
 		# joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
 		# joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
 		# joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
-		# joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
+		# joint_gripper_finger_left: lower_limit = -0.35,  upper_limit =  0.165   # in radians
+		# joint_mobile_base_translation: lower_limit = -0.50, upper_limit = 0.50  # in radians
 		########################################################################
 
 		# Set trajectory_goal as a FollowJointTrajectoryGoal and define
 		# the joint name
 		trajectory_goal = FollowJointTrajectoryGoal()
-		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
+		trajectory_goal.trajectory.joint_names = ['joint_left_wheel']
 
 		# Provide desired positions for joint name.
 		# Set positions for the following 5 trajectory points
 		point0 = JointTrajectoryPoint()
-		point0.positions = [0.65]
+		point0.positions = [-0.1]#[0.65]
 
 		# point1 = JointTrajectoryPoint()
 		# point1.positions = [-1.50]
