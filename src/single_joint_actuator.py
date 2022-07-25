@@ -43,12 +43,12 @@ class SingleJointActuator(hm.HelloNode):
 		# Set trajectory_goal as a FollowJointTrajectoryGoal and define
 		# the joint name
 		trajectory_goal = FollowJointTrajectoryGoal()
-		trajectory_goal.trajectory.joint_names = ['joint_left_wheel']
+		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
 
 		# Provide desired positions for joint name.
 		# Set positions for the following 5 trajectory points
 		point0 = JointTrajectoryPoint()
-		point0.positions = [-0.1]#[0.65]
+		point0.positions = [0.65]
 
 		# point1 = JointTrajectoryPoint()
 		# point1.positions = [-1.50]
