@@ -28,3 +28,4 @@ To help get you get started on your software development, here are examples of n
 5. [Print Joint States](example_5.md) - Print the joint states of Stretch.
 6. [Store Effort Values](example_6.md) - Print, store, and plot the effort values of the Stretch robot.
 7. [Capture Image](example_7.md) - Capture images from the RealSense camera data.
+8. [Voice to Text](example_8.md) - Interpret speech and save transcript to a text file.
