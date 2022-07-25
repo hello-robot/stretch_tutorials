@@ -209,7 +209,7 @@ and ROS will not process any messages.
 
 ## Edge Detection
 
-In this section we highlight a node that utilizes the [Canny Edge filter](https://www.geeksforgeeks.org/python-opencv-canny-function/) algorithm to detect the edges from an image and converted back as a ROS image to be visualized in RViz. Begin by running the following commands.
+In this section, we highlight a node that utilizes the [Canny Edge filter](https://www.geeksforgeeks.org/python-opencv-canny-function/) algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. Begin by running the following commands.
 
 ```bash
 # Terminal 4
@@ -291,7 +291,7 @@ Define lower and upper bounds of the Hysteresis Thresholds.
 ```python
 image = cv2.Canny(image, self.lower_thres, self.upper_thres)
 ```
-Run the Canny Edge function to detect edges from the cv2 image. Further details of the function can be found here: [Canny Edge detection](https://www.geeksforgeeks.org/python-opencv-canny-function/).
+Run the Canny Edge function to detect edges from the cv2 image.
 
 ```python
 image_msg = self.bridge.cv2_to_imgmsg(image, 'passthrough')
