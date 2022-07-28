@@ -29,3 +29,4 @@ To help get you get started on your software development, here are examples of n
 6. [Store Effort Values](example_6.md) - Print, store, and plot the effort values of the Stretch robot.
 7. [Capture Image](example_7.md) - Capture images from the RealSense camera data.
 8. [Voice to Text](example_8.md) - Interpret speech and save transcript to a text file.
+9. [Voice Teleoperation of Base](example_9.md) - Use speech to teleoperate the mobile base. 
