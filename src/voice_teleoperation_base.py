@@ -3,6 +3,7 @@
 # Import modules
 import math
 import rospy
+import sys
 
 # We're going to subscribe to 64-bit integers, so we need to import the definition
 # for them
@@ -72,7 +73,7 @@ class GetVoiceCommands:
         :param self: The self reference.
         :param msg: The Int32 message type.
         """
-        self.sound_direction = msg.data * self.rad_per_deg
+        self.sound_direction = msg.data * -self.rad_per_deg
 
     def callback_speech(self,msg):
         """
@@ -119,6 +120,9 @@ class GetVoiceCommands:
         print(' "medium" : MEDIUM                         ')
         print(' "small"  : SMALL                          ')
         print('                                           ')
+        print('                                           ')
+        print(' "quit"   : QUIT AND CLOSE NODE            ')
+        print('                                           ')
         print('-------------------------------------------')
 
     def get_command(self):
@@ -154,6 +158,13 @@ class GetVoiceCommands:
             self.step_size = self.voice_command
             rospy.loginfo('Step size = {0}'.format(self.step_size))
 
+        if self.voice_command == 'quit':
+            # Sends a signal to rospy to shutdown the ROS interfaces
+            rospy.signal_shutdown("done")
+
+            # Exit the Python interpreter
+            sys.exit(0)
+
         # Reset voice command to None
         self.voice_command = None
 
@@ -163,10 +174,10 @@ class GetVoiceCommands:
 
 class VoiceTeleopNode(hm.HelloNode):
     """
-    A class that inherets the HelloNode class from hm and sends joint trajectory
+    A class that inherits the HelloNode class from hm and sends joint trajectory
     commands.
     """
-    def __init__(self, mapping_on=False):
+    def __init__(self):
         """
         A function that declares object from the GetVoiceCommands class, instantiates
         the HelloNode class, and set the publishing rate.
@@ -239,7 +250,7 @@ class VoiceTeleopNode(hm.HelloNode):
         while not rospy.is_shutdown():
             # Get voice command
             command = self.speech.get_command()
-            
+
             # Send voice command for joint trajectory goals
             self.send_command(command)
             rate.sleep()
@@ -248,7 +259,7 @@ class VoiceTeleopNode(hm.HelloNode):
 if __name__ == '__main__':
     try:
         # Declare object from the VoiceTeleopNode class. Then execute the
-		# main() method/function
+        # main() method/function
         node = VoiceTeleopNode()
         node.main()
     except KeyboardInterrupt:
