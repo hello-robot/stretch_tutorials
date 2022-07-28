@@ -81,7 +81,7 @@ Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at
 import rospy
 from geometry_msgs.msg import Twist
 ```
-You need to import rospy if you are writing a ROS Node. The geometry_msgs.msg import is so that we can send velocity commands to the robot.
+You need to import rospy if you are writing a ROS Node. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
 
 
 ```python
@@ -89,7 +89,7 @@ class Move:
 	def __init__(self):
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1)#/stretch_diff_drive_controller/cmd_vel for gazebo
 ```
-This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1) declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist. The queue_size argument limits the amount of queued messages if any subscriber is not receiving them fast enough.
+This section of code defines the talker's interface to the rest of ROS. `pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1)` declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist. The queue_size argument limits the amount of queued messages if any subscriber is not receiving them fast enough.
 
 
 ```Python
@@ -125,16 +125,16 @@ rospy.init_node('move')
 base_motion = Move()
 rate = rospy.Rate(10)
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-The `rospy.Rate()` function creates a Rate object rate. With the help of its method sleep(), it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!)
+The `rospy.Rate()` function creates a Rate object rate. With the help of its method `sleep()`, it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!)
 
 ```python
 while not rospy.is_shutdown():
 	base_motion.move_forward()
 	rate.sleep()
 ```
-This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop.
+This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
 
 
 ## Move Stretch in Simulation
@@ -148,7 +148,7 @@ Using your preferred text editor, modify the topic name of the published *Twist*
 self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queue_size=1)
 ```
 
-After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the follwing in a new terminal
+After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the following in a new terminal
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/

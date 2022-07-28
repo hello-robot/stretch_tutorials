@@ -97,12 +97,12 @@ import rospy
 import sys
 from sensor_msgs.msg import JointState
 ```
-You need to import rospy if you are writing a ROS Node. Import sensor_msgs.msg so that we can subscribe to JointState messages.
+You need to import rospy if you are writing a ROS Node. Import `sensor_msgs.msg` so that we can subscribe to `JointState` messages.
 
 ```python
 self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 ```
-Set up a subscriber.  We're going to subscribe to the topic "joint_states", looking for JointState messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically
+Set up a subscriber.  We're going to subscribe to the topic "*joint_states*", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically
 
 ```python
 def callback(self, msg):
@@ -115,7 +115,7 @@ def print_states(self, joints):
 	joint_positions = []
 
 ```
-This is the *print_states()* function which takes in a list of joints of interest as its argument. the is also an empty list set as *joint_positions* and this is where the positions of the requested joints will be appended.
+This is the `print_states()` function which takes in a list of joints of interest as its argument. the is also an empty list set as *joint_positions* and this is where the positions of the requested joints will be appended.
 
 ```python
 for joint in joints:
@@ -123,20 +123,21 @@ for joint in joints:
 	joint_positions.append(self.joint_states.position[index])
 print(joint_positions)
 ```
-In this section of the code, a forloop is used to parse the names of the requested joints from the *self.joint_states* list. The index() function returns the index a of the name of the requested joint and appends the respective position to our *joint_positions* list.
+In this section of the code, a forloop is used to parse the names of the requested joints from the *self.joint_states* list. The `index()` function returns the index a of the name of the requested joint and appends the respective position to our *joint_positions* list.
 
 ```python
 rospy.signal_shutdown("done")
 sys.exit(0)
 ```
-The first line of code initias a clean shutodwn of ROS. The second line of code exits the Python interpreter.
+
+The first line of code initiates a clean shutodwn of ROS. The second line of code exits the Python interpreter.
 
 ```python
 rospy.init_node('joint_state_printer', anonymous=True)
 JSP = JointStatePublisher()
 rospy.sleep(.1)
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Declare object, *JSP*, from the `JointStatePublisher` class.
 

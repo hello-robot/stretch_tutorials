@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
 
 ### The Code Explained
-This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from that tutorial. Now let's break the code down.
+This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
 
 ```python
 #!/usr/bin/env python
@@ -193,7 +193,7 @@ self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 self.joints = ['joint_lift']
 
 ```
-Set up a subscriber.  We're going to subscribe to the topic "joint_states", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically. Create a list of the desired joints you want to print.
+Set up a subscriber.  We're going to subscribe to the topic "*joint_states*", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically. Create a list of the desired joints you want to print.
 ```Python
 self.joint_effort = []
 self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
@@ -257,7 +257,7 @@ def done_callback(self, status, result):
       """
 ```
 
-The done callback function takes in the FollowJointTrajectoryActionResult messages as its arguments.
+The done callback function takes in the `FollowJointTrajectoryActionResult` messages as its arguments.
 
 ```python
 if status == actionlib.GoalStatus.SUCCEEDED:

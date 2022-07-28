@@ -93,12 +93,12 @@ Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at
 import rospy
 from visualization_msgs.msg import Marker
 ```
-You need to import rospy if you are writing a ROS Node. Import the `Marker` type from the visualization_msgs.msg package. This import is required to publish a Marker, which will be visualized in RViz.
+You need to import rospy if you are writing a ROS Node. Import the `Marker` type from the visualization_msgs.msg package. This import is required to publish a `Marker`, which will be visualized in RViz.
 
 ```python
 self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
 ```
-This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("balloon", Twist, queue_size=1) declares that your node is publishing to the */ballon* topic using the message type *Twist*.
+This section of code defines the talker's interface to the rest of ROS. `pub = rospy.Publisher("balloon", Twist, queue_size=1)` declares that your node is publishing to the */ballon* topic using the message type `Twist`.
 
 
 ```python
@@ -160,7 +160,7 @@ balloon = Balloon()
 rate = rospy.Rate(10)
 ```
 
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate class with `Balloon()`
 
@@ -173,7 +173,7 @@ while not rospy.is_shutdown():
 	rate.sleep()
 ```
 
-This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop.
+This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
 
 **Previous Example:** [Example 3](example_3.md)
 **Next Example:** [Example 5](example_5.md)

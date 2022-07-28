@@ -103,19 +103,19 @@ from math import sin
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The sensor_msgs.msg import is so that we can subscribe to LaserScan messages. The geometry_msgs.msg import is so that we can send velocity commands to the robot.
+You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe to LaserScan messages. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
 
 
 ```python
 self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1)#/stretch_diff_drive_controller/cmd_vel for gazebo
 ```
-This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1) declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist.
+This section of code defines the talker's interface to the rest of ROS. `pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1)` declares that your node is publishing to the */stretch/cmd_vel* topic using the message type `Twist`.
 
 
 ```python
 self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
 ```
-Set up a subscriber.  We're going to subscribe to the topic "scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.
+Set up a subscriber.  We're going to subscribe to the topic "*scan*", looking for `LaserScan` messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.
 
 
 ```python
@@ -135,7 +135,7 @@ self.twist.angular.x = 0.0
 self.twist.angular.y = 0.0
 self.twist.angular.z = 0.0
 ```
-Allocate a Twist to use, and set everything to zero.  We're going to do this when the class is initiating. Redefining this within the callback function, `set_speed()` can be more computationally taxing.
+Allocate a `Twist` to use, and set everything to zero.  We're going to do this when the class is initiating. Redefining this within the callback function, `set_speed()` can be more computationally taxing.
 
 ```python
 angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
@@ -160,14 +160,14 @@ Set the speed according to a tanh function. This method gives a nice smooth mapp
 ```python
 self.pub.publish(self.twist)
 ```
-Publish the Twist message.
+Publish the `Twist` message.
 
 ```python
 rospy.init_node('avoider')
 Avoider()
 rospy.spin()
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate class with `Avioder()`
 

@@ -144,7 +144,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 ```
 
-The sensor_msgs.msg is imported so that we can subscribe to ROS Image messages. Import [CvBridge](http://wiki.ros.org/cv_bridge) to convert between ROS Image messages and OpenCV images.
+The `sensor_msgs.msg` is imported so that we can subscribe to ROS `Image` messages. Import [CvBridge](http://wiki.ros.org/cv_bridge) to convert between ROS `Image` messages and OpenCV images.
 
 ```python
 def __init__(self):
@@ -194,7 +194,7 @@ The first line of code initiates a clean shutdown of ROS. The second line of cod
 rospy.init_node('capture_image', argv=sys.argv)
 CaptureImage()
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate the class with `CaptureImage()`
 

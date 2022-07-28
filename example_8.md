@@ -87,7 +87,7 @@ You need to import rospy if you are writing a ROS Node.
 from speech_recognition_msgs.msg import SpeechRecognitionCandidates
 ```
 
-Import SpeechRecognitionCandidates from the speech_recgonition_msgs so that we can receive the interpreted speech.
+Import `SpeechRecognitionCandidates` from the `speech_recgonition_msgs.msg` so that we can receive the interpreted speech.
 
 ```python
 def __init__(self):
@@ -97,7 +97,7 @@ def __init__(self):
     self.sub = rospy.Subscriber("speech_to_text", SpeechRecognitionCandidates, self.callback)
 ```
 
-Set up a subscriber.  We're going to subscribe to the topic "speech_to_text", looking for SpeechRecognitionCandidates messages. When a message comes in, ROS is going to pass it to the function "callback" automatically.
+Set up a subscriber.  We're going to subscribe to the topic "*speech_to_text*", looking for `SpeechRecognitionCandidates` messages. When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
 self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data
@@ -132,7 +132,7 @@ rospy.init_node('speech_text')
 SpeechText()
 
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate the class with `SpeechText()`
 

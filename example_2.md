@@ -127,7 +127,7 @@ from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.
+You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus why linspace, inf, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe and publish LaserScan messages.
 
 ```python
 self.width = 1
@@ -138,7 +138,7 @@ We're going to assume that the robot is pointing up the x-axis, so that any poin
 ```python
 self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
 ```
-Set up a subscriber.  We're going to subscribe to the topic "scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
+Set up a subscriber.  We're going to subscribe to the topic *scan*, looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
 self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
@@ -171,7 +171,7 @@ Substitute in the new ranges in the original message, and republish it.
 rospy.init_node('scan_filter')
 ScanFilter()
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate the class with `ScanFilter()`
 
