@@ -199,7 +199,7 @@ class VoiceTeleopNode(hm.HelloNode):
     def send_command(self, command):
         """
         Function that makes an action call and sends base joint trajectory goals.
-		:param self: The self reference.
+        :param self: The self reference.
         :param command: A dictionary type.
         """
         joint_state = self.joint_state
@@ -217,12 +217,12 @@ class VoiceTeleopNode(hm.HelloNode):
             joint_name = command['joint']
             trajectory_goal.trajectory.joint_names = [joint_name]
 
-            # Extrach the increment type from the command dictionary
+            # Extract the increment type from the command dictionary
             inc = command['inc']
             rospy.loginfo('inc = {0}'.format(inc))
             new_value = inc
 
-            # Assign the new_value position to the trajecotry goal message type.
+            # Assign the new_value position to the trajectory goal message type.
             point.positions = [new_value]
             trajectory_goal.trajectory.points = [point]
             trajectory_goal.trajectory.header.stamp = rospy.Time.now()
