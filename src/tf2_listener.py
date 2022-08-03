@@ -48,7 +48,7 @@ class FrameListener():
                                                    from_frame_rel,
                                                    rospy.Time())
                 # Print the transform
-                rospy.loginfo('The pose of target frame %s with reference to %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
+                rospy.loginfo('The pose of target frame %s with reference from %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 rospy.logwarn(' Could not transform %s from %s ', to_frame_rel, from_frame_rel)
 
