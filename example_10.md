@@ -200,6 +200,50 @@ and ROS will not process any messages.
 
 
 ## tf2 Static Listener
+In the previous section of the tutorial, we created a tf2 broadcaster to publish three static transform frames. In this section we will create a tf2 listener that will find the transform between *fk_link_lift* and *link_grasp_center*.
+
+Begin by starting up the stretch driver launch file.
+
+```bash
+# Terminal 1
+roslaunch stretch_core stretch_driver.launch
+```
+
+Then run the tf2 broadcaster node to create the three static frames.
+
+```bash
+# Terminal 2
+cd catkin_ws/src/stretch_tutorials/src/
+python tf2_broadcaster.py
+```
+
+Finally, run the tf2 listener node to print the transform between two links.
+
+```bash
+# Terminal 3
+cd catkin_ws/src/stretch_tutorials/src/
+python tf2_listener.py
+```
+
+Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
+
+```bash
+[INFO] [1659551318.098168]: The pose of target frame link_grasp_center with reference from fk_link_lift is:
+translation:
+  x: 1.08415191335
+  y: -0.176147838153
+  z: 0.576720021135
+rotation:
+  x: -0.479004489528
+  y: -0.508053545368
+  z: -0.502884087254
+  w: 0.509454501243
+```
+
+<p align="center">
+  <img src="images/tf2_listener.png"/>
+</p>
+
 
 ### The Code
 
@@ -235,7 +279,7 @@ class FrameListener():
                 trans = tf_buffer.lookup_transform(to_frame_rel,
                                                    from_frame_rel,
                                                    rospy.Time())
-                rospy.loginfo('The pose of target frame %s with reference to %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
+                rospy.loginfo('The pose of target frame %s with reference from %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 rospy.logwarn(' Could not transform %s from %s ', to_frame_rel, from_frame_rel)
 
@@ -288,7 +332,7 @@ try:
     trans = tf_buffer.lookup_transform(to_frame_rel,
                                        from_frame_rel,
                                        rospy.Time())
-    rospy.loginfo('The pose of target frame %s with reference to %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
+    rospy.loginfo('The pose of target frame %s with reference from %s is: \n %s', from_frame_rel, to_frame_rel, trans.transform)
 
 except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
     rospy.logwarn(' Could not transform %s from %s ', to_frame_rel, from_frame_rel)
