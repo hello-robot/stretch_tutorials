@@ -88,6 +88,6 @@ if __name__ == '__main__':
     FixedFrameBroadcaster()
 
     # Give control to ROS.  This will allow the callback to be called whenever new
-	# messages come in.  If we don't put this line in, then the node will not work,
-	# and ROS will not process any messages
+    # messages come in.  If we don't put this line in, then the node will not work,
+    # and ROS will not process any messages
     rospy.spin()
