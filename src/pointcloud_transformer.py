@@ -10,11 +10,11 @@ from sensor_msgs.msg import PointCloud2, PointCloud
 from geometry_msgs.msg import Point32
 from std_msgs.msg import Header
 
-
 class PointCloudTransformer:
     """
-    A class that takes in a PointCloud2 message and transfers it into a
-    pointcloud message. Then that pointcloud is
+    A class that takes in a PointCloud2 message and stores its points into a
+    PointCloud message. Then that PointCloud is transformed to reference the
+    'base_link' frame.
     """
     def __init__(self):
         """
@@ -27,26 +27,28 @@ class PointCloudTransformer:
         # Initialize PointCloud Publisher
         self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)
 
-        # Initialize self.cloud for data storage in pointcloud_data callback function
+        # Initialize self.pcl2_cloud to store the PointCloud2
         self.pcl2_cloud = None
 
-        # Intialize tf.Transformlister
+        # Intialize tf.Transformlistener
         self.listener = tf.TransformListener(True, rospy.Duration(10.0))
+
+        # Create rospy log message
+        rospy.loginfo('Publishing transformed PointCloud. Use RViz to visualize')
 
     def callback_pcl2(self,msg):
         """
-        Callback function that stores the pointcloud2 message.
+        Callback function that stores the PointCloud2 message.
         :param self: The self reference.
-        :param msg: The Pointcloud2 message type.
+        :param msg: The PointCloud2 message type.
         """
         self.pcl2_cloud = msg
-
 
     def pcl_transformer(self):
         """
         A function that extracts the points from the stored PointCloud2 message
-        and appends those points to a PointCloud message. Then transforms the
-        PointCloud from its original header frame id, 'camera_color_optical_frame'
+        and appends those points to a PointCloud message. Then the function transforms
+        the PointCloud from its the header frame id, 'camera_color_optical_frame'
         to the 'base_link' frame.
         :param self: The self reference.
         """
@@ -55,8 +57,7 @@ class PointCloudTransformer:
         temp_cloud = PointCloud()
         temp_cloud.header = self.pcl2_cloud.header
 
-
-        # For loop to extract pointcloud2 data into a list of x,y,z, and
+        # For loop to extract PointCloud2 data into a list of x,y,z, points and
         # append those values to the PointCloud message, temp_cloud
         for data in pc2.read_points(self.pcl2_cloud, skip_nans=True):
             temp_cloud.points.append(Point32(data[0],data[1],data[2]))
@@ -69,7 +70,7 @@ class PointCloudTransformer:
 
     def transform_pointcloud(self,msg):
         """
-        Function that stores the pointcloud2 message.
+        Function that stores the PointCloud2 message.
         :param self: The self reference.
         :param msg: The PointCloud message.
 
@@ -90,8 +91,8 @@ if __name__=="__main__":
     # Initialize the node, and call it "pointcloud_transformer"
     rospy.init_node('pointcloud_transformer',anonymous=True)
 
-    # Instantiate the PointCloudTransformer class
-    obj = PointCloudTransformer()
+    # Declare object, PCT, from the PointCloudTransformer class.
+    PCT = PointCloudTransformer()
 
     # We're going to publish information at 1 Hz
     rate = rospy.Rate(1)
@@ -103,5 +104,5 @@ if __name__=="__main__":
     while not rospy.is_shutdown():
 
         # Run the pcl_transformer method
-        obj.pcl_transformer()
+        PCT.pcl_transformer()
         rate.sleep()
