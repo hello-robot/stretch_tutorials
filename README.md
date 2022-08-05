@@ -12,10 +12,11 @@ This repo provides instructions on installing and using code on the Stretch RE1 
 7. [MoveIt! Basics](moveit_basics.md)
 8. [Follow Joint Trajectory Commands](follow_joint_trajectory.md)
 9. [Perception](perception.md)
-10. [ReSpeaker Microphone Array](respeaker_microphone_array.md)
-11. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
-12. ROS testing
-13. Other Nav Stack Features
+10. [ArUco Marker Detection](aruco_marker_detection.md)
+11. [ReSpeaker Microphone Array](respeaker_microphone_array.md)
+12. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
+13. ROS testing
+14. Other Nav Stack Features
 
 
 ## Other ROS Examples
