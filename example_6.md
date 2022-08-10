@@ -14,11 +14,11 @@ Begin by running the following command in the terminal in a terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *manipulation* mode using a rosservice call. Then run the single effort sensing node.
+Switch the mode to *position* mode using a rosservice call. Then run the single effort sensing node.
 
 ```bash
 # Terminal 2
-rosservice call /switch_to_manipulation_mode
+rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python effort_sensing.py
 ```

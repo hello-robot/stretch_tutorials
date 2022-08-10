@@ -16,11 +16,11 @@ Begin by running the following command in the terminal in a terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *manipulation* mode using a rosservice call. Then run the stow command node.
+Switch the mode to *position* mode using a rosservice call. Then run the stow command node.
 
 ```bash
 # Terminal 2
-rosservice call /switch_to_manipulation_mode
+rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python stow_command.py
 ```
@@ -168,11 +168,11 @@ Begin by running the following command in the terminal in a terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *manipulation* mode using a rosservice call. Then run the multipoint command node.
+Switch the mode to *position* mode using a rosservice call. Then run the multipoint command node.
 
 ```bash
 # Terminal 2
-rosservice call /switch_to_manipulation_mode
+rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python multipoint_command.py
 ```
@@ -291,17 +291,23 @@ Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint name
   <img src="images/single_joint_actuator.gif"/>
 </p>
 
-You can also actuate a single joint for the Stretch. Below are the list of joints and their position limit that can be moved in the *position* mode.
+You can also actuate a single joint for the Stretch. Below are the list of joints and their position limit.  
 
 ```
-############################# Joint limits #############################
+############################# JOINT LIMITS #############################
 joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
 wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
 joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
 joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
 joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
 joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
+
+# INCLUDED JOINT IN MANIPULATION MODE
 joint_mobile_base_translation: lower_limit = -0.50, upper_limit = 0.50  # in radians
+
+# INCLUDED JOINTS IN POSITION MODE
+translate_mobile_base: No lower or upper limit. Defined by a step size in meters
+rotate_mobile_base:    No lower or upper limit. Defined by a step size in radians
 ########################################################################
 ```
 
@@ -312,11 +318,11 @@ Begin by running the following command in the terminal in a terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *manipulation* mode using a rosservice call. Then run the single joint actuator node.
+Switch the mode to *position* mode using a rosservice call. Then run the single joint actuator node.
 
 ```bash
 # Terminal 2
-rosservice call /switch_to_manipulation_mode
+rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python single_joint_actuator.py
 ```
