@@ -150,7 +150,7 @@ In a new terminal, type the following
 
 ```bash
 # Terminal 2
-roslaunch stretch_gazebo teleop_keyboard.launch
+roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=keyboard # or use teleop_type:=joystick if you have a controller
 ```
 The same keyboard commands will be presented to a user to move the robot.
 
@@ -159,7 +159,7 @@ An alternative for robot base teleoperation is to use an Xbox controller. Stop t
 
 ```bash
 # Terminal 2
-roslaunch stretch_gazebo teleop_joy.launch
+roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=joystick
 ```
 Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.
 
