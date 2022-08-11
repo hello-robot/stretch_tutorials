@@ -22,7 +22,7 @@ Then run the `PointCloud` transformer node.
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python pointcloud_transformer.py
+python3 pointcloud_transformer.py
 ```
 
 Within this tutorial package, there is an RViz config file with the `PointCloud` in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.

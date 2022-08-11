@@ -18,7 +18,7 @@ Switch the mode to *navigation* mode using a rosservice call. Then drive the rob
 # Terminal 2
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python move.py
+python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
@@ -152,7 +152,7 @@ After saving the edited node, bringup [Stretch in the empty world simulation](ga
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/
-python move.py
+python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 

@@ -20,7 +20,7 @@ To set *navigation* mode and to activate the avoider node, type the following in
 # Terminal 3
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python avoider.py
+python3 avoider.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 

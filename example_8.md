@@ -20,7 +20,7 @@ Then run the speech_text node.
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python speech_text.py
+python3 speech_text.py
 ```
 
 The ReSpeaker will be listening and will start to interpret speech and save the transcript to a text file.  To stop shutdown the node, type **Ctrl** + **c** in the terminal.

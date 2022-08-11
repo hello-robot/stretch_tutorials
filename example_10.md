@@ -24,7 +24,7 @@ Then run the tf2 broadcaster node to visualize three static frames.
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python tf2_broadcaster.py
+python3 tf2_broadcaster.py
 ```
 
 The gif below visualizes what happens when running the previous node.
@@ -37,7 +37,7 @@ The gif below visualizes what happens when running the previous node.
 ```bash
 # Terminal 4
 cd catkin_ws/src/stretch_tutorials/src/
-python stow_command.py
+python3 stow_command.py
 ```
 
 
@@ -214,7 +214,7 @@ Then run the tf2 broadcaster node to create the three static frames.
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python tf2_broadcaster.py
+python3 tf2_broadcaster.py
 ```
 
 Finally, run the tf2 listener node to print the transform between two links.
@@ -222,7 +222,7 @@ Finally, run the tf2 listener node to print the transform between two links.
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python tf2_listener.py
+python3 tf2_listener.py
 ```
 
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.

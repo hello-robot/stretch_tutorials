@@ -22,7 +22,7 @@ Then run the voice teleoperation base node in a new terminal.
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python voice_teleoperation_base.py
+python3 voice_teleoperation_base.py
 ```
 
 In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  

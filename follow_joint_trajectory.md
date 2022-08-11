@@ -22,7 +22,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the stow co
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python stow_command.py
+python3 stow_command.py
 ```
 
 
@@ -174,7 +174,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the multipo
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python multipoint_command.py
+python3 multipoint_command.py
 ```
 
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
@@ -324,7 +324,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the single 
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python single_joint_actuator.py
+python3 single_joint_actuator.py
 ```
 
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.

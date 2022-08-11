@@ -64,7 +64,7 @@ In this section, you can use a Python node to capture an image from the RealSens
 ```bash
 # Terminal 4
 cd ~/catkin_ws/src/stretch_tutorials/src
-python capture_image.py
+python3 capture_image.py
 ```
 
 An image named **camera_image.jpeg** is saved in the **stored_data** folder in this package.
@@ -214,7 +214,7 @@ In this section, we highlight a node that utilizes the [Canny Edge filter](https
 ```bash
 # Terminal 4
 cd ~/catkin_ws/src/stretch_tutorials/src
-python edge_detection.py
+python3 edge_detection.py
 ```
 
 The node will publish a new Image topic named */image_edge_detection*. This can be visualized in RViz and a gif is provided below for reference.

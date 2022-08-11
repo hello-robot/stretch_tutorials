@@ -15,7 +15,7 @@ You can then hit the run-stop button (you should hear a beep and the LED light i
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/
-python joint_state_printer.py
+python3 joint_state_printer.py
 ```
 Your terminal will output the `position` information of the previously mentioned joints shown below.
 ```

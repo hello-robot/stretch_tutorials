@@ -20,7 +20,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the single 
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python effort_sensing.py
+python3 effort_sensing.py
 ```
 
 This will send a `FollowJointTrajectory` command to move Stretch's arm or head while also printing the effort of the lift.
@@ -302,7 +302,7 @@ Once you have changed the file name, then run the following in a new command.
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/
-python stored_data_plotter.py
+python3 stored_data_plotter.py
 
 ```
 
