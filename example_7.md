@@ -71,7 +71,7 @@ An image named **camera_image.jpeg** is saved in the **stored_data** folder in t
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import sys
@@ -125,9 +125,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python
@@ -225,7 +225,7 @@ The node will publish a new Image topic named */image_edge_detection*. This can 
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import sys

@@ -26,7 +26,7 @@ The gif below demonstrates how to add a new *Marker* display type, and change th
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from visualization_msgs.msg import Marker
@@ -84,9 +84,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python

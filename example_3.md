@@ -31,7 +31,7 @@ To stop the node from sending twist messages, type **Ctrl** + **c** in the termi
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from numpy import linspace, inf, tanh
@@ -91,9 +91,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python

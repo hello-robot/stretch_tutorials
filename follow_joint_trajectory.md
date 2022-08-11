@@ -30,7 +30,7 @@ This will send a `FollowJointTrajectory` command to stow Stretch's arm.
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from control_msgs.msg import FollowJointTrajectoryGoal
@@ -88,9 +88,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python
@@ -181,7 +181,7 @@ This will send a list of `JointTrajectoryPoint` message types to move Stretch's 
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import time
@@ -335,7 +335,7 @@ The joint, *joint_gripper_finger_left*, is only needed when actuating the grippe
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import time
