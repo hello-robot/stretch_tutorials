@@ -14,7 +14,7 @@ cd ~/catkin_ws
 catkin_make
 ```
 ### Connecting a Monitor
-If you cannot access the robot through ssh due to your network settings, you will need to connect an HDMI monitor, USB keyboard, and mouse to the USB ports in the robot's trunk. 
+If you cannot access the robot through ssh due to your network settings, you will need to connect an HDMI monitor, USB keyboard, and mouse to the USB ports in the robot's trunk.
 
 ## ROS Setup on Local Computer
 
