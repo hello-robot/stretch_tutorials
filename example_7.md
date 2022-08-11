@@ -305,5 +305,5 @@ self.pub.publish(image_msg)
 
 Publish the ROS image with the same header as the subscribed ROS message.
 
-**Previous Example** [Example 6](example_6.md)
-**Next Example** [Example 8](example_8.md)
+**Previous Example** [Store Effort Values](example_6.md)
+**Next Example** [Voice to Text](example_8.md)

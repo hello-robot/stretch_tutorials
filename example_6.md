@@ -308,5 +308,5 @@ python stored_data_plotter.py
 
 Because this is not a node, you don't need roscore to run this script. Please review the comments in the python script for additional guidance.
 
-**Previous Example** [Example 5](example_5.md)
-**Next Example** [Example 7](example_7.md)
+**Previous Example** [Print Joint States](example_5.md)
+**Next Example** [Capture Image](example_7.md)

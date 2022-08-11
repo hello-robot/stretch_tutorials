@@ -182,5 +182,5 @@ Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.
 
-**Previous Example:** [Example 1](example_1.md)
-**Next Example:** [Example 3](example_3.md)
+**Previous Example:** [Teleoperate Stretch with a Node](example_1.md)
+**Next Example:** [Mobile Base Collision Avoidance](example_3.md)
