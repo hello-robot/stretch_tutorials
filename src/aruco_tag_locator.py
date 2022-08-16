@@ -25,10 +25,10 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 # Import TransformStamped from the geometry_msgs package for the publisher
 from geometry_msgs.msg import TransformStamped
 
-class LocateDockingTag(hm.HelloNode):
+class LocateArUcoTag(hm.HelloNode):
     """
-    A class that actuates the RealSense camera to find the docking station using
-    an ArUco tag.
+    A class that actuates the RealSense camera to find the docking station's
+    ArUco tag and returns a Transform between the `base_link` and the requested tag.
     """
     def __init__(self):
         """
@@ -168,7 +168,7 @@ class LocateDockingTag(hm.HelloNode):
             self.send_command(tilt_command)
             rospy.sleep(.25)
 
-        # Notify that the requested tag was not found 
+        # Notify that the requested tag was not found
         rospy.loginfo("The requested tag '%s' was not found", tag_name)
 
     def main(self):
@@ -178,7 +178,7 @@ class LocateDockingTag(hm.HelloNode):
         """
         # The arguments of the main function of the hm.HelloNode class are the
         # node_name, node topic namespace, and boolean (default value is true)
-        hm.HelloNode.main(self, 'docking_station_locator', 'docking_station_locator', wait_for_first_pointcloud=False)
+        hm.HelloNode.main(self, 'aruco_tag_locator', 'aruco_tag_locator', wait_for_first_pointcloud=False)
 
         # Create a StaticTranformBoradcaster Node. Also, start a Tf buffer that
         # will store the tf information for a few seconds.Then set up a tf listener, which
@@ -200,8 +200,8 @@ class LocateDockingTag(hm.HelloNode):
 if __name__ == '__main__':
     # Use a try-except block
     try:
-        # Instantiate the `LocateDockingTag()` object
-        node = LocateDockingTag()
+        # Instantiate the `LocateArUcoTag()` object
+        node = LocateArUcoTag()
         # Run the `main()` method.
         node.main()
     except KeyboardInterrupt:
