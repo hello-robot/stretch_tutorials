@@ -168,6 +168,8 @@ class LocateDockingTag(hm.HelloNode):
             self.send_command(tilt_command)
             rospy.sleep(.25)
 
+        # Notify that the requested tag was not found 
+        rospy.loginfo("The requested tag '%s' was not found", tag_name)
 
     def main(self):
         """
@@ -196,14 +198,11 @@ class LocateDockingTag(hm.HelloNode):
 
 
 if __name__ == '__main__':
-    # Instantiate the `LocateDockingTag()` object
-    node = LocateDockingTag()
-
-    # Run the `main()` method.
-    node.main()
-
     # Use a try-except block
     try:
-        rospy.spin()
+        # Instantiate the `LocateDockingTag()` object
+        node = LocateDockingTag()
+        # Run the `main()` method.
+        node.main()
     except KeyboardInterrupt:
         rospy.loginfo('interrupt received, so shutting down')
