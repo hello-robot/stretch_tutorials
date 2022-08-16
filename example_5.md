@@ -155,5 +155,5 @@ rospy.spin()
 ```
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
-**Previous Example** [Example 4](example_4.md)
-**Next Example** [Example 6](example_6.md)
+**Previous Example** [Give Stretch a Balloon](example_4.md)
+**Next Example** [Store Effort Values](example_6.md)

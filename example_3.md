@@ -173,5 +173,5 @@ Instantiate class with `Avioder()`
 
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
-**Previous Example:** [Example 2](example_2.md)
-**Next Example:** [Example 4](example_4.md)
+**Previous Example:** [Filter Laser Scans](example_2.md)
+**Next Example:** [Give Stretch a Balloon](example_4.md)
