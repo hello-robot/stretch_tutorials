@@ -5,8 +5,8 @@ import math
 import rospy
 import sys
 
-# We're going to subscribe to 64-bit integers, so we need to import the definition
-# for them
+# We're going to subscribe to a JointState message type, so we need to import
+# the definition for it
 from sensor_msgs.msg import JointState
 
 # Import Int32 message typs from the std_msgs package

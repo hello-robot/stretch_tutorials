@@ -4,6 +4,7 @@
 import rospy
 from numpy import linspace, inf
 from math import sin
+
 # We're going to subscribe to a LaserScan message
 from sensor_msgs.msg import LaserScan
 
