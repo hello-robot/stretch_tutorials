@@ -52,7 +52,7 @@ class SingleJointActuator(hm.HelloNode):
 		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
 
 		# Provide desired positions for joint name.
-		# Set positions for the following 5 trajectory points
+		# Create a JointTrajectoryPoint message type
 		point0 = JointTrajectoryPoint()
 		point0.positions = [0.65]
 
