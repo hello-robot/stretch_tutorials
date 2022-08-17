@@ -39,7 +39,7 @@ Next, run the stretch ArUco launch file which will bring up the [detect_aruco_ma
 roslaunch stretch_core stretch_aruco.launch
 ```
 
-Within this tutorial package, there is an RViz config file with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal. 
+Within this tutorial package, there is an RViz config file with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
@@ -412,3 +412,6 @@ if __name__ == '__main__':
 ```
 
 Declare `LocateArUcoTag` object. Then run the `main()` method.
+
+
+**Previous Example** [PointCloud Transformation](example_11.md)
