@@ -9,7 +9,7 @@ Begin by running the following command in a new terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *position* mode using a rosservice call. The run the `sample_respeaker.launch`.
+Switch the mode to *position* mode using a rosservice call. Then run the `sample_respeaker.launch`.
 
 ```bash
 # Terminal 2
