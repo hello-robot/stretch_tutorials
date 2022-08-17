@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
 # Import modules
 import rospy
@@ -62,6 +62,9 @@ class LocateArUcoTag(hm.HelloNode):
         self.tilt_num_steps = 3
         self.tilt_step_size = pi/16
 
+        # Define the head actuation rotational velocity 
+        self.rot_vel = 0.5 # radians per sec
+
 
     def joint_states_callback(self, msg):
         """
@@ -89,7 +92,7 @@ class LocateArUcoTag(hm.HelloNode):
             trajectory_goal = FollowJointTrajectoryGoal()
             trajectory_goal.trajectory.joint_names = [joint_name]
 
-            # Set positions for the following 5 trajectory points
+            # Create a JointTrajectoryPoint message type
             point = JointTrajectoryPoint()
 
             # Check to see if `delta` is a key in the command dictionary
@@ -106,6 +109,9 @@ class LocateArUcoTag(hm.HelloNode):
             elif 'position' in command:
                 # extract the head position value from the `position` key
                 point.positions = [command['position']]
+
+            # Set the rotaitonal velocity
+            point.velocities = [0.5]
 
             # Assign goal position with updated point variable
             trajectory_goal.trajectory.points = [point]
@@ -143,7 +149,7 @@ class LocateArUcoTag(hm.HelloNode):
                 self.send_command(pan_command)
 
                 # Give time for system to do a Transform lookup before next step
-                rospy.sleep(0.5)
+                rospy.sleep(0.1)
 
                 # Use a try-except block
                 try:
@@ -170,6 +176,7 @@ class LocateArUcoTag(hm.HelloNode):
 
         # Notify that the requested tag was not found
         rospy.loginfo("The requested tag '%s' was not found", tag_name)
+
 
     def main(self):
         """
