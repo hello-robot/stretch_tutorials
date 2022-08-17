@@ -141,7 +141,7 @@ def main(self):
     self.issue_stow_command()
     time.sleep(2)
 ```
-Create a funcion, `main()`, to do all of the setup the `hm.HelloNode` class and issue the stow command.
+Create a funcion, `main()`, to do all of the setup for the `hm.HelloNode` class and issue the stow command.
 
 ```python
 if __name__ == '__main__':
