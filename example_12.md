@@ -101,6 +101,7 @@ class LocateArUcoTag(hm.HelloNode):
         self.tilt_num_steps = 3
         self.tilt_step_size = pi/16
 
+        self.rot_vel = 0.5 # radians per sec
 
     def joint_states_callback(self, msg):
         """
@@ -134,6 +135,7 @@ class LocateArUcoTag(hm.HelloNode):
             elif 'position' in command:
                 point.positions = [command['position']]
 
+            point.velocities = [self.rot_vel]
             trajectory_goal.trajectory.points = [point]
             trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
             trajectory_goal.trajectory.header.frame_id = 'base_link'
@@ -159,7 +161,7 @@ class LocateArUcoTag(hm.HelloNode):
             for j in range(self.pan_num_steps):
                 pan_command = {'joint': 'joint_head_pan', 'delta': self.pan_step_size}
                 self.send_command(pan_command)
-                rospy.sleep(0.5)
+                rospy.sleep(0.2)
 
                 try:
                     transform = self.tf_buffer.lookup_transform('base_link',
@@ -264,6 +266,11 @@ self.tilt_step_size = pi/16
 Set the minimum position of the tilt joint, the number of steps, and the size of each step.
 
 ```python
+self.rot_vel = 0.5 # radians per sec
+```
+Define the head actuation rotational velocity.
+
+```python
 def joint_states_callback(self, msg):
     """
     A callback function that stores Stretch's joint states.
@@ -311,6 +318,7 @@ elif 'position' in command:
 Check to see if `position`is a key in the command dictionary. Then extract the position value.
 
 ```python
+point.velocities = [self.rot_vel]
 trajectory_goal.trajectory.points = [point]
 trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
@@ -318,7 +326,7 @@ self.trajectory_client.send_goal(trajectory_goal)
 self.trajectory_client.wait_for_result()
 ```
 
-Then `trajectory_goal.trajectory.points` is defined by the positions set in *point*. Specify the coordinate frame that we want (base_link) and set the time to be now. Make the action call and send the goal. The last line of code waits for the result before it exits the python script.
+Then `trajectory_goal.trajectory.points` is defined by the positions set in *point*. Specify the coordinate frame that we want (*base_link*) and set the time to be now. Make the action call and send the goal. The last line of code waits for the result before it exits the python script.
 
 ```python
 def find_tag(self, tag_name='docking_station'):
