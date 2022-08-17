@@ -111,7 +111,7 @@ class LocateArUcoTag(hm.HelloNode):
                 point.positions = [command['position']]
 
             # Set the rotaitonal velocity
-            point.velocities = [0.5]
+            point.velocities = [self.rot_vel]
 
             # Assign goal position with updated point variable
             trajectory_goal.trajectory.points = [point]
@@ -149,7 +149,7 @@ class LocateArUcoTag(hm.HelloNode):
                 self.send_command(pan_command)
 
                 # Give time for system to do a Transform lookup before next step
-                rospy.sleep(0.1)
+                rospy.sleep(0.2)
 
                 # Use a try-except block
                 try:
