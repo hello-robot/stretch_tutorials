@@ -55,7 +55,7 @@ python aruco_tag_locator.py
 ```
 
 <p align="center">
-  <img src="images/aruco_tag_locator.gif"/>
+  <img src="images/aruco_locator.gif"/>
 </p>
 
 ### The Code
