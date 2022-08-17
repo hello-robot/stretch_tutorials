@@ -89,10 +89,10 @@ class StretchNavigation:
 
 if __name__ == '__main__':
     # Initialize the node, and call it "navigation"
-	rospy.init_node('navigation', argv=sys.argv)
+    rospy.init_node('navigation', argv=sys.argv)
 
-	# Declare a `StretchNavigation` object
-	nav = StretchNavigation()
+    # Declare a `StretchNavigation` object
+    nav = StretchNavigation()
 
     # Send a nav goal to the `go_to()` method
-	nav.go_to(0.25, 0.0, 0.0, wait=True)
+    nav.go_to(0.25, 0.0, 0.0, wait=True)
