@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+# Import modules
 import rospy
 import actionlib
+import sys
 
 # We need the MoveBaseAction and MoveBaseGoal from the move_base_msgs package.
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -11,9 +13,6 @@ from geometry_msgs.msg import Quaternion
 
 # tf includes a handy set of transformations to move between Euler angles and quaternions (and back).
 from tf import transformations
-
-import sys
-
 
 class StretchNavigation:
     """
