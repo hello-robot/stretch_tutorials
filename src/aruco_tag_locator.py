@@ -48,16 +48,16 @@ class LocateArUcoTag(hm.HelloNode):
         self.joint_state = None
 
         # Provide the min and max joint positions for the head pan. These values
-        # are needed for sweeping the head to search for the ArUco tag.
+        # are needed for sweeping the head to search for the ArUco tag
         self.min_pan_position = -4.10
         self.max_pan_position =  1.50
 
         # Define the number of steps for the sweep, then create the step size for
-        # the head pan joint.
+        # the head pan joint
         self.pan_num_steps = 10
         self.pan_step_size = abs(self.min_pan_position - self.max_pan_position)/self.pan_num_steps
 
-        # Define the min tilt position, number of steps, and step size.
+        # Define the min tilt position, number of steps, and step size
         self.min_tilt_position = -0.75
         self.tilt_num_steps = 3
         self.tilt_step_size = pi/16
@@ -74,8 +74,8 @@ class LocateArUcoTag(hm.HelloNode):
 
     def send_command(self, command):
         '''
-        Handles single joint control commands by constructing a FollowJointTrajectoryGoal message and sending it to the trajectory_client
-        created in hello_misc.
+        Handles single joint control commands by constructing a FollowJointTrajectoryGoal
+        message and sending it to the trajectory_client created in hello_misc.
         :param self: The self reference.
         :param command: A dictionary message type.
         '''
@@ -147,7 +147,7 @@ class LocateArUcoTag(hm.HelloNode):
 
                 # Use a try-except block
                 try:
-                    # Look up transform between the base_link and located ArUco tag
+                    # Look up transform between the base_link and requested ArUco tag
                     transform = self.tf_buffer.lookup_transform('base_link',
                                                             tag_name,
                                                             rospy.Time())
@@ -182,7 +182,7 @@ class LocateArUcoTag(hm.HelloNode):
 
         # Create a StaticTranformBoradcaster Node. Also, start a Tf buffer that
         # will store the tf information for a few seconds.Then set up a tf listener, which
-        # will subscribe to all of the relevant tf topics, and keep track of the information.
+        # will subscribe to all of the relevant tf topics, and keep track of the information
         self.static_broadcaster = tf2_ros.StaticTransformBroadcaster()
         self.tf_buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tf_buffer)
@@ -190,7 +190,7 @@ class LocateArUcoTag(hm.HelloNode):
         # Give the listener some time to accumulate transforms
         rospy.sleep(1.0)
 
-        # Notify Stretch is searchring for the ArUco tag with a rospy loginfo fucntion
+        # Notify Stretch is searching for the ArUco tag with a rospy loginfo function
         rospy.loginfo('Searching for docking ArUco tag.')
 
         # Search for the ArUco marker for the docking station
@@ -202,7 +202,7 @@ if __name__ == '__main__':
     try:
         # Instantiate the `LocateArUcoTag()` object
         node = LocateArUcoTag()
-        # Run the `main()` method.
+        # Run the `main()` method
         node.main()
     except KeyboardInterrupt:
         rospy.loginfo('interrupt received, so shutting down')
