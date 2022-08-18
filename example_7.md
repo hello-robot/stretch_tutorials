@@ -9,8 +9,6 @@ In this example, we will review the [image_view](http://wiki.ros.org/image_view?
 
 </p>
 
-
-
 Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the stretch_ros repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
 
 ```bash
@@ -104,7 +102,7 @@ class CaptureImage:
         """
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         file_name = 'camera_image.jpeg'
@@ -169,7 +167,7 @@ def callback(self, msg):
     """
     try:
         image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-    except CvBridgeError, e:
+    except CvBridgeError as e:
         rospy.logwarn('CV Bridge error: {0}'.format(e))
 ```
 
@@ -265,7 +263,7 @@ class EdgeDetection:
         """
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         image = cv2.Canny(image, self.lower_thres, self.upper_thres)
