@@ -29,12 +29,13 @@ class JointActuatorEffortSensor(hm.HelloNode):
     """
     A class that sends multiple joint trajectory goals to a single joint.
     """
-    # Initialize the inhereted hm.Hellonode class.
-    def __init__(self):
+    def __init__(self, export_data=False):
         """
         Function that initializes the subscriber,and other features.
         :param self: The self reference.
+        :param export_data: A boolean message type.
         """
+        # Initialize the inhereted hm.Hellonode class.
         hm.HelloNode.__init__(self)
 
         # Set up a subscriber. We're going to subscribe to the topic "joint_states"
@@ -50,7 +51,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 
         # Create boolean data type for conditional statements if you want to export effort data.
-        self.export_data = False
+        self.export_data = export_data
 
 
     def callback(self, msg):
@@ -89,7 +90,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         # Make the action call and send the goal. Also define the feedback and
         # done callback function.
         self.trajectory_client.send_goal(trajectory_goal, feedback_cb=self.feedback_callback, done_cb=self.done_callback)
-        rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+        rospy.loginfo('Sent position goal = {0}'.format(trajectory_goal))
         self.trajectory_client.wait_for_result()
 
 
@@ -173,7 +174,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
 if __name__ == '__main__':
 	try:
     	# Declare object, node, from JointActuatorEffortSensor class
-		node = JointActuatorEffortSensor()
+		node = JointActuatorEffortSensor(export_data=True)
 		node.main()
 	except KeyboardInterrupt:
 		rospy.loginfo('interrupt received, so shutting down')
