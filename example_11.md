@@ -102,7 +102,7 @@ class PointCloudTransformer:
         """
         while not rospy.is_shutdown():
             try:
-                new_cloud = self.listener.transformPointCloud("/base_link" ,msg)
+                new_cloud = self.listener.transformPointCloud("base_link" ,msg)
                 return new_cloud
                 if new_cloud:
                     break
@@ -191,7 +191,7 @@ Utilize the `transform_pointcloud` function to transform the points in the `Poin
 ```python
 while not rospy.is_shutdown():
         try:
-            new_cloud = self.listener.transformPointCloud("/base_link" ,msg)
+            new_cloud = self.listener.transformPointCloud("base_link" ,msg)
             return new_cloud
             if new_cloud:
                 break
