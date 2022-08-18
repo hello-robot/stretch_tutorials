@@ -38,9 +38,6 @@ class SingleJointActuator(hm.HelloNode):
 		# joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
 		# joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
 		#
-		# INCLUDED JOINT IN MANIPULATION MODE
-		# joint_mobile_base_translation: lower_limit = -0.50, upper_limit = 0.50  # in radians
-		#
 		# INCLUDED JOINTS IN POSITION MODE
 		# translate_mobile_base: No lower or upper limit. Defined by a step size in meters
 		# rotate_mobile_base:    No lower or upper limit. Defined by a step size in radians
