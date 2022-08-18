@@ -60,7 +60,7 @@ if __name__ == '__main__':
 	rospy.init_node('scan_filter')
 
 	# Instantiate the ScanFilter class
-	Scanfilter()
+	ScanFilter()
 
 	# Give control to ROS.  This will allow the callback to be called whenever new
 	# messages come in.  If we don't put this line in, then the node will not work,
