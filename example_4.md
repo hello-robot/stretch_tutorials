@@ -42,7 +42,7 @@ class Balloon():
 		"""
 		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
 		self.marker = Marker()
-		self.marker.header.frame_id = '/base_link'
+		self.marker.header.frame_id = 'base_link'
 		self.marker.header.stamp = rospy.Time()
 		self.marker.type = self.marker.SPHERE
 		self.marker.id = 0
@@ -103,7 +103,7 @@ This section of code defines the talker's interface to the rest of ROS. `pub = r
 
 ```python
 self.marker = Marker()
-self.marker.header.frame_id = '/base_link'
+self.marker.header.frame_id = 'base_link'
 self.marker.header.stamp = rospy.Time()
 self.marker.type = self.marker.SPHERE
 ```
