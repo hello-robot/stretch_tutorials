@@ -44,17 +44,18 @@ class JointActuatorEffortSensor(hm.HelloNode):
     """
     A class that sends multiple joint trajectory goals to a single joint.
     """
-    def __init__(self):
+    def __init__(self, export_data=False):
         """
         Function that initializes the subscriber,and other features.
         :param self: The self reference.
+        :param export_data: A boolean message type.
         """
         hm.HelloNode.__init__(self)
         self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
         self.joints = ['joint_lift']
         self.joint_effort = []
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
-        self.export_data = False
+        self.export_data = export_data
 
     def callback(self, msg):
         """
@@ -140,7 +141,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
 
 if __name__ == '__main__':
 	try:
-		node = JointActuatorEffortSensor()
+		node = JointActuatorEffortSensor(export_data=True)
 		node.main()
 	except KeyboardInterrupt:
 		rospy.loginfo('interrupt received, so shutting down')
