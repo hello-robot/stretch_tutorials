@@ -80,7 +80,7 @@ class PointCloudTransformer:
             try:
                 # run the transformPointCloud() function to change the referene frame
                 # to the base_link
-                new_cloud = self.listener.transformPointCloud("/base_link" ,msg)
+                new_cloud = self.listener.transformPointCloud("base_link" ,msg)
                 return new_cloud
                 if new_cloud:
                     break
