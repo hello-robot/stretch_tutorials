@@ -23,7 +23,7 @@ class Balloon():
 
 		# Set the frame ID and type.  The frame ID is the frame in which the position of the marker
 		# is specified.  The type is the shape of the marker, detailed on the wiki page
-		self.marker.header.frame_id = '/base_link'
+		self.marker.header.frame_id = 'base_link'
 		self.marker.header.stamp = rospy.Time()
 		self.marker.type = self.marker.SPHERE
 
