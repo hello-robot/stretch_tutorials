@@ -44,17 +44,18 @@ class JointActuatorEffortSensor(hm.HelloNode):
     """
     A class that sends multiple joint trajectory goals to a single joint.
     """
-    def __init__(self):
+    def __init__(self, export_data=False):
         """
         Function that initializes the subscriber,and other features.
         :param self: The self reference.
+        :param export_data: A boolean message type.
         """
         hm.HelloNode.__init__(self)
         self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
         self.joints = ['joint_lift']
         self.joint_effort = []
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
-        self.export_data = False
+        self.export_data = export_data
 
     def callback(self, msg):
         """
@@ -80,7 +81,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
         trajectory_goal.trajectory.header.frame_id = 'base_link'
         self.trajectory_client.send_goal(trajectory_goal, feedback_cb=self.feedback_callback, done_cb=self.done_callback)
-        rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
+        rospy.loginfo('Sent position goal = {0}'.format(trajectory_goal))
         self.trajectory_client.wait_for_result()
 
     def feedback_callback(self,feedback):
@@ -140,7 +141,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
 
 if __name__ == '__main__':
 	try:
-		node = JointActuatorEffortSensor()
+		node = JointActuatorEffortSensor(export_data=True)
 		node.main()
 	except KeyboardInterrupt:
 		rospy.loginfo('interrupt received, so shutting down')
@@ -179,10 +180,11 @@ class JointActuatorEffortSensor(hm.HelloNode):
     """
     A class that sends multiple joint trajectory goals to a single joint.
     """
-    def __init__(self):
+    def __init__(self, export_data=False):
         """
         Function that initializes the subscriber,and other features.
         :param self: The self reference.
+        :param export_data: A boolean message type.
         """
         hm.HelloNode.__init__(self)
 ```
@@ -197,7 +199,7 @@ Set up a subscriber.  We're going to subscribe to the topic "*joint_states*", lo
 ```Python
 self.joint_effort = []
 self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
-self.export_data = False
+self.export_data = export_data
 ```
 
 Create an empty list to store the joint effort values. The *self.save_path* is the directory path where the .txt file of the effort values will be stored. You can change this path to a preferred directory. The *self.export_data* is a boolean and its default value is set to False. If set to True, then the joint values will be stored in a .txt file, otherwise, the values will be printed in the terminal where you ran the effort sensing node.
@@ -291,7 +293,7 @@ A conditional statement is used to export the data to a .txt file. The file's na
 </p>
 
 
-We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. Note you have to change the name of the file you wish to see in the python script. This is shown below:
+We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. **Note** you have to change the name of the file you wish to see in the python script. This is shown below:
 
 ```Python
 ####################### Copy the file name here! #######################
