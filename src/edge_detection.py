@@ -55,7 +55,7 @@ class EdgeDetection:
         # Try to convert the ROS image message to a CV2 Image
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         # Apply the Canny Edge filter function to the transformed CV2 Image
