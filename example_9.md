@@ -14,7 +14,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the `sample
 ```bash
 # Terminal 2
 rosservice call /switch_to_position_mode
-roslaunch respeaker_ros sample_respeaker.launch
+roslaunch stretch_core respeaker.launch
 ```
 
 Then run the voice teleoperation base node in a new terminal.

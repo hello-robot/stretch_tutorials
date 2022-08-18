@@ -12,7 +12,7 @@ This example will showcase how to save the interpreted speech from Stretch's [Re
 Begin by running the `sample_respeaker.launch` file in a terminal.
 ```bash
 # Terminal 1
-roslaunch respeaker_ros sample_respeaker.launch
+roslaunch stretch_core respeaker.launch
 ```
 
 Then run the speech_text node.
