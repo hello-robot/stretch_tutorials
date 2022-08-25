@@ -35,6 +35,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
   - same-dir
@@ -83,11 +85,22 @@ nav:
       - Quick Start: docs/getting_started/quick_start_guide.md
       - Robot Safety: docs/getting_started/robot_safety_guide.md
       - Best Practices: docs/getting_started/best_practices.md
-      - Untethered Operation: docs/getting_started/untethered_operation.md
-      - Updating Software: docs/getting_started/updating_software.md
+      - Advanced:
+        - Untethered Operation: docs/getting_started/untethered_operation.md
+        - Updating Software: docs/getting_started/updating_software.md
   - Stretch Body:
     - Basics:
-      - Commanding Joint Motion: Foo.md
+        - Safe Coding: tutorial_safe_coding.md
+        - Command line Tools: tutorial_command_line_tools.md
+        - Simple Coding: tutorial_simple_coding.py
+        - Robot Motion: tutorial_robot_motion.md
+        - Robot Sensors: tutorial_robot_sensors.md
+    - Advanced:
+        - Dynamixel Servos: tutorial_dynamixel_servos.md
+        - Parameter Management: tutorial_parameter_management.md
+        - Splined Trajectories: tutorial_splined_trajectories.md
+        - Collision Avoidance: tutorial_collision_avoidance.md
+        - Custom Wrist DOF: ./extending_wrist_dof/README.md
   - ROS1:
     - Overview: README.md
     - Basics:
@@ -99,9 +112,10 @@ nav:
       - Navigation Stack: navigation_stack.md
       - MoveIt! Basics: moveit_basics.md
       - Follow Joint Trajectory Commands: follow_joint_trajectory.md
-      - FUNMAP: foo.md
-      - Perception: foo.md
-      - Microphone Array: foo.md
+      - Perception: perception.md
+      - ArUco Marker Detection: aruco_marker_detection.md
+      - ReSpeaker Microphone Array: respeaker_microphone_array.md
+      - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
       - ROS testing: foo.md
       - Other Nav Stack Features: foo.md
     - Other Examples:
@@ -111,5 +125,40 @@ nav:
       - Give Stretch a Balloon: example_4.md
       - Print Joint States: example_5.md
       - Store Effort Values: example_6.md
+      - Capture Image: example_7.md
+      - Voice to Text: example_8.md
+      - Voice Teleoperation of Base: example_9.md
+      - Tf2 Broadcaster and Listener: example_10.md
+      - PointCloud Transformation: example_11.md
+      - ArUco Tag Locator: example_12.md
   - ROS2:
-    - Nav Stack: foo.md
+    - Overview: README.md
+    - Basics:
+      - Getting Started: getting_started.md
+      - Gazebo Basics:  gazebo_basics.md
+      - Teleoperating Stretch: teleoperating_stretch.md
+      - Internal State of Stretch: internal_state_of_stretch.md
+      - RViz Basics: rviz_basics.md
+      - Navigation Stack: navigation_stack.md
+      - MoveIt! Basics: moveit_basics.md
+      - Follow Joint Trajectory Commands: follow_joint_trajectory.md
+      - Perception: perception.md
+      - ArUco Marker Detection: aruco_marker_detection.md
+      - ReSpeaker Microphone Array: respeaker_microphone_array.md
+      - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
+      - ROS testing: foo.md
+      - Other Nav Stack Features: foo.md
+    - Other Examples:
+      - Teleoperate Stretch with a Node: example_1.md
+      - Filter Laser Scans: example_2.md
+      - Mobile Base Collision Avoidance: example_3.md
+      - Give Stretch a Balloon: example_4.md
+      - Print Joint States: example_5.md
+      - Store Effort Values: example_6.md
+      - Capture Image: example_7.md
+      - Voice to Text: example_8.md
+      - Voice Teleoperation of Base: example_9.md
+      - Tf2 Broadcaster and Listener: example_10.md
+      - PointCloud Transformation: example_11.md
+      - ArUco Tag Locator: example_12.md
+
