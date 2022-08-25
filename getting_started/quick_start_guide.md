@@ -1,4 +1,4 @@
-# Stretch RE1: Quick Start Guide
+# Stretch RE1 and RE2: Quick Start Guide
 
 Congratulations on your Stretch RE1! This guide will get you started with your new robot. 
 

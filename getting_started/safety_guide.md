@@ -2,7 +2,7 @@
 
 ![](./images/warning_rs.png)
 
-The Stretch RE1 is a potentially dangerous machine with safety hazards. **If improperly used it can cause injury or death.** 
+The Stretch RE1 and RE2 are potentially dangerous machine with safety hazards. **If improperly used it can cause injury or death.** 
 
 * **All users must carefully read the following safety information prior to using the robot.**
 * Anyone near the robot who has not read this safety information must be closely supervised at all times and made aware that the robot could be dangerous.
@@ -10,7 +10,7 @@ The Stretch RE1 is a potentially dangerous machine with safety hazards. **If imp
 
 ## Intended Use
 
-**The Stretch RE1 (“Stretch”) is intended for use by researchers to conduct research in controlled indoor environments.** This product is not intended for other uses and lacks the required certifications for other uses, such as use in the home by consumers.
+**The Stretch RE1/RE2 (“Stretch”) are intended for use by researchers to conduct research in controlled indoor environments.** This product is not intended for other uses and lacks the required certifications for other uses, such as use in the home by consumers.
 
 ## Safety Hazards
 
@@ -32,7 +32,7 @@ The robot may drive off stairs, push or pull itself over with its telescoping ar
 
 ### Stretch Should Not Be Lifted By A Single Person
 
-Stretch with the standard gripper weighs about 50.5lb, so two or more people should lift and carry the robot. A single person can move the robot around by enabling the runstop button, tilting it over, and rolling it on flat ground. 
+Stretch with the standard gripper weighs about 23Kg (50.5lb), so two or more people should lift and carry the robot. A single person can move the robot around by enabling the runstop button, tilting it over, and rolling it on flat ground. 
 
 **At least two people should lift and carry the robot when needed.**
 
@@ -172,7 +172,7 @@ The runstop logic is:
 
 ### Sharp Edges
 
-Stretch RE1 is a piece of laboratory equipment. As such, its structure has moderately sharp edges and corners that can be unsafe. These edges can get snagged during motion, or they may cause lacerations when sufficient force is applied to a person. Care should be taken when grasping or otherwise making contact with Stretch that a sharp corner or edge is not contacted.
+Stretch RE1/RE2 is a piece of laboratory equipment. As such, its structure has moderately sharp edges and corners that can be unsafe. These edges can get snagged during motion, or they may cause lacerations when sufficient force is applied to a person. Care should be taken when grasping or otherwise making contact with Stretch that a sharp corner or edge is not contacted.
 
 ### Toppling
 

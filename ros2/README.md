@@ -1,9 +1,9 @@
 ![](../images/banner.png)
-# Tutorial Track: Stretch ROS1
+# Tutorial Track: Stretch ROS2
 
-This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS1. We recommend going through the tutorials in the following order:
+This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS2. We recommend going through the tutorials in the following order:
 
-## Stretch ROS1 Tutorials
+## Stretch ROS2 Tutorials
 1. [Getting Started](getting_started.md)
 2. [Gazebo Basics](gazebo_basics.md)
 3. [Teleoperating Stretch](teleoperating_stretch.md)
@@ -20,7 +20,7 @@ This tutorial track is for users looking to become familiar with programming the
 14. Other Nav Stack Features
 
 
-## Other ROS1 Examples
+## Other ROS2 Examples
 To help get you get started on your software development, here are examples of nodes to have the stretch perform simple tasks.
 
 1. [Teleoperate Stretch with a Node](example_1.md) - Use a python script that sends velocity commands.  
