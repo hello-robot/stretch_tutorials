@@ -40,11 +40,11 @@ To stop the python script, type **Ctrl** + **c** in the terminal.
 
 A [ROS package for the ReSpeaker](https://index.ros.org/p/respeaker_ros/#melodic) is utilized for this tutorial's section.
 
-Begin by running the `sample_respeaker.launch` file in a terminal.
+Begin by running the `respeaker.launch` file in a terminal.
 
 ```bash
 # Terminal 1
-roslaunch respeaker_ros sample_respeaker.launch
+roslaunch stretch_core respeaker.launch
 ```
 This will bring up the necessary nodes that will allow the ReSpeaker to implement a voice and sound interface with the robot.
 
