@@ -145,21 +145,71 @@ The [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stre
 
 ### DynamixelHelloXL430
 
-DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. 
+DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython let's look at the status message for DynamixelHelloXL430
 
 ```bash
 import stretch_body.dynamixel_hello_XL430 
 
 m = stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430('head_pan')
 m.startup()
+
 m.pretty_print()
+----- HelloXL430 ------ 
+Name head_pan
+Position (rad) -0.0
+Position (deg) -0.0
+Position (ticks) 1250
+Velocity (rad/s) -0.0
+Velocity (ticks/s) 0
+Effort (%) 0.0
+Effort (ticks) 0
+Temp 34.0
+Comm Errors 0
+Hardware Error 0
+Hardware Error: Input Voltage Error:  False
+Hardware Error: Overheating Error:  False
+Hardware Error: Motor Encoder Error:  False
+Hardware Error: Electrical Shock Error:  False
+Hardware Error: Overload Error:  False
+Watchdog Errors:  0
+Timestamp PC 1661552966.7202659
+Range (ticks) [0, 3827]
+Range (rad) [ 1.9174759848570513  ,  -3.953068490381297 ]
+Stalled True
+Stall Overload False
+Is Calibrated 0
+
 ```
 
+We see that it reports the position in both radians (with respect to the joint frame) and ticks (with respect to the servo encoder). DynamixelHelloXL430 handles the calibration between the two using its method `ticks_to_world_rad` through the following params:
 
+```bash
+>>$ stretch_params.py | grep head_pan | grep '_t '
+...              
+stretch_configuration_params.yaml         param.head_pan.range_t           [0, 3827]                     
+stretch_configuration_params.yaml         param.head_pan.zero_t            1250 
+```
+
+In addition to `move_to` and `move_by`, the class also implements a splined trajectory interface as discussed in the [Splined Trajectory Tutorial](./tutorial_splined_trajectory.py). 
 
 ### DynamixelXL430
 
-  Provides a thin wrapper to the Robotis Dynamixel SDK
+ DynamixelXL430 provides a thin wrapper to the [Robotis Dynamixel SDK](http://emanual.robotis.com/docs/en/dxl/x/xl430-w250/#control-table). You may chose to interact with the servo at this level as well. For example to jog the head_pan 200 ticks:
+```python
+import stretch_body.dynamixel_XL430
+import time
+
+m = stretch_body.dynamixel_XL430.DynamixelXL430(11, '/dev/hello-dynamixel-head',baud=115200)
+m.startup()
+
+x=m.get_pos() #In encoder ticks
+m.go_to_pos(x+200) #Move 200 ticks incremental
+
+time.sleep(2.0)
+m.stop()
+```
+
+
 
 ------
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
