@@ -11,6 +11,7 @@ Stretch ROS driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api
 
 Begin by running the following command in the terminal in a terminal.
 
+
 ```bash
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
@@ -18,12 +19,23 @@ roslaunch stretch_core stretch_driver.launch
 
 Switch the mode to *position* mode using a rosservice call. Then run the stow command node.
 
-```bash
-# Terminal 2
-rosservice call /switch_to_position_mode
-cd catkin_ws/src/stretch_tutorials/src/
-python stow_command.py
-```
+=== "Melodic"
+    ```bash
+    # Terminal 2
+    rosservice call /switch_to_position_mode
+    cd catkin_ws/src/stretch_tutorials/src/
+    python stow_command.py
+    ```
+
+=== "Noetic"
+    ```bash
+    # Terminal 2
+    rosservice call /switch_to_position_mode
+    cd catkin_ws/src/stretch_tutorials/src/
+    python3 stow_command.py
+    ```
+
+
 
 
 This will send a `FollowJointTrajectory` command to stow Stretch's arm.

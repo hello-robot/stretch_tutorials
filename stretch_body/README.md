@@ -8,21 +8,24 @@ Stretch Body currently supports both Python2 and Python3. These tutorials assume
 ## Basics
 
 
-| ID  | Tutorial                                             | Description                                         |
-|-----|------------------------------------------------------|-----------------------------------------------------|
-| 1   | [Safe Coding](tutorial_safe_coding.md)               | Best practices in writing safe Stretch Body code    |
-| 2   | [Command line Tools](tutorial_command_line_tools.md) | Introduction to the Stretch Body command line tools |
-| 3   | [Simple Coding](tutorial_simple_coding.py)           | Simple examples of writing Stretch Body code        |
-| 4   | [Robot Motion](tutorial_robot_motion.md)             | Exploring how to command robot motion               |
-| 5   | [Robot Sensors](tutorial_robot_sensors.md)           | Exploring how to read robot sensors                 |
+|     | Tutorial                                                    | Description                                         |
+|-----|-------------------------------------------------------------|-----------------------------------------------------|
+| 1   | [Introduction](tutorial_introduction.md)                    | Introduction to the Stretch Body package            |
+| 2   | [Command line Tools](tutorial_command_line_tools.md)        | Introduction to the Stretch Body command line tools |
+| 3   | [Deep dive: Stretch Body API](tutorial_stretch_body_api.md) | Deep dive on using the Stretch Body API             |
+| 4   | [Deep dive: Robot Motion](tutorial_robot_motion.md)         | Deep dive on commanding robot motion                |
+
 
 
 ## Advanced
-| ID  | Tutorial                                                 | Description                                                 |
-|-----|----------------------------------------------------------|-------------------------------------------------------------|
-| 1   | [Dynamixel Servos](tutorial_dynamixel_servos.md)         | How to configure and work with the Stretch Dynamixel servos |
-| 2   | [Parameter Management](tutorial_parameter_management.md) | How to work with Stretch's parameter system                 |
-| 3   | [Splined Trajectories](tutorial_splined_trajectories.md) | How to generated coordinated, smooth, and full-body motion  |
-| 4   | [Collision Avoidance](tutorial_collision_avoidance.md)   | How to work with Stretch's collision avoidance system       |
-| 5   | [Changing Tools](tutorial_tool_change.md)                | How to integrate 3rd party tools onto the Stretch wrist     |
+|     | Tutorial                                                   | Description                                                 |
+|-----|------------------------------------------------------------|-------------------------------------------------------------|
+| 1   | [Dynamixel Servos](tutorial_dynamixel_servos.md)           | How to configure and work with the Stretch Dynamixel servos |
+| 2   | [Parameter Management](tutorial_parameter_management.md)   | How to work with Stretch's parameter system                 |
+| 3   | [Splined Trajectories](tutorial_splined_trajectories.md)   | How to generated coordinated, smooth, and full-body motion  |
+| 4   | [Collision Avoidance](tutorial_collision_avoidance.md)     | How to work with Stretch's collision avoidance system       |
+| 5   | [Contact Models](tutorial_contact_models.md)               | How to work with Stretch's contact detection system         |
+| 6   | [Changing Tools](tutorial_tool_change.md)                  | How to configure Stretch to work with a different tool      |
+| 7   | [Adding Custom Wrist DOF](tutorial_extending_wrist_dof.md) | How to integrate custom DOF onto the wrist                  |
+| 8   | [Safety Features](tutorial_safe_coding.md)                 | Learn about Stretch Body features that keep the robot safe  |
 
