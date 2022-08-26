@@ -44,7 +44,7 @@ class JointStatePublisher():
 		# Use of forloop to parse the names of the requested joints list.
 		# The index() function returns the index at the first occurrence of
 		# the name of the requested joint in the self.joint_states.name list
-		for joint in joints
+		for joint in joints:
 			if joint == "wrist_extension":
 				index = self.joint_states.name.index('joint_arm_l0')
 				joint_positions.append(4*self.joint_states.position[index])
