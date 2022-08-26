@@ -44,7 +44,12 @@ class JointStatePublisher():
 		# Use of forloop to parse the names of the requested joints list.
 		# The index() function returns the index at the first occurrence of
 		# the name of the requested joint in the self.joint_states.name list
-		for joint in joints:
+		for joint in joints
+			if joint == "wrist_extension":
+				index = self.joint_states.name.index('joint_arm_l0')
+				joint_positions.append(4*self.joint_states.position[index])
+				continue
+
 			index = self.joint_states.name.index(joint)
 			joint_positions.append(self.joint_states.position[index])
 
@@ -74,7 +79,7 @@ if __name__ == '__main__':
 
 	# Create a list of the joints and name them joints. These will be an argument
 	# for the print_states() function
-	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_l3", "joint_wrist_yaw"]
+	joints = ["joint_lift", "wrist_extension", "joint_wrist_yaw"]
 	# joints = ["joint_head_pan","joint_head_tilt", "joint_gripper_finger_left", "joint_gripper_finger_right"]
 	JSP.print_states(joints)
 
