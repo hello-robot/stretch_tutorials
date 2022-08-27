@@ -64,7 +64,7 @@ if __name__ == '__main__':
 	# Initialize the node.
 	rospy.init_node('joint_state_printer', anonymous=True)
 
-	# Declare object from JointStatePublisher class
+	# Instantiate a `JointStatePublisher()` object
 	JSP = JointStatePublisher()
 
 	# Use the rospy.sleep() function to allow the class to initialize before

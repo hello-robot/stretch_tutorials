@@ -48,7 +48,7 @@ class PointCloudTransformer:
         """
         A function that extracts the points from the stored PointCloud2 message
         and appends those points to a PointCloud message. Then the function transforms
-        the PointCloud from its the header frame id, 'camera_color_optical_frame'
+        the PointCloud from its header frame id, 'camera_color_optical_frame'
         to the 'base_link' frame.
         :param self: The self reference.
         """
@@ -91,7 +91,7 @@ if __name__=="__main__":
     # Initialize the node, and call it "pointcloud_transformer"
     rospy.init_node('pointcloud_transformer',anonymous=True)
 
-    # Declare object, PCT, from the PointCloudTransformer class.
+    # Instanstiate a `PointCloudTransformer()` object
     PCT = PointCloudTransformer()
 
     # We're going to publish information at 1 Hz
@@ -103,6 +103,6 @@ if __name__=="__main__":
     # Run while loop until the node is shutdown
     while not rospy.is_shutdown():
 
-        # Run the pcl_transformer method
+        # Run the `pcl_transformer()` method
         PCT.pcl_transformer()
         rate.sleep()

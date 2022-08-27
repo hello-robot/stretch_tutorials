@@ -3,7 +3,7 @@
 # Import modules
 import rospy
 
-# Import the Marker message type from the visualization_msgs package.
+# Import the Marker message type from the visualization_msgs package
 from visualization_msgs.msg import Marker
 
 class Balloon():
@@ -18,7 +18,7 @@ class Balloon():
 		# Set up a publisher.  We're going to publish on a topic called balloon
 		self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
 
-		# Create a marker.  Markers of all shapes share a common type.
+		# Create a marker.  Markers of all shapes share a common type
 		self.marker = Marker()
 
 		# Set the frame ID and type.  The frame ID is the frame in which the position of the marker
@@ -61,10 +61,9 @@ class Balloon():
 		# Create log message
 		rospy.loginfo("Publishing the balloon topic. Use RViz to visualize.")
 
-
 	def publish_marker(self):
 		"""
-		Function that publishes the sphere marker
+		Function that publishes the sphere marker.
 		:param self: The self reference.
 
 		:publishes self.marker: Marker message.
@@ -72,12 +71,11 @@ class Balloon():
 		# publisher the marker
 		self.pub.publish(self.marker)
 
-
 if __name__ == '__main__':
 	# Initialize the node, as usual
 	rospy.init_node('marker')
 
-	# Declare object from the Balloon class
+	# Instanstiate a `Balloon()` object
 	balloon = Balloon()
 
 	# Set a rate

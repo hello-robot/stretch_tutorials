@@ -13,11 +13,11 @@ from sensor_msgs.msg import JointState
 from std_msgs.msg import Int32
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # Import hello_misc script for handling trajectory goals with an action client
@@ -141,11 +141,11 @@ class GetVoiceCommands:
         if self.voice_command == 'back':
             command = {'joint': 'translate_mobile_base', 'inc': -self.get_inc()['translate']}
 
-        # Move base left command
+        # Rotate base left command
         if self.voice_command == 'left':
             command = {'joint': 'rotate_mobile_base', 'inc': self.get_inc()['rad']}
 
-        # Move base right command
+        # Rotate base right command
         if self.voice_command == 'right':
             command = {'joint': 'rotate_mobile_base', 'inc': -self.get_inc()['rad']}
 
@@ -222,19 +222,18 @@ class VoiceTeleopNode(hm.HelloNode):
             rospy.loginfo('inc = {0}'.format(inc))
             new_value = inc
 
-            # Assign the new_value position to the trajectory goal message type.
+            # Assign the new_value position to the trajectory goal message type
             point.positions = [new_value]
             trajectory_goal.trajectory.points = [point]
             trajectory_goal.trajectory.header.stamp = rospy.Time.now()
             rospy.loginfo('joint_name = {0}, trajectory_goal = {1}'.format(joint_name, trajectory_goal))
 
-            # Make the action call and send goal of the new joint position.
+            # Make the action call and send goal of the new joint position
             self.trajectory_client.send_goal(trajectory_goal)
             rospy.loginfo('Done sending command.')
 
             # Reprint the voice command menu
             self.speech.print_commands()
-
 
     def main(self):
         """
@@ -255,11 +254,9 @@ class VoiceTeleopNode(hm.HelloNode):
             self.send_command(command)
             rate.sleep()
 
-
 if __name__ == '__main__':
     try:
-        # Declare object from the VoiceTeleopNode class. Then execute the
-        # main() method/function
+        # Instanstiate a `VoiceTeleopNode()` object and execute the main() method
         node = VoiceTeleopNode()
         node.main()
     except KeyboardInterrupt:

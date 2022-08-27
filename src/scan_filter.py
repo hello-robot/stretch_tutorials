@@ -31,7 +31,6 @@ class ScanFilter:
 		# Create log message
 		rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
 
-
 	def callback(self,msg):
 		"""
 		Callback function to deal with incoming laserscan messages.
@@ -40,8 +39,8 @@ class ScanFilter:
 
 		:publishes msg: updated laserscan message.
 		"""
-		# Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
-		# laser, with different numbers of beams
+		# Figure out the angles of the scan.  We're going to do this each time,
+		# in case we're subscribing to more than one laser, with different numbers of beams
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 
 		# Work out the y coordinates of the ranges

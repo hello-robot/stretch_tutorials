@@ -25,7 +25,7 @@ class EdgeDetection:
         parameter values.
         :param self: The self reference.
         """
-        # Initialize the CvBridge class
+        # Instantiate a CvBridge() object
         self.bridge = CvBridge()
 
         # Initialize subscriber

@@ -5,11 +5,11 @@ import rospy
 import time
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # Import hello_misc script for handling trajectory goals with an action client
@@ -19,8 +19,11 @@ class SingleJointActuator(hm.HelloNode):
 	"""
 	A class that sends multiple joint trajectory goals to a single joint.
 	"""
-	# Initialize the inhereted hm.Hellonode class
 	def __init__(self):
+		"""
+		Function that initializes the inhereted hm.HelloNode class.
+		:param self: The self reference.
+		"""
 		hm.HelloNode.__init__(self)
 
 	def issue_command(self):
@@ -60,7 +63,7 @@ class SingleJointActuator(hm.HelloNode):
 		# trajectory points
 		trajectory_goal.trajectory.points = [point0]#, point1]
 
-		# Specify the coordinate frame that we want (base_link) and set the time to be now.
+		# Specify the coordinate frame that we want (base_link) and set the time to be now
 		trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 		trajectory_goal.trajectory.header.frame_id = 'base_link'
 
@@ -82,11 +85,9 @@ class SingleJointActuator(hm.HelloNode):
 		self.issue_command()
 		time.sleep(2)
 
-
 if __name__ == '__main__':
 	try:
-		# Declare object from the SingleJointActuator class. Then execute the
-		# main() method/function
+        # Instanstiate a `SingleJointActuator()` object and execute the main() method
 		node = SingleJointActuator()
 		node.main()
 	except KeyboardInterrupt:

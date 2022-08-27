@@ -8,11 +8,11 @@ import os
 import csv
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # We're going to subscribe to 64-bit integers, so we need to import the definition
@@ -31,7 +31,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
     """
     def __init__(self, export_data=False):
         """
-        Function that initializes the subscriber,and other features.
+        Function that initializes the subscriber and other features.
         :param self: The self reference.
         :param export_data: A boolean message type.
         """
@@ -53,7 +53,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
         # Create boolean data type for conditional statements if you want to export effort data.
         self.export_data = export_data
 
-
     def callback(self, msg):
         """
         Callback function to update and store JointState messages.
@@ -62,7 +61,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
         """
         # Store the joint messages for later use
         self.joint_states = msg
-
 
     def issue_command(self):
         """
@@ -76,11 +74,11 @@ class JointActuatorEffortSensor(hm.HelloNode):
         trajectory_goal = FollowJointTrajectoryGoal()
         trajectory_goal.trajectory.joint_names = self.joints
 
-        # Provide desired positions for joint name.
+        # Provide desired positionsfor joint name.
         point0 = JointTrajectoryPoint()
         point0.positions = [0.9]
 
-        # Set a list to the trajectory_goal.trajectory.points
+        # Set a list to the `trajectory_goal.trajectory.points`
         trajectory_goal.trajectory.points = [point0]
 
         # Specify the coordinate frame that we want (base_link) and set the time to be now.
@@ -92,7 +90,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.trajectory_client.send_goal(trajectory_goal, feedback_cb=self.feedback_callback, done_cb=self.done_callback)
         rospy.loginfo('Sent position goal = {0}'.format(trajectory_goal))
         self.trajectory_client.wait_for_result()
-
 
     def feedback_callback(self,feedback):
         """
@@ -130,7 +127,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
         else:
             self.joint_effort.append(current_effort)
 
-
     def done_callback(self, status, result):
         """
         The done_callback function will be called when the joint action is complete.
@@ -157,7 +153,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
                 writer.writerow(self.joints)
                 writer.writerows(self.joint_effort)
 
-
     def main(self):
         """
         Function that initiates the issue_command function.
@@ -169,7 +164,6 @@ class JointActuatorEffortSensor(hm.HelloNode):
         rospy.loginfo('issuing command...')
         self.issue_command()
         time.sleep(2)
-
 
 if __name__ == '__main__':
 	try:

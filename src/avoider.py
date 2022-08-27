@@ -27,7 +27,7 @@ class Avoider:
         self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
         self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
 
-        # We're going to assume that the robot is pointing up the x-axis, so that
+        # We're going to assume that the robot is pointing at the x-axis, so that
         # any points with y coordinates further than half of the defined
         # width (1 meter) from the axis are not considered.
         self.width = 1
@@ -47,8 +47,6 @@ class Avoider:
         self.twist.angular.y = 0.0
         self.twist.angular.z = 0.0
 
-
-    # Called every time we get a LaserScan message from ROS
     def set_speed(self,msg):
         """
         Callback function to deal with incoming laserscan messages.
@@ -57,8 +55,8 @@ class Avoider:
 
         :publishes self.twist: Twist message.
         """
-        # Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
-        # laser, with different numbers of beams
+        # Figure out the angles of the scan.  We're going to do this each time,
+        # in case we're subscribing to more than one laser, with different numbers of beams
         angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 
         # Work out the y coordinates of the ranges
@@ -81,7 +79,7 @@ if __name__ == '__main__':
     # Initialize the node, and call it "avoider"
     rospy.init_node('avoider')
 
-	# Instantiate he Avoider class
+	# Instantiate the Avoider class
     Avoider()
 
     # Give control to ROS.  This will allow the callback to be called whenever new
