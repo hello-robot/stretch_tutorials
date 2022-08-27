@@ -80,6 +80,7 @@ extra:
     - icon: material/linkedin
       link: https://linkedin.com/company/hello-robot-inc
 
+
 nav:
   - Getting to Know Stretch:
       - Overview: ./getting_started/README.md
@@ -94,9 +95,9 @@ nav:
   - Stretch Body:
     - Overview: ./stretch_body/README.md
     - Basics:
-        - Safe Coding: ./stretch_body/tutorial_safe_coding.md
+        - Introduction: ./stretch_body/tutorial_introduction.md
         - Command line Tools: ./stretch_body/tutorial_command_line_tools.md
-        - Simple Coding: ./stretch_body/tutorial_simple_coding.py
+        - Stretch Body API: ./stretch_body/tutorial_stretch_body_api.md
         - Robot Motion: ./stretch_body/tutorial_robot_motion.md
         - Robot Sensors: ./stretch_body/tutorial_robot_sensors.md
     - Advanced:
@@ -104,7 +105,10 @@ nav:
         - Parameter Management: ./stretch_body/tutorial_parameter_management.md
         - Splined Trajectories: ./stretch_body/tutorial_splined_trajectories.md
         - Collision Avoidance: ./stretch_body/tutorial_collision_avoidance.md
+        - Contact Models: ./stretch_body/tutorial_contact_models.md
         - Changing Tools: ./stretch_body/tutorial_tool_change.md
+        - Custom Wrist DOF: ./stretch_body/tutorial_extending_wrist_dof.md
+        - Safety Features: ./stretch_body/tutorial_safe_coding.md
   - ROS1:
     - Overview: ./ros1/README.md
     - Basics:

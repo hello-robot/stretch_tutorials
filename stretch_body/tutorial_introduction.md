@@ -13,7 +13,7 @@ It encapsulates the:
 * Wrist  board with accelerometer (Wacc)
 * Base power and IMU board (Pimu)
 
-As shown below, the primary programming interface to Stretch Body s the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py).  This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicate the robot's firmware over USB using various utility classes.
+As shown below, the primary programming interface to Stretch Body is the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py).  This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicate the robot's firmware over USB using various utility classes.
 
 ![alt_text](images/stretch_body_overview.png "image_tooltip")
 
@@ -31,7 +31,7 @@ Stretch also includes 3rd party hardware devices that are not accessible through
 The primary developer interface to  Stretch_Body is the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py).  Let's write some code to explore the interface. Launch an interactive Python terminal:
 
 ```bash
-hello-robot@stretch-re2-9999:~$ ipython
+>>$ ipython
 In [1]: 
 ```
 
@@ -118,7 +118,7 @@ class Arm(Device):
                        'motor':self.motor.status,'timestamp_pc':0}
 ```
 
-The Status dictionaries are  automatically updated by a background thread of the Robot at around 20Hz. The Status data can be accessed via the Robot. For example:
+The Status dictionaries are  automatically updated by a background thread of the Robot at around 25Hz. The Status data can be accessed via the Robot. For example:
 
 ```python
 if robot.arm.status['pos']>0.25:
