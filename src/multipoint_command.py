@@ -19,22 +19,24 @@ class MultiPointCommand(hm.HelloNode):
 	"""
 	A class that sends multiple joint trajectory goals to the stretch robot.
 	"""
-
-	# Initialize the inhereted hm.Hellonode class
 	def __init__(self):
+		"""
+		Function that initializes the inhereted hm.HelloNode class.
+		:param self: The self reference.
+		"""
 		hm.HelloNode.__init__(self)
 
 	def issue_multipoint_command(self):
 		"""
 		Function that makes an action call and sends multiple joint trajectory goals
-		to the joint_lift, wrist_extension, and joint_wrist_yaw.
+		for the joint_lift, wrist_extension, and joint_wrist_yaw joints.
 		:param self: The self reference.
 		"""
 		# Set point0 as a JointTrajectoryPoint()
 		point0 = JointTrajectoryPoint()
 
-		# Provide desired positions of lift, wrist extension, and yaw of
-		# the wrist (in meters)
+		# Provide desired positions of lift (m), wrist extension (m), and yaw of
+		# the wrist (radians)
 		point0.positions = [0.2, 0.0, 3.4]
 
 		# Provide desired velocity of the lift (m/s), wrist extension (m/s),
@@ -85,8 +87,6 @@ class MultiPointCommand(hm.HelloNode):
 		rospy.loginfo('Sent list of goals = {0}'.format(trajectory_goal))
 		self.trajectory_client.wait_for_result()
 
-	# Create a funcion, main(), to do all of the setup the hm.HelloNode class
-	# and issue the stow command
 	def main(self):
 		"""
 		Function that initiates the multipoint_command function.
@@ -99,10 +99,9 @@ class MultiPointCommand(hm.HelloNode):
 		self.issue_multipoint_command()
 		time.sleep(2)
 
-
 if __name__ == '__main__':
     try:
-        # Instantiate the MultiPointCommand class and execute the main() method
+        # Instanstiate a `MultiPointCommand()` object and execute the main() method
         node = MultiPointCommand()
         node.main()
     except KeyboardInterrupt:

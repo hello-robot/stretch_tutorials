@@ -19,11 +19,12 @@ class StowCommand(hm.HelloNode):
     '''
     A class that sends a joint trajectory goal to stow the Stretch's arm.
     '''
-
-    # Initialize the inhereted hm.Hellonode class
     def __init__(self):
+        """
+        Function that initializes the inhereted hm.HelloNode class.
+        :param self: The self reference.
+        """
         hm.HelloNode.__init__(self)
-
 
     def issue_stow_command(self):
         '''
@@ -34,8 +35,8 @@ class StowCommand(hm.HelloNode):
         stow_point = JointTrajectoryPoint()
         stow_point.time_from_start = rospy.Duration(0.000)
 
-        # Provide desired positions of lift, wrist extension, and yaw of
-        # the wrist (in meters)
+        # Provide desired positions of lift (meters), wrist extension (meters), and yaw of
+        # the wrist (radians)
         stow_point.positions = [0.2, 0.0, 3.4]
 
         # Set trajectory_goal as a FollowJointTrajectoryGoal and define
@@ -57,8 +58,6 @@ class StowCommand(hm.HelloNode):
         rospy.loginfo('Sent stow goal = {0}'.format(trajectory_goal))
         self.trajectory_client.wait_for_result()
 
-    # Create a funcion, main(), to do all of the setup the hm.HelloNode class
-    # and issue the stow command
     def main(self):
         '''
         Function that initiates stow_command function.
@@ -71,10 +70,9 @@ class StowCommand(hm.HelloNode):
         self.issue_stow_command()
         time.sleep(2)
 
-
 if __name__ == '__main__':
     try:
-        # Declare object from StowCommand class then execute the main() method
+        # Instanstiate a `StowCommand()` object and execute the main() method
         node = StowCommand()
         node.main()
     except KeyboardInterrupt:

@@ -65,7 +65,6 @@ class Plotter():
                 # Reset y_anim for the next joint effort animation
                 del self.y_anim[:]
 
-
             # Conditional statement for regular plotting (No animation)
             else:
                 self.data[joint].plot(kind='line')
@@ -73,18 +72,17 @@ class Plotter():
                 # plt.savefig(save_path, bbox_inches='tight')
                 plt.show()
 
-
     def plot_animate(self,i):
         """
         Function that plots every increment of the dataframe.
         :param self: The self reference.
         :param i: index value.
         """
-        # Append self.effort values for given joint.
+        # Append self.effort values for given joint
         self.y_anim.append(self.effort.values[i])
         plt.plot(self.y_anim, color='blue')
 
-
 if __name__ == '__main__':
+    # Instanstiate a `Plotter()` object and execute the `plot_data()` method
     viz = Plotter(animate=True)
     viz.plot_data()
