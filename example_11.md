@@ -60,7 +60,7 @@ class PointCloudTransformer:
         self.pointcloud2_sub = rospy.Subscriber("/camera/depth/color/points", PointCloud2, self.callback_pcl2, queue_size=1)
         self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)
         self.pcl2_cloud = None
-        self.listener = tf.TransformROS(True, rospy.Duration(10.0))
+        self.listener = tf.TransformListener(True, rospy.Duration(10.0))
         rospy.loginfo('Publishing transformed PointCloud. Use RViz to visualize')
 
     def callback_pcl2(self,msg):
