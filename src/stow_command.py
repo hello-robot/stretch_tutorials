@@ -28,7 +28,7 @@ class StowCommand(hm.HelloNode):
 
     def issue_stow_command(self):
         '''
-        Function that makes an action call and sends stow postion goal.
+        Function that makes an action call and sends stow position goal.
         :param self: The self reference.
         '''
         # Set stow_point as a JointTrajectoryPoint()
