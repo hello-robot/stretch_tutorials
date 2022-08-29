@@ -68,7 +68,7 @@ class Balloon():
 
 
 if __name__ == '__main__':
-	rospy.init_node('marker', argv=sys.argv)
+	rospy.init_node('marker')
 	balloon = Balloon()
 	rate = rospy.Rate(10)
 
