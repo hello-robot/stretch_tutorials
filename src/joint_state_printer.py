@@ -4,8 +4,8 @@
 import rospy
 import sys
 
-# We're going to subscribe to 64-bit integers, so we need to import the definition
-# for them
+# We're going to subscribe to a JointState message type, so we need to import
+# the definition for it
 from sensor_msgs.msg import JointState
 
 class JointStatePublisher():
@@ -15,7 +15,7 @@ class JointStatePublisher():
 
 	def __init__(self):
 		"""
-		Function that initializes the subsriber.
+		Function that initializes the subscriber.
 		:param self: The self reference
 		"""
 		# Set up a subscriber. We're going to subscribe to the topic "joint_states"
@@ -36,7 +36,7 @@ class JointStatePublisher():
 		"""
 		print_states function to deal with the incoming JointState messages.
 		:param self: The self reference.
-		:param joints: A list of joint names.
+		:param joints: A list of string values of joint names.
 		"""
 		# Create an empty list that will store the positions of the requested joints
 		joint_positions = []
@@ -45,6 +45,11 @@ class JointStatePublisher():
 		# The index() function returns the index at the first occurrence of
 		# the name of the requested joint in the self.joint_states.name list
 		for joint in joints:
+			if joint == "wrist_extension":
+				index = self.joint_states.name.index('joint_arm_l0')
+				joint_positions.append(4*self.joint_states.position[index])
+				continue
+
 			index = self.joint_states.name.index(joint)
 			joint_positions.append(self.joint_states.position[index])
 
@@ -74,7 +79,7 @@ if __name__ == '__main__':
 
 	# Create a list of the joints and name them joints. These will be an argument
 	# for the print_states() function
-	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_l3", "joint_wrist_yaw"]
+	joints = ["joint_lift", "wrist_extension", "joint_wrist_yaw"]
 	# joints = ["joint_head_pan","joint_head_tilt", "joint_gripper_finger_left", "joint_gripper_finger_right"]
 	JSP.print_states(joints)
 
