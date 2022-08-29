@@ -80,19 +80,19 @@ from math import sin
 from sensor_msgs.msg import LaserScan
 
 class ScanFilter:
-  """
-  A class that implements a LaserScan filter that removes all of the points
-  that are not in front of the robot.
-  """
+	"""
+	A class that implements a LaserScan filter that removes all of the points
+	that are not in front of the robot.
+	"""
 	def __init__(self):
 		self.width = 1.0
 		self.extent = self.width / 2.0
 		self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
-    rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
+		rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
 
 	def callback(self,msg):
-    """
+		"""
 		Callback function to deal with incoming LaserScan messages.
 		:param self: The self reference.
 		:param msg: The subscribed LaserScan message.
