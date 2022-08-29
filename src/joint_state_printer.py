@@ -15,7 +15,7 @@ class JointStatePublisher():
 
 	def __init__(self):
 		"""
-		Function that initializes the subsriber.
+		Function that initializes the subscriber.
 		:param self: The self reference
 		"""
 		# Set up a subscriber. We're going to subscribe to the topic "joint_states"
@@ -36,7 +36,7 @@ class JointStatePublisher():
 		"""
 		print_states function to deal with the incoming JointState messages.
 		:param self: The self reference.
-		:param joints: A list of joint names.
+		:param joints: A list of string values of joint names.
 		"""
 		# Create an empty list that will store the positions of the requested joints
 		joint_positions = []
