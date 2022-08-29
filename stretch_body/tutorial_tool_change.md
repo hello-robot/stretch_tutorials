@@ -1,22 +1,22 @@
-# Stretch RE1: Tool Change Tutorial
+# Tutorial: Tool Change
 
 Many users will want to work with tools other than the default Stretch Gripper that ships with the robot. In this tutorial you will learn how to configure the Stretch software interfaces to support other tools.
 
 ## Changing Tool Interfaces in Stretch Body
 
-Stretch Body v0.1.x and later supports a plug-in based architecture for tools. A tool interface is an extension of the [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py) class that supports additional degrees of freedom. 
+Stretch Body supports a plug-in based architecture for tools. A tool is an extension of the [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py) class that supports additional degrees of freedom. 
 
 ### Standard Tools
 
 Stretch Body supports two tool interfaces by default: The [ToolNone & ToolStretchGripper](https://github.com/hello-robot/stretch_body/tree/master/body/end_of_arm_tools.py). We will explore swapping between these default tools.
 
-#### ToolStretchGripper
+### ToolStretchGripper
 
-The RE1 is configured to load the ToolStretchGripper interface by default. This tool is loaded according to the `stretch_re1_user_params.yaml` field:
+Stretch is configured to load the ToolStretchGripper interface by default. This tool is loaded according to the `robot.tool` parameter:
 
-```yaml
-robot:
-  tool: tool_stretch_gripper
+```bash
+>>$ stretch_params.py | grep robot.tool
+stretch_body.robot_params.nominal_params     param.robot.tool               tool_stretch_gripper
 ```
 
 We can interact with this tool from iPython
@@ -42,7 +42,7 @@ In [6]: r.end_of_arm.stow()
 In [7]: r.stop()
 ```
 
-#### ToolNone
+### ToolNone
 
 The ToolNone interface can be loaded when no tool is attached to the Wrist Yaw joint.  To switch to this interface, simply update the field in your `stretch_re1_user_params.yaml` to:
 
@@ -73,15 +73,15 @@ In [7]: r.stop()
 
 ## Loading Tool Interfaces from the Stretch Tool Share
 
-The [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share/) is an open Git repository for non-standard RE1 tools. It hosts the CAD, URDF, and Python files needed to integrate these tools onto your robot.
+The [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share/) is an open Git repository for non-standard Stretch tools. It hosts the CAD, URDF, and Python files needed to integrate these tools onto your robot.
 
 To use Stretch Tool Share tools, first update your installation:
 
 ```console
-$ pip2 install hello-robot-stretch-tool-share
+$ pip install -U hello-robot-stretch-tool-share
 ```
 
-As an example, we see on the Tool Share that there is a tool, the [ToolDryEraseToolHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py) which [extends the EndOfArm](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py) class. In order to load this tool interface , modify your `stretch_re1_user_params.yaml` to load the tool as before. We will also need to tell it where to find the tool's [parameter file](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py):
+As an example, we see on the Tool Share that there is a tool, the [ToolDryEraseToolHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py) which [extends the EndOfArm](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py) class. In order to load this tool interface , modify your `stretch_user_params.yaml` to load the tool as before. We will also need to tell it where to find the tool's [parameter file](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py):
 
 ```yaml
 robot:
@@ -220,7 +220,7 @@ class ToolStretchGripper(EndOfArm):
         self.move_to('stretch_gripper', self.params['stow']['stretch_gripper'])
 ```
 
-For tools that are not a part of Stretch Body, such as from the Tool Share, you must include the tool parameters as well in your  `stretch_re1_user_params.yaml`. A robot that must support many tools may have user YAML that looks like:
+For tools that are not a part of Stretch Body, such as from the Tool Share, you must include the tool parameters as well in your  `stretch_user_params.yaml`. A robot that must support many tools may have user YAML that looks like:
 
 ```yaml
 params:

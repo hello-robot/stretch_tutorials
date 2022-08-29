@@ -107,7 +107,7 @@ nav:
         - Collision Avoidance: ./stretch_body/tutorial_collision_avoidance.md
         - Contact Models: ./stretch_body/tutorial_contact_models.md
         - Changing Tools: ./stretch_body/tutorial_tool_change.md
-        - Custom Wrist DOF: ./stretch_body/tutorial_extending_wrist_dof.md
+        - Custom Wrist DOF: ./stretch_body/tutorial_custom_wrist_dof.md
         - Safety Features: ./stretch_body/tutorial_safe_coding.md
   - ROS1:
     - Overview: ./ros1/README.md

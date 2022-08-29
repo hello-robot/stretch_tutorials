@@ -18,14 +18,14 @@ Stretch Body currently supports both Python2 and Python3. These tutorials assume
 
 
 ## Advanced
-|     | Tutorial                                                   | Description                                                |
-|-----|------------------------------------------------------------|------------------------------------------------------------|
-| 1   | [Dynamixel Servos](tutorial_dynamixel_servos.md)           | How to configure and work with the Dynamixel servos        |
-| 2   | [Parameter Management](tutorial_parameter_management.md)   | How to work with parameter system                          |
-| 3   | [Splined Trajectories](tutorial_splined_trajectories.md)   | How to generated coordinated, smooth, and full-body motion |
-| 4   | [Collision Avoidance](tutorial_collision_avoidance.md)     | How to work with the collision avoidance system            |
-| 5   | [Contact Models](tutorial_contact_models.md)               | How to work with the contact detection system              |
-| 6   | [Changing Tools](tutorial_tool_change.md)                  | How to configure Stretch to work with a different tool     |
-| 7   | [Custom Wrist DOF](tutorial_extending_wrist_dof.md) | How to integrate custom DOF onto the wrist                 |
-| 8   | [Safety Features](tutorial_safe_coding.md)                 | Learn about Stretch Body features that keep the robot safe |
+|     | Tutorial                                                 | Description                                                |
+|-----|----------------------------------------------------------|------------------------------------------------------------|
+| 1   | [Dynamixel Servos](tutorial_dynamixel_servos.md)         | How to configure and work with the Dynamixel servos        |
+| 2   | [Parameter Management](tutorial_parameter_management.md) | How to work with parameter system                          |
+| 3   | [Splined Trajectories](tutorial_splined_trajectories.md) | How to generated coordinated, smooth, and full-body motion |
+| 4   | [Collision Avoidance](tutorial_collision_avoidance.md)   | How to work with the collision avoidance system            |
+| 5   | [Contact Models](tutorial_contact_models.md)             | How to work with the contact detection system              |
+| 6   | [Changing Tools](tutorial_tool_change.md)                | How to configure Stretch to work with a different tool     |
+| 7   | [Custom Wrist DOF](tutorial_custom_wrist_dof.md)         | How to integrate custom DOF onto the wrist                 |
+| 8   | [Safety Features](tutorial_safe_coding.md)               | Learn about Stretch Body features that keep the robot safe |
 

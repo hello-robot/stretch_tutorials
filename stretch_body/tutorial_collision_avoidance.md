@@ -1,15 +1,36 @@
-![](./images/banner.png)
-# Working with the Collision Avoidance System
+# Tutorial: Collision Avoidance
 
 In this tutorial we will discuss the simple collision avoidance system that runs as a part of Stretch Body.
 
-**Note**: This tutorial applies to Stretch Body version 0.1.x or greater.
-
 ## Overview
 
-Stretch Body includes a system to prevent inadvertent self-collisions.  
+Stretch Body includes a system to prevent inadvertent self-collisions.  It will dynamically limit the range of motion of each joint in order to prevent self-collisions. 
 
-**Note**: Self collisions are still possible while using the collision-avoidance system. The factory default collision models are coarse and not necessarily complete.
+**NOTE**: Self collisions are still possible while using the collision-avoidance system. The factory default collision models are coarse and not necessarily complete.
+
+This system is turned off by default starting with RE2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:
+
+```bash
+>>$ stretch_params.py | grep use_collision_manager
+stretch_body.robot_params.nominal_params       param.robot.use_collision_manager         1
+```
+
+If it is turned off you can enable it by adding the following to your stretch_user_yaml.py
+
+```bash
+robot:
+  use_collision_manager: 1
+```
+
+## Common Self Collisions
+
+Fortunately the simple kinematics of Stretch make self collisions fairly uncommon and simple to predict. The primary places where self collisions may occur are
+
+* The lift lowering the wrist or tool into the base
+* The arm retracting the wrist or tool into the base
+* The head_pan at `pos==0` and head_tilt at `pos=-90 deg` and the lift raising the arm into the camera (minor collision)
+* The DexWrist (if installed) and colliding with itself
+* The DexWrist (if installed) and colliding with the base
 
 ## Joint Limits
 
@@ -31,7 +52,7 @@ r.lift.set_soft_motion_limit_min(0.3)
 
 We see in the [API](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/lift.py), the value of `None` is used to designated no soft limit.
 
-It is possible that when setting the Soft Motion Limit that the joints current position is outside of the specified range. In this case, the joint will move to the nearest soft limit so as to comply with the limits. This can be demonstrated by:
+It is possible that when setting the Soft Motion Limit that the joint's current position is outside of the specified range. In this case, the joint will move to the nearest soft limit so as to comply with the limits. This can be demonstrated by:
 
 ```python
 import stretch_body.robot as robot
@@ -50,33 +71,20 @@ r.lift.set_soft_motion_limit_min(0.3)
 
 ```
 
-
-
 ## Collision Models
 
-The [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) class manages a set of [RobotCollisionModels](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py). Each [RobotCollisionModel](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) computes the soft limits for a subset of joints based on a simple geometric model. 
+The [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) class manages a set of [RobotCollisionModels](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py). Each [RobotCollisionModel](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) computes the soft limits for a subset of joints based on a simple geometric model. This geometric model captures the enumerated set of potential collisions listed above.
 
-The `step` method of a RobotCollisionModel returns the desired joint limits given that model. For example, the base class is simply:
+We can see the which collision models will execute when `use_collision_manager` is set to 1:
 
-```python
-    class RobotCollisionModel(Device):
-    	def step(self, status):
-        	return {'head_pan': [None, None],'head_tilt': [None, None], 
-                    'lift': [None, None],'arm': [None, None],'wrist_yaw': [None, None]}
+```bash
+>>$ stretch_params.py | grep collision | grep enabled
+stretch_body.robot_params.nominal_params    param.collision_arm_camera.enabled           1                             
+stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enabled      1  
+
 ```
 
-, where the value of `None` specifies that no-limit is specified and the full range-of-motion for the joint is acceptable.  
-
-We could define a new collision model that simply limits the lift range of motion to 1 meter by:
-
-```python
-    class MyCollisionModel(Device):
-    	def step(self, status):
-        	return {'head_pan': [None, None],'head_tilt': [None, None], 
-                    'lift': [None, 1.0],'arm': [None, None],'wrist_yaw': [None, None]}
-```
-
-Each model is registered with the [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) instance as a loadable plug-in. The [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py) class calls the `RobotCollision.step` method periodically at approximately 10hz. 
+We see two models. One that protects the camera from the arm, and one that protects the base from the gripper. Each model is registered with the [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) instance as a loadable plug-in. The [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py) class calls the `RobotCollision.step` method periodically at approximately 10hz. 
 
 `RobotCollision.step`  computes the 'AND' of the  limits specified across each Collision Model such that the most restrictive joint limits are set for each joint using the `set_soft_motion_limit_min , set_soft_motion_limt_max` methods. 
 
@@ -84,10 +92,12 @@ Each model is registered with the [RobotCollision](https://github.com/hello-robo
 
 The default collision models for Stretch Body are found in [robot_collision_models.py](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision_models.py). As of this writing, the provide models are:
 
-* CollisionArmCamera: Avoid collision of the head camera with the arm
-* CollisionStretchGripper: Avoid collision of the wrist-yaw and gripper with the base and ground
+* [CollisionArmCamera](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision_models.py#L8): Avoid collision of the head camera with the arm
+* [CollisionStretchGripper](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision_models.py#L75): Avoid collision of the wrist-yaw and gripper with the base and ground
 
-**Note**: The provided collision models are coarse and are provided to avoid common potentially harmful collisions only. Using these models it is still possible to collide the robot with itself in some cases.
+**NOTE**: The provided collision models are coarse and are provided to avoid common potentially harmful collisions only. Using these models it is still possible to collide the robot with itself in some cases.
+
+**NOTE**: Additional collision models are provided for the DexWrist
 
 ### Working with Models
 
@@ -143,6 +153,26 @@ robot_collision:
 ```
 
 ### Creating a Custom Collision Model
+
+The `step` method of a RobotCollisionModel returns the desired joint limits given that model. For example, the base class is simply:
+
+```python
+    class RobotCollisionModel(Device):
+    	def step(self, status):
+        	return {'head_pan': [None, None],'head_tilt': [None, None], 
+                    'lift': [None, None],'arm': [None, None],'wrist_yaw': [None, None]}
+```
+
+, where the value of `None` specifies that no-limit is specified and the full range-of-motion for the joint is acceptable.  
+
+We could define a new collision model that simply limits the lift range of motion to 1 meter by:
+
+```python
+    class MyCollisionModel(Device):
+    	def step(self, status):
+        	return {'head_pan': [None, None],'head_tilt': [None, None], 
+                    'lift': [None, 1.0],'arm': [None, None],'wrist_yaw': [None, None]}
+```
 
 It can be straightforward to create your own custom collision model. As an example, we will create a model that avoids collision of the arm with a table top by
 

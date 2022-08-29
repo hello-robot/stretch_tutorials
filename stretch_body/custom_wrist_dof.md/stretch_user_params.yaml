@@ -1,3 +1,8 @@
+end_of_arm:
+  devices:
+    wrist_pitch:
+      py_class_name: WristPitch
+      py_module_name: wrist_pitch
 
 wrist_pitch:
   flip_encoder_polarity: 0
