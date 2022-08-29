@@ -8,12 +8,12 @@ from geometry_msgs.msg import Twist
 
 class Move:
 	"""
-	A class that sends Twist messages to move the Stretch robot foward.
+	A class that sends Twist messages to move the Stretch robot forward.
 	"""
 	def __init__(self):
 		"""
 		Function that initializes the publisher.
-		:param self: The self reference
+		:param self: The self reference.
 		"""
 		# Setup a publisher that will send the velocity commands to Stretch
 		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist

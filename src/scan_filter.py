@@ -10,7 +10,7 @@ from sensor_msgs.msg import LaserScan
 class ScanFilter:
 	"""
 	A class that implements a LaserScan filter that removes all of the points.
-	that are not infront of the robot.
+	that are not in front of the robot.
 	"""
 	def __init__(self):
 		# We're going to assume that the robot is pointing up the x-axis, so that
@@ -33,11 +33,11 @@ class ScanFilter:
 
 	def callback(self,msg):
 		"""
-		Callback function to deal with incoming laserscan messages.
+		Callback function to deal with incoming LaserScan messages.
 		:param self: The self reference.
-		:param msg: The subscribed laserscan message.
+		:param msg: The subscribed LaserScan message.
 
-		:publishes msg: updated laserscan message.
+		:publishes msg: updated LaserScan message.
 		"""
 		# Figure out the angles of the scan.  We're going to do this each time,
 		# in case we're subscribing to more than one laser, with different numbers of beams
