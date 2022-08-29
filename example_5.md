@@ -63,7 +63,7 @@ class JointStatePublisher():
 		"""
 		joint_positions = []
 		for joint in joints:
-      if joint == "wrist_extension":
+			if joint == "wrist_extension":
 				index = self.joint_states.name.index('joint_arm_l0')
 				joint_positions.append(4*self.joint_states.position[index])
 				continue
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 	rospy.init_node('joint_state_printer', anonymous=True)
 	JSP = JointStatePublisher()
 	rospy.sleep(.1)
-	joints = ["joint_lift", "joint_arm_l0", "joint_arm_l1", "joint_arm_l2", "joint_arm_13", "joint_wrist_yaw"]
+	joints = ["joint_lift", "wrist_extension", "joint_wrist_yaw"]
 	#joints = ["joint_head_pan","joint_head_tilt", joint_gripper_finger_left", "joint_gripper_finger_right"]
 	JSP.print_states(joints)
 	rospy.spin()
