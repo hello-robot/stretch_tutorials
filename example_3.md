@@ -66,9 +66,9 @@ class Avoider:
 
     def set_speed(self,msg):
         """
-        Callback function to deal with incoming laserscan messages.
+        Callback function to deal with incoming LaserScan messages.
         :param self: The self reference.
-        :param msg: The subscribed laserscan message.
+        :param msg: The subscribed LaserScan message.
 
         :publishes self.twist: Twist message.
         """
@@ -103,7 +103,7 @@ from math import sin
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe to LaserScan messages. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
+You need to import rospy if you are writing a ROS [Node](http://wiki.ros.org/Nodes). There are functions from `numpy` and `math` that are required within this code, thus linspace, inf, tanh, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe to `LaserScan` messages. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
 
 
 ```python
@@ -142,7 +142,7 @@ angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
 new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 ```
-This line of code utilizes linspace to compute each angle of the subscribed scan. Here we  compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
+This line of code utilizes linspace to compute each angle of the subscribed scan. Here we compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
 
 
 ```python
@@ -167,7 +167,7 @@ rospy.init_node('avoider')
 Avoider()
 rospy.spin()
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate class with `Avioder()`
 

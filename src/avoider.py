@@ -49,9 +49,9 @@ class Avoider:
 
     def set_speed(self,msg):
         """
-        Callback function to deal with incoming laserscan messages.
+        Callback function to deal with incoming LaserScan messages.
         :param self: The self reference.
-        :param msg: The subscribed laserscan message.
+        :param msg: The subscribed LaserScan message.
 
         :publishes self.twist: Twist message.
         """
