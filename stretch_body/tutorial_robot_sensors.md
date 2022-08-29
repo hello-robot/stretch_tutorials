@@ -2,7 +2,9 @@
 
 ### Base IMU
 
-Coming soon.
+The base has a 9 DOF IMU using the 9 DOF FXOS8700 + FXAS21002 chipset. This is the same chipset as used on the [Adafruit NXP IMU board](https://www.adafruit.com/product/3463). 
+
+The Pimu reports back the IMU sensor readings
 
 ### Wrist Accelerometer
 
