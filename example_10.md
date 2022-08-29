@@ -18,7 +18,6 @@ Within this tutorial package, there is an RViz config file with the topics for t
 # Terminal 2
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 ```
-
 Then run the tf2 broadcaster node to visualize three static frames.
 
 ```bash
@@ -39,7 +38,6 @@ The gif below visualizes what happens when running the previous node.
 cd catkin_ws/src/stretch_tutorials/src/
 python stow_command.py
 ```
-
 
 <p align="center">
   <img src="images/tf2_broadcaster_with_stow.gif"/>
@@ -134,8 +132,7 @@ import tf.transformations
 from geometry_msgs.msg import TransformStamped
 from tf2_ros import StaticTransformBroadcaster
 ```
-
-You need to import rospy if you are writing a ROS Node. Import `tf.transformations` to get quaternion values from Euler angles. Import the `TransformStamped` from the `geometry_msgs.msg` package because we will be publishing static frames and it requires this message type. The `tf2_ros` package provides an implementation of a `tf2_ros.StaticTransformBroadcaster` to help make the task of publishing transforms easier.
+You need to import rospy if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import `tf.transformations` to get quaternion values from Euler angles. Import the `TransformStamped` from the `geometry_msgs.msg` package because we will be publishing static frames and it requires this message type. The `tf2_ros` package provides an implementation of a `tf2_ros.StaticTransformBroadcaster` to help make the task of publishing transforms easier.
 
 ```python
 def __init__(self):
@@ -146,7 +143,6 @@ def __init__(self):
     """
     self.br = StaticTransformBroadcaster()
 ```
-
 Here we create a `TransformStamped` object which will be the message we will send over once populated.
 
 ```python
@@ -155,7 +151,6 @@ self.mast.header.stamp = rospy.Time.now()
 self.mast.header.frame_id = 'link_mast'
 self.mast.child_frame_id = 'fk_link_mast'
 ```
-
 We need to give the transform being published a timestamp, we'll just stamp it with the current time, `rospy.Time.now()`. Then, we need to set the name of the parent frame of the link we're creating, in this case *link_mast*. Finally, we need to set the name of the child frame of the link we're creating. In this instance, the child frame is *fk_link_mast*.
 
 ```python
@@ -186,9 +181,9 @@ rospy.init_node('tf2_broadcaster')
 FixedFrameBroadcaster()
 
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Instantiate the class with `FixedFrameBroadcaster()`
+Instantiate the `FixedFrameBroadcaster()` class.
 
 ```python
 rospy.spin()
@@ -196,7 +191,6 @@ rospy.spin()
 Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.
-
 
 
 ## tf2 Static Listener
@@ -208,7 +202,6 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 Then run the tf2 broadcaster node to create the three static frames.
 
 ```bash
@@ -216,7 +209,6 @@ Then run the tf2 broadcaster node to create the three static frames.
 cd catkin_ws/src/stretch_tutorials/src/
 python tf2_broadcaster.py
 ```
-
 Finally, run the tf2 listener node to print the transform between two links.
 
 ```bash
@@ -224,7 +216,6 @@ Finally, run the tf2 listener node to print the transform between two links.
 cd catkin_ws/src/stretch_tutorials/src/
 python tf2_listener.py
 ```
-
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
 
 ```bash
@@ -261,7 +252,7 @@ class FrameListener():
     """
     def __init__(self):
         """
-        A function that initializes the variables and looks up a tranformation
+        A function that initializes the variables and looks up a transformation
         between a target and source frame.
         :param self: The self reference.
         """
@@ -306,7 +297,7 @@ from geometry_msgs.msg import TransformStamped
 import tf2_ros
 ```
 
-You need to import rospy if you are writing a ROS Node. Import the `TransformStamped` from the `geometry_msgs.msg` package because we will be publishing static frames and it requires this message type. The `tf2_ros` package provides an implementation of a `tf2_ros.TransformListener`  to help make the task of receiving transforms easier.
+You need to import rospy if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import the `TransformStamped` from the `geometry_msgs.msg` package because we will be publishing static frames and it requires this message type. The `tf2_ros` package provides an implementation of a `tf2_ros.TransformListener` to help make the task of receiving transforms easier.
 
 ```python
 tf_buffer = tf2_ros.Buffer()
@@ -324,7 +315,6 @@ Store frame names in variables that will be used to compute transformations.
 rospy.sleep(1.0)
 rate = rospy.Rate(1)
 ```
-
 The first line gives the listener some time to accumulate transforms. The second line is the rate the node is going to publish information (1 Hz).
 
 ```python
@@ -337,7 +327,6 @@ try:
 except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
     rospy.logwarn(' Could not transform %s from %s ', to_frame_rel, from_frame_rel)
 ```
-
 Try to look up the transform we want. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Look up transform between *from_frame_rel* and *to_frame_rel* frames with the `lookup_transform()` function.
 
 ```python
@@ -345,9 +334,9 @@ rospy.init_node('tf2_listener')
 FrameListener()
 
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Instantiate the class with `FrameListener()`
+Instantiate the `FrameListener()` class.
 
 ```python
 rospy.spin()
