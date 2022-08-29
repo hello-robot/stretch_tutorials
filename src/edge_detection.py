@@ -29,7 +29,7 @@ class EdgeDetection:
         self.bridge = CvBridge()
 
         # Initialize subscriber
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
 
         # Initialize publisher
         self.pub = rospy.Publisher('/image_edge_detection', Image, queue_size=1)
