@@ -37,7 +37,7 @@ class SpeechText:
         Initialize subscriber and directory to save speech to text file.
         """
         self.sub = rospy.Subscriber("speech_to_text", SpeechRecognitionCandidates, self.callback)
-        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data
+        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
         rospy.loginfo("Listening to speech.")
 
     def callback(self,msg):
@@ -90,7 +90,7 @@ def __init__(self):
 Set up a subscriber.  We're going to subscribe to the topic "*speech_to_text*", looking for `SpeechRecognitionCandidates` messages. When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
-self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data
+self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 ```
 Define the directory to save the text file.
 
