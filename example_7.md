@@ -7,13 +7,7 @@ In this example, we will review the [image_view](http://wiki.ros.org/image_view?
   <img src="images/camera_image_edge_detection.jpeg"/>
 </p>
 
-Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the [stretch_ros](https://github.com/hello-robot/stretch_ros) repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
-
-```bash
-cd ~/catkin_ws/src/stretch_ros/stretch_core
-git checkout feature/upright_camera_view
-```
-Then run the stretch driver launch file.
+Begin by running the stretch `driver.launch` file.
 
 ```bash
 # Terminal 1
@@ -84,7 +78,7 @@ class CaptureImage:
         :param self: The self reference.
         """
         self.bridge = CvBridge()
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 
     def callback(self, msg):
@@ -141,7 +135,7 @@ def __init__(self):
     :param self: The self reference.
     """
     self.bridge = CvBridge()
-    self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+    self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
     self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 ```
 Initialize the CvBridge class, the subscriber, and the directory of where the captured image will be stored.
@@ -227,7 +221,7 @@ class EdgeDetection:
         :param self: The self reference.
         """
         self.bridge = CvBridge()
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
         self.pub = rospy.Publisher('/image_edge_detection', Image, queue_size=1)
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
         self.lower_thres = 100
