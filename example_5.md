@@ -62,7 +62,7 @@ class JointStatePublisher():
 		:param joints: A list of string values of joint names.
 		"""
 		joint_positions = []
-    for joint in joints:
+		for joint in joints:
 			if joint == "wrist_extension":
 				index = self.joint_states.name.index('joint_arm_l0')
 				joint_positions.append(4*self.joint_states.position[index])
