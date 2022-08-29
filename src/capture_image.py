@@ -27,7 +27,7 @@ class CaptureImage:
         self.bridge = CvBridge()
 
         # Initialize subscriber
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
 
         # Create path to save captured images to the stored data folder
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
