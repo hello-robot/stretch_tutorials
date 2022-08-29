@@ -4,8 +4,8 @@
 
 Hello Robot utilizes Ubuntu, an open-source Linux operating system, for the Stretch RE1 platform. If you are unfamiliar with the operating system, we encourage you to review a [tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provided by Ubuntu. Additionally, the Linux command line, BASH, is used to execute commands and is needed to run ROS on the Stretch robot. Here is a [tutorial](https://ryanstutorials.net/linuxtutorial/) on getting started with BASH.
 
-## Installing Noetic on Stretch
-Instructions on installing Noetic can be found in our open-source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md). Then create a catkin workspace for your ROS packages. Here is an [installation guide for creating a workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace). Once your system is set up, clone the [stretch_tutorials](https://github.com/hello-robot/stretch_tutorials) to your workspace and build the package in your workspace. This can be done by copying the commands below and pasting them into your terminal.
+## Creating Workspace
+Create a catkin workspace for your ROS packages. Here is an [installation guide for creating a workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace). Once your system is set up, clone the [stretch_tutorials](https://github.com/hello-robot/stretch_tutorials) to your workspace and build the package in your workspace. This can be done by copying the commands below and pasting them into your terminal.
 
 ```bash
 cd ~/catkin_ws/src
@@ -18,13 +18,8 @@ If you cannot access the robot through ssh due to your network settings, you wil
 
 ## ROS Setup on Local Computer
 
-Hello Robot is currently running Stretch on Ubuntu 20.04 and ROS Noetic. To begin the setup, start with [installing Ubuntu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) on your local machine. Then follow the [installation guide for ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) on your system.
+Hello Robot is running Stretch on Ubuntu 18.04 and ROS Melodic. To begin the setup, start with [installing Ubuntu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) on your local machine. Then follow the [installation guide for ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) on your system.
 
-Currently, the Realsense2_description package isn't installed by rosdep and requires a user to install the package manually. Run the following command in your terminal
-
-```bash
-sudo apt-get install ros-noetic-realsense2-camera
-```
 
 After your system is setup, clone the [stretch_ros](https://github.com/hello-robot/stretch_ros.git), [stretch_tutorials](https://github.com/hello-robot/stretch_tutorials.git), and [realsense_gazebo_plugin packages]( https://github.com/pal-robotics/realsense_gazebo_plugin) to your **src** folder in your preferred workspace.
 ```bash
