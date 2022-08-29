@@ -123,8 +123,8 @@ for joint in joints:
     index = self.joint_states.name.index('joint_arm_l0')
     joint_positions.append(4*self.joint_states.position[index])
     continue
-	index = self.joint_states.name.index(joint)
-	joint_positions.append(self.joint_states.position[index])
+  index = self.joint_states.name.index(joint)
+  joint_positions.append(self.joint_states.position[index])
 ```
 In this section of the code, a forloop is used to parse the names of the requested joints from the *self.joint_states* list. The `index()` function returns the index a of the name of the requested joint and appends the respective position to our *joint_positions* list.
 
