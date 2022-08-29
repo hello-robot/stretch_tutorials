@@ -6,14 +6,12 @@ In this example, we will review a Python script that prints out and stores the e
   <img src="images/effort_sensing.gif"/>
 </p>
 
-
 Begin by running the following command in the terminal in a terminal.
 
 ```bash
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 Switch the mode to *position* mode using a rosservice call. Then run the single effort sensing node.
 
 ```bash
@@ -22,7 +20,6 @@ rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python effort_sensing.py
 ```
-
 This will send a `FollowJointTrajectory` command to move Stretch's arm or head while also printing the effort of the lift.
 
 ### The Code
@@ -171,19 +168,18 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from sensor_msgs.msg import JointState
 import hello_helpers.hello_misc as hm
 ```
-
-You need to import rospy if you are writing a ROS Node. Import the `FollowJointTrajectoryGoal` from the `control_msgs.msg` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across stretch_ros. In this instance, we are importing the `hello_misc` script.
-
+You need to import rospy if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import the `FollowJointTrajectoryGoal` from the `control_msgs.msg` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros). In this instance, we are importing the `hello_misc` script.
 
 ```Python
 class JointActuatorEffortSensor(hm.HelloNode):
     """
     A class that sends multiple joint trajectory goals to a single joint.
     """
-    def __init__(self):
+    def __init__(self, export_data=False):
         """
         Function that initializes the subscriber,and other features.
         :param self: The self reference.
+        :param export_data: A boolean message type.
         """
         hm.HelloNode.__init__(self)
 ```
@@ -192,20 +188,19 @@ The `JointActuatorEffortSensor ` class inherits the `HelloNode` class from `hm` 
 ```python
 self.sub = rospy.Subscriber('joint_states', JointState, self.callback)
 self.joints = ['joint_lift']
-
 ```
 Set up a subscriber.  We're going to subscribe to the topic "*joint_states*", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically. Create a list of the desired joints you want to print.
+
 ```Python
 self.joint_effort = []
 self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 self.export_data = False
 ```
+Create an empty list to store the joint effort values. The *self.save_path* is the directory path where the .txt file of the effort values will be stored. You can change this path to a preferred directory. The *self.export_data* is a boolean and its default value is set to *False*. If set to True, then the joint values will be stored in a .txt file, otherwise, the values will be printed in the terminal where you ran the effort sensing node.
 
-Create an empty list to store the joint effort values. The *self.save_path* is the directory path where the .txt file of the effort values will be stored. You can change this path to a preferred directory. The *self.export_data* is a boolean and its default value is set to False. If set to True, then the joint values will be stored in a .txt file, otherwise, the values will be printed in the terminal where you ran the effort sensing node.
 ```python
 self.trajectory_client.send_goal(trajectory_goal, feedback_cb=self.feedback_callback, done_cb=self.done_callback)
 ```
-
 Include the feedback and done call back functions in the send goal function.
 
 ```python
@@ -218,7 +213,6 @@ def feedback_callback(self,feedback):
     :param feedback: FollowJointTrajectoryActionFeedback message.
     """
 ```
-
 The feedback callback function takes in the `FollowJointTrajectoryActionFeedback` message as its argument.
 
 ```python
@@ -226,7 +220,6 @@ if 'wrist_extension' in self.joints:
     self.joints.remove('wrist_extension')
     self.joints.append('joint_arm_l0')
 ```
-
 Use a conditional statement to replace `wrist_extenstion` to `joint_arm_l0`. This is because `joint_arm_l0` has the effort values that the `wrist_extension` is experiencing.
 
 ```python
@@ -235,7 +228,6 @@ for joint in self.joints:
     index = self.joint_states.name.index(joint)
     current_effort.append(self.joint_states.effort[index])
 ```
-
 Create an empty list to store the current effort values. Then use a for loop to parse the joint names and effort values.
 
 ```python
@@ -257,7 +249,6 @@ def done_callback(self, status, result):
       :param result: result attribute from FollowJointTrajectoryActionResult message.
       """
 ```
-
 The done callback function takes in the `FollowJointTrajectoryActionResult` messages as its arguments.
 
 ```python
@@ -267,7 +258,6 @@ else:
     rospy.loginfo('Failed')
 
 ```
-
 Conditional statement to print whether the goal status in the `FollowJointTrajectoryActionResult` succeeded or failed.
 
 ```python
@@ -281,7 +271,6 @@ if self.export_data:
         writer.writerows(self.joint_effort)
 
 ```
-
 A conditional statement is used to export the data to a .txt file. The file's name is set to the date and time the node was executed. That way, no previous files are overwritten.
 
 
@@ -291,14 +280,12 @@ A conditional statement is used to export the data to a .txt file. The file's na
   <img src="stored_data/2022-06-30_11:26:20-AM.png"/>
 </p>
 
-
 We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. Note you have to change the name of the file you wish to see in the python script. This is shown below:
 
 ```Python
 ####################### Copy the file name here! #######################
 file_name = '2022-06-30_11:26:20-AM'
 ```
-
 Once you have changed the file name, then run the following in a new command.
 
 ```bash
@@ -306,8 +293,7 @@ cd catkin_ws/src/stretch_tutorials/src/
 python stored_data_plotter.py
 
 ```
-
-Because this is not a node, you don't need roscore to run this script. Please review the comments in the python script for additional guidance.
+Because this is not a node, you don't need `roscore` to run this script. Please review the comments in the python script for additional guidance.
 
 **Previous Example** [Print Joint States](example_5.md)
 **Next Example** [Capture Image](example_7.md)
