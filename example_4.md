@@ -3,8 +3,6 @@
   <img src="images/balloon.png"/>
 </p>
 
-
-
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
 ```bash
@@ -18,7 +16,7 @@ the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. 
 cd catkin_ws/src/stretch_tutorials/src/
 python3 marker.py
 ```
-The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
+The gif below demonstrates how to add a new `Marker` display type, and change the topic name from */visualization_marker* to */balloon*. A red sphere Marker should appear above the Stretch robot.
 
 <p align="center">
   <img src="images/balloon.gif"/>
@@ -37,7 +35,7 @@ class Balloon():
 	"""
 	def __init__(self):
 		"""
-		Function that initializes the markers features.
+		Function that initializes the marker's features.
 		:param self: The self reference.
 		"""
 		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
@@ -93,7 +91,7 @@ Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at
 import rospy
 from visualization_msgs.msg import Marker
 ```
-You need to import rospy if you are writing a ROS Node. Import the `Marker` type from the visualization_msgs.msg package. This import is required to publish a `Marker`, which will be visualized in RViz.
+You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import the `Marker` type from the `visualization_msgs.msg` package. This import is required to publish a `Marker`, which will be visualized in RViz.
 
 ```python
 self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
@@ -107,8 +105,7 @@ self.marker.header.frame_id = 'base_link'
 self.marker.header.stamp = rospy.Time()
 self.marker.type = self.marker.SPHERE
 ```
-
-Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
+Create a `Marker()` message type. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
 
 ```python
 self.marker.id = 0
@@ -144,9 +141,7 @@ self.marker.pose.position.x = 0.0
 self.marker.pose.position.y = 0.0
 self.marker.pose.position.z = 2.0
 ```
-
-Specify the pose of the marker. Since spheres are rotationally invariant, we're only going to specify the positional elements. As usual, these are in the coordinate frame named in frame_id. In this case, the position will always be directly 2 meters above the frame_id (*base_link*), and will move with it.
-
+Specify the pose of the marker. Since spheres are rotationally invariant, we're only going to specify the positional elements. As usual, these are in the coordinate frame named in `frame_id`. In this case, the position will always be directly 2 meters above the frame_id (*base_link*), and will move with it.
 
 ```python
 def publish_marker(self):
@@ -159,8 +154,7 @@ rospy.init_node('marker', argv=sys.argv)
 balloon = Balloon()
 rate = rospy.Rate(10)
 ```
-
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate class with `Balloon()`
 
@@ -172,8 +166,7 @@ while not rospy.is_shutdown():
 	balloon.publish_marker()
 	rate.sleep()
 ```
-
-This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
+This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a **Ctrl-C** or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
 
 **Previous Example:** [Mobile Base Collision Avoidance](example_3.md)
 **Next Example:** [Print Joint States](example_5.md)
