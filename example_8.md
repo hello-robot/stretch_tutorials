@@ -37,7 +37,7 @@ class SpeechText:
         Initialize subscriber and directory to save speech to text file.
         """
         self.sub = rospy.Subscriber("speech_to_text", SpeechRecognitionCandidates, self.callback)
-        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data
+        self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
         rospy.loginfo("Listening to speech.")
 
     def callback(self,msg):
