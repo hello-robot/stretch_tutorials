@@ -137,7 +137,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         """
         # Conditional statemets to notify whether the action succeeded or failed.
         if status == actionlib.GoalStatus.SUCCEEDED:
-            rospy.loginfo('Suceeded')
+            rospy.loginfo('Succeeded')
         else:
             rospy.loginfo('Failed')
 

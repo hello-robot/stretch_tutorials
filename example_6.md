@@ -114,7 +114,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         :param result: result attribute from FollowJointTrajectoryActionResult message.
         """
         if status == actionlib.GoalStatus.SUCCEEDED:
-            rospy.loginfo('Suceeded')
+            rospy.loginfo('Succeeded')
         else:
             rospy.loginfo('Failed')
 
@@ -253,7 +253,7 @@ The done callback function takes in the `FollowJointTrajectoryActionResult` mess
 
 ```python
 if status == actionlib.GoalStatus.SUCCEEDED:
-    rospy.loginfo('Suceeded')
+    rospy.loginfo('Succeeded')
 else:
     rospy.loginfo('Failed')
 
