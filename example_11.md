@@ -8,7 +8,7 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-To activate the [RealSense camera](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/) and publish topics to be visualized, run the following launch file in a new terminal.
+To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
 ```bash
 # Terminal 2
