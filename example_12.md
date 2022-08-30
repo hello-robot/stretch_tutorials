@@ -18,34 +18,30 @@ Below is what the needs to be included in the [stretch_marker_dict.yaml](https:/
 
 ## Getting Started
 
-Begin by running the stretch driver launch file.
+Begin by running the `stretch_driver.launch` file.
 
 ```bash
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.
 
 ```bash
 # Terminal 2
-roslaunch stretch_core d435i_high_resolution.launch
+roslaunch stretch_core d435i_low_resolution.launch
 ```
-
 Next, run the stretch ArUco launch file which will bring up the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers) node.
 
 ```bash
 # Terminal 3
 roslaunch stretch_core stretch_aruco.launch
 ```
-
 Within this tutorial package, there is an RViz config file with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 ```
-
 Then run the aruco tag locator node.
 
 ```bash
@@ -111,7 +107,6 @@ class LocateArUcoTag(hm.HelloNode):
         """
         self.joint_state = msg
 
-
     def send_command(self, command):
         '''
         Handles single joint control commands by constructing a FollowJointTrajectoryGoal
@@ -141,7 +136,6 @@ class LocateArUcoTag(hm.HelloNode):
             trajectory_goal.trajectory.header.frame_id = 'base_link'
             self.trajectory_client.send_goal(trajectory_goal)
             self.trajectory_client.wait_for_result()
-
 
     def find_tag(self, tag_name='docking_station'):
         """
@@ -194,7 +188,6 @@ class LocateArUcoTag(hm.HelloNode):
         rospy.loginfo('Searching for docking ArUco tag.')
         pose = self.find_tag("docking_station")
 
-
 if __name__ == '__main__':
     try:
         node = LocateArUcoTag()
@@ -226,7 +219,7 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from geometry_msgs.msg import TransformStamped
 
 ```
-You need to import rospy if you are writing a ROS Node. Import other python modules needed for this node. Import the FollowJointTrajectoryGoal from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers) package consists of a module the provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros). In this instance we are importing the hello_misc script.
+You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import other python modules needed for this node. Import the `FollowJointTrajectoryGoal` from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import `JointTrajectoryPoint` from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers) package consists of a module the provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros). In this instance we are importing the `hello_misc` script.
 
 ```python
 def __init__(self):
@@ -241,7 +234,6 @@ def __init__(self):
 
     self.joint_state = None
 ```
-
 The `LocateArUcoTag` class inherits the `HelloNode` class from `hm` and is instantiated.
 
 Set up a subscriber with `rospy.Subscriber('/stretch/joint_states', JointState, self.joint_states_callback)`.  We're going to subscribe to the topic "*stretch/joint_states*", looking for `JointState` messages.  When a message comes in, ROS is going to pass it to the function `joint_states_callback()` automatically.
@@ -254,7 +246,6 @@ self.max_pan_position =  1.50
 self.pan_num_steps = 10
 self.pan_step_size = abs(self.min_pan_position - self.max_pan_position)/self.pan_num_steps
 ```
-
 Provide the minimum and maximum joint positions for the head pan. These values are needed for sweeping the head to search for the ArUco tag. We also define the number of steps for the sweep, then create the step size for the head pan joint.
 
 ```python
@@ -262,7 +253,6 @@ self.min_tilt_position = -0.75
 self.tilt_num_steps = 3
 self.tilt_step_size = pi/16
 ```
-
 Set the minimum position of the tilt joint, the number of steps, and the size of each step.
 
 ```python
@@ -279,7 +269,6 @@ def joint_states_callback(self, msg):
     """
     self.joint_state = msg
 ```
-
 The `joint_states_callback()` function stores Stretch's joint states.
 
 ```python
@@ -296,7 +285,6 @@ def send_command(self, command):
         trajectory_goal.trajectory.joint_names = [joint_name]
         point = JointTrajectoryPoint()
 ```
-
 Assign *trajectory_goal* as a `FollowJointTrajectoryGoal` message type. Then extract the string value from the `joint` key. Also, assign *point* as a `JointTrajectoryPoint` message type.
 
 ```python
@@ -307,14 +295,12 @@ if 'delta' in command:
     new_value = joint_value + delta
     point.positions = [new_value]
 ```
-
 Check to see if `delta` is a key in the command dictionary. Then get the current position of the joint and add the delta as a a new position value.
 
 ```python
 elif 'position' in command:
     point.positions = [command['position']]
 ```
-
 Check to see if `position`is a key in the command dictionary. Then extract the position value.
 
 ```python
@@ -325,7 +311,6 @@ trajectory_goal.trajectory.header.frame_id = 'base_link'
 self.trajectory_client.send_goal(trajectory_goal)
 self.trajectory_client.wait_for_result()
 ```
-
 Then `trajectory_goal.trajectory.points` is defined by the positions set in *point*. Specify the coordinate frame that we want (*base_link*) and set the time to be now. Make the action call and send the goal. The last line of code waits for the result before it exits the python script.
 
 ```python
@@ -344,7 +329,6 @@ def find_tag(self, tag_name='docking_station'):
     self.send_command(tilt_command)
 
 ```
-
 Create a dictionaries to get the head in its initial position for its search and send the commands the the `send_command()` function.
 
 ```python
@@ -354,7 +338,6 @@ for i in range(self.tilt_num_steps):
         self.send_command(pan_command)
         rospy.sleep(0.5)
 ```
-
 Utilize nested for loop to sweep the pan and tilt in increments. Then update the *joint_head_pan* position by the *pan_step_size*.
 Use `rospy.sleep()` function to give time for system to do a Transform lookup before next step.
 
@@ -369,8 +352,6 @@ try:
 except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
     continue
 ```
-
-
 Use a try-except block to look up the transform between the *base_link* and requested ArUco tag. Then publish and return the `TransformStamped` message.
 
 ```python
@@ -380,9 +361,7 @@ tilt_command = {'joint': 'joint_head_tilt', 'delta': self.tilt_step_size}
 self.send_command(tilt_command)
 rospy.sleep(.25)
 ```
-
 Begin sweep with new tilt angle.
-
 
 ```python
 def main(self):
@@ -394,14 +373,12 @@ def main(self):
 ```
 Create a funcion, `main()`, to do all of the setup for the `hm.HelloNode` class and initialize the `aruco_tag_locator` node.
 
-
 ```python
 self.static_broadcaster = tf2_ros.StaticTransformBroadcaster()
 self.tf_buffer = tf2_ros.Buffer()
 self.listener = tf2_ros.TransformListener(self.tf_buffer)
 rospy.sleep(1.0)
 ```
-
 Create a StaticTranformBoradcaster Node. Also, start a tf buffer that will store the tf information for a few seconds.Then set up a tf listener, which will subscribe to all of the relevant tf topics, and keep track of the information. Include `rospy.sleep(1.0)` to give the listener some time to accumulate transforms.
 
 ```python
@@ -418,7 +395,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         rospy.loginfo('interrupt received, so shutting down')
 ```
-
 Declare `LocateArUcoTag` object. Then run the `main()` method.
 
 
