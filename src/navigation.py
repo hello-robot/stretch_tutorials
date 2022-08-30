@@ -1,10 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
 import actionlib
 import sys
-import copy
 
 # We need the MoveBaseAction and MoveBaseGoal from the move_base_msgs package.
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -29,11 +28,6 @@ class StretchNavigation:
         self.client.wait_for_server()
         rospy.loginfo('{0}: Made contact with move_base server'.format(self.__class__.__name__))
 
-        # Initialize the callback functions
-        self.active_callback = None
-        self.feedback_callback = None
-        self.done_callback = None
-
         # Create a MoveBaseGoal message type, and fill in all of the relevant fields.
         self.goal = MoveBaseGoal()
         self.goal.target_pose.header.frame_id = 'map'
@@ -54,8 +48,7 @@ class StretchNavigation:
         """
         A function to build Quaternians from Euler angles. Since the Stretch only
         rotates around z, we can zero out the other angles.
-
-        :param theta: The angle the robot makes with the x-axis.
+        :param theta: The angle (radians) the robot makes with the x-axis.
         """
         return Quaternion(*transformations.quaternion_from_euler(0.0, 0.0, theta))
 
@@ -63,12 +56,12 @@ class StretchNavigation:
         """
         Drive the robot to a particlar pose on the map. The Stretch only needs
         (x, y) coordinates and a heading.
-
         :param x: x coordinate in the map frame.
         :param y: y coordinate in the map frame.
         :param theta: heading (angle with the x-axis in the map frame)
         """
-        rospy.loginfo('{0}: Heading for ({1}, {2}) at {3} radians'.format(self.__class__.__name__, x, y, theta))
+        rospy.loginfo('{0}: Heading for ({1}, {2}) at {3} radians'.format(self.__class__.__name__,
+        x, y, theta))
 
         # Set the x and y positions
         self.goal.target_pose.pose.position.x = x
@@ -77,15 +70,23 @@ class StretchNavigation:
         # Set the orientation.  This is a quaternion, so we use the helper function.
         self.goal.target_pose.pose.orientation = self.get_quaternion(theta)
 
-        # Make the action call.  Include the callbacks.  Unless these have been set somewhere else, they are passed
-        # as None, which means no callback.
-        self.client.send_goal(self.goal,
-                              active_cb=self.active_callback,
-                              feedback_cb=self.feedback_callback,
-                              done_cb=self.done_callback)
+        # Make the action call and include the `done_callback` function
+        self.client.send_goal(self.goal, done_cb=self.done_callback)
 
         self.client.wait_for_result()
 
+    def done_callback(self, status, result):
+        """
+        The done_callback function will be called when the joint action is complete.
+        :param self: The self reference.
+        :param status: status attribute from MoveBaseActionResult message.
+        :param result: result attribute from MoveBaseActionResult message.
+        """
+        # Conditional statemets to notify whether the action succeeded or failed.
+        if status == actionlib.GoalStatus.SUCCEEDED:
+            rospy.loginfo('{0}: SUCCEEDED in reaching the goal.'.format(self.__class__.__name__))
+        else:
+            rospy.loginfo('{0}: FAILED in reaching the goal.'.format(self.__class__.__name__))
 
 if __name__ == '__main__':
     # Initialize the node, and call it "navigation"
@@ -95,24 +96,4 @@ if __name__ == '__main__':
     nav = StretchNavigation()
 
     # Send a nav goal to the `go_to()` method
-    # nav.go_to(1.50, 0.75, 3.14, wait=True)
-    # rospy.sleep(1.0)
-    # nav.go_to(0.00, 0.00, 0.00, wait=True)
-
-    nav.go_to(-3.0,-3.0, -3.14/2)
-
-    print("======== Press `Enter` to go to the next goal.")
-    input()
-
-    nav.go_to(-6.5, -4.5, 3.14)
-
-
-    print("======== Press `Enter` to go to the next goal.")
-    input()
-    nav.go_to(-10.5, -4.6, 3.14)
-
-
-
-    print("======== Press `Enter` to go to the next goal.")
-    input()
-    nav.go_to(-19, -4.6, 3.14)
+    nav.go_to(0.5, 0.0, 0.0, wait=True)
