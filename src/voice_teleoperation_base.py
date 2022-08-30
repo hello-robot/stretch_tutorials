@@ -69,16 +69,17 @@ class GetVoiceCommands:
 
     def callback_direction(self, msg):
         """
-        A callback function that converts the sound direction from degrees to radians.
+        A callback function that converts the incoming message, sound direction,
+        from degrees to radians.
         :param self: The self reference.
-        :param msg: The Int32 message type.
+        :param msg: The Int32 message type that represents the sound direction.
         """
         self.sound_direction = msg.data * -self.rad_per_deg
 
     def callback_speech(self,msg):
         """
-        A callback function that takes all items in the iterable list and join
-        them into a single string.
+        A callback function takes the incoming message, a list of the speech to
+        text, and joins all items in that iterable list into a single string.
         :param self: The self reference.
         :param msg: The SpeechRecognitionCandidates message type.
         """
@@ -90,7 +91,7 @@ class GetVoiceCommands:
         base motion.
         :param self:The self reference.
 
-        :returns inc: A dictionary type.
+        :returns inc: A dictionary type the contains the increment size.
         """
         if self.step_size == 'small':
             inc = {'rad': self.small_rad, 'translate': self.small_translate}
@@ -130,7 +131,7 @@ class GetVoiceCommands:
         A function that defines the teleoperation command based on the voice command.
         :param self: The self reference.
 
-        :returns command: A dictionary type.
+        :returns command: A dictionary type that contains the type of base motion.
         """
         command = None
         # Move base forward command
@@ -181,6 +182,7 @@ class VoiceTeleopNode(hm.HelloNode):
         """
         A function that declares object from the GetVoiceCommands class, instantiates
         the HelloNode class, and set the publishing rate.
+        :param self: The self reference.
         """
         hm.HelloNode.__init__(self)
         self.rate = 10.0
@@ -200,7 +202,7 @@ class VoiceTeleopNode(hm.HelloNode):
         """
         Function that makes an action call and sends base joint trajectory goals.
         :param self: The self reference.
-        :param command: A dictionary type.
+        :param command: A dictionary that contains the base motion type and increment size.
         """
         joint_state = self.joint_state
         # Conditional statement to send  joint trajectory goals

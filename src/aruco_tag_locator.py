@@ -65,7 +65,6 @@ class LocateArUcoTag(hm.HelloNode):
         # Define the head actuation rotational velocity
         self.rot_vel = 0.5 # radians per sec
 
-
     def joint_states_callback(self, msg):
         """
         A callback function that stores Stretch's joint states.
@@ -73,7 +72,6 @@ class LocateArUcoTag(hm.HelloNode):
         :param msg: The JointState message type.
         """
         self.joint_state = msg
-
 
     def send_command(self, command):
         '''
@@ -125,7 +123,6 @@ class LocateArUcoTag(hm.HelloNode):
             self.trajectory_client.send_goal(trajectory_goal)
             self.trajectory_client.wait_for_result()
 
-
     def find_tag(self, tag_name='docking_station'):
         """
         A function that actuates the camera to search for a defined ArUco tag
@@ -133,7 +130,7 @@ class LocateArUcoTag(hm.HelloNode):
         :param self: The self reference.
         :param tag_name: A string value of the ArUco marker name.
 
-        :returns transform: A TransformStamped message type.
+        :returns transform: The docking station's TransformStamped message.
         """
         # Create dictionaries to get the head in its initial position
         pan_command = {'joint': 'joint_head_pan', 'position': self.min_pan_position}
@@ -177,7 +174,6 @@ class LocateArUcoTag(hm.HelloNode):
         # Notify that the requested tag was not found
         rospy.loginfo("The requested tag '%s' was not found", tag_name)
 
-
     def main(self):
         """
         Function that initiates the issue_command function.
@@ -202,7 +198,6 @@ class LocateArUcoTag(hm.HelloNode):
 
         # Search for the ArUco marker for the docking station
         pose = self.find_tag("docking_station")
-
 
 if __name__ == '__main__':
     # Use a try-except block

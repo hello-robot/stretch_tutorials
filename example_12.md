@@ -148,7 +148,7 @@ class LocateArUcoTag(hm.HelloNode):
         :param self: The self reference.
         :param tag_name: A string value of the ArUco marker name.
 
-        :returns transform: A TransformStamped message type.
+        :returns transform: The docking station's TransformStamped message.
         """
         pan_command = {'joint': 'joint_head_pan', 'position': self.min_pan_position}
         self.send_command(pan_command)
@@ -325,7 +325,7 @@ def find_tag(self, tag_name='docking_station'):
     :param self: The self reference.
     :param tag_name: A string value of the ArUco marker name.
 
-    :returns transform: A TransformStamped message type.
+    :returns transform: The docking station's TransformStamped message.
     """
     pan_command = {'joint': 'joint_head_pan', 'position': self.min_pan_position}
     self.send_command(pan_command)

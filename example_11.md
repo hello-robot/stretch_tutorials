@@ -93,7 +93,7 @@ class PointCloudTransformer:
         :param self: The self reference.
         :param msg: The PointCloud message.
 
-        :returns new_cloud: PointCloud message.
+        :returns new_cloud: The transformed PointCloud message.
         """
         while not rospy.is_shutdown():
             try:
