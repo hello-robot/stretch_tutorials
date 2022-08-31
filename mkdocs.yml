@@ -82,6 +82,7 @@ extra:
 
 
 nav:
+  - Overview: ./README.md
   - Getting to Know Stretch:
       - Overview: ./getting_started/README.md
       - Basics:
