@@ -1,4 +1,4 @@
-# Tutorial: Stretch Best Practices
+# Stretch Best Practices
 
 ## Keeping the Robot Charged
 

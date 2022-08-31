@@ -1,4 +1,4 @@
-# Stretch RE1 and RE2: Troubleshooting Guide
+# Stretch Troubleshooting Guide
 
 This guide covers common issues and ways to resolve them. Please check the [Hello Robot Forum](https://forum.hello-robot.com) for additional topics not covered here.
 

@@ -1,4 +1,4 @@
-# Parameters Management
+# Tutorial: Parameter Management
 
 In this tutorial we will discuss how parameters are managed in Stretch Body and show examples of how to customize your robot by overriding parameters.
 

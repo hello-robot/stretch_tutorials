@@ -1,5 +1,4 @@
-
-# Working with Dynamixel Servos
+# Tutorial: Working with Dynamixel Servos
 
 In this tutorial we will go into the details with Dynamixel servos and Stretch.
 

@@ -85,7 +85,7 @@ nav:
   - Getting to Know Stretch:
       - Overview: ./getting_started/README.md
       - Basics:
-        - Robot Safety: ./getting_started/safety_guide.md
+        - Safety Guide: ./getting_started/safety_guide.md
         - Quick Start RE1: ./getting_started/quick_start_guide_re1.md
         - Quick Start RE2: ./getting_started/quick_start_guide_re2.md
         - Best Practices: ./getting_started/best_practices.md

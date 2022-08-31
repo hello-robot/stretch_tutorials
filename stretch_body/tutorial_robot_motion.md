@@ -1,4 +1,3 @@
-
 # Tutorial: Robot Motion
 
 As we've seen in previous tutorials, commanding robot motion can be simple and straight forward. For example, incremental motion of the arm can be commanded by:
