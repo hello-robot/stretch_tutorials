@@ -2,13 +2,7 @@
 
 The Stretch robot is equipped with the [Intel RealSense D435i camera](https://www.intelrealsense.com/depth-camera-d435i/), an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.
 
-Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the [stretch_ros](https://github.com/hello-robot/stretch_ros) repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
-
-```bash
-cd ~/catkin_ws/src/stretch_ros/stretch_core
-git checkout feature/upright_camera_view
-```
-Then run the stretch driver launch file.
+Begin by running the stretch `driver.launch` file.
 
 ```bash
 # Terminal 1
