@@ -52,9 +52,9 @@ class StretchNavigation:
         """
         return Quaternion(*transformations.quaternion_from_euler(0.0, 0.0, theta))
 
-    def go_to(self, x, y, theta, wait=False):
+    def go_to(self, x, y, theta):
         """
-        Drive the robot to a particlar pose on the map. The Stretch only needs
+        Drive the robot to a particular pose on the map. The Stretch only needs
         (x, y) coordinates and a heading.
         :param x: x coordinate in the map frame.
         :param y: y coordinate in the map frame.
@@ -96,4 +96,4 @@ if __name__ == '__main__':
     nav = StretchNavigation()
 
     # Send a nav goal to the `go_to()` method
-    nav.go_to(0.5, 0.0, 0.0, wait=True)
+    nav.go_to(0.5, 0.0, 0.0)
