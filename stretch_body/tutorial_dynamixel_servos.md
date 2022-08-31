@@ -141,7 +141,7 @@ Stretch Body's low level Dynamixel API includes a hierarchy of three classes
 
 DynamixelXChain manages a set of daisy-chained servos on a single bus (for example the head_pan and head_tilt servos). It allows for greater communication bandwidth by doing group read/write over USB. 
 
-The [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py) class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial [Adding Custom Wrist DOF](./tutorial_extending_wrist_dof.md) explains how to do this.
+The [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py) class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial [Adding Custom Wrist DOF](./tutorial_custom_wrist_dof.md) explains how to do this.
 
 ### DynamixelHelloXL430
 
@@ -190,7 +190,7 @@ stretch_configuration_params.yaml         param.head_pan.range_t           [0, 3
 stretch_configuration_params.yaml         param.head_pan.zero_t            1250 
 ```
 
-In addition to `move_to` and `move_by`, the class also implements a splined trajectory interface as discussed in the [Splined Trajectory Tutorial](./tutorial_splined_trajectory.py). 
+In addition to `move_to` and `move_by`, the class also implements a splined trajectory interface as discussed in the [Splined Trajectory Tutorial](./tutorial_splined_trajectories.md). 
 
 ### DynamixelXL430
 
@@ -212,4 +212,5 @@ m.stop()
 
 
 ------
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+

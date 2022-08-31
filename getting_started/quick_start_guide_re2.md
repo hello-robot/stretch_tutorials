@@ -1,10 +1,10 @@
-# Stretch RE1 and RE2: Quick Start Guide
+# Stretch RE2: Quick Start Guide
 
-Congratulations on your Stretch RE1! This guide will get you started with your new robot. 
+Congratulations on your Stretch RE2! This guide will get you started with your new robot. 
 
 ## Safety
 
-Stretch has the potential to cause harm if not properly used. All users should review the [Stretch Safety Guide](robot_safety_guide.md) before operating the robot.
+Stretch has the potential to cause harm if not properly used. All users should review the [Stretch Safety Guide](./safety_guide.md) before operating the robot.
 
 ## Unboxing
 
@@ -18,9 +18,15 @@ A few items you'll want to know about before getting started.
 
 The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch
 
-
-
 ![](./images/trunk_rs.png)
+
+### Battery Voltage
+
+ The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging.
+
+![](./images/lightbar_voltage.png)
+
+### Charging the Battery
 
 The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:
 
@@ -31,7 +37,7 @@ The provided battery charger can be plugged and unplugged at any time during ope
 | SUPPLY  | 1) Power the robot during tethered use<br/>2) Repair damaged batteries. |
 | REPAIR  | Repair damaged batteries.                                    |
 
-Please review the [Battery Maintenance Guide](./battery_maintenance_guide.md) for proper care and charging of Stretch batteries. 
+Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/) for proper care and charging of Stretch batteries. 
 
 ![](./images/NOCO_Genius10_UI_rs.png)
 
@@ -76,9 +82,8 @@ Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let 
 
 **Note**: You will find the USB Dongle already plugged into the the USB port of the base trunk.
 
-To start the demo after unboxing:
+To start the demo after unboxing and turning the power on:
 
-* Remove the 'trunk' cover and power on the robot
 * Wait for about 45 seconds. You will hear the Ubuntu startup sound, followed by two beeps (indicating the demo is running). 
 * Hit the Connect button on the controller. The upper two LEDs of the ring will illuminate.
 * Hit the Home Robot button. Stretch will go through its homing calibration routine. 
@@ -105,7 +110,6 @@ Now that you're familiar with the robot, take a minute to watch the [Stretch Pow
 
 Let's get plugged in.
 
-* Remove the 'trunk' cover and power on the robot if its not already on.
 * Plug in a mouse, keyboard and HDMI monitor to the robot trunk
 * Plug in the battery charger
 * Place the charger in SUPPLY mode
@@ -114,9 +118,9 @@ Log in to the robot computer. The default user credentials came in the box with 
 
 ## Start Coding
 
-Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low level Python interface to the robot. Detailed information on the [Stretch Body Interface](stretch_body_guide.md) can be found here.
+Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
 
-Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need kill off this process so that it doesn't contend with your code.
+**NOTE**: Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need kill off this process so that it doesn't contend with your code.
 
 ```console
 $ pkill -f stretch_xbox*
@@ -146,13 +150,13 @@ $ stretch_robot_home.py
 
 Once the robot has homed, let's write some quick test code:
 
-```console
-$ ipython
-Python 2.7.17 (default, Apr 15 2020, 17:20:14)
+```bash
+>>$ ipython
+Python 3.8.10 (default, Jun 22 2022, 20:18:18) 
 ...
 ```
 
-Now let's move the robot around using the Robot API. Try typing in these interactive commands at the iPython prompt:
+Now let's move the robot around using the [Stretch Body Robot API](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py). Try typing in these interactive commands at the iPython prompt:
 
 ```python
 import stretch_body.robot
@@ -202,7 +206,7 @@ If you'd like to setup a new user account, check out the [Stretch Installation G
 
 The recommended power down procedure is
 
-1. Place a clamp on the mast below the shoulder to prevent dropping
+1. Place a clamp on the mast below the shoulder to prevent a slow drop (if this is a concern)
 2. Shutdown the computer from the Desktop
 3. When the laser range finder has stopped spinning, turn off the main power switch
 4. Attach the charger
@@ -218,9 +222,11 @@ Hello Robot support monitors the forum closely and will quickly get back to you 
 
 Encounter any issues while getting started? Please let us know at support@hello-robot.com. Also take a minute to review the [Stretch Troubleshooting Guide](./troubleshooting_guide.md)
 
-We recommend next exploring the ROS based demos that ship with Stretch.  These [are found in the stretch_ros repository](https://github.com/hello-robot/stretch_ros/tree/master/stretch_demos).
+We recommend next exploring the ROS based demos that ship with Stretch.  These [are found in the stretch_ros repository](https://docs.hello-robot.com/0.2/stretch-ros/stretch_demos/).
 
 That's it. Happy coding!
 
 ------
-<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+
+

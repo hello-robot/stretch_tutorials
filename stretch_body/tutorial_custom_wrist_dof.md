@@ -64,7 +64,7 @@ In [5]: w.pose('tool_up')
 In [6]: w.pose('tool_down')
 ```
 
-Finally, you'll want to make your WristPitch available from `stretch_body.robot` Add the following [YAML](./stretch_re1_user_params.yaml) to your `stretch_user_params.yaml`
+Finally, you'll want to make your WristPitch available from `stretch_body.robot` Add the following [YAML](./custom_wrist_dof/stretch_user_params.yaml) to your `stretch_user_params.yaml`
 
 ```yaml
 end_of_arm:
@@ -86,4 +86,7 @@ In [3]: r.startup()
 In [4]: r.end_of_arm.move_by('wrist_pitch',0.1)
 
 ```
+
+------
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
 

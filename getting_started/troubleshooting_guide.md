@@ -1,10 +1,10 @@
-# Stretch RE1: Troubleshooting Guide
+# Stretch RE1 and RE2: Troubleshooting Guide
 
 This guide covers common issues and ways to resolve them. Please check the [Hello Robot Forum](https://forum.hello-robot.com) for additional topics not covered here.
 
 ## XBox teleoperation is not working 
 
-The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by [stretch_xbox_controller_teleop.py](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py0) will be incorrect.
+The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by [stretch_xbox_controller_teleop.py](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py) will be incorrect.
 
 To set the controller into the correct mode:
 
@@ -19,7 +19,13 @@ In addition, check that the provided USB dongle is plugged into the robot USB po
 
 ## Battery is not staying charged
 
-Please review the troubleshooting section of the [Battery Maintenance Guide](./battery_maintenance_guide.md).
+=== "Stretch RE1"
+
+    Please review the troubleshooting section of the [RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/).
+
+=== "Stretch RE2"
+
+    Please review the troubleshooting section of the [RE2 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re2).
 
 ## RPC Transport Errors (Stretch doesn't respond to commands)
 
@@ -55,4 +61,5 @@ To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for
 ![](./images/xbox_off_rs.png)
 
 ------
-<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+

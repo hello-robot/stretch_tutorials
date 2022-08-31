@@ -1,7 +1,7 @@
 
 # Untethered Operation
 
-As a mobile manipulator, the Stretch RE1 can only go so far when tethered to the monitor, keyboard, and mouse setup. This guide will explain three methods of setting up the Stretch RE1 for untethered usage.
+As a mobile manipulator,  Stretch can only go so far when tethered to the monitor, keyboard, and mouse setup. This guide will explain three methods of setting up the Stretch for untethered usage.
 
 These methods typically require a wireless network, but it is possible to set up any of these methods without a wireless network by [setting up a hotspot](#hotspot).
 
@@ -13,7 +13,7 @@ This is the recommended approach if you are running Windows or MacOS. This metho
 
 #### How To
 
-While the Stretch RE1 is tethered to the monitor, keyboard, and mouse setup, first verify that the robot is connected to the wireless network then install Vino VNC server using the following command:
+While Stretch is tethered to the monitor, keyboard, and mouse setup, first verify that the robot is connected to the wireless network then install Vino VNC server using the following command:
 
 ```console
 $ sudo apt install vino
@@ -39,7 +39,7 @@ This is the recommended approach if you are running an Unix-based operating syst
 
 While the [Remote Desktop](#remote-desktop) approach is easy to set up, graphics and interaction with the remote desktop is often slow. In this method, we will use SSH and X Server to accomplish the same a bit faster. SSH stands for Secure Shell, enabling one to remotely use the terminal (shell) of another machine. X Server is used on many Unix variants to render the Windowed GUI of applications. With SSH and X Server, it is possible to render a Windowed GUI of an application running on the robot on your computer's screen.
 
-The first step is to identify the robot's IP address on the local network. While the Stretch RE1 is tethered to the monitor, keyboard, and mouse, verify that the robot is connected to a wireless network. Then, open a terminal and run `ifconfig`, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. Using any other machine on the same local network, I can SSH into the robot using this IP address. Take note of the username and password of the robot. The default combo is printed on papers that came in the tools box alongside the robot.
+The first step is to identify the robot's IP address on the local network. While  Stretch is tethered to the monitor, keyboard, and mouse, verify that the robot is connected to a wireless network. Then, open a terminal and run `ifconfig`, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. Using any other machine on the same local network, I can SSH into the robot using this IP address. Take note of the username and password of the robot. The default combo is printed on papers that came in the tools box alongside the robot.
 
 To SSH into the robot, run the following. It will require the password and may ask you to add the robot to the known hosts.
 
@@ -47,7 +47,7 @@ To SSH into the robot, run the following. It will require the password and may a
 $ ssh -X username@ip-address
 ```
 
-Now that you're SSH-ed into the robot, you can disconnect any wires from the robot. You can accomplish any of the same tasks through the terminal. For example, you can type in `ipython` and interact with the robot using Stretch Body, as explained in the [Getting Started Guide](quick_start_guide.md#start-coding).
+Now that you're SSH-ed into the robot, you can disconnect any wires from the robot. You can accomplish any of the same tasks through the terminal. For example, you can type in `ipython` and interact with the robot using Stretch Body, as explained in the [Quick Start Guide](./quick_start_guide_re2.md#start-coding).
 
 Furthermore, Windowed GUI applications that would have displayed on the monitor will now display on your SSH-ed machine. For example, we can open Rviz to visualize what the robot is seeing. Open two terminals and SSH into the robot as explained above. In the first, run `roslaunch stretch_core stretch_driver.launch`. You should see some information print out in the terminal. In the second, run `rviz`. A window will pop up and information about the robot can be visualized by clicking on `Add -> RobotModel` and `Add -> By Topic -> /Scan`. Additional information on how to use ROS tools can be found in [ROS's tutorials](http://wiki.ros.org/ROS/Tutorials) or in our [Stretch ROS guides](README.md#ros-interface).
 
@@ -75,7 +75,7 @@ This is the recommended approach if you are running Ubuntu 16.04/18.04/20.04 wit
 
 #### How To
 
-If you are developing ROS code to test on the Stretch RE1 and you already have ROS installed on your Ubuntu computer, then there is an easier way of using Rviz than the method described in [SSH & X Server](#ssh-x-server). In the ROS world, this concept is known as "remote master".
+If you are developing ROS code to test on Stretch and you already have ROS installed on your Ubuntu computer, then there is an easier way of using Rviz than the method described in [SSH & X Server](#ssh-x-server). In the ROS world, this concept is known as "remote master".
 
 First, identify your robot's and computer's IP address on the network (e.g. using `ifconfig`). These are `robot-ip-address` and `computer-ip-address` respectively.
 
@@ -140,4 +140,5 @@ $ ssh-copy-id -i <key_filepath_without_extension> username@ip-address
 This requires you to know the username and ip-address of the robot. Instructions on how to find this information is found in the [SSH & X Server](#ssh-x-server) section. You may now SSH into the robot as normal, and no prompt for the robot's password will appear.
 
 ------
-<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+

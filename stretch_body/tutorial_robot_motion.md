@@ -312,3 +312,7 @@ Motion commands are non-blocking and it is the responsibility of the user code t
 The Stretch_Body interface is not designed to support high bandwidth control applications. The natural dynamics of the robot actuators do not support high bandwidth control, and the USB based interface limits high rate communication.
 
 In practice, a Python based control loop that calls push_command( ) at 1Hz to 10Hz is sufficiently matched to the robot natural dynamics. 
+
+------
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+
