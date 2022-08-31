@@ -215,6 +215,3 @@ The first line gives the listener some time to accumulate transforms. The second
       rate.sleep()
 ```
 Run a while loop until the node is shutdown. Within the while loop run the `pcl_transformer()` method.
-
-**Previous Example** [Tf2 Broadcaster and Listener](example_10.md)
-**Next Example** [ArUco Tag Locator](example_12.md)

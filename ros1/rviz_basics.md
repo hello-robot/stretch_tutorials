@@ -40,5 +40,3 @@ the `rviz` flag will open an RViz window  to visualize a variety of ROS topics.
 </p>
 
 Bringup the [keyboard teleop](teleoperating_stretch.md) to drive Stretch and observe its sensor input.
-
-**Next Tutorial:** [Navigation Stack](navigation_stack.md)

@@ -162,5 +162,3 @@ An alternative for robot base teleoperation is to use an Xbox controller. Stop t
 roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=joystick
 ```
 Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.
-
-**Next Tutorial:** [Internal State of Stretch](internal_state_of_stretch.md)

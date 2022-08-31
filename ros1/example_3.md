@@ -172,6 +172,3 @@ The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy
 Instantiate class with `Avioder()`
 
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
-
-**Previous Example:** [Filter Laser Scans](example_2.md)
-**Next Example:** [Give Stretch a Balloon](example_4.md)

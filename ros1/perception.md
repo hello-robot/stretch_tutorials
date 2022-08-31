@@ -61,6 +61,3 @@ The `DepthCloud` display is visualized in the main RViz window. This display tak
 
 ## Deep Perception
 Hello Robot also has a ROS package that uses deep learning models for various detection demos. A link to the package is provided: [stretch_deep_perception](https://github.com/hello-robot/stretch_ros/tree/master/stretch_deep_perception).
-
-
-**Next Tutorial:** [ArUco Marker Detection](aruco_marker_detection.md)

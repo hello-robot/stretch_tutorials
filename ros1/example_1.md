@@ -154,5 +154,3 @@ python3 move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
-
-**Next Example:** [Filter Laser Scans](example_2.md)

@@ -402,6 +402,3 @@ if __name__ == '__main__':
         rospy.loginfo('interrupt received, so shutting down')
 ```
 Declare `LocateArUcoTag` object. Then run the `main()` method.
-
-
-**Previous Example** [PointCloud Transformation](example_11.md)

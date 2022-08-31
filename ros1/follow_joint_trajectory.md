@@ -404,6 +404,3 @@ trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
 Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` set by your list of points. Specify the coordinate frame that we want (*base_link*) and set the time to be now.
-
-
-**Next Tutorial:** [Perception](perception.md)

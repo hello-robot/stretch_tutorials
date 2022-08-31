@@ -276,6 +276,3 @@ image_msg.header = msg.header
 self.pub.publish(image_msg)
 ```
 Publish the ROS image with the same header as the subscribed ROS message.
-
-**Previous Example** [Store Effort Values](example_6.md)
-**Next Example** [Voice to Text](example_8.md)

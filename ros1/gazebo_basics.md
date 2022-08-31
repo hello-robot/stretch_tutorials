@@ -27,5 +27,3 @@ roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world
 <p align="center">
   <img src="images/stretch_willowgarage_world.png"/>
 </p>
-
-**Next Tutorial:** [Teleoperating Stretch](teleoperating_stretch.md)

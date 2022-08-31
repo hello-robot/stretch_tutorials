@@ -461,6 +461,3 @@ except KeyboardInterrupt:
   rospy.loginfo('interrupt received, so shutting down')
 ```
 Declare a `VoiceTeleopNode` object. Then execute the `main()` method.
-
-**Previous Example** [Voice to Text](example_8.md)
-**Next Example** [Tf2 Broadcaster and Listener](example_10.md)
