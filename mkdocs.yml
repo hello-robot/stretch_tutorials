@@ -125,8 +125,6 @@ nav:
       - ArUco Marker Detection: ./ros1/aruco_marker_detection.md
       - ReSpeaker Microphone Array: ./ros1/respeaker_microphone_array.md
       - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
-      - ROS testing: ./ros1/ros_testing.md
-      - Other Nav Stack Features: ./ros1/other_nav_features.md
     - Other Examples:
       - Teleoperate Stretch with a Node: ./ros1/example_1.md
       - Filter Laser Scans: ./ros1/example_2.md
@@ -140,6 +138,7 @@ nav:
       - Tf2 Broadcaster and Listener: ./ros1/example_10.md
       - PointCloud Transformation: ./ros1/example_11.md
       - ArUco Tag Locator: ./ros1/example_12.md
+      - 2D Navigation Goals: ./ros1/example_13.md
   - ROS2:
     - Overview: ./ros2/README.md
     - Basics:
