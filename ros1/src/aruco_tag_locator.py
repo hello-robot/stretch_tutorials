@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
@@ -15,11 +15,11 @@ import hello_helpers.hello_misc as hm
 from sensor_msgs.msg import JointState
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # Import TransformStamped from the geometry_msgs package for the publisher
@@ -38,7 +38,7 @@ class LocateArUcoTag(hm.HelloNode):
         # Initialize the inhereted hm.Hellonode class
         hm.HelloNode.__init__(self)
 
-        # Initialize Subscriber
+        # Initialize subscriber
         self.joint_states_sub = rospy.Subscriber('/stretch/joint_states', JointState, self.joint_states_callback)
 
         # Initialize publisher
@@ -62,9 +62,8 @@ class LocateArUcoTag(hm.HelloNode):
         self.tilt_num_steps = 3
         self.tilt_step_size = pi/16
 
-        # Define the head actuation rotational velocity 
+        # Define the head actuation rotational velocity
         self.rot_vel = 0.5 # radians per sec
-
 
     def joint_states_callback(self, msg):
         """
@@ -73,7 +72,6 @@ class LocateArUcoTag(hm.HelloNode):
         :param msg: The JointState message type.
         """
         self.joint_state = msg
-
 
     def send_command(self, command):
         '''
@@ -110,7 +108,7 @@ class LocateArUcoTag(hm.HelloNode):
                 # extract the head position value from the `position` key
                 point.positions = [command['position']]
 
-            # Set the rotaitonal velocity
+            # Set the rotational velocity
             point.velocities = [self.rot_vel]
 
             # Assign goal position with updated point variable
@@ -125,23 +123,22 @@ class LocateArUcoTag(hm.HelloNode):
             self.trajectory_client.send_goal(trajectory_goal)
             self.trajectory_client.wait_for_result()
 
-
     def find_tag(self, tag_name='docking_station'):
         """
         A function that actuates the camera to search for a defined ArUco tag
-        marker. Then the function returns the pose
+        marker. Then the function returns the pose.
         :param self: The self reference.
         :param tag_name: A string value of the ArUco marker name.
 
-        :returns transform: A TransformStamped message type.
+        :returns transform: The docking station's TransformStamped message.
         """
-        # Create a dictionaries to get the head in its initial position for its search
+        # Create dictionaries to get the head in its initial position
         pan_command = {'joint': 'joint_head_pan', 'position': self.min_pan_position}
         self.send_command(pan_command)
         tilt_command = {'joint': 'joint_head_tilt', 'position': self.min_tilt_position}
         self.send_command(tilt_command)
 
-        # Nested for loop to sweep the pan and tilt in increments
+        # Nested for loop to sweep the joint_head_pan and joint_head_tilt in increments
         for i in range(self.tilt_num_steps):
             for j in range(self.pan_num_steps):
                 # Update the joint_head_pan position by the pan_step_size
@@ -177,7 +174,6 @@ class LocateArUcoTag(hm.HelloNode):
         # Notify that the requested tag was not found
         rospy.loginfo("The requested tag '%s' was not found", tag_name)
 
-
     def main(self):
         """
         Function that initiates the issue_command function.
@@ -197,12 +193,11 @@ class LocateArUcoTag(hm.HelloNode):
         # Give the listener some time to accumulate transforms
         rospy.sleep(1.0)
 
-        # Notify Stretch is searching for the ArUco tag with a rospy loginfo function
+        # Notify Stretch is searching for the ArUco tag with `rospy.loginfo()`
         rospy.loginfo('Searching for docking ArUco tag.')
 
         # Search for the ArUco marker for the docking station
         pose = self.find_tag("docking_station")
-
 
 if __name__ == '__main__':
     # Use a try-except block

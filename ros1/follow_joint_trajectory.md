@@ -7,42 +7,27 @@ Stretch ROS driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api
   <img src="images/stow_command.gif"/>
 </p>
 
-
-
 Begin by running the following command in the terminal in a terminal.
-
 
 ```bash
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 Switch the mode to *position* mode using a rosservice call. Then run the stow command node.
 
-=== "Melodic"
-    ```bash
-    # Terminal 2
-    rosservice call /switch_to_position_mode
-    cd catkin_ws/src/stretch_tutorials/src/
-    python stow_command.py
-    ```
-
-=== "Noetic"
-    ```bash
-    # Terminal 2
-    rosservice call /switch_to_position_mode
-    cd catkin_ws/src/stretch_tutorials/src/
-    python3 stow_command.py
-    ```
-
-
-
-
+```bash
+# Terminal 2
+rosservice call /switch_to_position_mode
+cd catkin_ws/src/stretch_tutorials/src/
+python3 stow_command.py
+```
 This will send a `FollowJointTrajectory` command to stow Stretch's arm.
+
+
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from control_msgs.msg import FollowJointTrajectoryGoal
@@ -59,7 +44,7 @@ class StowCommand(hm.HelloNode):
 
   def issue_stow_command(self):
     '''
-    Function that makes an action call and sends stow postion goal.
+    Function that makes an action call and sends stow position goal.
     :param self: The self reference.
     '''
     stow_point = JointTrajectoryPoint()
@@ -100,10 +85,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
-
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rospy
@@ -112,11 +96,10 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 import hello_helpers.hello_misc as hm
 import time
 ```
-You need to import rospy if you are writing a ROS Node. Import the FollowJointTrajectoryGoal from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers) package consists of a module the provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros). In this instance we are importing the hello_misc script.
+You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import the `FollowJointTrajectoryGoal` from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import `JointTrajectoryPoint` from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers) package consists of a module the provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros). In this instance we are importing the `hello_misc` script.
 
 ```python
 class StowCommand(hm.HelloNode):
-
     def __init__(self):
         hm.HelloNode.__init__(self)
 ```
@@ -137,7 +120,7 @@ The `issue_stow_command()` is the name of the function that will stow Stretch's 
     trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
     trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
-Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by the positions set in *stow_point*. Specify the coordinate frame that we want (base_link) and set the time to be now.
+Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by the positions set in *stow_point*. Specify the coordinate frame that we want (*base_link*) and set the time to be now.
 
 ```python
 self.trajectory_client.send_goal(trajectory_goal)
@@ -153,7 +136,7 @@ def main(self):
     self.issue_stow_command()
     time.sleep(2)
 ```
-Create a function, `main()`, to do all of the setup for the `hm.HelloNode` class and issue the stow command.
+Create a funcion, `main()`, to do all of the setup the `hm.HelloNode` class and issue the stow command.
 
 ```python
 if __name__ == '__main__':
@@ -179,21 +162,19 @@ Begin by running the following command in the terminal in a terminal.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 Switch the mode to *position* mode using a rosservice call. Then run the multipoint command node.
 
 ```bash
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python multipoint_command.py
+python3 multipoint_command.py
 ```
-
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import time
@@ -265,7 +246,7 @@ if __name__ == '__main__':
 ```
 
 ### The Code Explained
-Seeing that there are similarities between the multipoint and stow command nodes, we will only breakdown the different components of the multipoint_command node.
+Seeing that there are similarities between the multipoint and stow command nodes, we will only breakdown the different components of the `multipoint_command` node.
 
 ```python
 point0 = JointTrajectoryPoint()
@@ -294,7 +275,7 @@ trajectory_goal.trajectory.points = [point0, point1, point2, point3, point4, poi
 trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
-Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.
+Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (*base_link*) and set the time to be now.
 
 ## Single Joint Actuator
 
@@ -310,12 +291,9 @@ You can also actuate a single joint for the Stretch. Below are the list of joint
 joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
 wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
 joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
-joint_head_pan:  lower_limit = -4.10,  upper_limit =  1.60  # in radians
+joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
 joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
 joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
-
-# INCLUDED JOINT IN MANIPULATION MODE
-joint_mobile_base_translation: lower_limit = -0.50, upper_limit = 0.50  # in radians
 
 # INCLUDED JOINTS IN POSITION MODE
 translate_mobile_base: No lower or upper limit. Defined by a step size in meters
@@ -329,25 +307,22 @@ Begin by running the following command in the terminal in a terminal.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
 Switch the mode to *position* mode using a rosservice call. Then run the single joint actuator node.
 
 ```bash
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python single_joint_actuator.py
+python3 single_joint_actuator.py
 ```
-
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
-
 
 The joint, *joint_gripper_finger_left*, is only needed when actuating the gripper.
 
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 import time
@@ -404,7 +379,7 @@ if __name__ == '__main__':
 ```
 ### The Code Explained
 
-Since the code is quite similar to the multipoint_command code, we will only review the parts that differ.
+Since the code is quite similar to the `multipoint_command` code, we will only review the parts that differ.
 
 Now let's break the code down.
 
@@ -428,7 +403,7 @@ trajectory_goal.trajectory.points = [point0]#, point1]
 trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
-Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` set by your list of points. Specify the coordinate frame that we want (base_link) and set the time to be now.
+Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint names as a list. Then `trajectory_goal.trajectory.points` set by your list of points. Specify the coordinate frame that we want (*base_link*) and set the time to be now.
 
 
 **Next Tutorial:** [Perception](perception.md)

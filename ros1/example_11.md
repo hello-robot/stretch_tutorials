@@ -8,30 +8,25 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-
-To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.
-
+To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
 ```bash
 # Terminal 2
 roslaunch stretch_core d435i_low_resolution.launch
 ```
-
-Then run the `PointCloud` transformer node.
+Then run the [pointCloud_transformer.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py) node.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python pointcloud_transformer.py
+python3 pointcloud_transformer.py
 ```
-
 Within this tutorial package, there is an RViz config file with the `PointCloud` in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
 ```
-
 The gif below visualizes what happens when running the previous node.
 
 <p align="center">
@@ -43,7 +38,7 @@ The gif below visualizes what happens when running the previous node.
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 import tf
 import sensor_msgs.point_cloud2 as pc2
@@ -65,7 +60,7 @@ class PointCloudTransformer:
         self.pointcloud2_sub = rospy.Subscriber("/camera/depth/color/points", PointCloud2, self.callback_pcl2, queue_size=1)
         self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)
         self.pcl2_cloud = None
-        self.listener = tf.TransformROS(True, rospy.Duration(10.0))
+        self.listener = tf.TransformListener(True, rospy.Duration(10.0))
         rospy.loginfo('Publishing transformed PointCloud. Use RViz to visualize')
 
     def callback_pcl2(self,msg):
@@ -98,7 +93,7 @@ class PointCloudTransformer:
         :param self: The self reference.
         :param msg: The PointCloud message.
 
-        :returns new_cloud: PointCloud message.
+        :returns new_cloud: The transformed PointCloud message.
         """
         while not rospy.is_shutdown():
             try:
@@ -124,9 +119,9 @@ if __name__=="__main__":
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rospy
@@ -136,8 +131,7 @@ from sensor_msgs.msg import PointCloud2, PointCloud
 from geometry_msgs.msg import Point32
 from std_msgs.msg import Header
 ```
-
-You need to import `rospy` if you are writing a ROS Node. Import `tf` to utilize the `transformPointCloud` function. Import various the message types from `sensor_msgs`.
+You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/Nodes). Import `tf` to utilize the `transformPointCloud` function. Import various the message types from `sensor_msgs`.
 
 ```python
 self.pointcloud2_sub = rospy.Subscriber("/camera/depth/color/points", PointCloud2, self.callback_pcl2, queue_size=1)
@@ -147,14 +141,12 @@ Set up a subscriber.  We're going to subscribe to the topic */camera/depth/color
 ```python
 self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)
 ```
-
 This section of code defines the talker's interface to the rest of ROS. `self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)` declares that your node is publishing to the */camera_cloud* topic using the message type `PointCloud`.
 
 ```python
 self.pcl2_cloud = None
 self.listener = tf.TransformListener(True, rospy.Duration(10.0))
 ```
-
 The first line of code initializes *self.pcl2_cloud* to store the `PointCloud2` message. The second line creates a `tf.TransformListener` object. Once the listener is created, it starts receiving tf transformations over the wire, and buffers them for up to 10 seconds.
 
 ```python
@@ -172,20 +164,17 @@ The callback function that stores the the `PointCloud2` message.
 temp_cloud = PointCloud()
 temp_cloud.header = self.pcl2_cloud.header
 ```
-
-Create a `PointCloud` for temporary use. Set the temporary PointCloud's header to the stored PointCloud2 header.
+Create a `PointCloud` for temporary use. Set the temporary PointCloud's header to the stored `PointCloud2` header.
 
 ```python
 for data in pc2.read_points(self.pcl2_cloud, skip_nans=True):
   temp_cloud.points.append(Point32(data[0],data[1],data[2]))
 ```
-
 Use a for loop to extract `PointCloud2` data into a list of x, y, z points and append those values to the `PointCloud` message, *temp_cloud*.
 
 ```python
 transformed_cloud = self.transform_pointcloud(temp_cloud)
 ```
-
 Utilize the `transform_pointcloud` function to transform the points in the `PointCloud` message to reference the *base_link*
 
 ```python
@@ -198,14 +187,11 @@ while not rospy.is_shutdown():
         except (tf.LookupException, tf.ConnectivityException,tf.ExtrapolationException):
             pass
 ```
-
 Try to look up and transform the `PointCloud` input. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Transform the point cloud data from *camera_color_optical_frame* to *base_link* with the `transformPointCloud()` function.
-
 
 ```python
 self.pointcloud_pub.publish(transformed_cloud)
 ```
-
 Publish the new transformed `PointCloud`.
 
 ```python
@@ -213,27 +199,22 @@ rospy.init_node('pointcloud_transformer',anonymous=True)
 PCT = PointCloudTransformer()
 
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Declare object, *PCT*, from the `PointCloudTransformer` class.
+Declare a `PointCloudTransformer` object.
 
 ```python
 rate = rospy.Rate(1)
 rospy.sleep(1)
 ```
-
 The first line gives the listener some time to accumulate transforms. The second line is the rate the node is going to publish information (1 Hz).
 
 ```python
-# Run while loop until the node is shutdown
   while not rospy.is_shutdown():
-
-      # Run the pcl_transformer method
       PCT.pcl_transformer()
       rate.sleep()
 ```
 Run a while loop until the node is shutdown. Within the while loop run the `pcl_transformer()` method.
-
 
 **Previous Example** [Tf2 Broadcaster and Listener](example_10.md)
 **Next Example** [ArUco Tag Locator](example_12.md)

@@ -1,15 +1,15 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
 import time
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # Import hello_misc script for handling trajectory goals with an action client
@@ -19,8 +19,11 @@ class SingleJointActuator(hm.HelloNode):
 	"""
 	A class that sends multiple joint trajectory goals to a single joint.
 	"""
-	# Initialize the inhereted hm.Hellonode class
 	def __init__(self):
+		"""
+		Function that initializes the inhereted hm.HelloNode class.
+		:param self: The self reference.
+		"""
 		hm.HelloNode.__init__(self)
 
 	def issue_command(self):
@@ -34,12 +37,9 @@ class SingleJointActuator(hm.HelloNode):
 		# joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
 		# wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
 		# joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
-		# joint_head_pan:  lower_limit = -4.10,  upper_limit =  1.60  # in radians
+		# joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
 		# joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
 		# joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
-		#
-		# INCLUDED JOINT IN MANIPULATION MODE
-		# joint_mobile_base_translation: lower_limit = -0.50, upper_limit = 0.50  # in radians
 		#
 		# INCLUDED JOINTS IN POSITION MODE
 		# translate_mobile_base: No lower or upper limit. Defined by a step size in meters
@@ -52,7 +52,7 @@ class SingleJointActuator(hm.HelloNode):
 		trajectory_goal.trajectory.joint_names = ['joint_head_pan']
 
 		# Provide desired positions for joint name.
-		# Create a JointTrajectoryPoint message type
+		# Set positions for the following 5 trajectory points
 		point0 = JointTrajectoryPoint()
 		point0.positions = [0.65]
 
@@ -63,7 +63,7 @@ class SingleJointActuator(hm.HelloNode):
 		# trajectory points
 		trajectory_goal.trajectory.points = [point0]#, point1]
 
-		# Specify the coordinate frame that we want (base_link) and set the time to be now.
+		# Specify the coordinate frame that we want (base_link) and set the time to be now
 		trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
 		trajectory_goal.trajectory.header.frame_id = 'base_link'
 
@@ -85,11 +85,9 @@ class SingleJointActuator(hm.HelloNode):
 		self.issue_command()
 		time.sleep(2)
 
-
 if __name__ == '__main__':
 	try:
-		# Declare object from the SingleJointActuator class. Then execute the
-		# main() method/function
+        # Instanstiate a `SingleJointActuator()` object and execute the main() method
 		node = SingleJointActuator()
 		node.main()
 	except KeyboardInterrupt:

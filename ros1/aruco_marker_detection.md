@@ -131,4 +131,4 @@ When coming up with this guide, we expected the following:
 * Body-mounted accessories with the same ID numbers mounted to different robots could be disambiguated using the expected range of 3D locations of the ArUco markers on the calibrated body.
 * Accessories in the environment with the same ID numbers could be disambiguated using a map or nearby observable features of the environment.
 
-**Next Tutorial:** [ReSpeaker Microphone Array](respeaker_microphone_array.md)
+**Next Tutorial:** [ReSpeaker Microphone Array](respeaker_mircophone_array.md)

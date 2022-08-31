@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
@@ -7,7 +7,6 @@ import os
 # Import SpeechRecognitionCandidates from the speech_recognition_msgs package
 from speech_recognition_msgs.msg import SpeechRecognitionCandidates
 
-
 class SpeechText:
     """
     A class that saves the interpreted speech from the ReSpeaker Microphone Array to a text file.
@@ -15,6 +14,7 @@ class SpeechText:
     def __init__(self):
         """
         Initialize subscriber and directory to save speech to text file.
+        :param self: The self reference.
         """
         # Initialize subscriber
         self.sub = rospy.Subscriber("speech_to_text", SpeechRecognitionCandidates, self.callback)
@@ -43,7 +43,6 @@ class SpeechText:
         with open(completeName, "a+") as file_object:
             file_object.write("\n")
             file_object.write(transcript)
-
 
 if __name__ == '__main__':
     # Initialize the node and name it speech_text

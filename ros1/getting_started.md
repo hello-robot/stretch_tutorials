@@ -10,6 +10,8 @@ Instructions on installing Noetic can be found in our open-source [installation 
 ```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_tutorials.git
+cd stretch_tutorials
+git checkout noetic
 cd ~/catkin_ws
 catkin_make
 ```

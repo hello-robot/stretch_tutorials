@@ -44,18 +44,18 @@ First, open a terminal and run the stretch driver launch file.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Then in a new terminal run the rplidar launch file from `stretch_core`.
+Then in a new terminal run the `rplidar.launch` file from `stretch_core`.
 ```bash
 # Terminal 2
 roslaunch stretch_core rplidar.launch
 ```
 
-To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.
+To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the [scan_filter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py) node by typing the following in a new terminal.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python scan_filter.py
+python3 scan_filter.py
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
@@ -72,7 +72,7 @@ Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from numpy import linspace, inf
@@ -80,24 +80,24 @@ from math import sin
 from sensor_msgs.msg import LaserScan
 
 class ScanFilter:
-  """
-  A class that implements a LaserScan filter that removes all of the points
-  that are not infront of the robot.
-  """
+	"""
+	A class that implements a LaserScan filter that removes all of the points
+	that are not in front of the robot.
+	"""
 	def __init__(self):
 		self.width = 1.0
 		self.extent = self.width / 2.0
 		self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
 		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
-    rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
+		rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
 
 	def callback(self,msg):
-    """
-		Callback function to deal with incoming laserscan messages.
+		"""
+		Callback function to deal with incoming LaserScan messages.
 		:param self: The self reference.
-		:param msg: The subscribed laserscan message.
+		:param msg: The subscribed LaserScan message.
 
-		:publishes msg: updated laserscan message.
+		:publishes msg: updated LaserScan message.
 		"""
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 		points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
@@ -116,9 +116,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python
@@ -127,7 +127,7 @@ from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus why linspace, inf, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe and publish LaserScan messages.
+You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/Nodes). There are functions from `numpy` and `math` that are required within this code, thus why linspace, inf, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe and publish `LaserScan` messages.
 
 ```python
 self.width = 1
@@ -138,12 +138,12 @@ We're going to assume that the robot is pointing up the x-axis, so that any poin
 ```python
 self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
 ```
-Set up a subscriber.  We're going to subscribe to the topic *scan*, looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
+Set up a subscriber.  We're going to subscribe to the topic *scan*, looking for `LaserScan` messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
 self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
 ```
-`pub = rospy.Publisher("filtered_scan", LaserScan, queue_size=10)` declares that your node is publishing to the *filtered_scan* topic using the message type LaserScan. This lets the master tell any nodes listening on *filtered_scan* that we are going to publish data on that topic.
+`pub = rospy.Publisher("filtered_scan", LaserScan, queue_size=10)` declares that your node is publishing to the *filtered_scan* topic using the message type `LaserScan`. This lets the master tell any nodes listening on *filtered_scan* that we are going to publish data on that topic.
 
 ```python
 angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
@@ -171,7 +171,7 @@ Substitute in the new ranges in the original message, and republish it.
 rospy.init_node('scan_filter')
 ScanFilter()
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate the class with `ScanFilter()`
 

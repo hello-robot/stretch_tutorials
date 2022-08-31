@@ -1,17 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
 from numpy import linspace, inf
 from math import sin
-
 # We're going to subscribe to a LaserScan message
 from sensor_msgs.msg import LaserScan
 
 class ScanFilter:
 	"""
 	A class that implements a LaserScan filter that removes all of the points.
-	that are not infront of the robot.
+	that are not in front of the robot.
 	"""
 	def __init__(self):
 		# We're going to assume that the robot is pointing up the x-axis, so that
@@ -32,17 +31,16 @@ class ScanFilter:
 		# Create log message
 		rospy.loginfo("Publishing the filtered_scan topic. Use RViz to visualize.")
 
-
 	def callback(self,msg):
 		"""
-		Callback function to deal with incoming laserscan messages.
+		Callback function to deal with incoming LaserScan messages.
 		:param self: The self reference.
-		:param msg: The subscribed laserscan message.
+		:param msg: The subscribed LaserScan message.
 
-		:publishes msg: updated laserscan message.
+		:publishes msg: updated LaserScan message.
 		"""
-		# Figure out the angles of the scan.  We're going to do this each time, in case we're subscribing to more than one
-		# laser, with different numbers of beams
+		# Figure out the angles of the scan.  We're going to do this each time,
+		# in case we're subscribing to more than one laser, with different numbers of beams
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 
 		# Work out the y coordinates of the ranges

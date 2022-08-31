@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import Modules
 import rospy
@@ -27,7 +27,7 @@ class CaptureImage:
         self.bridge = CvBridge()
 
         # Initialize subscriber
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
 
         # Create path to save captured images to the stored data folder
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
@@ -42,7 +42,7 @@ class CaptureImage:
         # Try to convert the ROS image message to a cv2 Image
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         # Define the file name

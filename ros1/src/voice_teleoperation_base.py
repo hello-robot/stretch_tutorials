@@ -1,23 +1,23 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import math
 import rospy
 import sys
 
-# We're going to subscribe to a JointState message type, so we need to import
-# the definition for it
+# We're going to subscribe to 64-bit integers, so we need to import the definition
+# for them
 from sensor_msgs.msg import JointState
 
 # Import Int32 message typs from the std_msgs package
 from std_msgs.msg import Int32
 
 # Import the FollowJointTrajectoryGoal from the control_msgs.msg package to
-# control the Stretch robot.
+# control the Stretch robot
 from control_msgs.msg import FollowJointTrajectoryGoal
 
 # Import JointTrajectoryPoint from the trajectory_msgs package to define
-# robot trajectories.
+# robot trajectories
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # Import hello_misc script for handling trajectory goals with an action client
@@ -69,16 +69,17 @@ class GetVoiceCommands:
 
     def callback_direction(self, msg):
         """
-        A callback function that converts the sound direction from degrees to radians.
+        A callback function that converts the incoming message, sound direction,
+        from degrees to radians.
         :param self: The self reference.
-        :param msg: The Int32 message type.
+        :param msg: The Int32 message type that represents the sound direction.
         """
         self.sound_direction = msg.data * -self.rad_per_deg
 
     def callback_speech(self,msg):
         """
-        A callback function that takes all items in the iterable list and join
-        them into a single string.
+        A callback function takes the incoming message, a list of the speech to
+        text, and joins all items in that iterable list into a single string.
         :param self: The self reference.
         :param msg: The SpeechRecognitionCandidates message type.
         """
@@ -90,7 +91,7 @@ class GetVoiceCommands:
         base motion.
         :param self:The self reference.
 
-        :returns inc: A dictionary type.
+        :returns inc: A dictionary type the contains the increment size.
         """
         if self.step_size == 'small':
             inc = {'rad': self.small_rad, 'translate': self.small_translate}
@@ -130,7 +131,7 @@ class GetVoiceCommands:
         A function that defines the teleoperation command based on the voice command.
         :param self: The self reference.
 
-        :returns command: A dictionary type.
+        :returns command: A dictionary type that contains the type of base motion.
         """
         command = None
         # Move base forward command
@@ -141,11 +142,11 @@ class GetVoiceCommands:
         if self.voice_command == 'back':
             command = {'joint': 'translate_mobile_base', 'inc': -self.get_inc()['translate']}
 
-        # Move base left command
+        # Rotate base left command
         if self.voice_command == 'left':
             command = {'joint': 'rotate_mobile_base', 'inc': self.get_inc()['rad']}
 
-        # Move base right command
+        # Rotate base right command
         if self.voice_command == 'right':
             command = {'joint': 'rotate_mobile_base', 'inc': -self.get_inc()['rad']}
 
@@ -181,6 +182,7 @@ class VoiceTeleopNode(hm.HelloNode):
         """
         A function that declares object from the GetVoiceCommands class, instantiates
         the HelloNode class, and set the publishing rate.
+        :param self: The self reference.
         """
         hm.HelloNode.__init__(self)
         self.rate = 10.0
@@ -200,7 +202,7 @@ class VoiceTeleopNode(hm.HelloNode):
         """
         Function that makes an action call and sends base joint trajectory goals.
         :param self: The self reference.
-        :param command: A dictionary type.
+        :param command: A dictionary that contains the base motion type and increment size.
         """
         joint_state = self.joint_state
         # Conditional statement to send  joint trajectory goals
@@ -222,19 +224,18 @@ class VoiceTeleopNode(hm.HelloNode):
             rospy.loginfo('inc = {0}'.format(inc))
             new_value = inc
 
-            # Assign the new_value position to the trajectory goal message type.
+            # Assign the new_value position to the trajectory goal message type
             point.positions = [new_value]
             trajectory_goal.trajectory.points = [point]
             trajectory_goal.trajectory.header.stamp = rospy.Time.now()
             rospy.loginfo('joint_name = {0}, trajectory_goal = {1}'.format(joint_name, trajectory_goal))
 
-            # Make the action call and send goal of the new joint position.
+            # Make the action call and send goal of the new joint position
             self.trajectory_client.send_goal(trajectory_goal)
             rospy.loginfo('Done sending command.')
 
             # Reprint the voice command menu
             self.speech.print_commands()
-
 
     def main(self):
         """
@@ -255,11 +256,9 @@ class VoiceTeleopNode(hm.HelloNode):
             self.send_command(command)
             rate.sleep()
 
-
 if __name__ == '__main__':
     try:
-        # Declare object from the VoiceTeleopNode class. Then execute the
-        # main() method/function
+        # Instanstiate a `VoiceTeleopNode()` object and execute the main() method
         node = VoiceTeleopNode()
         node.main()
     except KeyboardInterrupt:
