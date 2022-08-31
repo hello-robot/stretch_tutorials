@@ -12,7 +12,7 @@ Begin by running the following command in the terminal in a terminal.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Switch the mode to *position* mode using a rosservice call. Then run the single effort sensing node.
+Switch the mode to *position* mode using a rosservice call. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/effort_sensing.py) node.
 
 ```bash
 # Terminal 2

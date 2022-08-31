@@ -46,7 +46,7 @@ rosrun image_view image_saver image:=/camera/color/image_raw_upright_view
 
 ## Capture Image with Python Script
 
-In this section, you can use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Run the following commands to save a .jpeg image of the image topic */camera/color/image_raw_upright_view*.
+In this section, you can use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py) node to save a .jpeg image of the image topic */camera/color/image_raw_upright_view*.
 
 ```bash
 # Terminal 4

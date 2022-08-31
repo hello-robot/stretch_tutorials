@@ -9,7 +9,7 @@ Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial
 # Terminal 1
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
-the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to create a marker.
+the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py) node.
 
 ```bash
 # Terminal 2

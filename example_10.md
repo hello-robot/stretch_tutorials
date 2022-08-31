@@ -18,7 +18,7 @@ Within this tutorial package, there is an RViz config file with the topics for t
 # Terminal 2
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 ```
-Then run the tf2 broadcaster node to visualize three static frames.
+Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py) node to visualize three static frames.
 
 ```bash
 # Terminal 3
@@ -31,7 +31,7 @@ The gif below visualizes what happens when running the previous node.
   <img src="images/tf2_broadcaster.gif"/>
 </p>
 
-**OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the stow command node and observe the tf frames in RViz.
+**OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the [stow_command_node.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stow_command.py) and observe the tf frames in RViz.
 
 ```bash
 # Terminal 4
@@ -202,14 +202,14 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Then run the tf2 broadcaster node to create the three static frames.
+Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py) node to create the three static frames.
 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
 python3 tf2_broadcaster.py
 ```
-Finally, run the tf2 listener node to print the transform between two links.
+Finally, run the [tf2_listener.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_listener.py) node to print the transform between two links.
 
 ```bash
 # Terminal 3

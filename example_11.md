@@ -14,7 +14,7 @@ To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d
 # Terminal 2
 roslaunch stretch_core d435i_low_resolution.launch
 ```
-Then run the `PointCloud` transformer node.
+Then run the [pointCloud_transformer.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py) node.
 
 ```bash
 # Terminal 3

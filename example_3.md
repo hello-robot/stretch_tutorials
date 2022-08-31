@@ -14,7 +14,7 @@ Then in a new terminal type the following to activate the LiDAR sensor.
 roslaunch stretch_core rplidar.launch
 ```
 
-To set *navigation* mode and to activate the avoider node, type the following in a new terminal.
+To set *navigation* mode and to activate the [avoider.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/avoider.py) node, type the following in a new terminal.
 
 ```bash
 # Terminal 3

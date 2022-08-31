@@ -50,7 +50,7 @@ Then in a new terminal run the `rplidar.launch` file from `stretch_core`.
 roslaunch stretch_core rplidar.launch
 ```
 
-To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.
+To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the [scan_filter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py) node by typing the following in a new terminal.
 
 ```bash
 # Terminal 3

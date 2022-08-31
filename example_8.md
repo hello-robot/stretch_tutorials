@@ -11,7 +11,7 @@ Begin by running the `respeaker.launch` file in a terminal.
 # Terminal 1
 roslaunch respeaker_ros sample_respeaker.launch
 ```
-Then run the speech_text node.
+Then run the [speech_text.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/speech_text.py) node.
 
 ```bash
 # Terminal 2

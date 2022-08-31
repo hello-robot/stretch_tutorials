@@ -8,14 +8,14 @@ Begin by running the following command in a new terminal.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Switch the mode to *position* mode using a rosservice call. Then run the `respeaker.launch`.
+Switch the mode to *position* mode using a rosservice call. Then run the `respeaker.launch` file.
 
 ```bash
 # Terminal 2
 rosservice call /switch_to_position_mode
 roslaunch stretch_core respeaker.launch
 ```
-Then run the voice teleoperation base node in a new terminal.
+Then run the [voice_teleoperation_base.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py) node in a new terminal.
 
 ```bash
 # Terminal 3

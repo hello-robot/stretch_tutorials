@@ -46,7 +46,7 @@ Within this tutorial package, there is an RViz config file with the topics for t
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 ```
 
-Then run the aruco tag locator node.
+Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/aruco_tag_locator.py) node.
 
 ```bash
 # Terminal 5
