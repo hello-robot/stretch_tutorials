@@ -69,6 +69,3 @@ rviz -d `rospack find stretch_navigation`/rviz/mapping.launch
 # On your machine, Terminal 2:
 roslaunch stretch_core teleop_twist.launch teleop_type:=keyboard # or use teleop_type:=joystick if you have a controller
 ```
-
-
-**Next Tutorial:** [MoveIt! Basics](moveit_basics.md)

@@ -1,8 +1,8 @@
 ## Perception Introduction
 
-The Stretch robot is equipped with the Intel RealSense D435i camera, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.
+The Stretch robot is equipped with the [Intel RealSense D435i camera](https://www.intelrealsense.com/depth-camera-d435i/), an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.
 
-Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the stretch_ros repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
+Begin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the [stretch_ros](https://github.com/hello-robot/stretch_ros) repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
 
 ```bash
 cd ~/catkin_ws/src/stretch_ros/stretch_core
@@ -15,7 +15,7 @@ Then run the stretch driver launch file.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.
+To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
 ```bash
 # Terminal 2
@@ -61,6 +61,3 @@ The `DepthCloud` display is visualized in the main RViz window. This display tak
 
 ## Deep Perception
 Hello Robot also has a ROS package that uses deep learning models for various detection demos. A link to the package is provided: [stretch_deep_perception](https://github.com/hello-robot/stretch_ros/tree/master/stretch_deep_perception).
-
-
-**Next Tutorial:** [ArUco Marker Detection](aruco_marker_detection.md)

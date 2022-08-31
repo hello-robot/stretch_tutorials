@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
@@ -9,11 +9,10 @@ from geometry_msgs.msg import TransformStamped
 # Import StaticTransformBroadcaster to publish static transforms
 import tf2_ros
 
-
 class FrameListener():
     """
-    This Class prints the transformation between the fk_link_mast frame and the
-    target frame, link_grasp_center.
+    This Class prints the transform between the fk_link_mast and the
+    link_grasp_center frame.
     """
     def __init__(self):
         """
@@ -55,12 +54,11 @@ class FrameListener():
             # Manage the rate the node prints out a message
             rate.sleep()
 
-
 if __name__ == '__main__':
     # Initialize the node, and call it "tf2_liistener"
     rospy.init_node('tf2_listener')
 
-    # Instantiate the FrameListener class
+    # Instantiate the `FrameListener()` class
     FrameListener()
 
     # Give control to ROS.  This will allow the callback to be called whenever new

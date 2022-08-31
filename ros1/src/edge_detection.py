@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import Modules
 import rospy
@@ -25,11 +25,11 @@ class EdgeDetection:
         parameter values.
         :param self: The self reference.
         """
-        # Initialize the CvBridge class
+        # Instantiate a CvBridge() object
         self.bridge = CvBridge()
 
         # Initialize subscriber
-        self.sub = rospy.Subscriber('/camera/color/image_raw_upright_view', Image, self.callback, queue_size=1)
+        self.sub = rospy.Subscriber('/camera/color/image_raw', Image, self.callback, queue_size=1)
 
         # Initialize publisher
         self.pub = rospy.Publisher('/image_edge_detection', Image, queue_size=1)
@@ -55,7 +55,7 @@ class EdgeDetection:
         # Try to convert the ROS image message to a CV2 Image
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         # Apply the Canny Edge filter function to the transformed CV2 Image

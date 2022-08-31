@@ -14,13 +14,13 @@ Then in a new terminal type the following to activate the LiDAR sensor.
 roslaunch stretch_core rplidar.launch
 ```
 
-To set *navigation* mode and to activate the avoider node, type the following in a new terminal.
+To set *navigation* mode and to activate the [avoider.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/avoider.py) node, type the following in a new terminal.
 
 ```bash
 # Terminal 3
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python avoider.py
+python3 avoider.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 
@@ -31,7 +31,7 @@ To stop the node from sending twist messages, type **Ctrl** + **c** in the termi
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from numpy import linspace, inf, tanh
@@ -66,9 +66,9 @@ class Avoider:
 
     def set_speed(self,msg):
         """
-        Callback function to deal with incoming laserscan messages.
+        Callback function to deal with incoming LaserScan messages.
         :param self: The self reference.
-        :param msg: The subscribed laserscan message.
+        :param msg: The subscribed LaserScan message.
 
         :publishes self.twist: Twist message.
         """
@@ -91,9 +91,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 
 ```python
@@ -103,7 +103,7 @@ from math import sin
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe to LaserScan messages. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
+You need to import rospy if you are writing a ROS [Node](http://wiki.ros.org/Nodes). There are functions from `numpy` and `math` that are required within this code, thus linspace, inf, tanh, and sin are imported. The `sensor_msgs.msg` import is so that we can subscribe to `LaserScan` messages. The `geometry_msgs.msg` import is so that we can send velocity commands to the robot.
 
 
 ```python
@@ -142,7 +142,7 @@ angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
 new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 ```
-This line of code utilizes linspace to compute each angle of the subscribed scan. Here we  compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
+This line of code utilizes linspace to compute each angle of the subscribed scan. Here we compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".
 
 
 ```python
@@ -167,11 +167,8 @@ rospy.init_node('avoider')
 Avoider()
 rospy.spin()
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
 Instantiate class with `Avioder()`
 
 Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
-
-**Previous Example:** [Filter Laser Scans](example_2.md)
-**Next Example:** [Give Stretch a Balloon](example_4.md)

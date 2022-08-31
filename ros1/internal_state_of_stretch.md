@@ -59,5 +59,3 @@ rqt_graph
 </p>
 
 The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.
-
-**Next Tutorial:** [RViz Basics](rviz_basics.md)

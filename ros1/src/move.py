@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
@@ -8,17 +8,16 @@ from geometry_msgs.msg import Twist
 
 class Move:
 	"""
-	A class that sends Twist messages to move the Stretch robot foward.
+	A class that sends Twist messages to move the Stretch robot forward.
 	"""
 	def __init__(self):
 		"""
 		Function that initializes the publisher.
-		:param self: The self reference
+		:param self: The self reference.
 		"""
-		# Setup a publisher that will send the velocity commands for the Stretch
+		# Setup a publisher that will send the velocity commands to Stretch
 		# This will publish on a topic called "/stretch/cmd_vel" with a message type Twist
 		self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
-
 
 	def move_forward(self):
 		"""
@@ -51,7 +50,7 @@ if __name__ == '__main__':
 	# Initialize the node, and call it "move"
 	rospy.init_node('move')
 
-	# Declare object from Move class
+	# Instanstiate a `Move()` object
 	base_motion = Move()
 
 	# Rate allows us to control the (approximate) rate at which we publish things.

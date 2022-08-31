@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Import modules
 import rospy
 
-# Because of transformations
+# Import tf.transformations the change quaternion values to euler values
 import tf.transformations
 
-# The TransformStamped message is imported to create a child frame
+# The TransformStamped message is imported to broadcast a transform frame
 from geometry_msgs.msg import TransformStamped
 
 # Import StaticTransformBroadcaster to publish static transforms
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     # Initialize the node, and call it "tf2_broadcaster"
     rospy.init_node('tf2_broadcaster')
 
-    # Instantiate the FixedFrameBroadcaster class
+    # Instantiate the `FixedFrameBroadcaster()` class
     FixedFrameBroadcaster()
 
     # Give control to ROS.  This will allow the callback to be called whenever new
