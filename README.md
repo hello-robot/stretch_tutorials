@@ -15,8 +15,8 @@ This repo provides instructions on installing and using code on the Stretch RE1 
 10. [ArUco Marker Detection](aruco_marker_detection.md)
 11. [ReSpeaker Microphone Array](respeaker_microphone_array.md)
 12. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
-13. ROS testing
-14. Other Nav Stack Features
+<!-- 13. ROS testing
+14. Other Nav Stack Features -->
 
 
 ## Other ROS Examples
