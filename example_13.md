@@ -70,7 +70,7 @@ class StretchNavigation:
 
     def go_to(self, x, y, theta):
         """
-        Drive the robot to a particlar pose on the map. The Stretch only needs
+        Drive the robot to a particular pose on the map. The Stretch only needs
         (x, y) coordinates and a heading.
         :param x: x coordinate in the map frame.
         :param y: y coordinate in the map frame.
@@ -101,7 +101,7 @@ class StretchNavigation:
 if __name__ == '__main__':
     rospy.init_node('navigation', argv=sys.argv)
     nav = StretchNavigation()
-    nav.go_to(0.5, 0.0, 0.0, wait=True)
+    nav.go_to(0.5, 0.0, 0.0)
 ```
 
 ### The Code Explained
@@ -211,4 +211,4 @@ Declare the `StretchNavigation` object.
 ```python
 nav.go_to(0.5, 0.0, 0.0)
 ```
-Send a move base goal half a meter in front of the map's .
+Send a move base goal half a meter in front of the map's origin.
