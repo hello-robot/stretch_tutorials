@@ -21,7 +21,13 @@ Where `${HELLO_FLEET_PATH}` is the path of the `<map_name>.yaml` file.
   <img src="images/2D_pose_estimate.gif"/>
 </p>
 
-Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to run the [navigation.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py) node.
+Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to execute the [navigation.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/navigation.py) node.
+
+```bash
+# Terminal 2
+cd catkin_ws/src/stretch_tutorials/src/
+python navigation.py
+```
 
 ### The Code
 
