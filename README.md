@@ -15,8 +15,8 @@ This repo provides instructions on installing and using code on the Stretch RE1 
 10. [ArUco Marker Detection](aruco_marker_detection.md)
 11. [ReSpeaker Microphone Array](respeaker_microphone_array.md)
 12. [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap)
-13. ROS testing
-14. Other Nav Stack Features
+<!-- 13. ROS testing
+14. Other Nav Stack Features -->
 
 
 ## Other ROS Examples
@@ -33,3 +33,4 @@ To help get you get started on your software development, here are examples of n
 9. [Voice Teleoperation of Base](example_9.md) - Use speech to teleoperate the mobile base.
 10. [Tf2 Broadcaster and Listener](example_10.md) - Create a tf2 broadcaster and listener.
 11. [PointCloud Transformation](example_11.md) - Convert PointCloud2 data to a PointCloud and transform to a different frame.
+12. [ArUco Tag Locator](example_12.md) - Actuate the head to locate a requested ArUco marker tag and return a transform. 
