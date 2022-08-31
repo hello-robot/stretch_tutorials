@@ -12,7 +12,7 @@ Begin by running the following command in a new terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *navigation* mode using a rosservice call. Then drive the robot forward with the [move.py](https://github.com/hello-robot/stretch_tutorials/tree/noetic/src) node.
+Switch the mode to *navigation* mode using a rosservice call. Then drive the robot forward with the [move.py](https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py) node.
 
 ```bash
 # Terminal 2
