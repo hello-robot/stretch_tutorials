@@ -54,7 +54,7 @@ source ~/.bashrc
 ## RoboMaker
 
 <p align="center">
-  <img src="ros1/images/aws-robomaker.png"/>
+  <img src="./images/aws-robomaker.png"/>
 </p>
 
 If you cannot dual boot and install ubuntu on your local machine, an alternative is to use [AWS RoboMaker](https://aws.amazon.com/robomaker/). AWS RoboMaker extends the ROS framework with cloud services. The service provides a robotics simulation service, allowing for testing the Stretch RE1 platform. If you are a first-time user of AWS RoboMaker, follow the [guide here](https://github.com/aws-robotics/aws-robomaker-robotics-curriculum/blob/main/getting-started-with-aws-robomaker/_modules/mod-2a-aws.md) to get up and running with the service.
