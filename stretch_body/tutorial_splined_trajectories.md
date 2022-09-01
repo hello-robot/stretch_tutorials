@@ -117,5 +117,4 @@ It is generally important for the waypoints to be spaced far apart. Stretch isn'
 The stepper controllers (arm, lift, and base) can be updated at approximately 20 Hz maximum. Therefore, if your waypoints are spaced 50 ms apart, you run the risk of overflowing the stepper controller. Likewise, the Dynamixel joints can be updated at approximately 12 Hz. As a rule of thumb, spacing the waypoints over 100 ms apart is a good idea.
 
 ------
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
-
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>

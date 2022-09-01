@@ -109,5 +109,4 @@ The [Robot Sentry](https://github.com/hello-robot/stretch_body/blob/master/pytho
 See the [Collision Avoidance Tutorial](./tutorial_collision_avoidance.md) for more information the the Stretch collision avoidance system.
 
 ------
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
-
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
