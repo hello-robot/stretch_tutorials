@@ -20,9 +20,9 @@ The entire robot powers up and down with the On/Off switch. When powering down, 
 
 ![](./images/trunk_rs.png)
 
-### Battery Voltage
+### LED Lightbar
 
- The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging.
+ The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging. 
 
 ![](./images/lightbar_voltage.png)
 
@@ -227,6 +227,5 @@ We recommend next exploring the ROS based demos that ship with Stretch.  These [
 That's it. Happy coding!
 
 ------
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
-
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
 
