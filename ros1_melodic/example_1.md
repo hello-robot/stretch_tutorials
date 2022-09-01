@@ -1,6 +1,6 @@
 ## Example 1
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/move_stretch.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/move_stretch.gif"/>
 </p>
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
@@ -12,13 +12,13 @@ Begin by running the following command in a new terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to *navigation* mode using a rosservice call. Then drive the robot forward with the [move.py](https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py) node.
+Switch the mode to *navigation* mode using a rosservice call. Then drive the robot forward with the [move.py](https://github.com/hello-robot/stretch_tutorials/tree/main/src/move.py) node.
 
 ```bash
 # Terminal 2
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 move.py
+python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
@@ -26,7 +26,7 @@ To stop the node from sending twist messages, type **Ctrl** + **c**.
 Below is the code which will send *Twist* messages to drive the robot forward.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -72,9 +72,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
@@ -137,7 +137,7 @@ This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown(
 
 ## Move Stretch in Simulation
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/move.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/move.gif"/>
 </p>
 
 Using your preferred text editor, modify the topic name of the published `Twist` messages. Please review the edit in the **move.py** script below.
@@ -150,7 +150,7 @@ After saving the edited node, bringup [Stretch in the empty world simulation](ga
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/
-python3 move.py
+python move.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 

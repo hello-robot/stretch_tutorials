@@ -5,7 +5,7 @@ For this tutorial, we will go over on a high level how to use Stretch's [ReSpeak
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/respeaker.jpg"/>
 </p>
 
 

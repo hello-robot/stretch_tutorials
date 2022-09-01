@@ -18,21 +18,21 @@ Where `${HELLO_FLEET_PATH}` is the path of the `<map_name>.yaml` file.
 **IMPORTANT NOTE:** It's likely that the robot's location in the map does not match the robot's location in the real space. In the top bar of Rviz, use 2D Pose Estimate to lay an arrow down roughly where the robot is located in the real space. Below is a gif for reference.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/2D_pose_estimate.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/2D_pose_estimate.gif"/>
 </p>
 
-Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to execute the [navigation.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py) node.
+Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to execute the [navigation.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/navigation.py) node.
 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python3 navigation.py
+python navigation.py
 ```
 
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import actionlib
@@ -114,9 +114,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

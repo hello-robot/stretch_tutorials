@@ -15,12 +15,12 @@ Switch the mode to *position* mode using a rosservice call. Then run the `respea
 rosservice call /switch_to_position_mode
 roslaunch stretch_core respeaker.launch
 ```
-Then run the [voice_teleoperation_base.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py) node in a new terminal.
+Then run the [voice_teleoperation_base.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/voice_teleoperation_base.py) node in a new terminal.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python3 voice_teleoperation_base.py
+python voice_teleoperation_base.py
 ```
 In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  
 
@@ -51,7 +51,7 @@ To stop the node from sending twist messages, type **Ctrl** + **c** or say "**qu
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import math
 import rospy
@@ -260,10 +260,10 @@ if __name__ == '__main__':
 ```
 
 ### The Code Explained
-This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
+This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 

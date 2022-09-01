@@ -14,24 +14,24 @@ Then in a new terminal type the following to activate the LiDAR sensor.
 roslaunch stretch_core rplidar.launch
 ```
 
-To set *navigation* mode and to activate the [avoider.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/avoider.py) node, type the following in a new terminal.
+To set *navigation* mode and to activate the [avoider.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/avoider.py) node, type the following in a new terminal.
 
 ```bash
 # Terminal 3
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 avoider.py
+python avoider.py
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 
 <p align="center">
-  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/avoider.gif"/>
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/avoider.gif"/>
 </p>
 
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from numpy import linspace, inf, tanh
@@ -91,9 +91,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python

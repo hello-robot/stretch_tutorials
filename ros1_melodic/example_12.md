@@ -39,29 +39,29 @@ Next, run the stretch ArUco launch file which will bring up the [detect_aruco_ma
 roslaunch stretch_core stretch_aruco.launch
 ```
 
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/main/rviz/aruco_detector_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 ```
 
-Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/aruco_tag_locator.py) node.
+Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/aruco_tag_locator.py) node.
 
 ```bash
 # Terminal 5
 cd catkin_ws/src/stretch_tutorials/src/
-python3 aruco_tag_locator.py
+python aruco_tag_locator.py
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/aruco_detector.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/aruco_detector.gif"/>
 </p>
 
 ### The Code
 
 ```python
-#! /usr/bin/env python3
+#! /usr/bin/env python
 
 import rospy
 import time
@@ -205,9 +205,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

@@ -1,6 +1,6 @@
 ## Example 11
 
-This tutorial highlights how to create a [PointCloud](http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud.html) message from the data of a [PointCloud2](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html) message type, then transform the PointCloud's reference link to a different frame. The data published by the RealSense is referencing its *camera_color_optical_frame* link, and we will be changing its reference to the *base_link*.
+This tutorial highlights how to create a [PointCloud](http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud.html) message from the data of a [PointCloud2](http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud2.html) message type, then transform the PointCloud's reference link to a different frame. The data published by the RealSense is referencing its *camera_color_optical_frame* link, and we will be changing its reference to the *base_link*.
 
 Begin by starting up the stretch driver launch file.
 
@@ -14,14 +14,14 @@ To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d
 # Terminal 2
 roslaunch stretch_core d435i_low_resolution.launch
 ```
-Then run the [pointCloud_transformer.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py) node.
+Then run the [pointCloud_transformer.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/pointcloud_transformer.py) node.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python3 pointcloud_transformer.py
+python pointcloud_transformer.py
 ```
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/PointCloud_transformer_example.rviz) with the `PointCloud` in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/main/rviz/PointCloud_transformer_example.rviz) with the `PointCloud` in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
@@ -30,7 +30,7 @@ rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/Point
 The gif below visualizes what happens when running the previous node.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/PointCloud_transformer.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/PointCloud_transformer.gif"/>
 </p>
 
 
@@ -38,7 +38,7 @@ The gif below visualizes what happens when running the previous node.
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import rospy
 import tf
 import sensor_msgs.point_cloud2 as pc2
@@ -119,9 +119,9 @@ if __name__=="__main__":
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

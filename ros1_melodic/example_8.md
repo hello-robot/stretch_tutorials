@@ -3,7 +3,7 @@
 This example will showcase how to save the interpreted speech from Stretch's [ReSpeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/) to a text file.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/respeaker.jpg"/>
 </p>
 
 Begin by running the `respeaker.launch` file in a terminal.
@@ -11,18 +11,18 @@ Begin by running the `respeaker.launch` file in a terminal.
 # Terminal 1
 roslaunch respeaker_ros sample_respeaker.launch
 ```
-Then run the [speech_text.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/speech_text.py) node.
+Then run the [speech_text.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/speech_text.py) node.
 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python3 speech_text.py
+python speech_text.py
 ```
 The ReSpeaker will be listening and will start to interpret speech and save the transcript to a text file.  To stop shutdown the node, type **Ctrl** + **c** in the terminal.
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import os
@@ -65,9 +65,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

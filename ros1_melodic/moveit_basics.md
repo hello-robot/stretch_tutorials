@@ -22,7 +22,7 @@ roslaunch stretch_moveit_config demo.launch
 This will brining up an RViz instance where you can move the robot around using [interactive markers](http://wiki.ros.org/rviz/Tutorials/Interactive%20Markers%3A%20Getting%20Started) and create plans between poses. You can reference the bottom gif as a guide to plan and execute motion.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/moveit.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/moveit.gif"/>
 </p>
 
 Additionally, the demo allows a user to select from the three groups, *stretch_arm*, *stretch_gripper*, *stretch_head* to move. The option to change groups in the in *Planning Request* section in the *Displays* tree. A few notes to be kept in mind:
@@ -35,7 +35,7 @@ Additionally, the demo allows a user to select from the three groups, *stretch_a
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/moveit_groups.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/moveit_groups.gif"/>
 </p>
 
 ## Running Gazebo with MoveIt! and Stretch
@@ -55,5 +55,5 @@ This will launch an Rviz instance that visualizes the joints with markers and an
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/gazebo_moveit.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/gazebo_moveit.gif"/>
 </p>

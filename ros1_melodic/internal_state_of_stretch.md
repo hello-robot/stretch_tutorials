@@ -55,7 +55,7 @@ A powerful tool to visualize the ROS communication is the ROS [rqt_graph package
 rqt_graph
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/rqt_graph.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/rqt_graph.png"/>
 </p>
 
 The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.

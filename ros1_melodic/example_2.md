@@ -22,15 +22,15 @@ float32[] intensities    # intensity data [device-specific units]
 The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/lidar.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/lidar.png"/>
 </p>
 
 For a Stretch robot the start angle of the scan, `angle_min`, and
 end angle, `angle_max`, are closely located along the x-axis of Stretch's frame. `angle_min` and `angle_max` are set at **-3.1416** and **3.1416**, respectively. This is illustrated by the images below.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/stretch_axes.png"/>
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/scan_angles.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/stretch_axes.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/scan_angles.png"/>
 </p>
 
 
@@ -49,12 +49,12 @@ Then in a new terminal run the `rplidar.launch` file from `stretch_core`.
 roslaunch stretch_core rplidar.launch
 ```
 
-To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the [scan_filter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py) node by typing the following in a new terminal.
+To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the [scan_filter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/scan_filter.py) node by typing the following in a new terminal.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python3 scan_filter.py
+python scan_filter.py
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
@@ -65,13 +65,13 @@ rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/scanfilter.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/scanfilter.gif"/>
 </p>
 
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from numpy import linspace, inf
@@ -115,9 +115,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python

@@ -1,6 +1,6 @@
 ## Example 4
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/balloon.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/balloon.png"/>
 </p>
 
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
@@ -9,22 +9,22 @@ Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial
 # Terminal 1
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
-the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py) node.
+the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/marker.py) node.
 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python3 marker.py
+python marker.py
 ```
 The gif below demonstrates how to add a new `Marker` display type, and change the topic name from */visualization_marker* to */balloon*. A red sphere Marker should appear above the Stretch robot.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/balloon.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/balloon.gif"/>
 </p>
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from visualization_msgs.msg import Marker
@@ -82,10 +82,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
-
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

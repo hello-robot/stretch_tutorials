@@ -3,11 +3,17 @@
 In this example, we will review the [image_view](http://wiki.ros.org/image_view?distro=melodic) ROS package and a Python script that captures an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image.jpeg"/>
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image_edge_detection.jpeg"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/camera_image.jpeg"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/camera_image_edge_detection.jpeg"/>
 </p>
 
-Begin by running the stretch `driver.launch` file.
+BBegin by checking out the [feature/upright_camera_view](https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view) branch in the [stretch_ros](https://github.com/hello-robot/stretch_ros) repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.
+
+```bash
+cd ~/catkin_ws/src/stretch_ros/stretch_core
+git checkout feature/upright_camera_view
+```
+Then run the stretch driver launch file.
 
 ```bash
 # Terminal 1
@@ -46,18 +52,18 @@ rosrun image_view image_saver image:=/camera/color/image_raw_upright_view
 
 ## Capture Image with Python Script
 
-In this section, you can use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py) node to save a .jpeg image of the image topic */camera/color/image_raw_upright_view*.
+In this section, you can use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/capture_image.py) node to save a .jpeg image of the image topic */camera/color/image_raw_upright_view*.
 
 ```bash
 # Terminal 4
 cd ~/catkin_ws/src/stretch_tutorials/src
-python3 capture_image.py
+python capture_image.py
 ```
 An image named **camera_image.jpeg** is saved in the **stored_data** folder in this package.
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import sys
@@ -90,7 +96,7 @@ class CaptureImage:
         """
         try:
             image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        except CvBridgeError as e:
+        except CvBridgeError, e:
             rospy.logwarn('CV Bridge error: {0}'.format(e))
 
         file_name = 'camera_image.jpeg'
@@ -109,9 +115,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
@@ -189,17 +195,17 @@ In this section, we highlight a node that utilizes the [Canny Edge filter](https
 ```bash
 # Terminal 4
 cd ~/catkin_ws/src/stretch_tutorials/src
-python3 edge_detection.py
+python edge_detection.py
 ```
 The node will publish a new Image topic named */image_edge_detection*. This can be visualized in RViz and a gif is provided below for reference.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image_edge_detection.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/camera_image_edge_detection.gif"/>
 </p>
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import sys

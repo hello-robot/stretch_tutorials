@@ -8,7 +8,7 @@ roslaunch stretch_gazebo gazebo.launch
 This will bringup the robot in the gazebo simulation similar to the image shown below.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/stretch_gazebo_empty_world.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/stretch_gazebo_empty_world.png"/>
 </p>
 
 ### Custom World Simulation
@@ -25,5 +25,5 @@ roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/stretch_willowgarage_world.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/stretch_willowgarage_world.png"/>
 </p>

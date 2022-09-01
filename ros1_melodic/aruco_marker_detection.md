@@ -25,7 +25,7 @@ Next, run the stretch ArUco launch file which will bring up the [detect_aruco_ma
 roslaunch stretch_core stretch_aruco.launch
 ```
 
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/main/rviz/aruco_detector_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 4
@@ -40,7 +40,7 @@ rosrun stretch_core keyboard_teleop
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/aruco_detector.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/aruco_detector.gif"/>
 </p>
 
 ### The ArUco Marker Dictionary

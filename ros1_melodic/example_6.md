@@ -3,7 +3,7 @@
 In this example, we will review a Python script that prints out and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [rostopic command-line tool](http://wiki.ros.org/rostopic) shown in the [Internal State of Stretch Tutorial](internal_state_of_stretch.md).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/effort_sensing.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/effort_sensing.gif"/>
 </p>
 
 Begin by running the following command in the terminal in a terminal.
@@ -12,19 +12,19 @@ Begin by running the following command in the terminal in a terminal.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Switch the mode to *position* mode using a rosservice call. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/effort_sensing.py) node.
+Switch the mode to *position* mode using a rosservice call. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/effort_sensing.py) node.
 
 ```bash
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 effort_sensing.py
+python effort_sensing.py
 ```
 This will send a `FollowJointTrajectory` command to move Stretch's arm or head while also printing the effort of the lift.
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import rospy
 import time
 import actionlib
@@ -147,12 +147,12 @@ if __name__ == '__main__':
 
 
 ### The Code Explained
-This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
+This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/main/src/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
@@ -280,7 +280,7 @@ A conditional statement is used to export the data to a .txt file. The file's na
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/stored_data/2022-06-30_11:26:20-AM.png"/>
 </p>
 
-We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stored_data_plotter.py), to this package for plotting the stored data. **Note** you have to change the name of the file you wish to see in the python script. This is shown below:
+We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. **Note** you have to change the name of the file you wish to see in the python script. This is shown below:
 
 ```Python
 ####################### Copy the file name here! #######################

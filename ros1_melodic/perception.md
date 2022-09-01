@@ -16,7 +16,7 @@ To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d
 roslaunch stretch_core d435i_low_resolution.launch
 ```
 
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz) with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/main/rviz/perception_example.rviz) with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 3
@@ -31,25 +31,25 @@ For the `PointCloud2` display, a [sensor_msgs/pointCloud2](http://docs.ros.org/e
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_rviz.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/perception_rviz.gif"/>
 </p>
 
 ### Image Display
 The `Image` display when toggled creates a new rendering window that visualizes a [sensor_msgs/Image](http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/Image.html) messaged, */camera/color/image_raw*. This feature shows the image data from the camera; however, the image comes out sideways. Thus, you can select the */camera/color/image_raw_upright_view* from the **Image Topic** options to get an upright view of the image.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_image.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/perception_image.gif"/>
 </p>
 
 ### Camera Display
 The `Camera` display is similar to that of the `Image` display. In this setting, the rendering window also visualizes other displays, such as the PointCloud2, the RobotModel, and Grid Displays. The **visibility** property can toggle what displays your are interested in visualizing.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_camera.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/perception_camera.gif"/>
 </p>
 
 ### DepthCloud Display
 The `DepthCloud` display is visualized in the main RViz window. This display takes in the depth image and RGB image, provided by the RealSense, to visualize and register a point cloud.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_depth.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/perception_depth.gif"/>
 </p>
 
 

@@ -10,7 +10,7 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to excecute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist.
+You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to excecute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist.
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/
@@ -25,12 +25,12 @@ position: [0.6043133175850597, 0.19873586673129257, 0.017257283863713464]
 **IMPORTANT NOTE:** Stretch's arm has 4 prismatic joints and the sum of these positions gives the *wrist_extension* distance. The *wrist_extension* is needed when sending [joint trajectory commands](follow_joint_trajectory.md) to the robot. Further, you **can not** actuate an individual arm joint. Here is an image of the arm joints for reference:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/joints.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/joints.png"/>
 </p>
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import sys
@@ -89,9 +89,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy

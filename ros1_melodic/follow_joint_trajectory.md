@@ -4,7 +4,7 @@ Stretch ROS driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api
 
 ## Stow Command Example
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/stow_command.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/stow_command.gif"/>
 </p>
 
 Begin by running the following command in the terminal in a terminal.
@@ -19,7 +19,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the stow co
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 stow_command.py
+python stow_command.py
 ```
 This will send a `FollowJointTrajectory` command to stow Stretch's arm.
 
@@ -27,7 +27,7 @@ This will send a `FollowJointTrajectory` command to stow Stretch's arm.
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from control_msgs.msg import FollowJointTrajectoryGoal
@@ -85,9 +85,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a python script.
 
 ```python
 import rospy
@@ -153,7 +153,7 @@ Declare object, *node*, from the `StowCommand()` class. Then run the `main()` fu
 ## Multipoint Command Example
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/multipoint.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/multipoint.gif"/>
 </p>
 
 Begin by running the following command in the terminal in a terminal.
@@ -168,13 +168,13 @@ Switch the mode to *position* mode using a rosservice call. Then run the multipo
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 multipoint_command.py
+python multipoint_command.py
 ```
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import time
@@ -281,7 +281,7 @@ Set *trajectory_goal* as a `FollowJointTrajectoryGoal` and define the joint name
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/single_joint_actuator.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/single_joint_actuator.gif"/>
 </p>
 
 You can also actuate a single joint for the Stretch. Below are the list of joints and their position limit.  
@@ -313,7 +313,7 @@ Switch the mode to *position* mode using a rosservice call. Then run the single 
 # Terminal 2
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
-python3 single_joint_actuator.py
+python single_joint_actuator.py
 ```
 This will send a list of `JointTrajectoryPoint` message types to move Stretch's arm.
 
@@ -322,7 +322,7 @@ The joint, *joint_gripper_finger_left*, is only needed when actuating the grippe
 
 ### The Code
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import time

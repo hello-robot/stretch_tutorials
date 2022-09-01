@@ -12,42 +12,42 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/tf2_broadcaster_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/main/rviz/tf2_broadcaster_example.rviz) with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```bash
 # Terminal 2
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 ```
-Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py) node to visualize three static frames.
+Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/tf2_broadcaster.py) node to visualize three static frames.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python3 tf2_broadcaster.py
+python tf2_broadcaster.py
 ```
 
 The gif below visualizes what happens when running the previous node.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_broadcaster.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/tf2_broadcaster.gif"/>
 </p>
 
-**OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the [stow_command_node.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stow_command.py) and observe the tf frames in RViz.
+**OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the [stow_command_node.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stow_command.py) and observe the tf frames in RViz.
 
 ```bash
 # Terminal 4
 cd catkin_ws/src/stretch_tutorials/src/
-python3 stow_command.py
+python stow_command.py
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_broadcaster_with_stow.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/tf2_broadcaster_with_stow.gif"/>
 </p>
 
 
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 import tf.transformations
@@ -122,9 +122,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy
@@ -202,19 +202,19 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py) node to create the three static frames.
+Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/tf2_broadcaster.py) node to create the three static frames.
 
 ```bash
 # Terminal 2
 cd catkin_ws/src/stretch_tutorials/src/
-python3 tf2_broadcaster.py
+python tf2_broadcaster.py
 ```
-Finally, run the [tf2_listener.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_listener.py) node to print the transform between two links.
+Finally, run the [tf2_listener.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/tf2_listener.py) node to print the transform between two links.
 
 ```bash
 # Terminal 3
 cd catkin_ws/src/stretch_tutorials/src/
-python3 tf2_listener.py
+python tf2_listener.py
 ```
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
 
@@ -232,14 +232,14 @@ rotation:
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_listener.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/tf2_listener.png"/>
 </p>
 
 
 ### The Code
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from geometry_msgs.msg import TransformStamped
@@ -287,9 +287,9 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rospy
