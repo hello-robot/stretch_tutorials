@@ -20,9 +20,9 @@ The entire robot powers up and down with the On/Off switch. When powering down, 
 
 ![](./images/trunk_rs.png)
 
-### Battery Voltage
+### LED Lightbar
 
- The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging.
+ The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging. 
 
 ![](./images/lightbar_voltage.png)
 

@@ -43,11 +43,15 @@ optional arguments:
 
 The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:
 
-xxx
+<img src="./images/traj_gui.png"  />
 
 **NOTE**: Use caution when commanding the base. Ensure that attached cables are long enough to support base motion. Alternatively you may want to put the base on top of a book so the wheel don't touch the ground.
 
 Finally, you can explore a full-body trajectory using the non-GUI version of the tool:
+
+```bash
+>>$ stretch_trajectory_jog.py --full_body
+```
 
 
 
