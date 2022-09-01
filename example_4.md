@@ -2,16 +2,16 @@
 
 ![image](images/balloon.png)
 
-Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
+Let's bringup stretch in RViz by using the following command.
 
 ```bash
-roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
+ros2 launch stretch_core stretch_driver.launch.py
+ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibrtion`/rviz/stretch_simple_test.rviz
 ```
-the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to create a marker.
+In a new terminal run the following commands to create a marker.
 
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
-python3 marker.py
+ros2 run stretch_ros_tutorials marker
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
 
@@ -20,43 +20,57 @@ The gif below demonstrates how to add a new *Marker* display type, and change th
 
 ### The Code
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import rospy
+import rclpy
+from rclpy.node import Node
 from visualization_msgs.msg import Marker
 
-class Balloon():
+class Balloon(Node):
 	def __init__(self):
-		self.publisher = rospy.Publisher('balloon', Marker, queue_size=10)
+		super().__init__('stretch_marker')
+
+		self.publisher_ = self.create_publisher(Marker, 'balloon', 10)	
+		
 		self.marker = Marker()
+
 		self.marker.header.frame_id = '/base_link'
-		self.marker.header.stamp = rospy.Time()
+		self.marker.header.stamp = self.get_clock().now().to_msg()
 		self.marker.type = self.marker.SPHERE
+
 		self.marker.id = 0
+
 		self.marker.action = self.marker.ADD
+
 		self.marker.scale.x = 0.5
 		self.marker.scale.y = 0.5
 		self.marker.scale.z = 0.5
+
 		self.marker.color.r = 1.0
 		self.marker.color.g = 0.0
 		self.marker.color.b = 0.0
+
 		self.marker.color.a = 1.0
+
 		self.marker.pose.position.x = 0.0
 		self.marker.pose.position.y = 0.0
 		self.marker.pose.position.z = 2.0
 
-	def publish_marker(self):
-		self.publisher.publish(self.marker)
+		self.get_logger().info("Publishing the balloon topic. Use RViz to visualize.")
 
+	def publish_marker(self):
+		self.publisher_.publish(self.marker)
+
+def main(args=None):
+	rclpy.init(args=args)
+	balloon = Balloon()
+	while rclpy.ok():
+		balloon.publish_marker()
+	balloon.destroy_node()	
+	rclpy.shutdown()
 
 if __name__ == '__main__':
-	rospy.init_node('marker', argv=sys.argv)
-	ballon = Balloon()
-	rate = rospy.Rate(10)
-
-	while not rospy.is_shutdown():
-		ballon.publish_marker()
-		rate.sleep()		
+	main()
 ```
 
 
@@ -64,30 +78,33 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
-import rospy
+import rclpy
+from rclpy.node import Node
 from visualization_msgs.msg import Marker
 ```
-You need to import rospy if you are writing a ROS Node. Import the `Marker` type from the visualization_msgs.msg package. This import is required to publish a Marker, which will be visualized in RViz.
+You need to import rclpy if you are writing a ROS 2 Node. Import the `Marker` type from the visualization_msgs.msg package. This import is required to publish a Marker, which will be visualized in RViz.
 
 ```python
-self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
+self.publisher_ = self.create_publisher(Marker, 'balloon', 10)	
 ```
-This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("balloon", Twist, queue_size=1) declares that your node is publishing to the */ballon* topic using the message type *Twist*.
+This declares that your node is publishing to the */ballon* topic using the message type *Twist*.
 
 
 ```python
 self.marker = Marker()
 self.marker.header.frame_id = '/base_link'
-self.marker.header.stamp = rospy.Time()
+self.marker.header.stamp = self.get_clock().now().to_msg()
 self.marker.type = self.marker.SPHERE
+
 ```
 
+<!-- TODO: Update links -->
 Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
 
 ```python
@@ -130,27 +147,26 @@ Specify the pose of the marker. Since spheres are rotationally invariant, we're 
 
 ```python
 def publish_marker(self):
-		self.publisher.publish(self.marker)
+		self.publisher_.publish(self.marker)
 ```
 Publish the Marker data structure to be visualized in RViz.
 
 ```python
-rospy.init_node('marker', argv=sys.argv)
-ballon = Balloon()
-rate = rospy.Rate(10)
+def main(args=None):
+	rclpy.init(args=args)
+	balloon = Balloon()
 ```
 
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, rospy.init. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Setup Balloon class with `Balloon()`
-
-Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
+Setup Balloon class with `balloon = Balloon()`
 
 
 ```python
-while not rospy.is_shutdown():
-	ballon.publish_marker()
-	rate.sleep()
+while rclpy.ok():
+	balloon.publish_marker()
+	balloon.destroy_node()	
+	rclpy.shutdown()
 ```
 
-This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise). The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop.
+This loop is a fairly standard rclpy construct: checking the rclpy.ok() flag and then doing work. You have to run this check to see if your program should exit (e.g. if there is a Ctrl-C or otherwise).
