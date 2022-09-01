@@ -11,6 +11,7 @@ ros2 topic echo /stretch/joint_states
 ```
 
 Your terminal will then output the information associated with the `/stretch/joint_states` topic. Your `header`, `position`, `velocity`, and `effort` information may vary from what is printed below.
+
 ```
 header:
   seq: 70999
@@ -26,7 +27,6 @@ velocity: [0.00015598730463972836, -0.00029395074514369584, -0.00028038454542173
 effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ---
 ```
-
 Additionally, if you type `ros2 topic list` in the terminal, you will see the list of active topics being published.
 
 A powerful tool to visualize the ROS communication is through the rqt_graph package. You can see a graph of topics being communicated between nodes by typing the following.

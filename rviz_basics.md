@@ -23,10 +23,10 @@ TODO: Add the correct link for working with rviz2 in ROS 2
 There are further tutorials for RViz that can be found [here](http://wiki.ros.org/rviz/Tutorials).
 
 
-## Running RViz and Gazebo
+## Running RViz and Gazebo (Simulation)
 Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
-```bash
+```
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
 the `rviz` flag will open an RViz window  to visualize a variety of ROS topics.
