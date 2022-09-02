@@ -280,7 +280,7 @@ A conditional statement is used to export the data to a .txt file. The file's na
   <img src="stored_data/2022-06-30_11:26:20-AM.png"/>
 </p>
 
-We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/stored_data_plotter.py), to this package for plotting the stored data. **Note** you have to change the name of the file you wish to see in the python script. This is shown below:
+We added a simple python script, [stored_data_plotter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stored_data_plotter.py), to this package for plotting the stored data. **Note** you have to change the name of the file you wish to see in the python script. This is shown below:
 
 ```Python
 ####################### Copy the file name here! #######################
