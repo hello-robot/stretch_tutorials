@@ -2,6 +2,7 @@
 
 The aim of this example is to provide instruction on how to filter scan messages.
 
+<!-- TODO: Update the links -->
 For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](http://wiki.ros.org/sensor_msgs) package called [LaserScan](http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html) to hold information about a given scan. Let's take a look at the message specification itself:
 
 ```
@@ -43,24 +44,23 @@ Knowing the orientation of the LiDAR allows us to filter the scan values for a d
 First, open a terminal and run the stretch driver launch file.
 
 ```bash
-roslaunch stretch_core stretch_driver.launch
+ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 Then in a new terminal run the rplidar launch file from `stretch_core`.
 ```bash
-roslaunch stretch_core rplidar.launch
+ros2 launch stretch_core rplidar.launch.py
 ```
 
 To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.
 
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
-python3 scan_filter.py
+ros2 run stretch_ros_tutorials scan_filter
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 ```bash
-rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
+ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/rviz/stretch_simple_test.rviz
 ```
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 
@@ -71,31 +71,47 @@ Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 
-class Scanfilter:
+class ScanFilter(Node):
 	def __init__(self):
-		self.width = 1.0
-		self.extent = self.width / 2.0
-		self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
-		self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
+		super().__init__('stretch_scan_filter')
+		self.pub = self.create_publisher(LaserScan, '/filtered_scan', 10)
 
-	def callback(self,msg):
+		self.sub = self.create_subscription(LaserScan, '/scan', self.scan_filter_callback, 10)
+		
+		self.width = 1
+		self.extent = self.width / 2.0
+
+		self.get_logger().info("Publishing the filtered_scan topic. Use RViz to visualize.")
+
+	def scan_filter_callback(self,msg):
 		angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
 		points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
 		new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
 		msg.ranges = new_ranges
 		self.pub.publish(msg)
 
+
+def main(args=None):
+	rclpy.init(args=args)
+
+	scan_filter = ScanFilter()
+
+	rclpy.spin(scan_filter)
+
+	scan_filter.destroy_node()
+	rclpy.shutdown()
+
+
 if __name__ == '__main__':
-	rospy.init_node('scan_filter')
-	Scanfilter()
-	rospy.spin()
+	main()
 ```
 
 ### The Code Explained
@@ -103,18 +119,19 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.
+You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, that's why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.
 
 ```python
 self.width = 1
@@ -123,14 +140,14 @@ self.extent = self.width / 2.0
 We're going to assume that the robot is pointing up the x-axis, so that any points with y coordinates further than half of the defined width (1 meter) from the axis are not considered.
 
 ```python
-self.sub = rospy.Subscriber('/scan', LaserScan, self.callback)
+self.sub = self.create_subscription(LaserScan, '/scan', self.scan_filter_callback, 10)
 ```
-Set up a subscriber.  We're going to subscribe to the topic "scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
+Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
-self.pub = rospy.Publisher('filtered_scan', LaserScan, queue_size=10)
+self.pub = self.create_publisher(LaserScan, '/filtered_scan', 10)
 ```
-`pub = rospy.Publisher("filtered_scan", LaserScan, queue_size=10)` declares that your node is publishing to the *filtered_scan* topic using the message type LaserScan. This lets the master tell any nodes listening on *filtered_scan* that we are going to publish data on that topic.
+This declares that your node is publishing to the *filtered_scan* topic using the message type LaserScan. This lets any nodes listening on *filtered_scan* that we are going to publish data on that topic.
 
 ```python
 angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
@@ -155,15 +172,17 @@ self.pub.publish(msg)
 Substitute in the new ranges in the original message, and republish it.
 
 ```python
-rospy.init_node('scan_filter')
-Scanfilter()
-```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+def main(args=None):
+	rclpy.init(args=args)
 
-Setup Scanfilter class with `Scanfilter()`
+	scan_filter = ScanFilter()
+```
+The next line, rclpy.init_node initializes the node. In this case, your node will take on the name 'stretch_scan_filter'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+
+Setup Scanfilter class with `scan_filter = Scanfilter()`
 
 ```python
-rospy.spin()
+rclpy.spin(scan_filter)
 ```
 Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,

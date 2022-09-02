@@ -2,20 +2,16 @@
 
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 
-Begin by running `roscore` in a terminal. Then set the ros parameter to *navigation* mode  by running the following commands in a new terminal.
-
 ```bash
-rosparam set /stretch_driver/mode "navigation"
-roslaunch stretch_core stretch_driver.launch
+ros2 launch stretch_core stretch_driver.launch.py
 ```
 Then in a new terminal type the following to activate the LiDAR sensor.
 ```bash
-roslaunch stretch_core rplidar.launch
+ros2 launch stretch_core rplidar.launch.py
 ```
 To activate the avoider node, type the following in a new terminal.
 ```bash
-cd catkin_ws/src/stretch_ros_turotials/src/
-python3 avoider.py
+ros2 run stretch_ros_tutorials avoider
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 
@@ -26,21 +22,22 @@ To stop the node from sending twist messages, type **Ctrl** + **c** in the termi
 ### The Code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf, tanh
 from math import sin
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 
-class Avoider:
-    def __init__(self):
-        self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1) #/stretch_diff_drive_controller/cmd_vel for gazebo
-        self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
 
+class Avoider(Node):
+    def __init__(self):
+        super().__init__('stretch_avoider')
         self.width = 1
         self.extent = self.width / 2.0
+
         self.distance = 0.5
 
         self.twist = Twist()
@@ -51,19 +48,32 @@ class Avoider:
         self.twist.angular.y = 0.0
         self.twist.angular.z = 0.0
 
-    def set_speed(self,msg):
+        self.publisher_ = self.create_publisher(Twist, '/stretch/cmd_vel', 1)
+        self.subscriber_ = self.create_subscription(LaserScan, '/scan', self.set_speed, 10)
+
+    def set_speed(self, msg):
         angles = linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
+
         points = [r * sin(theta) if (theta < -2.5 or theta > 2.5) else inf for r,theta in zip(msg.ranges, angles)]
+
         new_ranges = [r if abs(y) < self.extent else inf for r,y in zip(msg.ranges, points)]
+
         error = min(new_ranges) - self.distance
 
         self.twist.linear.x = tanh(error) if (error > 0.05 or error < -0.05) else 0
-        self.pub.publish(self.twist)		
+        self.publisher_.publish(self.twist)
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    avoider = Avoider()
+    rclpy.spin(avoider)
+    avoider.destroy_node()
+    rclpy.shutdown()
+
 
 if __name__ == '__main__':
-    rospy.init_node('avoider')
-    Avoider()
-    rospy.spin()
+    main()
 ```
 
 ### The Code Explained
@@ -71,31 +81,32 @@ if __name__ == '__main__':
 Now let's break the code down.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
-import rospy
+import rclpy
+from rclpy.node import Node
 from numpy import linspace, inf, tanh
 from math import sin
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 ```
-You need to import rospy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The sensor_msgs.msg import is so that we can subscribe to LaserScan messages. The geometry_msgs.msg import is so that we can send velocity commands to the robot.
+You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The sensor_msgs.msg import is so that we can subscribe to LaserScan messages. The geometry_msgs.msg import is so that we can send velocity commands to the robot.
 
 
 ```python
-self.pub = rospy.Publisher('/stretch/cmd_vel', Twist, queue_size=1)#/stretch_diff_drive_controller/cmd_vel for gazebo
+self.publisher_ = self.create_publisher(Twist, '/stretch/cmd_vel', 1)
 ```
-This section of code defines the talker's interface to the rest of ROS. pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1) declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist.
+This declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist.
 
 
 ```python
-self.sub = rospy.Subscriber('/scan', LaserScan, self.set_speed)
+self.subscriber_ = self.create_subscription(LaserScan, '/scan', self.set_speed, 10)
 ```
-Set up a subscriber.  We're going to subscribe to the topic "scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.
+Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.
 
 
 ```python
@@ -138,19 +149,22 @@ Set the speed according to a tanh function. This method gives a nice smooth mapp
 
 
 ```python
-self.pub.publish(self.twist)
+self.publisher_.publish(self.twist)
 ```
 Publish the Twist message.
 
 ```python
-rospy.init_node('avoider')
-Avoider()
-rospy.spin()
+def main(args=None):
+    rclpy.init(args=args)
+    avoider = Avoider()
+    rclpy.spin(avoider)
+    avoider.destroy_node()
+    rclpy.shutdown()
 ```
-The next line, rospy.init_node(NAME, ...), is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. In this case, your node will take on the name talker. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
+The next line, rclpy.init() method initializes the node. In this case, your node will take on the name 'stretch_avoider'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Setup Avoider class with `Avioder()`
+Setup Avoider class with `avoider = Avioder()`
 
-Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
+Give control to ROS with `rclpy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
 **Next Example:** [Example 4](example_4.md)

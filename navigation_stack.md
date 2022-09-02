@@ -1,5 +1,10 @@
 ## Navigation Stack with Actual robot
 
+### NOTE
+Nav 2 support for Stretch in ROS 2 is under active development. Please reach out to us if you want to use Nav 2 with Stretch in ROS 2.
+
+Refer to the instructions below if you want to test this functionality in ROS 1.
+
 stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive the stretch RE1 around a mapped space. Running this code will require the robot to be untethered.
 
 

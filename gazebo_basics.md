@@ -1,5 +1,10 @@
 # Spawning Stretch in Simulation (Gazebo)
 
+### NOTE
+Simulation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to work with Stretch in a simulated environment like Gazebo/Ignition in ROS 2.
+
+Refer to the instructions below if you want to test this functionality in ROS 1.
+
 ### Empty World Simulation
 To spawn the Stretch in gazebo's default empty world run the following command in your terminal.
 ```
