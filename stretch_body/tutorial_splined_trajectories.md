@@ -10,9 +10,8 @@ During execution, the trajectory controller uses this splined representation to 
 
 Splined trajectories are particularly useful when you want to coordinate motion across several joints. Because the trajectory representation is time based, it is straightforward to encode multi-joint coordination. Stretch Body supports both cubic and quintic spline. A quintic spline waypoint includes acceleration in the waypoint target, while a cubic spline does not. 
 
-<img src="./images/splined_traj.png"  />
 
-
+![alt_text](images/splined_traj.png "image_tooltip")
 
 ## The Splined Trajectory Tool
 
@@ -43,7 +42,7 @@ optional arguments:
 
 The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:
 
-<img src="./images/traj_gui.png"  />
+![alt_text](images/traj_gui.png "image_tooltip")
 
 **NOTE**: Use caution when commanding the base. Ensure that attached cables are long enough to support base motion. Alternatively you may want to put the base on top of a book so the wheel don't touch the ground.
 
