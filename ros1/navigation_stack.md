@@ -58,7 +58,7 @@ roslaunch stretch_navigation mapping.launch teleop_type:=joystick
 
 ### Using ROS Remote Master
 
-If you have set up [ROS Remote Master](https://docs.hello-robot.com/untethered_operation/#ros-remote-master) for [untethered operation](https://docs.hello-robot.com/untethered_operation/), you can use Rviz and teleop locally with the following commands:
+If you have set up [ROS Remote Master](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/#ros-remote-master) for [untethered operation](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/), you can use Rviz and teleop locally with the following commands:
 
 ```bash
 # On Robot
