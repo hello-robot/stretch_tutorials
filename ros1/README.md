@@ -1,7 +1,7 @@
 ![](../images/banner.png)
 # Tutorial Track: Stretch ROS1
 
-This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS1. We recommend going through the tutorials in the following order:
+This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS1 Noetic. We recommend going through the tutorials in the following order:
 
 ## Basics
 

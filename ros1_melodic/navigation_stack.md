@@ -1,6 +1,6 @@
 ## Navigation Stack with Actual robot
 
-stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive the stretch RE1 around a mapped space. Running this code will require the robot to be untethered.
+stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive Stretch around a mapped space. Running this code will require the robot to be untethered.
 
 
 Then run the following commands to map the space that the robot will navigate in.
@@ -45,7 +45,7 @@ roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:=worlds/willowga
 
 ### Teleop using a Joystick Controller
 
-The mapping launch files, `mapping.launch` and `mapping_gazebo.launch` expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch RE1 is plugged into your computer, the following command will launch mapping with joystick teleop:
+The mapping launch files, `mapping.launch` and `mapping_gazebo.launch` expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch is plugged into your computer, the following command will launch mapping with joystick teleop:
 
 ```bash
 # Terminal 2
