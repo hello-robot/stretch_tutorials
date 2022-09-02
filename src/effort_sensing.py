@@ -16,10 +16,10 @@ from control_msgs.msg import FollowJointTrajectoryGoal
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 # We're going to subscribe to 64-bit integers, so we need to import the definition
-# for them.
+# for them
 from sensor_msgs.msg import JointState
 
-# Import hello_misc script for handling trajecotry goals with an action client.
+# Import hello_misc script for handling trajecotry goals with an action client
 import hello_helpers.hello_misc as hm
 
 # Import datetime for naming the exported data files
@@ -35,7 +35,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         :param self: The self reference.
         :param export_data: A boolean message type.
         """
-        # Initialize the inhereted hm.Hellonode class.
+        # Initialize the inhereted hm.Hellonode class
         hm.HelloNode.__init__(self)
 
         # Set up a subscriber. We're going to subscribe to the topic "joint_states"
@@ -44,13 +44,13 @@ class JointActuatorEffortSensor(hm.HelloNode):
         # Create a list of joints
         self.joints = ['joint_lift']
 
-        # Create an empty list for later storage.
+        # Create an empty list for later storage
         self.joint_effort = []
 
         # Create path to save effort and position values
         self.save_path = '/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data'
 
-        # Create boolean data type for conditional statements if you want to export effort data.
+        # Create boolean data type for conditional statements if you want to export effort data
         self.export_data = export_data
 
     def callback(self, msg):
@@ -70,23 +70,23 @@ class JointActuatorEffortSensor(hm.HelloNode):
         """
 
         # Set trajectory_goal as a FollowJointTrajectoryGoal and define
-        # the joint name.
+        # the joint name
         trajectory_goal = FollowJointTrajectoryGoal()
         trajectory_goal.trajectory.joint_names = self.joints
 
-        # Provide desired positionsfor joint name.
+        # Provide desired positionsfor joint name
         point0 = JointTrajectoryPoint()
         point0.positions = [0.9]
 
         # Set a list to the `trajectory_goal.trajectory.points`
         trajectory_goal.trajectory.points = [point0]
 
-        # Specify the coordinate frame that we want (base_link) and set the time to be now.
+        # Specify the coordinate frame that we want (base_link) and set the time to be now
         trajectory_goal.trajectory.header.stamp = rospy.Time(0.0)
         trajectory_goal.trajectory.header.frame_id = 'base_link'
 
         # Make the action call and send the goal. Also define the feedback and
-        # done callback function.
+        # done callback function
         self.trajectory_client.send_goal(trajectory_goal, feedback_cb=self.feedback_callback, done_cb=self.done_callback)
         rospy.loginfo('Sent position goal = {0}'.format(trajectory_goal))
         self.trajectory_client.wait_for_result()
@@ -100,30 +100,35 @@ class JointActuatorEffortSensor(hm.HelloNode):
         :param feedback: FollowJointTrajectoryActionFeedback message.
         """
         # Conditional statement for replacement of joint names if wrist_extension
-        # is in the self.joint_names list.
+        # is in the self.joint_names list
         if 'wrist_extension' in self.joints:
             self.joints.remove('wrist_extension')
             self.joints.append('joint_arm_l0')
 
         # create an empty list of current effort values that will be appended
-        # to the overall joint_effort list.
+        # to the overall joint_effort list
         current_effort = []
 
         # Use of forloop to parse the names of the requested joints list.
         # The index() function returns the index at the first occurrence of
-        # the name of the requested joint in the self.joint_states.name list.
+        # the name of the requested joint in the self.joint_states.name list
         for joint in self.joints:
             index = self.joint_states.name.index(joint)
             current_effort.append(self.joint_states.effort[index])
 
+        # Replace `joint_arm_l0` with `wrist_extension`
+        if 'joint_arm_l0' in self.joints:
+                self.joints.remove('joint_arm_l0')
+                self.joints.append('wrist_extension')
+
         # If the self.export_data boolean is false, then print the names and efforts
-        # of the joints in the terminal.
+        # of the joints in the terminal
         if not self.export_data:
             # Print the joint position values to the terminal
             print("name: " + str(self.joints))
             print("effort: " + str(current_effort))
 
-        # Else, append the current effort to the joint_effort list.
+        # Else, append the current effort to the joint_effort list
         else:
             self.joint_effort.append(current_effort)
 
@@ -135,19 +140,19 @@ class JointActuatorEffortSensor(hm.HelloNode):
         :param status: status attribute from FollowJointTrajectoryActionResult message.
         :param result: result attribute from FollowJointTrajectoryActionResult message.
         """
-        # Conditional statemets to notify whether the action succeeded or failed.
+        # Conditional statemets to notify whether the action succeeded or failed
         if status == actionlib.GoalStatus.SUCCEEDED:
             rospy.loginfo('Succeeded')
         else:
             rospy.loginfo('Failed')
 
-        # Conditional statement for exporting data.
+        # Conditional statement for exporting data
         if self.export_data:
             # File name is the date and time the action was complete
             file_name = datetime.now().strftime("%Y-%m-%d_%I:%M:%S-%p")
             completeName = os.path.join(self.save_path, file_name)
 
-            # Write the joint names and efforts to a .txt file.
+            # Write the joint names and efforts to a .txt file
             with open(completeName, "w") as f:
                 writer = csv.writer(f)
                 writer.writerow(self.joints)
@@ -159,7 +164,7 @@ class JointActuatorEffortSensor(hm.HelloNode):
         :param self: The self reference.
         """
         # The arguments of the main function of the hm.HelloNode class are the
-        # node_name, node topic namespace, and boolean (default value is true).
+        # node_name, node topic namespace, and boolean (default value is true)
         hm.HelloNode.main(self, 'issue_command', 'issue_command', wait_for_first_pointcloud=False)
         rospy.loginfo('issuing command...')
         self.issue_command()
