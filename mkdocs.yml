@@ -169,7 +169,7 @@ nav:
       - PointCloud Transformation: ./ros1/example_11.md
       - ArUco Tag Locator: ./ros1/example_12.md
       - 2D Navigation Goals: ./ros1/example_13.md
-  - ROS2:
+  - ROS2 (Beta):
     - Overview: ./ros2/README.md
     - Basics:
       - Getting Started: ./ros2/getting_started.md

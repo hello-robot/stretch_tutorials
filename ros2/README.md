@@ -1,5 +1,7 @@
 ![](../images/banner.png)
-# Tutorial Track: Stretch ROS2
+# Tutorial Track: Stretch ROS2 (Beta)
+
+NOTE: ROS2 support for Stretch is currently under active development and is considered 'beta'.
 
 This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS2. We recommend going through the tutorials in the following order:
 
@@ -15,12 +17,12 @@ This tutorial track is for users looking to become familiar with programming the
 | 6 | [Navigation Stack](navigation_stack.md)                                         | |
 | 7 | [MoveIt! Basics](moveit_basics.md)                                              | |
 | 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | |
-<!-- | 9 | [Perception](perception.md)                                                     | |
+| 9 | [Perception](perception.md)                                                     | |
 | 10 | [ArUco Marker Detection](aruco_marker_detection.md)                             | |
 | 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | |
 | 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | |
 | 13 | [ROS testing](ros_testing.md)                                                   | |
-| 14 | [Other Nav Stack Features](other_nav_features.md)                               | | -->
+| 14 | [Other Nav Stack Features](other_nav_features.md)                               | | 
 
 
 ## Other Examples
