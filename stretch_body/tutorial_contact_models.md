@@ -48,16 +48,19 @@ You should see that the arm stops on contact when it extends, however it doesn't
 The four stepper joints (base, arm, and lift) all support guarded contact settings when executing motion. This is evident in their `move_to` and `move_by` methods. For example, we see in the Arm's base class of [PrismaticJoint](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py):
 
 ```python
- def move_by(self,x_m,v_m=None, a_m=None, stiffness=None, contact_thresh_pos=None, contact_thresh_neg=None, req_calibration=True,contact_model=None)
+  def move_by(self,x_m,v_m=None, a_m=None, stiffness=None, contact_thresh_pos_N=None,contact_thresh_neg_N=None, req_calibration=True,contact_thresh_pos_EP=None,contact_thresh_neg_EP=None)
    
 ```
 
-In this method you can optionally specify a contact threshold in the positive direction (`contact_thresh_pos`) and the negative direction `contact_thresh_neg`, as well a contact model (`contact_model` - which we'll learn about below). Note that these optional parameters will default to `None`, in which case the motion will adopt the default settings as defined the robot's parameters:
+In this method you can optionally specify a contact threshold in the positive direction (`contact_thresh_pos_EP`) and the negative direction `contact_thresh_neg_EP`. 
+
+**NOTE**:  these optional parameters will default to `None`, in which case the motion will adopt the default settings as defined the robot's parameters
+
+**NOTE**:  The parameters `contact_thresh_pos_N` and `contact_thresh_neg_N` are deprecate and no-longer supported.
 
 ```bash
 >>$ stretch_params.py | grep arm | grep contact
-...
-stretch_body.robot_params.nominal_params      param.arm.contact_model   effort_pct                                               
+...                                              
 stretch_configuration_params.yaml            param.arm.contact_models.effort_pct.contact_thresh_default    [-45.0, 45.0]    
 ...
 ```
@@ -68,17 +71,13 @@ A contact model is simply a function that, given a user specified contact thresh
 
 ### The Effort-Pct Contact Model
 
-[Effort-Pct](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py#L142) is the default contact model for Stretch RE2. It simply scales the maximum range of motor currents into the range of [-100,100]. Thus, if you desire to have the robot arm extend but stop at 50% of its maximum current, you would write:
+[Effort-Pct](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py) is the default contact model for Stretch RE2. It simply scales the maximum range of motor currents into the range of [-100,100]. Thus, if you desire to have the robot arm extend but stop at 50% of its maximum current, you would write:
 
 ```python
-robot.arm.move_by(0.1,contact_thresh_pos=50.0, contact_model='effort_pct')
+robot.arm.move_by(0.1,contact_thresh_pos_EP=50.0)
 ```
 
-### The Pseudo-N Contact Model
-
-[Pseudo-N](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py#L122) was the original contact model for Stretch RE1. We call it 'pseudo-N' as its contact thresholds are very rough approximations of Newtons.  This simple model simply scales the motor current by the actuator parameter `force_N_per_A`. 
-
-Pseudo-N remains the default contact model for RE1 models. However, we recommend that newly developed RE1 code use the Effort-Pct model. 
+ 
 
 ## Adjusting Contact Behaviors
 
@@ -97,11 +96,11 @@ robot.startup()
 cpos = 30.0
 cneg = -30.0
 
-robot.arm.move_to(0.0, contact_thresh_pos=cpos, contact_thresh_neg=cneg,contact_model='effort_pct')
+robot.arm.move_to(0.0, contact_thresh_pos_EP=cpos, contact_thresh_neg_EP=cneg)
 robot.push_command()
 robot.arm.wait_until_at_setpoint()
 
-robot.arm.move_to(0.5,contact_thresh_pos=cpos, contact_thresh_neg=cneg,contact_model='effort_pct')
+robot.arm.move_to(0.5,contact_thresh_pos_EP=cpos, contact_thresh_neg_EP=cneg)
 robot.push_command()
 robot.arm.wait_until_at_setpoint(timeout=5.0)
 
