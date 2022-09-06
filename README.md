@@ -8,7 +8,8 @@ The Stretch Tutorials reposotory provides tutorials on programming the Stretch R
 |--------------------------------------------------------|-------------------------------------------------------------------|
 | [Getting to Know Stretch](./getting_started/README.md) | Everything a new user of Stretch needs to get started             |
 | [Stretch Body](./stretch_body/README.md)               | Learn how to program Stretch using its low level Python interface |
-| [ROS 1](./ros1/README.md)                              | Learn how to program Stretch using its ROS1 interface             |
+| [ROS 1 (Melodic)](./ros1_melodic/README.md)            | Learn how to program Stretch using its ROS1 (Melodic) interface   |
+| [ROS 1 (Noetic)](./ros1/README.md)                     | Learn how to program Stretch using its ROS1 (Noetic) interface    |
 | [ROS 2](./ros2/README.md)                              | Learn how to program Stretch using its ROS2 interface             |
 
 ------
