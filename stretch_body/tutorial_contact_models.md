@@ -48,11 +48,11 @@ You should see that the arm stops on contact when it extends, however it doesn't
 The four stepper joints (base, arm, and lift) all support guarded contact settings when executing motion. This is evident in their `move_to` and `move_by` methods. For example, we see in the Arm's base class of [PrismaticJoint](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py):
 
 ```python
-  def move_by(self,x_m,v_m=None, a_m=None, stiffness=None, contact_thresh_pos_N=None,contact_thresh_neg_N=None, req_calibration=True,contact_thresh_pos_EP=None,contact_thresh_neg_EP=None)
+  def move_by(self,x_m,v_m=None, a_m=None, stiffness=None, contact_thresh_pos_N=None,contact_thresh_neg_N=None, req_calibration=True,contact_thresh_pos=None,contact_thresh_neg=None)
    
 ```
 
-In this method you can optionally specify a contact threshold in the positive direction (`contact_thresh_pos_EP`) and the negative direction `contact_thresh_neg_EP`. 
+In this method you can optionally specify a contact threshold in the positive direction (`contact_thresh_pos`) and the negative direction `contact_thresh_neg`. 
 
 **NOTE**:  these optional parameters will default to `None`, in which case the motion will adopt the default settings as defined the robot's parameters
 
@@ -74,7 +74,7 @@ A contact model is simply a function that, given a user specified contact thresh
 [Effort-Pct](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py) is the default contact model for Stretch RE2. It simply scales the maximum range of motor currents into the range of [-100,100]. Thus, if you desire to have the robot arm extend but stop at 50% of its maximum current, you would write:
 
 ```python
-robot.arm.move_by(0.1,contact_thresh_pos_EP=50.0)
+robot.arm.move_by(0.1,contact_thresh_pos=50.0)
 ```
 
  
@@ -96,11 +96,11 @@ robot.startup()
 cpos = 30.0
 cneg = -30.0
 
-robot.arm.move_to(0.0, contact_thresh_pos_EP=cpos, contact_thresh_neg_EP=cneg)
+robot.arm.move_to(0.0, contact_thresh_pos=cpos, contact_thresh_neg=cneg)
 robot.push_command()
 robot.arm.wait_until_at_setpoint()
 
-robot.arm.move_to(0.5,contact_thresh_pos_EP=cpos, contact_thresh_neg_EP=cneg)
+robot.arm.move_to(0.5,contact_thresh_pos=cpos, contact_thresh_neg=cneg)
 robot.push_command()
 robot.arm.wait_until_at_setpoint(timeout=5.0)
 
