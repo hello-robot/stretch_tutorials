@@ -1,5 +1,7 @@
 # Getting Started
 
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 ## Installing Ubuntu 20.04 with ROS 2 Galactic on Stretch
 Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stretch RE1 platform. If you are unfamiliar with the operating system, we encourage you to review a [tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provided by Ubuntu. Additionally, the Linux command line, BASH, is used to execute commands and is needed to run ROS on the Stretch robot. Here is a [tutorial](https://ryanstutorials.net/linuxtutorial/) on getting started with BASH.
 

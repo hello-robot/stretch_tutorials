@@ -1,5 +1,6 @@
 ## Navigation Stack with Actual robot
 
+
 ### NOTE
 Nav 2 support for Stretch in ROS 2 is under active development. Please reach out to us if you want to use Nav 2 with Stretch in ROS 2.
 

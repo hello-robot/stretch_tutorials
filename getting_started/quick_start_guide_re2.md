@@ -37,7 +37,7 @@ The provided battery charger can be plugged and unplugged at any time during ope
 | SUPPLY  | 1) Power the robot during tethered use<br/>2) Repair damaged batteries. |
 | REPAIR  | Repair damaged batteries.                                    |
 
-Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/) for proper care and charging of Stretch batteries. 
+Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) for proper care and charging of Stretch batteries. 
 
 ![](./images/NOCO_Genius10_UI_rs.png)
 

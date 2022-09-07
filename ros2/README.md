@@ -17,12 +17,12 @@ This tutorial track is for users looking to become familiar with programming the
 | 6 | [Navigation Stack](navigation_stack.md)                                         | |
 | 7 | [MoveIt! Basics](moveit_basics.md)                                              | |
 | 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | |
-| 9 | [Perception](perception.md)                                                     | |
-| 10 | [ArUco Marker Detection](aruco_marker_detection.md)                             | |
+| 9 | [Perception](coming_soon.md)                                                     | |
+| 10 | [ArUco Marker Detection](comming_soon.md)                             | |
 | 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | |
 | 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | |
-| 13 | [ROS testing](ros_testing.md)                                                   | |
-| 14 | [Other Nav Stack Features](other_nav_features.md)                               | | 
+| 13 | [ROS testing](coming_soon.md)                                                   | |
+| 14 | [Other Nav Stack Features](coming_soon.md)                               | | 
 
 
 ## Other Examples

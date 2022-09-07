@@ -100,7 +100,8 @@ Sometimes the robot motion isn't quite what is expected when executing a splined
 
 For example, the arm trajectory below has a large excursion outside of the joints range of motion (white). This is because the second waypoint expects a non-zero velocity when the arm reaches full extension. 
 
-<img src="./images/bad_trajectory.png"  />
+
+![](./images/bad_trajectory.png)
 
 Often the trajectory waypoints will be generated from a motion planner. It is important that this planner incorporates the position, velocity, and acceleration constraints of the joint. These can be found by, for example
 

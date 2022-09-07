@@ -1,5 +1,5 @@
 ## Example 1
-
+**NOTE**: ROS 2 tutorials are still under active development. 
 <p align="center">
   <img src="images/move_stretch.gif"/>
 </p>

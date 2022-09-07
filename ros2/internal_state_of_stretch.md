@@ -1,5 +1,7 @@
 ## Getting the State of the Robot
 
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 Begin by starting up the stretch driver launch file by typing the following in a terminal.
 ```bash
 ros2 launch stretch_core stretch_driver.launch.py
