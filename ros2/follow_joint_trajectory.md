@@ -4,7 +4,7 @@ Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/con
 
 ## Stow Command Example
 <p align="center">
-  <img src="images/stow_command.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stow_command.gif"/>
 </p>
 
 Begin by launching stretch_driver in a terminal.
@@ -166,7 +166,7 @@ To make the script executable call the main() function like above.
 ## Multipoint Command Example
 
 <p align="center">
-  <img src="images/multipoint.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/multipoint.gif"/>
 </p>
 
 If you have killed the above instance of stretch_driver relaunch it again through the terminal.

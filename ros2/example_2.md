@@ -25,15 +25,15 @@ float32[] intensities    # intensity data [device-specific units]
 The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.
 
 <p align="center">
-  <img src="images/lidar.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/lidar.png"/>
 </p>
 
 For a Stretch robot the start angle of the scan, `angle_min`, and
 end angle, `angle_max`, are closely located along the x-axis of Stretch's frame. `angle_min` and `angle_max` are set at **-3.1416** and **3.1416**, respectively. This is illustrated by the images below.
 
 <p align="center">
-  <img height=500 src="images/stretch_axes.png"/>
-  <img height=500 src="images/scan_angles.png"/>
+  <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png"/>
+  <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png"/>
 
 </p>
 
@@ -64,7 +64,7 @@ ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/rviz/stretch_simpl
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 
 <p align="center">
-  <img height=600 src="images/scanfilter.gif"/>
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif"/>
 </p>
 
 ### The Code

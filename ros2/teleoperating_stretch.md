@@ -6,7 +6,7 @@ Teleoperation support for Stretch in ROS 2 is under active development. Please r
 Refer to the instructions below if you want to test this functionality in ROS 1.
 
 ### Xbox Controller Teleoperating
-![image](images/xbox_controller_commands.png)
+![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/xbox_controller_commands.png)
 
 Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot capabilities by teleoperating it with an Xbox Controller.
 

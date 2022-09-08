@@ -27,7 +27,7 @@ ros2 run stretch_ros_tutorials tf2_broadcaster
 
 The gif below visualizes what happens when running the previous node.
 <p align="center">
-  <img src="images/tf2_broadcaster.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster.gif"/>
 </p>
 
 **OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the stow command node and observe the tf frames in RViz.
@@ -38,7 +38,7 @@ ros2 run stretch_ros_tutorials stow_command
 ```
 
 <p align="center">
-  <img src="images/tf2_broadcaster_with_stow.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster_with_stow.gif"/>
 </p>
 
 
@@ -241,7 +241,7 @@ rotation:
 ```
 
 <p align="center">
-  <img src="images/tf2_listener.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_listener.png"/>
 </p>
 
 

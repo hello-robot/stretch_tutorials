@@ -9,9 +9,9 @@ Instructions on installing Ubuntu 20.04 with ROS Noetic and ROS 2 Galactic can b
 ## ROS 2 Tutorials Setup on Local Computer
 Once your system is setup, clone the [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git) to the src directory of the ament workspace, then build the packages.
 
+<!-- TODO: Change the link below -->
 ```
 cd ~/ament_ws/src
-<!-- TODO: Change the link below -->
 git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
 cd ~/ament_ws
 colcon build

@@ -1,7 +1,7 @@
 ## Example 1
 
 <p align="center">
-  <img src="images/move_stretch.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/move_stretch.gif"/>
 </p>
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.

@@ -1,6 +1,6 @@
 ## Example 4
 
-![image](images/balloon.png)
+![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.png)
 
 Let's bringup stretch in RViz by using the following command.
 
@@ -15,7 +15,7 @@ ros2 run stretch_ros_tutorials marker
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
 
-![image](images/balloon.gif)
+![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.gif)
 
 
 ### The Code
