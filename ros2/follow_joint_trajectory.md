@@ -1,4 +1,5 @@
 ## FollowJointTrajectory Commands
+**NOTE**: ROS 2 tutorials are still under active development. 
 
 Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html) action service for its arm. Within this tutorial we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.
 

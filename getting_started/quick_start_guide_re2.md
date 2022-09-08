@@ -18,13 +18,7 @@ A few items you'll want to know about before getting started.
 
 The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch
 
-![](./images/trunk_rs.png)
-
-### LED Lightbar
-
- The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging. 
-
-![](./images/lightbar_voltage.png)
+![](./images/trunk_re2.png)
 
 ### Charging the Battery
 
@@ -37,7 +31,7 @@ The provided battery charger can be plugged and unplugged at any time during ope
 | SUPPLY  | 1) Power the robot during tethered use<br/>2) Repair damaged batteries. |
 | REPAIR  | Repair damaged batteries.                                    |
 
-Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/) for proper care and charging of Stretch batteries. 
+Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) for proper care and charging of Stretch batteries. 
 
 ![](./images/NOCO_Genius10_UI_rs.png)
 
@@ -48,6 +42,26 @@ The illuminated button on the head is its Runstop. Just tap it, you'll hear a be
 To allow motion once again, hold the button down for two seconds. After the beep, motion can resume.
 
 ![](./images/runstop_rs.png)
+
+### LED Lightbar
+
+The LED lightbar in the base provides a simple way to quickly ascertain the robot state. At all times its color indicates the battery voltage. 
+
+![](./images/lightbar_voltage.png)
+
+More information on the voltage display is available in the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/#state-of-battery-charge)
+
+The lightbar will also flash as follows:
+
+| Mode               | Flashing              |
+|--------------------|-----------------------|
+| Normal Operation   | None                  |
+| Runstopped         | Rapid flash at 1 Hz   |
+| Charger plugged in | Slow strobe at 0.5 Hz |
+
+Try runstopping the robot and plugging in the charger to become familiar with these modes. 
+
+
 
 ### Safe Handling
 
@@ -65,7 +79,12 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 **Things to be mindful of**:
 
 * Manually moving the head and wrist. They will move but they want to go at their own speed.
-* The arm will slowly descend when the robot is powered off. If the arm is retracted it may rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
+* The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
+
+**NOTE**: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp as shown below prior to powering down the NUC computer
+
+![](./images/clip-clamp.png)
+
 
 **Things that can hurt the robot**: 
 
@@ -159,6 +178,8 @@ Python 3.8.10 (default, Jun 22 2022, 20:18:18)
 Now let's move the robot around using the [Stretch Body Robot API](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py). Try typing in these interactive commands at the iPython prompt:
 
 ```python
+>>$ ipython
+...
 import stretch_body.robot
 robot=stretch_body.robot.Robot()
 robot.startup()

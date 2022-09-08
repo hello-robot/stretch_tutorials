@@ -1,5 +1,7 @@
 ## Visualizing with RViz
 
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 You can utilize RViz to visualize Stretch's sensor information. To begin, run the stretch driver launch file.
 
 ```bash

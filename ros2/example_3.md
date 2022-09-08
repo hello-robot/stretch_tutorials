@@ -1,4 +1,7 @@
+
 ## Example 3
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 

@@ -1,5 +1,7 @@
 # Spawning Stretch in Simulation (Gazebo)
 
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 ### NOTE
 Simulation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to work with Stretch in a simulated environment like Gazebo/Ignition in ROS 2.
 

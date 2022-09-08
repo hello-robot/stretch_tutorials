@@ -1,5 +1,5 @@
 ## Example 1
-
+**NOTE**: ROS 2 tutorials are still under active development. 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/move_stretch.gif"/>
 </p>

@@ -1,4 +1,7 @@
+
 ## Example 2
+**NOTE**: ROS 2 tutorials are still under active development. 
+
 
 The aim of this example is to provide instruction on how to filter scan messages.
 

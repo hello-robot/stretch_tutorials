@@ -5,7 +5,7 @@ In this tutorial we explore how to add additional degrees of freedom to the Stre
 
 Stretch exposes a Dynamixel X-Series TTL control bus at the end of its arm. It uses the [Dynamixel XL430-W250](https://emanual.robotis.com/docs/en/dxl/x/xl430-w250/) for the [WristYaw](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wrist_yaw.py) and the [StretchGripper](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/stretch_gripper.py)  degrees of freedom that come standard with the robot. 
 
-See the [Hardware User Guide](https://docs.hello-robot.com/hardware_user_guide/#wrist) to learn how to mechanically attach additional DOFs to the robot.
+See the [Hardware User Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re2/#wrist-tool-plate) to learn how to mechanically attach additional DOFs to the robot.
 
 **Note: Stretch is compatible with [any Dynamixel X Series servo](https://emanual.robotis.com/docs/en/dxl/x/) that utilizes the TTL level Multidrop Bus.**
 

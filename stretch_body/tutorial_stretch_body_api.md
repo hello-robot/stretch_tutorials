@@ -1,7 +1,7 @@
 # Stretch Body API Reference
 
 Stretch Body is the Python interface to working with the Stretch RE1. This page serves as a reference of the interfaces defined in the `stretch_body` library. 
-See the [Stretch Body Tutorials](shttps://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/) for additional information on working with this library.
+See the [Stretch Body Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/) for additional information on working with this library.
 
 ## The Robot Class
 
