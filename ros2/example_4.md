@@ -92,7 +92,6 @@ self.marker.header.stamp = self.get_clock().now().to_msg()
 self.marker.type = self.marker.SPHERE
 ```
 
-<!-- TODO: Update links -->
 Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
 
 ```python

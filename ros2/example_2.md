@@ -5,8 +5,7 @@
 
 The aim of this example is to provide instruction on how to filter scan messages.
 
-<!-- TODO: Update the links -->
-For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](http://wiki.ros.org/sensor_msgs) package called [LaserScan](http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html) to hold information about a given scan. Let's take a look at the message specification itself:
+For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](https://github.com/ros2/common_interfaces/tree/galactic/sensor_msgs) package called [LaserScan](https://github.com/ros2/common_interfaces/blob/galactic/sensor_msgs/msg/LaserScan.msg) to hold information about a given scan. Let's take a look at the message specification itself:
 
 ```
 #
@@ -14,7 +13,7 @@ For robots with laser scanners, ROS provides a special Message type in the [sens
 # with Stretch's LiDAR having both angle_min and angle_max facing forward
 # (very closely along the x-axis) of the device frame
 #
-Header header
+std_msgs/Header header   # timestamp data in a particular coordinate frame
 float32 angle_min        # start angle of the scan [rad]
 float32 angle_max        # end angle of the scan [rad]
 float32 angle_increment  # angular distance between measurements [rad]

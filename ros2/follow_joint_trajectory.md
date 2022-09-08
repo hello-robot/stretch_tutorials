@@ -102,8 +102,7 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from sensor_msgs.msg import JointState
 ```
-<!-- TODO: Update links below -->
-You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories.
+You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs) package to define robot trajectories.
 
 ```python
 class StowCommand(Node):
