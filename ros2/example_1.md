@@ -139,6 +139,3 @@ cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ``` -->
 To stop the node from sending twist messages, type **Ctrl** + **c**.
-
-
-**Next Example:** [Example 2](example_2.md)

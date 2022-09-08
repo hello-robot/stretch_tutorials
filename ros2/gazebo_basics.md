@@ -32,4 +32,3 @@ roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world
 
 ![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_willowgarage_world.png)
 
-**Next Tutorial:** [Teleoperating Stretch](teleoperating_stretch.md)

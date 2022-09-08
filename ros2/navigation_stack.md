@@ -54,4 +54,3 @@ roslaunch stretch_navigation teleop_keyboard.launch
 ```
  -->
 
-**Next Tutorial:** [MoveIt! Basics](moveit_basics.md)

@@ -155,4 +155,3 @@ Setup Avoider class with `avoider = Avioder()`
 
 Give control to ROS with `rclpy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
-**Next Example:** [Example 4](example_4.md)

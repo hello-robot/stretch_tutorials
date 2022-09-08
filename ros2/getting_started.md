@@ -24,4 +24,3 @@ Then source your workspace with the following command
 source ~/ament_ws/install/setup.bash"
 ```
 
-**Next Tutorial:** [Gazebo Basics](gazebo_basics.md)

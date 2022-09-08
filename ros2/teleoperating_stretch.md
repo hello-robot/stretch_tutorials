@@ -100,4 +100,3 @@ roslaunch stretch_gazebo teleop_joy.launch
 ```
 Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.
 
-**Next Tutorial:** [Internal State of Stretch](internal_state_of_stretch.md)
