@@ -18,22 +18,8 @@ A few items you'll want to know about before getting started.
 
 The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch
 
-![](./images/trunk_re2.png)
+![](./images/trunk_re2_rs.png)
 
-### Charging the Battery
-
-The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:
-
-| Mode    | Function                                                     |
-| ------- | ------------------------------------------------------------ |
-| STANDBY | Charger not charging the robot                               |
-| 12V AGM | Charging while robot is powered down                         |
-| SUPPLY  | 1) Power the robot during tethered use<br/>2) Repair damaged batteries. |
-| REPAIR  | Repair damaged batteries.                                    |
-
-Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) for proper care and charging of Stretch batteries. 
-
-![](./images/NOCO_Genius10_UI_rs.png)
 
 ### Runstop
 
@@ -59,39 +45,6 @@ The lightbar will also flash as follows:
 | Runstopped         | Rapid flash at 1 Hz   |
 | Charger plugged in | Slow strobe at 0.5 Hz |
 
-Try runstopping the robot and plugging in the charger to become familiar with these modes. 
-
-
-
-### Safe Handling
-
-Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. 
-
-The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provides a quick overview of how to work with the robot.
-
-**Things that won't hurt the robot**:
-
-* Manually push and pull the arm (when the motor isn't holding a position).
-* Manually raise and lower the lift (when the motor isn't holding a position).
-* Manually tilt and roll the base around (when the motors aren't holding a position).
-* Pick up and carry Stretch (while holding it by the mast, two people for safety).
-
-**Things to be mindful of**:
-
-* Manually moving the head and wrist. They will move but they want to go at their own speed.
-* The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
-
-**NOTE**: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp as shown below prior to powering down the NUC computer
-
-![](./images/clip-clamp.png)
-
-
-**Things that can hurt the robot**: 
-
-* Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.
-* Getting the gripper stuck on something and then driving the arm, lift, or base. 
-* Laying the robot down with it weight on its camera.
-* Trying to ride on the robot, getting it wet, etc. (eg, common sense)
 
 ## Hello World Demo
 
@@ -119,16 +72,61 @@ To start the demo after unboxing and turning the power on:
 * Try grasping cup from a counter top
 * Try delivering an object to a person
 
-If you're done, hold down the Shutdown PC button for 2 seconds. This will cause the PC to turn off. You can then power down the robot. Or proceed to the next step...
+If you're done, let's power down. First attach the clip-clamp just below the shoulder as shown.
+![](./images/clip-clamp_rs.png)
+
+Hold down the Shutdown PC button on the Xbox controller for 2 seconds. This will cause the PC to turn off. You can then power down the robot with the On/Off switch. 
 
 Now that you're familiar with the robot, take a minute to watch the [Stretch Powered Best Practices Video](https://youtu.be/iEaapHNfEWA).
 
 
+### Safe Handling
+
+Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. 
+
+The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provides a quick overview of how to work with the robot.
+
+**Things that won't hurt the robot**:
+
+* Manually push and pull the arm (when the motor isn't holding a position).
+* Manually raise and lower the lift (when the motor isn't holding a position).
+* Manually tilt and roll the base around (when the motors aren't holding a position).
+* Pick up and carry Stretch (while holding it by the mast, two people for safety).
+
+**Things to be mindful of**:
+
+* Manually moving the head and wrist. They will move but they want to go at their own speed.
+* The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
+
+**NOTE**: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp prior to powering down the NUC computer
+
+
+**Things that can hurt the robot**: 
+
+* Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.
+* Getting the gripper stuck on something and then driving the arm, lift, or base. 
+* Laying the robot down with it weight on its camera.
+* Trying to ride on the robot, getting it wet, etc. (eg, common sense)
+
+### Charging the Battery
+
+The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:
+
+| Mode    | Function                                                     |
+| ------- | ------------------------------------------------------------ |
+| STANDBY | Charger not charging the robot                               |
+| 12V AGM | Charging while robot is powered down                         |
+| SUPPLY  | 1) Power the robot during tethered use<br/>2) Repair damaged batteries. |
+| REPAIR  | Repair damaged batteries.                                    |
+
+Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) for proper care and charging of Stretch batteries. 
+
+![](./images/NOCO_Genius10_UI_rs.png)
 
 ## Get Plugged In
 
 Let's get plugged in.
-
+* Power up the robot
 * Plug in a mouse, keyboard and HDMI monitor to the robot trunk
 * Plug in the battery charger
 * Place the charger in SUPPLY mode
