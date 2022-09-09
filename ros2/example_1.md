@@ -1,7 +1,7 @@
 ## Example 1
 **NOTE**: ROS 2 tutorials are still under active development. 
 <p align="center">
-  <img src="images/move_stretch.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/move_stretch.gif"/>
 </p>
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
@@ -139,6 +139,3 @@ cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ``` -->
 To stop the node from sending twist messages, type **Ctrl** + **c**.
-
-
-**Next Example:** [Example 2](example_2.md)

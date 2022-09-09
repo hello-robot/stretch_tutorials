@@ -3,7 +3,7 @@
 **NOTE**: ROS 2 tutorials are still under active development. 
 
 
-![image](images/balloon.png)
+![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.png)
 
 Let's bringup stretch in RViz by using the following command.
 
@@ -18,7 +18,7 @@ ros2 run stretch_ros_tutorials marker
 ```
 The gif below demonstrates how to add a new *Marker* display type, and change the topic name from `visualization_marker` to `balloon`. A red sphere Marker should appear above the Stretch robot.
 
-![image](images/balloon.gif)
+![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.gif)
 
 
 ### The Code
@@ -92,7 +92,6 @@ self.marker.header.stamp = self.get_clock().now().to_msg()
 self.marker.type = self.marker.SPHERE
 ```
 
-<!-- TODO: Update links -->
 Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
 
 ```python

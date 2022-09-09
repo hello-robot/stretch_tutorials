@@ -5,7 +5,7 @@ Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/con
 
 ## Stow Command Example
 <p align="center">
-  <img src="images/stow_command.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stow_command.gif"/>
 </p>
 
 Begin by launching stretch_driver in a terminal.
@@ -102,8 +102,7 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from sensor_msgs.msg import JointState
 ```
-<!-- TODO: Update links below -->
-You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](http://wiki.ros.org/trajectory_msgs) package to define robot trajectories.
+You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs) package to define robot trajectories.
 
 ```python
 class StowCommand(Node):
@@ -167,7 +166,7 @@ To make the script executable call the main() function like above.
 ## Multipoint Command Example
 
 <p align="center">
-  <img src="images/multipoint.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/multipoint.gif"/>
 </p>
 
 If you have killed the above instance of stretch_driver relaunch it again through the terminal.

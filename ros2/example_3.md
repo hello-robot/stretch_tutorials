@@ -19,7 +19,7 @@ ros2 run stretch_ros_tutorials avoider
 To stop the node from sending twist messages, type **Ctrl** + **c** in the terminal running the avoider node.
 
 <p align="center">
-  <img height=600 src="images/avoider.gif"/>
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/avoider.gif"/>
 </p>
 
 ### The Code
@@ -155,4 +155,3 @@ Setup Avoider class with `avoider = Avioder()`
 
 Give control to ROS with `rclpy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
 
-**Next Example:** [Example 4](example_4.md)
