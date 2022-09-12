@@ -18,7 +18,7 @@ A few items you'll want to know about before getting started.
 
 The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch
 
-![](./images/trunk_re2_rs.png)
+![](./images/trunk_re2_rs2.png)
 
 
 ### Runstop
