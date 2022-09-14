@@ -10,6 +10,8 @@ Create a catkin workspace for your ROS packages. Here is an [installation guide 
 ```bash
 cd ~/catkin_ws/src
 git clone https://github.com/hello-robot/stretch_tutorials.git
+cd stretch_tutorials
+git checkout main
 cd ~/catkin_ws
 catkin_make
 ```
