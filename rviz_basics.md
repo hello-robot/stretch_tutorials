@@ -9,7 +9,7 @@ ros2 launch stretch_core stretch_driver.launch.py
 <!-- TODO: Make this rviz config file available to users in the main branch -->
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 ```bash
-ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/rviz/stretch_simple_test.rviz
+ros2 run rviz2 rviz2 -d `ros2 pkg prefix --share stretch_calibration`/rviz/stretch_simple_test.rviz
 ```
 An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.
 
