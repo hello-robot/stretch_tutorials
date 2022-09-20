@@ -4,9 +4,6 @@ import numpy as np
 from rclpy.node import Node
 from math import sin as s, cos as c
 
-# Users should input joint values from the command line (joint_lift, joint_arm, joint_wrist_yaw)
-# Robot should determine the position of link_grasp_center at home position when all joints are zero?
-
 
 class ForwardKinematics():
     def __init__(self, joint_lift, joint_arm, joint_wrist_yaw):
@@ -58,10 +55,17 @@ class ForwardKinematics():
         return np.matmul(E, M)
 
 
-if __name__ == '__main__':
-    fk = ForwardKinematics(0.5, 0.2, -1.34)
+def main():
+    print("Enter the joint values for joint_lift, joint_arm, joint_wrist_yaw: 0.6, 0.45, 3.145 for example")
+    x, y, z = input("Enter here: ").split(',', 3)
+    joint_lift, joint_arm, joint_wrist_yaw = float(x), float(y), float(z)
+    fk = ForwardKinematics(joint_lift, joint_arm, joint_wrist_yaw)
     result = fk.compute_fk()
     print(result)
+
+
+if __name__ == '__main__':
+    main()
 
 
 
