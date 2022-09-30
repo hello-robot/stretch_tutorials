@@ -59,8 +59,7 @@ class Avoider(Node):
 
         # Using hyperbolic tanget for speed regulation, with a threshold to stop
         # and driving when it is close to the desired distance.
-        self.twist.linear.x = tanh(error) if (error > 0.05 or error < -0.05) else 0
-
+        self.twist.linear.x = tanh(error) if (error > 0.05 or error < -0.05) else 0.0
         # Publish the command using the publisher
         self.publisher_.publish(self.twist)
 
