@@ -1,11 +1,11 @@
-## Obstacle Avoider
+# Obstacle Avoider
 In this tutorial we will work with Stretch to detect and avoid obstacles using the onboard RPlidar A1 laser scanner and learn how to filter laser scan data. If you want to know more about the laser scanner setup on Stretch and how to get it up and running, we recommend visiting the previous tutorials on filtering laser scans and mobile base collision avoidance.
 
 A major drawback of using any ToF (Time of Flight) sensor is the inherent inaccuracies as a result of occlusions and weird reflection and diffraction phenomena the light pulses are subject to in an unstructured environment. This results in unexpected and undesired noise that can get in the way of an otherwise extremely useful sensor. Fortunately, it is easy to account for and eliminate these inaccuracies to a great extent by filering out the noise. We will do this with a ROS package called laser_filters that comes prebuilt with some pretty handy laser scan message filters.
 
 By the end of this tutorial, you will be able to tweak them for your particular use case and publish and visualize them on the /scan_filtered topic using RViz. So let’s jump in! We will look at three filters from this package that have been tuned to work well with Stretch in an array of scenarios.
 
-# LaserScan Filtering
+## LaserScan Filtering
 LaserScanAngularBoundsFilterInPlace - This filter removes laser scans belonging to an angular range. For Stretch, we use this filter to discount points that are occluded by the mast because it is a part of Stretch’s body and not really an object we need to account for as an obstacle while navigating the mobile base.
 
 LaserScanSpeckleFilter - We use this filter to remove phantom detections in the middle of empty space that are a result of reflections around corners. These disjoint speckles can be detected as false positives and result in jerky motion of the base through empty space. Removing them returns a relatively noise-free scan.
@@ -14,7 +14,7 @@ LaserScanBoxFilter - Stretch is prone to returning false detections right over t
 
 However, beware that filtering laser scans comes at the cost of a sparser scan that might not be ideal for all applications. If you want to tweak the values for your end application, you could do so by changing the values in the laser_filter_params.yaml file and by following the laser_filters package wiki. Also, if you are feeling zany and want to use the raw unfiltered scans from the laser scanner, simply subscribe to the /scan topic instead of the /scan_filtered topic.
 
-# Avoidance logic
+## Avoidance logic
 Now, let’s use what we have learned so far to upgrade the collision avoidance demo in a way that Stretch is able to scan an entire room autonomously without bumping into things or people. To account for dynamic obstacles getting too close to the robot, we will define a keepout distance of 0.4 m - detections below this value stop the robot. To keep Stretch from getting too close to static obstacles, we will define another variable called turning distance of 0.75 m - frontal detections below this value make Stretch turn to the left until it sees a clear path ahead.
 
 Building up on the teleoperation using velocity commands tutorial, let's implement a simple logic for obstacle avoidance. The logic can be broken down into three steps:
@@ -22,7 +22,7 @@ Building up on the teleoperation using velocity commands tutorial, let's impleme
 2. If the minimum value from the frontal scans is less than 0.75 m then turn to the right until this is no longer true
 3. If the minimum value from the overall scans is less than 0.4 m then stop the robot
 
-# Warnings
+## Warnings
 If you see Stretch try to run over your lazy cat or headbutt a wall, just press the bright runstop button on Stretch's head to calm it down. For pure navigation tasks, it's also safer to stow Stretch's arm in. Execute the command:
 ```bash
 stretch_robot_stow.py
@@ -35,6 +35,8 @@ ros2 launch stretch_core rplidar_keepout.launch.py
 ```
 
 ## Code Breakdown:
+Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
+
 The turning distance is defined by the distance attribute and the keepout distance is defined by the keepout attribute.
 ```python
         self.distance = 0.75 # robot turns at this distance

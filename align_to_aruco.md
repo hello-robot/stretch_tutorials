@@ -1,4 +1,4 @@
-## Align to ArUco
+# Align to ArUco
 ArUco markers are a type of fiducials that are used extensively in robotics for identification and pose estimation. In this tutorial we will learn how to identify ArUco markers with the ArUco detection node and enable Stretch to navigate and align itself with respect to the marker.
 
 ## ArUco Detection
@@ -23,7 +23,7 @@ Since we want Stretch to align with respect to the marker we define a 0.5m offse
 
 Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the tutorial to know how to command Stretch using the Joint trajectory Server.
 
-# Warnings
+## Warnings
 Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Execute the command:
 ```bash
 stretch_robot_stow.py
@@ -37,6 +37,8 @@ ros2 launch stretch_core align_to_aruco.launch.py
 ```
 
 ## Code Breakdown
+Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
+
 We make use of two separate Python classes for this demo. The FrameListener() class is derived from the Node class and is the place where we compute the TF transformations. For an explantion of this class, you can refer to the TF listener tutorial.
 ```python
 class FrameListener(Node):
