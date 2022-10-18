@@ -2,9 +2,9 @@
 Ever wondered if there is a way to make a robot do awesome things without explicitly having to program it to do so? Deep Perception is a branch of Deep Learning that enables sensing the elements that make up an environment with the help of artificial neural networks without writing complicated code. Well, almost. The most wonderful thing about Stretch is that it comes preloaded with software that makes it a breeze to get started with topics such as Deep Learning. In this tutorial, we will deploy deep neural networks on Stretch using two popular Deep Learning frameworks, namely, PyTorch and OpenVino.
 
 ## YOLOv5 with PyTorch
-PyTorch is an open source end-to-end machine learning framework that makes many pretrained production quality neural networks available for general use. In this tutorial we will use the YOLOv5s model trained on the COCO dataset.
+[PyTorch](https://pytorch.org/) is an open source end-to-end machine learning framework that makes many pretrained production quality neural networks available for general use. In this tutorial we will use the YOLOv5s model trained on the COCO dataset.
 
-YOLOv5 is a popular object detection model that divides a supplied image into a grid and detects objects in each cell of the grid recursively. The YOLOv5s model that we have deployed on Stretch has been pretrained on the COCO dataset which allows Stretch to detect a wide range of day to day objects. However, that’s not all, in this demo we want to go a step further and use this extremely versatile object detection model to extract useful information about the scene.
+[YOLOv5](https://github.com/ultralytics/yolov5) is a popular object detection model that divides a supplied image into a grid and detects objects in each cell of the grid recursively. The YOLOv5s model that we have deployed on Stretch has been pretrained on the [COCO dataset](https://cocodataset.org/#home) which allows Stretch to detect a wide range of day to day objects. However, that’s not all, in this demo we want to go a step further and use this extremely versatile object detection model to extract useful information about the scene.
 
 ## Extracting Bounding Boxes and Depth Information
 Often, it’s not enough to simply identify an object. Stretch is a mobile manipulator and its job is to manipulate objects in its environment. But before it can do that, it needs information of where exactly the object is located with respect to itself so that a motion plan to reach the object can be generated. This is possible by knowing which pixels correspond to the object of interest in the image frame and then using that to extract the depth information in the camera frame. Once we have this information, it is possible to compute a transform of these points in the end effector frame for Stretch to generate a motion plan. 
@@ -26,9 +26,9 @@ ros2 launch stretch_deep_perception stretch_detect_objects.launch.py
 Voila! You just executed your first deep learning model on Stretch!
 
 ## Code Breakdown
-Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to breakdown the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_objects.py) into funtional blocks to understand the detection pipeline.
+Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to breakdown the code into funtional blocks to understand the detection pipeline.
 
-The control flow begins with executing the detect_objects.py node. In the main() function, we create an instance of the ObjectDetector class from the object_detect_pytorch.py script where we configure the YOLOv5s model. Next, we pass this detector to an instance of the DetectionNode class from the detection_node.py script and call the main function.
+The control flow begins with executing the [detect_objects.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_objects.py) script. In the main() function, we create an instance of the ObjectDetector class from the [object_detect_pytorch.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/object_detect_pytorch.py) script where we configure the YOLOv5s model. Next, we pass this detector to an instance of the DetectionNode class from the [detection_node.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detection_node.py) script and call the main function.
 ```python
 def main():
     confidence_threshold = 0.0
@@ -49,6 +49,7 @@ class ObjectDetector:
         self.model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
         self.confidence_threshold = confidence_threshold
 ```
+
 The apply_to_image() method passes the stream of RGB images from the realsense camera to the YOLOv5s model and returns detections in the form of a dictionary consisting of class_id, label, confidence and bouding box coordinates. The last part is exactly what we need for further computations.
 ```python
 def apply_to_image(self, rgb_image, draw_output=False):
@@ -114,9 +115,11 @@ def image_callback(self, ros_rgb_image, ros_depth_image, rgb_camera_info):
 ```
 
 ## Face Detection, Facial Landmarks Detection and Head Pose Estimation with OpenVINO and OpenCV
-OpenVINO is a toolkit popularized by Intel to optimize and deploy machine learning inference that can utilize hardware acceleration dongles such as the Intel Neural Compute Stick with Intel based compute architectures. More convenient is the fact that most of the deep learning models in the Open Model Zoo are accessible and configurable using the familiar OpenCV API with the opencv-python-inference-engine library.
+Detecting objects is just one thing Stretch can do well, it can do much more using pretrained models. For this part of the tutorial, we will be using Intel’s OpenVINO toolkit with OpenCV. The cool thing about this demo is that it uses three different models in tandem to not just detect human faces, but also important features of the human face such as the eyes, nose and the lips with head pose information. This is important in the context of precise manipulation tasks such as assisted feeding where we want to know the exact location of the facial features the end effector must reach.
 
-With that, let’s jump right into it! Detecting objects is just one thing Stretch can do well, it can do much more using pretrained models. For this part of the tutorial, we will be using Intel’s OpenVINO toolkit with OpenCV. The cool thing about this demo is that it uses three different models in tandem to not just detect human faces, but also important features of the human face such as the eyes, nose and the lips with head pose information. This is important in the context of precise manipulation tasks such as assisted feeding where we want to know the exact location of the facial features the end effector must reach. 
+[OpenVINO](https://docs.openvino.ai/latest/index.html) is a toolkit popularized by Intel to optimize and deploy machine learning inference that can utilize hardware acceleration dongles such as the Intel Neural Compute Stick with Intel based compute architectures. More convenient is the fact that most of the deep learning models in the [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) are accessible and configurable using the familiar OpenCV API with the [opencv-python-inference-engine](https://pypi.org/project/opencv-python-inference-engine/) library.
+
+With that, let’s jump right into it!
 
 ## Warning
 Running inference on Stretch results in continuous high current draw by the CPU. Pleas ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
@@ -131,9 +134,9 @@ ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ![detect_faces](https://user-images.githubusercontent.com/97639181/196327737-7091cd61-f79a-4ff0-a291-039ab3f7127a.gif)
 
 ## Code Breakdown
-Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces instead of objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin. 
+Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces, facial landmarks or estimat head pose instead of detecting objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin. 
 
-In the main() method, we see a similar structure as with the object detction node. We first create an instance of the detector using the HeadPoseEstimator class from the head_estimator.py script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
+In the main() method, we see a similar structure as with the object detction node. We first create an instance of the detector using the HeadPoseEstimator class from the [head_estimator.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/head_estimator.py) script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
 ```python
     ...
         
@@ -153,7 +156,7 @@ In the main() method, we see a similar structure as with the object detction nod
     node.main()
 ```
 
-In addition to detecting faces, this class also enables detecting facial landmarks as well as estimating head pose. The constructor initializes and configures three separate models, namely head_detection_model, head_pose_model and landmarks_model,  with the help of the renamed_cv2.dnn.readNet() wrappers. Note that renamed_cv2 is simply the opencv_python_inference_engine library compiled under a different namespace for using with Stretch so as not to conflict with the regular OpenCV library and having functionalities from both available to users concurrently.
+In addition to detecting faces, this class also enables detecting facial landmarks as well as estimating head pose. The constructor initializes and configures three separate models, namely head_detection_model, head_pose_model and landmarks_model,  with the help of the renamed_cv2.dnn.readNet() wrappers. Note that renamed_cv2 is simply the opencv_python_inference_engine library compiled under a different namespace for use with Stretch so as not to conflict with the regular OpenCV library and having functionalities from both available to users concurrently.
 ```python
 class HeadPoseEstimator:
     def __init__(self, models_directory, use_neural_compute_stick=False):
@@ -199,4 +202,4 @@ The apply_to_image() method calls individual methods like detect_faces(), estima
 
 The detecion_node.py script then takes over as we saw with the object detection tutorial to publish the detections on pertinent topics. 
 
-Now go ahead and experiment with a few more pretrained models using PyTorch or OpenVINO on Stretch. If you are feeling extra motivated, try creating your own neural networks and training them. Stretch is ready to deploy them.
+Now go ahead and experiment with a few more pretrained models using PyTorch or OpenVINO on Stretch. If you are feeling extra motivated, try creating your own neural networks and training them. Stretch is ready to deploy them!
