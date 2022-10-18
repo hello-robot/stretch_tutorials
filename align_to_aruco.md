@@ -36,6 +36,8 @@ When you are ready, execute the following command:
 ros2 launch stretch_core align_to_aruco.launch.py
 ```
 
+![Align](https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif)
+
 ## Code Breakdown
 Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
 
