@@ -184,6 +184,7 @@ nav:
           - MoveIt Basics: ./ros2/moveit_basics.md
           - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
           - MoveGroup C++ API: ./ros2/moveit_movegroup_demo.md
+          - MoveIt Draw: ./ros2/moveit_draw.md
         - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
         # - Perception: ./ros2/perception.md
         # - ArUco Marker Detection: ./ros2/aruco_marker_detection.md
@@ -202,6 +203,9 @@ nav:
         # - Voice to Text: ./ros2/example_8.md
         # - Voice Teleoperation of Base: ./ros2/example_9.md
         - Tf2 Broadcaster and Listener: ./ros2/example_10.md
+        - Obstacle Avoider: ./ros2/obstacle_avoider.md
+        - Align to ArUco: ./ros2/align_to_aruco.md
+        - Deep Perception: ./ros2/deep_perception.md
         # - PointCloud Transformation: ./ros2/example_11.md
         # - ArUco Tag Locator: ./ros2/example_12.md
 
