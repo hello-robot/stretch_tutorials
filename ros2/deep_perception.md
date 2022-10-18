@@ -11,6 +11,9 @@ Often, it’s not enough to simply identify an object. Stretch is a mobile manip
 
 For the sake of brevity, we will limit the scope of this tutorial to drawing bounding boxes around objects of interest to point to pixels in the image frame, and drawing a detection plane corresponding to depth pixels in the camera frame.
 
+## Warning
+Running inference on Stretch results in continuous high current draw by the CPU. Pleas ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
+
 ## See It In Action
 Go ahead and execute the following command to run the inference and visualize the detections in RViz:
 
@@ -114,6 +117,9 @@ def image_callback(self, ros_rgb_image, ros_depth_image, rgb_camera_info):
 OpenVINO is a toolkit popularized by Intel to optimize and deploy machine learning inference that can utilize hardware acceleration dongles such as the Intel Neural Compute Stick with Intel based compute architectures. More convenient is the fact that most of the deep learning models in the Open Model Zoo are accessible and configurable using the familiar OpenCV API with the opencv-python-inference-engine library.
 
 With that, let’s jump right into it! Detecting objects is just one thing Stretch can do well, it can do much more using pretrained models. For this part of the tutorial, we will be using Intel’s OpenVINO toolkit with OpenCV. The cool thing about this demo is that it uses three different models in tandem to not just detect human faces, but also important features of the human face such as the eyes, nose and the lips with head pose information. This is important in the context of precise manipulation tasks such as assisted feeding where we want to know the exact location of the facial features the end effector must reach. 
+
+## Warning
+Running inference on Stretch results in continuous high current draw by the CPU. Pleas ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
 
 ## See It In Action
 First, let’s execute the following command to see what it looks like:
