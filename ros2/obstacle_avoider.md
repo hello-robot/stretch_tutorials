@@ -39,7 +39,7 @@ ros2 launch stretch_core rplidar_keepout.launch.py
 ![avoidance](https://user-images.githubusercontent.com/97639181/196327294-1b2dde5e-2fdc-4a67-a188-ae6b1f5e6a06.gif)
 
 ## Code Breakdown:
-Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
+Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/stretch_core/avoider.py) to have a look at the entire script.
 
 The turning distance is defined by the distance attribute and the keepout distance is defined by the keepout attribute.
 ```python

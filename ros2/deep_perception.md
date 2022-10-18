@@ -26,7 +26,7 @@ ros2 launch stretch_deep_perception stretch_detect_objects.launch.py
 Voila! You just executed your first deep learning model on Stretch!
 
 ## Code Breakdown
-Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to breakdown the code into funtional blocks to understand the detection pipeline.
+Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to breakdown the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_objects.py) into funtional blocks to understand the detection pipeline.
 
 The control flow begins with executing the detect_objects.py node. In the main() function, we create an instance of the ObjectDetector class from the object_detect_pytorch.py script where we configure the YOLOv5s model. Next, we pass this detector to an instance of the DetectionNode class from the detection_node.py script and call the main function.
 ```python
@@ -131,7 +131,7 @@ ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ![detect_faces](https://user-images.githubusercontent.com/97639181/196327737-7091cd61-f79a-4ff0-a291-039ab3f7127a.gif)
 
 ## Code Breakdown
-Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces instead of objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py node to begin. 
+Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces instead of objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin. 
 
 In the main() method, we see a similar structure as with the object detction node. We first create an instance of the detector using the HeadPoseEstimator class from the head_estimator.py script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
 ```python
