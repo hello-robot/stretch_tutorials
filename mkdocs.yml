@@ -184,7 +184,6 @@ nav:
           - MoveIt Basics: ./ros2/moveit_basics.md
           - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
           - MoveGroup C++ API: ./ros2/moveit_movegroup_demo.md
-          - MoveIt Draw: ./ros2/moveit_draw.md
         - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
         # - Perception: ./ros2/perception.md
         # - ArUco Marker Detection: ./ros2/aruco_marker_detection.md
