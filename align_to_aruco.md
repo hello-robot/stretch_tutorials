@@ -10,7 +10,9 @@ Stretch comes preconfigured to identify ArUco markers. The ROS node that enables
 If you have not already done so, now might be a good time to review the tf_tranformation tutorial. Go on, we can wait…
 Now that we know how to program stretch to return the transform between known reference frames, we can use this knowledge to compute the transform between the detected marker and the robot base_link.. Enter TF transformations! From its current pose, for Stretch to align itself in front of the marker, we need to command it to reach there. But even before that, we need to program Stretch to know the goal pose. We define the goal pose to be 0.5 metre outward from the marker in the marker negative y-axis (Green axis). This is easier to visualize through the figure below.
 
-![Marker](https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png" width="400">
+</p>
 
 <!-- Add images to show alignment and tranformations -->
 
@@ -38,7 +40,9 @@ When you are ready, execute the following command:
 ros2 launch stretch_core align_to_aruco.launch.py
 ```
 
-![Align](https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" width="400">
+</p>
 
 ## Code Breakdown
 Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
