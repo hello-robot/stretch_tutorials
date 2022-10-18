@@ -41,6 +41,11 @@ To execute the script and interact with the robot, all you need to do is press t
 
 ![Pose_Goal](https://user-images.githubusercontent.com/97639181/182997727-9a42f12e-9476-4cc5-a74b-71ccdecc637f.gif)
 
-8. To wrap it up, the final act! This one is a surprise that's only a click away. Go on, do it!
+Press Ctrl+C to end this demo.
+
+8. To wrap it up, the final act! This one is a surprise that's only a click away. Go on and execute the following command:
+```bash
+ros2 launch stretch_moveit_config moveit_draw.launch.py
+```
 
 ![Stow](https://user-images.githubusercontent.com/97639181/182997818-7a9a104b-41a9-4cf6-8901-1a7d5ee73017.gif)
