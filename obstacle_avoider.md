@@ -14,6 +14,8 @@ LaserScanBoxFilter - Stretch is prone to returning false detections right over t
 
 However, beware that filtering laser scans comes at the cost of a sparser scan that might not be ideal for all applications. If you want to tweak the values for your end application, you could do so by changing the values in the laser_filter_params.yaml file and by following the laser_filters package wiki. Also, if you are feeling zany and want to use the raw unfiltered scans from the laser scanner, simply subscribe to the /scan topic instead of the /scan_filtered topic.
 
+![laser_filtering](https://user-images.githubusercontent.com/97639181/196327251-c39f3cbb-c898-48c8-ae28-2683564061d9.gif)
+
 ## Avoidance logic
 Now, let’s use what we have learned so far to upgrade the collision avoidance demo in a way that Stretch is able to scan an entire room autonomously without bumping into things or people. To account for dynamic obstacles getting too close to the robot, we will define a keepout distance of 0.4 m - detections below this value stop the robot. To keep Stretch from getting too close to static obstacles, we will define another variable called turning distance of 0.75 m - frontal detections below this value make Stretch turn to the left until it sees a clear path ahead.
 
@@ -33,6 +35,8 @@ Alright, let's see it in action! Execute the following command to run the script
 ```bash
 ros2 launch stretch_core rplidar_keepout.launch.py
 ```
+
+![avoidance](https://user-images.githubusercontent.com/97639181/196327294-1b2dde5e-2fdc-4a67-a188-ae6b1f5e6a06.gif)
 
 ## Code Breakdown:
 Let's jump into the code to see how things work under the hood. Follow along here to have a look at the entire script.
