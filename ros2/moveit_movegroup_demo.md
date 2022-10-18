@@ -48,4 +48,4 @@ Press Ctrl+C to end this demo.
 ros2 launch stretch_moveit_config moveit_draw.launch.py
 ```
 
-![Stow](https://user-images.githubusercontent.com/97639181/182997818-7a9a104b-41a9-4cf6-8901-1a7d5ee73017.gif)
+![draw](https://user-images.githubusercontent.com/97639181/196334258-3c585f45-c976-483c-b2cb-1f540460596f.gif)
