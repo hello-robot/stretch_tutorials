@@ -18,6 +18,8 @@ Go ahead and execute the following command to run the inference and visualize th
 ros2 launch stretch_deep_perception stretch_detect_objects.launch.py
 ```
 
+![detect_objects](https://user-images.githubusercontent.com/97639181/196327689-9c5d3a0b-15a3-4432-a3db-6326125262f0.gif)
+
 Voila! You just executed your first deep learning model on Stretch!
 
 ## Code Breakdown
@@ -119,6 +121,8 @@ First, let’s execute the following command to see what it looks like:
 ```
 ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ```
+
+![detect_faces](https://user-images.githubusercontent.com/97639181/196327737-7091cd61-f79a-4ff0-a291-039ab3f7127a.gif)
 
 ## Code Breakdown
 Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces instead of objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py node to begin. 
