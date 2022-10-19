@@ -9,8 +9,8 @@ The aim of this document is to be the starting point for generating new ROS tuto
 
 What follows can be considered the template.
 
-# Major Topic or Tutorial Title
-In this tutorial, we will work with Stretch to explore *main theme of tutorial* using *primary module* and also learn how to achieve *secondory theme*. If you want to know more about *previously covered topic* on Stretch and how to get it up and running, we recommend visiting the previous tutorials on [*link to topic*]() and [*link to topic*]().
+# Major Topic
+In this tutorial, we will work with Stretch to explore *the main theme of tutorial* using *primary module* and also learn how to achieve *secondory theme*. If you want to know more about *any previously covered topic* on Stretch and how to get it up and running, we recommend visiting the previous tutorials on [*link to topic*]() and [*link to topic*]().
 
 *Motivation for the problem the topic solves*. The great thing about Stretch is that it comes preloaded with software that makes it a breeze to achieve *theme of the tutorial*.
 
@@ -25,25 +25,37 @@ By the end of this tutorial, we will have a clear idea about how *first minor to
 Now, let’s use what we have learned so far to upgrade the collision avoidance demo in a way that Stretch is able to scan an entire room autonomously without bumping into things or people. To account for dynamic obstacles getting too close to the robot, we will define a keepout distance of 0.4 m - detections below this value stop the robot. To keep Stretch from getting too close to static obstacles, we will define another variable called turning distance of 0.75 m - frontal detections below this value make Stretch turn to the left until it sees a clear path ahead.
 
 Building up on this, let's implement a simple logic for obstacle avoidance. The logic can be broken down into three steps:
-    1. If the minimum value from the frontal scans is greater than 0.75 m, then continue to move forward
-    2. If the minimum value from the frontal scans is less than 0.75 m, then turn to the right until this is no longer true
-    3. If the minimum value from the overall scans is less than 0.4 m, then stop the robot
+1. If the minimum value from the frontal scans is greater than 0.75 m, then continue to move forward
+2. If the minimum value from the frontal scans is less than 0.75 m, then turn to the right until this is no longer true
+3. If the minimum value from the overall scans is less than 0.4 m, then stop the robot
 
 ## Third Minor Topic Title
-*If a tutorial covers more than two major topics, it might be a good idea to break it down into multiple tutorials*
+*If a tutorial covers more than two minor topics, it might be a good idea to break it down into multiple tutorials*
 
 ## Warning
 Running this tutorial on Stretch might result in *harm to robot, humans or the surrounding environment*. Please ensure *these conditions*. We recommend *taking these actions* to ensure safe operation.
 
 ## See It In Action
-Go ahead and execute the following command to run the demo and visualize the thing in RViz:
+Go ahead and execute the following commands to run the demo and visualize the result in RViz:
+Terminal 1:
 ```bash
-Enter command here
+Enter first command here
+```
+
+Terminal 2:
+```bash
+Enter second command here
 ```
 
 *Enter GIF to show robot behavior*
+<p align="center">
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/avoider.gif"/>
+</p>
 
-*Enter robot and sensor visualization in RViz*
+*Enter GIF to show robot and sensor visualization in RViz*
+<p align="center">
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif"/>
+</p>
 
 ## Code Breakdown
 Now, let's jump into the code to see how things work under the hood. Follow along [*link to code*]() to have a look at the entire script.
