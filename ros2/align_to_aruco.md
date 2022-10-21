@@ -18,7 +18,7 @@ Now that we know how to program stretch to return the transform between known re
 
 By monitoring the /aruco/marker_array and /aruco/axes topics, we can visualize the markers in RViz. The detection node also publishes the tf pose of the detected markers. This can be visualized by using the TF plugin and selecting the detected marker to inspect the pose. Next, we will use exactly that to compute the transform between the detected marker and the base_link of the robot.
 
-Now, we can compute the transformation from the robot base_link frame to the goal pose and pass this as an SE3 pose to the mobile base.
+Now, we can compute the transformation from the robot base_link frame to the goal pose and pass this as an SE2 pose to the mobile base.
 
 Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.5m offset in the marker y-axis where Stretch would come to a stop. At the same time, we also want Stretch to align its orientation to point its arm towards the marker so as to make the subsequent manipulation tasks easier to accomplish. This would result in the end pose of the base_link as shown in the above figure. Sweet! The next task is to generate a simple motion plan for the mobile base to reach this end pose. We do this in three steps:
 1. Turn theta degrees towards the goal position. This would be the angle formed between the robot x-axis and the line connecting the start and the goal positions.
@@ -89,7 +89,7 @@ The copute_difference() method is where we call the get_transform() method from 
         self.trans_base, self.trans_camera = self.node.get_transforms()
 ```
 
-To compute the (x, y) coordinates of the SE3 pose goal, we compute the transformation here.
+To compute the (x, y) coordinates of the SE2 pose goal, we compute the transformation here.
 ```python
         R = quaternion_matrix((x, y, z, w))
         P_dash = np.array([[0], [-self.offset], [0], [1]])
