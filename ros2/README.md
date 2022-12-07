@@ -1,29 +1,33 @@
 ![](../images/banner.png)
-# Tutorial Track: Stretch ROS2 (Beta)
+# Tutorial Track: Stretch ROS 2 (Beta)
 
 NOTE: ROS2 support for Stretch is currently under active development and is considered 'beta'.
 
-This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS2. We recommend going through the tutorials in the following order:
+## Robot Operating System 2 (ROS 2)
+Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocol, development and debugging tools, and open-source packages, all wrapped in a single blanket. As a transport protocol, it allows distributed communication via messages through nodes. It provides development tools such as the CMake build system that allows building applications written in languages like Python and C++, among many, and the launch system that allows running mutiple nodes simultaneously. Due to its popularity, it's also the open-source framework of choice for collaboration across research and industry.
+
+At Hello Robot, we strongly support the open-source initiative and believe that the best way to grow is to grow with the community.
+
+This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS 2. We recommend going through the tutorials in the following order:
 
 ## Basics
 
 |  | Tutorial                                                                        | Description                                        |
 |--|---------------------------------------------------------------------------------|----------------------------------------------------|
-| 1 | [Getting Started](getting_started.md)                                           | |
-| 2 | [Gazebo Basics](gazebo_basics.md)                                               | |
-| 3 | [Teleoperating Stretch](teleoperating_stretch.md)                               | |
-| 4 | [Internal State of Stretch](internal_state_of_stretch.md)                       | |
-| 5 | [RViz Basics](rviz_basics.md)                                                   | |
-| 6 | [Navigation Stack](navigation_stack.md)                                         | |
-| 7 | [MoveIt! Basics](moveit_basics.md)                                              | |
-| 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | |
-| 9 | [Perception](coming_soon.md)                                                     | |
-| 10 | [ArUco Marker Detection](comming_soon.md)                             | |
-| 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | |
-| 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | |
-| 13 | [ROS testing](coming_soon.md)                                                   | |
-| 14 | [Other Nav Stack Features](coming_soon.md)                               | | 
-
+| 1 | [Getting Started](getting_started.md)                                           | Setup instructions for ROS 2 on Stretch|
+| 2 | [Gazebo Basics](gazebo_basics.md)                                               | Use Stretch in a simulated environment with Gazebo. |
+| 3 | [Teleoperating Stretch](teleoperating_stretch.md)                               | Control Stretch with a keyboard or xbox controller. |
+| 4 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
+| 5 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
+| 6 | [Navigation Stack](navigation_stack.md)                                         | Motion planning and control for the mobile base using Nav stack. |
+| 7 | [MoveIt! Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
+| 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
+| 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
+| 10 | [ArUco Marker Detection](comming_soon.md)                             | Localize objects using ArUco markers. |
+| 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | Learn to use the ReSpeaker Microphone Array. |
+| 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |
+| 13 | [ROS testing](coming_soon.md)                                                   | Write ROS system tests for introspection. |
+| 14 | [Other Nav Stack Features](coming_soon.md)                               | Advanced features for Nav 2. | 
 
 ## Other Examples
 To help get you get started on your software development, here are examples of nodes to have the stretch perform simple tasks.
