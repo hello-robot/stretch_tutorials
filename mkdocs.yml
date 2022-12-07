@@ -92,6 +92,7 @@ nav:
         - Best Practices: ./getting_started/best_practices.md
         - Troubleshooting: ./getting_started/troubleshooting_guide.md
       - Advanced:
+        - Command Line Tools: ./getting_started/command_line_tools.md
         - Untethered Operation: ./getting_started/untethered_operation.md
         - Updating Software: ./getting_started/updating_software.md
   - Stretch Body Python SDK:
