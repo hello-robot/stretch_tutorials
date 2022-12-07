@@ -2,24 +2,28 @@
 
 **NOTE**: ROS 2 tutorials are still under active development. 
 
-## Installing Ubuntu 20.04 with ROS 2 Galactic on Stretch
-Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stretch RE1 platform. If you are unfamiliar with the operating system, we encourage you to review a [tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provided by Ubuntu. Additionally, the Linux command line, BASH, is used to execute commands and is needed to run ROS on the Stretch robot. Here is a [tutorial](https://ryanstutorials.net/linuxtutorial/) on getting started with BASH.
+## Prerequisites
+1. A Stretch robot (see below for simulation instructions if you don’t have a robot)
+2. Follow the [Getting Started]() guide (hello_robot_xbox_teleop must not be running in the background)
+3. Interacting with Linux through the [command line](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
+4. Basic understanding of [ROS](http://wiki.ros.org/ROS/Tutorials)
+5. Setup [untethered operation](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/) (optional)
 
-Instructions on installing Ubuntu 20.04 with ROS Noetic and ROS 2 Galactic can be found in our open source [installation guide](https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md). Following these steps should create a separate Ubuntu 20.04 partition with an ament worskspace created in the home directory.
+### Connecting a Monitor
+If you cannot access the robot through ssh due to your network settings, you will need to connect an HDMI monitor, USB keyboard, and mouse to the USB ports in the robot's trunk.
 
-## ROS 2 Tutorials Setup on Local Computer
-Once your system is setup, clone the [stretch_ros_tutorials](https://github.com/hello-sanchez/stretch_ros_tutorials.git) repo to the src directory of the ament workspace, then build the packages.
+## Setting Up Stretch in Simulation
+Users who don’t have a Stretch, but want to try the tutorials can set up their computer with Stretch Gazebo.
 
-```
-cd ~/ament_ws/src
-git clone https://github.com/hello-robot/stretch_tutorials.git
-git checkout ROS2
-cd ~/ament_ws
-colcon build
-```
+Although lower specifications might be sufficient, for the best experience we recommend the following for running the simulation:
+**Processor**: Intel i7 or comparable
+**Memory**: 16 GB
+**Storage**: 50 GB
+**OS**: Ubuntu 20.04
+**Graphics Card**: NVIDIA GTX2060 (optional)
 
-Then source your workspace with the following command
-```
-source ~/ament_ws/install/setup.bash"
-```
+### Setup
+Hello Robot is currently running Stretch on Ubuntu 20.04 and ROS 2 Galactic. To begin the setup, follow the [Run the new robot installation script](https://github.com/hello-robot/stretch_install/blob/master/docs/robot_install.md#run-the-new-robot-installation-script) on your system.
+
+Finally, follow the [Creating a new ROS workspace](https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md) guide to create a fresh catkin workspace complete with all the dependencies.
 
