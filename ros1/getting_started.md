@@ -24,3 +24,5 @@ Although lower specifications might be sufficient, for the best experience we re
 Hello Robot is currently running Stretch on Ubuntu 20.04 and ROS Noetic. To begin the setup, follow the [Run the new robot installation script](https://github.com/hello-robot/stretch_install/blob/master/docs/robot_install.md#run-the-new-robot-installation-script) on your system.
 
 Finally, follow the [Creating a new ROS workspace](https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md) guide to create a fresh catkin workspace complete with all the dependencies.
+
+To begin working with a simulated Stretch, follow the [Gazebo basics](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/gazebo_basics/) tutorial.

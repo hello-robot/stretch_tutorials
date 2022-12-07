@@ -117,7 +117,6 @@ nav:
     - Overview: ./ros1/README.md
     - Basics:
       - Getting Started: ./ros1/getting_started.md
-      - Gazebo Basics:  ./ros1/gazebo_basics.md
       - Teleoperating Stretch: ./ros1/teleoperating_stretch.md
       - Internal State of Stretch: ./ros1/internal_state_of_stretch.md
       - RViz Basics: ./ros1/rviz_basics.md
@@ -128,6 +127,7 @@ nav:
       - ArUco Marker Detection: ./ros1/aruco_marker_detection.md
       - ReSpeaker Microphone Array: ./ros1/respeaker_microphone_array.md
       - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
+      - Gazebo Basics:  ./ros1/gazebo_basics.md
     - Other Examples:
       - Teleoperate Stretch with a Node: ./ros1/example_1.md
       - Filter Laser Scans: ./ros1/example_2.md
@@ -146,7 +146,6 @@ nav:
     - Overview: ./ros2/README.md
     - Basics:
       - Getting Started: ./ros2/getting_started.md
-      - Gazebo Basics:  ./ros2/gazebo_basics.md
       - Teleoperating Stretch: ./ros2/teleoperating_stretch.md
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
@@ -162,6 +161,7 @@ nav:
       # - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
       # - ROS testing: ./ros2/ros_testing.md
       # - Other Nav Stack Features: ./ros2/other_nav_features.md
+      - Gazebo Basics:  ./ros2/gazebo_basics.md
     - Other Examples:
       - Teleoperate Stretch with a Node: ./ros2/example_1.md
       - Filter Laser Scans: ./ros2/example_2.md
