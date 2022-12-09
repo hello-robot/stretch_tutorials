@@ -2,7 +2,7 @@
 In this tutorial, we will work with Stretch to explore the Simple Commander Python API to enable autonomous navigation programatically. We will also demonstrate a security patrol routine for Stretch developed using this API. If you just landed here, it might be a good idea to first review the previous tutorial which covered mapping and navigation using RViz as an interface.
 
 ## The Simple Commander Python API
-To develop complex behaviors with Stretch where navigation is just one aspect of the autonomy stack, we need to be able to plan and execute navigation routines as part of a bigger program. Luckily, the Nav2 stack exposes a Python API that abstracts the ROS layer and the Behavior Tree framework (more on that later!) from the user through a pre-configured library called the [robot navigator](). This library defines a class called BasicNavigator which wraps the planner, controller and recovery action servers and exposes methods such as goToPose(), goToPoses() and followWaypoints() to execute navigation behaviors.
+To develop complex behaviors with Stretch where navigation is just one aspect of the autonomy stack, we need to be able to plan and execute navigation routines as part of a bigger program. Luckily, the Nav2 stack exposes a Python API that abstracts the ROS layer and the Behavior Tree framework (more on that later!) from the user through a pre-configured library called the [robot navigator](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_navigation/stretch_navigation/robot_navigator.py). This library defines a class called BasicNavigator which wraps the planner, controller and recovery action servers and exposes methods such as goToPose(), goToPoses() and followWaypoints() to execute navigation behaviors.
 
 Let's first see the demo in action and then explore the code to understand how this works!
 
@@ -12,14 +12,31 @@ We will not be using the arm for this demo. We recommend stowing the arm to avoi
 stretch_robot_stow.py
 ```
 
+## Setup
+Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the co-ordinates in the array called security_route in the [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_navigation/stretch_navigation/simple_commander_demo.py#L30) file. 
+
+First, execute the following command and press the 'Startup' button:
+```bash
+ros2 launch stretch_navigation navigation.launch.py
+```
+
+Since, we expect the first point in the patrol route to be at the origin of the map, the first co-ordinates should be (0.0, 0.0). Next, to define the route, the easiest way to read the points in RViz is by setting the robot at random locations in the map using the '2D Pose Estimate' button in RViz as shown below. For each location, note the x, y co-ordinates in the position field of the base_footprint frame and add it to the security_route array.
+
+**Insert GIF here**
+
+Finally, Press Ctrl+C to exit out of the navigation launch and save the simple_commander_demo.py file. Now, build the workspace to make the updated file available for the next launch command. 
+
+```bash
+cd ~/ament_ws/
+colcon build
+```
+
 ## See It In Action
 Go ahead and execute the following command to run the demo and visualize the result in RViz:
 Terminal 1:
 ```bash
 ros2 launch stretch_navigation demo_security.launch.py
 ```
-
-Now press the "Startup" button to activate the lifecycle nodes and fire things up!
 
 **Insert GIF of security demo execution**
 
