@@ -22,7 +22,9 @@ ros2 launch stretch_navigation navigation.launch.py
 
 Since, we expect the first point in the patrol route to be at the origin of the map, the first co-ordinates should be (0.0, 0.0). Next, to define the route, the easiest way to read the points in RViz is by setting the robot at random locations in the map using the '2D Pose Estimate' button in RViz as shown below. For each location, note the x, y co-ordinates in the position field of the base_footprint frame and add it to the security_route array.
 
-**Insert GIF here**
+<p align="center">
+  <img height=500 src="https://user-images.githubusercontent.com/97639181/206782270-e84b33c4-e155-468d-8a46-d926b88ba428.gif"/>
+</p>
 
 Finally, Press Ctrl+C to exit out of the navigation launch and save the simple_commander_demo.py file. Now, build the workspace to make the updated file available for the next launch command. 
 
@@ -66,7 +68,9 @@ Then, we set up a path for Stretch to patrol consisting of the co-ordinates in t
         [0.8975, 9.7033]]
 ```
 
-**Insert GIF to extract TF location**
+<p align="center">
+  <img height=500 src="https://user-images.githubusercontent.com/97639181/206782439-775074c5-2401-4019-ade8-bf6c920ecc61.gif"/>
+</p>
 
 Next, we set an initial pose for the robot which would help AMCL localize the robot by providing an initial estimate of the robot's location. For this, we pass a PoseStamped message in the map reference frame with the robot's pose to the setInitialPose() method. The Nav2 stack recommends this before starting the lifecycle nodes using the "startup" button in RViz. The waitUntilNav2Active() method waits until precisely this event.
 ```python
