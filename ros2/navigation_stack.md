@@ -16,11 +16,12 @@ Rviz will show the robot and the map that is being constructed. First, click on 
 
 Avoid sharp turns and revisit previously visited spots to form loop closures.
 
-**Insert Image for joystick**
-
-**Insert GIF for mapping**
 <p align="center">
-  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/mapping.gif"/>
+  <img src="https://user-images.githubusercontent.com/97639181/206605927-4ebe1003-6bcc-48d7-a159-ba492db92f3f.png"/>
+</p>
+
+<p align="center">
+  <img height=500 src="https://user-images.githubusercontent.com/97639181/206606439-a3e346d4-83d9-45ec-93cc-8804a2b9719c.gif"/>
 </p>
 
 In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to `stretch_navigation/` and `stretch_user/` directories.
@@ -50,9 +51,8 @@ Rviz will show the robot in the previously mapped space, however, it's likely th
 
 In the top bar of Rviz, use 2D Nav Goal to lay down an arrow where you'd like the robot to go. In the terminal, you'll see Nav2 go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior - spinning around 180 degrees in place or backing up.
 
-**Insert GIF for navigation**
 <p align="center">
-  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/mapping.gif"/>
+  <img height=500 src="https://user-images.githubusercontent.com/97639181/206606699-9f3b87b1-a7d1-4074-b68a-2e880fc576a3.gif"/>
 </p>
 
 ## Note
