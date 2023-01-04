@@ -84,6 +84,8 @@ transcript:
 confidence: [0.9876290559768677]
 ```
 
+A internet connection is required since the audio is being transcribed by the Google Speech API. To switch to using offline transciption, you can swap the speech recognizer used in the [speech_to_text node](https://github.com/hello-binit/respeaker_ros/blob/4880cd50cb4b2272ca3221680632bdcf7390a978/scripts/speech_to_text.py#L73-L74). See the [SpeechRecognition docs](https://pypi.org/project/SpeechRecognition/) for other available speech recognizers.
+
 #### Direction of Arrival
 
 The `/sound_direction` and `/sound_localization` topics give the DOA, or direction of arrival, in degrees and quaternion respectively. New messages are published when the DOA changes. And the 12 Respeaker LEDs show the DOA coarsely by coloring the LED closest to the DOA teal, while the rest of the LEDs show a darker blue color. In a new terminal, run `rostopic echo /sound_direction` or `rostopic echo /sound_localization`. Then, stand in front of the robot and say anything. You will see something like this outputted to the terminal:
