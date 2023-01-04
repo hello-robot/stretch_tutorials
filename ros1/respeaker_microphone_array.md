@@ -68,11 +68,13 @@ Explore some of the notable ROS topics being published using the following comma
 ```bash
 rostopic echo /audio              # Raw audio data
 rostopic echo /speech_audio       # Raw audio data when there is speech
-rostopic echo /sound_direction    # Direction (in Radians) of audio source
+rostopic echo /sound_direction    # Direction (in Degrees) of audio source
 rostopic echo /sound_localization # Direction (in Quaternion part of SE3 pose) of audio source
 rostopic echo /is_speeching       # Result of Voice Activity Detector (VAD)
 rostopic echo /speech_to_text     # Voice recognition
 ```
+
+#### Speech Recognition
 
 In particular, the `/speech_to_text` topic can be helpful for prototyping voice command based programs. In a new terminal, run `rostopic echo /speech_to_text`. Then, stand near the robot and say "hello robot". You will see something like this outputted to the terminal:
 
@@ -81,6 +83,43 @@ transcript:
   - hello robot
 confidence: [0.9876290559768677]
 ```
+
+#### Direction of Arrival
+
+The `/sound_direction` and `/sound_localization` topics give the DOA, or direction of arrival, in degrees and quaternion respectively. New messages are published when the DOA changes. And the 12 Respeaker LEDs show the DOA coarsely by coloring the LED closest to the DOA teal, while the rest of the LEDs show a darker blue color. In a new terminal, run `rostopic echo /sound_direction` or `rostopic echo /sound_localization`. Then, stand in front of the robot and say anything. You will see something like this outputted to the terminal:
+
+```bash
+# /sound_direction
+data: 0
+
+# or /sound_localization
+header:
+  seq: 1
+  stamp:
+    secs: 1672863834
+    nsecs: 646940469
+  frame_id: "respeaker_base"
+pose:
+  position:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+    w: 0.0
+```
+
+The DOA range in degrees is [-180, 180], and the diagram below shows the DOA range visually:
+
+```
+TODO
+```
+
+Due to echo-ing within the shell covering the Respeaker, the DOA can be inaccurate. If you are experiencing this issue, contact Hello Robot Support for instructions on removing the head shell, which will reduce echo. Furthermore, it's possible to get more accurate DOA with audio post-processing. The Respeaker calculates the DOA on-hardware, however audio streams from the four microphones are published, so it is possible to use real-time audio source localization software like [ODAS](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/#realtime-sound-source-localization-and-tracking) to better determine the DOA.
+
+#### Dynamic Reconfigure
 
 You can also set various parameters via `dynamic_reconfigure`, by running the following command in a new terminal:
 
