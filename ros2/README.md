@@ -23,8 +23,8 @@ This tutorial track is for users looking to become familiar with programming the
 | 7 | [MoveIt! Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
 | 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
-| 10 | [ArUco Marker Detection](comming_soon.md)                             | Localize objects using ArUco markers. |
-| 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | Learn to use the ReSpeaker Microphone Array. |
+| 10 | [ArUco Marker Detection](coming_soon.md)                             | Localize objects using ArUco markers. |
+| 11 | [ReSpeaker Microphone Array](coming_soon.md)                     | Learn to use the ReSpeaker Microphone Array. |
 | 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |
 | 13 | [ROS testing](coming_soon.md)                                                   | Write ROS system tests for introspection. |
 | 14 | [Other Nav Stack Features](coming_soon.md)                               | Advanced features for Nav 2. | 
