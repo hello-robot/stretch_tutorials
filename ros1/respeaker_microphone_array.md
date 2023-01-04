@@ -1,24 +1,22 @@
-## ReSpeaker Microphone Array
+## Respeaker Microphone Array
 
-For this tutorial, we will go over on a high level how to use Stretch's [ReSpeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/).  
-
-
+For this tutorial, we will go over on a high level how to use Stretch's [Respeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/).  
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
 </p>
 
 
-### Stretch Body Package
-In this tutorial's section we will use command line tools in the [Stretch_Body](https://github.com/hello-robot/stretch_body) package, a low level Python API for Stretch's hardware, to directly interact with the ReSpeaker.
+### Stretch Respeaker Tool
 
-Begin by typing the following command in a new terminal.
+We'll begin by using the command-line Stretch Respeaker Tool to quickly try out the robot's microphone array and speakers. This tool doesn't use ROS, but we'll cover how to use the Respeaker from ROS in the next section. Type the following command in a new terminal:
 
 ```bash
 stretch_respeaker_test.py
 ```
 
-The following will be displayed in your terminal
+The following will be outputted in your terminal:
+
 ```bash
 hello-robot@stretch-re1-1005:~$ stretch_respeaker_test.py
 For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
@@ -30,49 +28,62 @@ For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 * playing audio
 * done
 
+* waiting for audio...
 ```
 
-The ReSpeaker Mico Array will wait until it hears audio loud enough to trigger its recording feature. Stretch will record audio for 3 seconds and then replay it through its speakers. This command line is a good method to see if the hardware is working correctly.
+The Stretch Respeaker tool will wait until it hears audio loud enough to trigger VAD (voice activity detection). Then, the tool will record audio for 3 seconds, replay it through its speakers, and go back to waiting for audio. This tool is a good way to confirm the hardware is working correctly.
 
-To stop the python script, type **Ctrl** + **c** in the terminal.
+To stop the tool, type **Ctrl** + **C** in the terminal.
 
-### ReSpeaker_ROS Package
+### Respeaker ROS Package
 
-A [ROS package for the ReSpeaker](https://index.ros.org/p/respeaker_ros/#melodic) is utilized for this tutorial's section.
+#### Prerequisite
 
-Begin by running the `sample_respeaker.launch` file in a terminal.
+Before getting started with the Respeaker ROS package, we'll confirm it is available to use. Type the following into a new terminal:
 
 ```bash
-# Terminal 1
-roslaunch respeaker_ros sample_respeaker.launch
+rospack find respeaker_ros
 ```
-This will bring up the necessary nodes that will allow the ReSpeaker to implement a voice and sound interface with the robot.
 
-Below are executables you can run and see the ReSpeaker results.
+If you get an error like `[rospack] Error: package 'respeaker_ros' not found`, refresh your ROS workspace using the `stretch_catkin_refresh.sh` tool.
+
+#### Getting started
+
+Run the `respeaker.launch` file in a new terminal using:
 
 ```bash
-rostopic echo /sound_direction    # Result of Direction (in Radians) of Audio
-rostopic echo /sound_localization # Result of Direction as Pose (Quaternion values)
-rostopic echo /is_speeching       # Result of Voice Activity Detector
+roslaunch respeaker_ros respeaker.launch
+```
+This will bring up the necessary ROS nodes to interface with the robot's microphone array and speakers. After initialization, you will see the following outputted in your terminal:
+
+```bash
+[INFO] [1672818306.618280]: Initializing Respeaker device (takes 10 seconds)
+[INFO] [1672818317.082498]: Respeaker device initialized (Version: 16)
+[INFO] [1672818317.521955]: Found 6: ReSpeaker 4 Mic Array (UAC1.0): USB Audio (hw:1,0) (channels: 6)
+[INFO] [1672818317.526263]: Using channels range(0, 6)
+```
+
+Explore some of the notable ROS topics being published using the following commands: 
+
+```bash
 rostopic echo /audio              # Raw audio data
 rostopic echo /speech_audio       # Raw audio data when there is speech
+rostopic echo /sound_direction    # Direction (in Radians) of audio source
+rostopic echo /sound_localization # Direction (in Quaternion part of SE3 pose) of audio source
+rostopic echo /is_speeching       # Result of Voice Activity Detector (VAD)
 rostopic echo /speech_to_text     # Voice recognition
 ```
 
-An example is when you run the `speech_to_text` executable and speak near the microphone array. In this instance, "hello robot" was said.
+In particular, the `/speech_to_text` topic can be helpful for prototyping voice command based programs. In a new terminal, run `rostopic echo /speech_to_text`. Then, stand near the robot and say "hello robot". You will see something like this outputted to the terminal:
 
 ```bash
-# Terminal 2
-hello-robot@stretch-re1-1005:~$ rostopic echo /speech_to_text
 transcript:
   - hello robot
-confidence: []
----
+confidence: [0.9876290559768677]
 ```
 
-You can also set various parameters via`dynamic_reconfigure` running the following command in a new terminal.
+You can also set various parameters via `dynamic_reconfigure`, by running the following command in a new terminal:
 
 ```bash
-# Terminal 3
 rosrun rqt_reconfigure rqt_reconfigure
 ```
