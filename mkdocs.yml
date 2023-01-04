@@ -147,6 +147,7 @@ nav:
     - Basics:
       - Getting Started: ./ros2/getting_started.md
       # - Teleoperating Stretch: ./ros2/teleoperating_stretch.md
+      - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
       # - Navigation Stack: ./ros2/navigation_stack.md
@@ -154,7 +155,6 @@ nav:
         - MoveIt Basics: ./ros2/moveit_basics.md
         - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
         - MoveGroup C++ API: ./ros2/moveit_movegroup_demo.md
-      - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
       # - Perception: ./ros2/perception.md
       # - ArUco Marker Detection: ./ros2/aruco_marker_detection.md
       # - ReSpeaker Microphone Array: ./ros2/respeaker_microphone_array.md
