@@ -14,11 +14,11 @@ This tutorial track is for users looking to become familiar with programming the
 |  | Tutorial                                                                        | Description                                        |
 |--|---------------------------------------------------------------------------------|----------------------------------------------------|
 | 1 | [Getting Started](getting_started.md)                                           | Setup instructions for ROS 2 on Stretch|
-| 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
-| 4 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
-| 5 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
-| 7 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
-| 7 | [MoveIt2 with Rviz](moveit_rviz_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
+| 2 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
+| 3 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
+| 4 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
+| 5 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
+| 6 | [MoveIt2 with Rviz](moveit_rviz_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 7 | [MoveIt2 MoveGroup C++ API](moveit_movegroup_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
 <!--| 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
 | 10 | [ArUco Marker Detection](coming_soon.md)                             | Localize objects using ArUco markers. |
