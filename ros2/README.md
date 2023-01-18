@@ -1,29 +1,31 @@
 ![](../images/banner.png)
-# Tutorial Track: Stretch ROS2 (Beta)
+# Tutorial Track: Stretch ROS 2 (Beta)
 
-NOTE: ROS2 support for Stretch is currently under active development and is considered 'beta'.
+NOTE: Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
 
-This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS2. We recommend going through the tutorials in the following order:
+## Robot Operating System 2 (ROS 2)
+
+Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allows for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of mutiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
+
+This tutorial track is for users looking to become familiar with programming the Stretch RE1 and RE2 via ROS 2. We recommend going through the tutorials in the following order:
 
 ## Basics
 
 |  | Tutorial                                                                        | Description                                        |
 |--|---------------------------------------------------------------------------------|----------------------------------------------------|
-| 1 | [Getting Started](getting_started.md)                                           | |
-| 2 | [Gazebo Basics](gazebo_basics.md)                                               | |
-| 3 | [Teleoperating Stretch](teleoperating_stretch.md)                               | |
-| 4 | [Internal State of Stretch](internal_state_of_stretch.md)                       | |
-| 5 | [RViz Basics](rviz_basics.md)                                                   | |
-| 6 | [Navigation Stack](navigation_stack.md)                                         | |
-| 7 | [MoveIt! Basics](moveit_basics.md)                                              | |
-| 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | |
-| 9 | [Perception](coming_soon.md)                                                     | |
-| 10 | [ArUco Marker Detection](comming_soon.md)                             | |
-| 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | |
-| 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | |
-| 13 | [ROS testing](coming_soon.md)                                                   | |
-| 14 | [Other Nav Stack Features](coming_soon.md)                               | | 
-
+| 1 | [Getting Started](getting_started.md)                                           | Setup instructions for ROS 2 on Stretch|
+| 2 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
+| 3 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
+| 4 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
+| 5 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
+| 6 | [MoveIt2 with Rviz](moveit_rviz_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
+| 7 | [MoveIt2 MoveGroup C++ API](moveit_movegroup_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
+<!--| 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
+| 10 | [ArUco Marker Detection](coming_soon.md)                             | Localize objects using ArUco markers. |
+| 11 | [ReSpeaker Microphone Array](coming_soon.md)                     | Learn to use the ReSpeaker Microphone Array. |
+| 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |
+| 13 | [ROS testing](coming_soon.md)                                                   | Write ROS system tests for introspection. |
+| 14 | [Other Nav Stack Features](coming_soon.md)                               | Advanced features for Nav 2. | -->
 
 ## Other Examples
 To help get you get started on your software development, here are examples of nodes to have the stretch perform simple tasks.
@@ -36,6 +38,9 @@ To help get you get started on your software development, here are examples of n
 | 3 | [Mobile Base Collision Avoidance](example_3.md) |  Stop Stretch from running into a wall.| 
 | 4 | [Give Stretch a Balloon](example_4.md)          |  Create a "balloon" marker that goes where ever Stretch goes.|
 | 5 | [Tf2 Broadcaster and Listener](example_10.md)   |  Create a tf2 broadcaster and listener.|
+| 6 | [Obstacle Avoider](obstacle_avoider.md)   |  Avoid obstacles using the planar lidar. |
+| 7 | [Align to ArUco](align_to_aruco.md)   |  Detect ArUco fiducials using OpenCV and align to them.|
+| 8 | [Deep Perception](deep_perception.md)   |  Use YOLOv5 to detect 3D objects in a point cloud.|
 <!-- | 5 | [Print Joint States](example_5.md)              |  Print the joint states of Stretch.| 
 | 6 | [Store Effort Values](example_6.md)             |  Print, store, and plot the effort values of the Stretch robot.| 
 | 7 | [Capture Image](example_7.md)                   |  Capture images from the RealSense camera data.| 

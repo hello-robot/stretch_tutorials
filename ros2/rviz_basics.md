@@ -21,17 +21,3 @@ If you want to visualize Stretch's [tf transform tree](http://wiki.ros.org/rviz/
 ![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rviz_adding_tf.gif)
 
 There are further tutorials for RViz that can be found [here](http://wiki.ros.org/rviz/Tutorials).
-
-
-## Running RViz and Gazebo (Simulation)
-Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
-
-```
-roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
-```
-the `rviz` flag will open an RViz window  to visualize a variety of ROS topics.
-
-![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/willowgarage_with_rviz.png)
-
-Bringup the [keyboard teleop](teleoperating_stretch.md) to drive Stretch and observe its sensor input.
-

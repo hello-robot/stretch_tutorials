@@ -12,22 +12,54 @@ Each Stretch is shipped with firmware, a Python SDK, and ROS packages developed 
 
 ### Stretch ROS
 
-Stretch ROS is the [Robot Operating System](https://www.ros.org/about-ros/) (ROS) interface to the robot. Many robotics developers find ROS useful to bootstrap their robotics software developments. You may update it using the following commands:
+Stretch ROS is the [Robot Operating System](https://www.ros.org/about-ros/) (ROS) interface to the robot. Many robotics developers find ROS useful to bootstrap their robotics software developments. Depending on whether you want to setup a ROS or ROS 2 workspace, the easiest way to download the most recent updates in the stretch_ros and stretch_ros2 repos, while resolving all source built dependencies at the same time, is by following the instructions in the [Creating a New ROS Workspace](https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md) section in the stretch_install repo. 
 
+**Warning**: Before you proceed, please ensure that all your personal files in the catkin or ament workspace have been backed up safely. This is important because executing the following set of commands deletes your existing workspace and replaces it with a fresh one.
+
+To download the stretch_install repo, execute:
 ```console
-$ roscd stretch_core
-$ git pull
+cd ~/
+git clone https://github.com/hello-robot/stretch_install.git
+cd stretch_install
+git pull
 ```
 
-### Stretch Body
+To replace the ROS Melodic catkin_ws in Ubuntu 18.04, execute:
+```console
+# Create a ROS workspace
+./factory/18.04/stretch_create_catkin_workspace.sh -w <optional-path-to-ws>
+```
 
-Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands:
+To replace the ROS Noetic catkin_ws in Ubuntu 20.04, execute:
+```console
+# Create a ROS workspace
+./factory/20.04/stretch_create_catkin_workspace.sh -w <optional-path-to-ws>
+```
 
+To replace the ROS 2 Galactic ament_ws in Ubuntu 20.04, execute:
+```console
+# Create a ROS2 workspace
+./factory/20.04/stretch_create_ament_workspace.sh -w <optional-path-to-ws>
+```
+
+### Stretch Body Python SDK
+
+Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands depending on the Python version.
+
+If you are using Python2, execute:
 ```console
 $ pip install -U hello-robot-stretch-body
 $ pip install -U hello-robot-stretch-body-tools
 $ pip install -U hello-robot-stretch-factory
 $ pip3 install -U hello_robot_stretch_body_tools_py3
+```
+
+For Python3, execute:
+```console
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body-tools
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-factory
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-tool-share
 ```
 
 ### Stretch Firmware
