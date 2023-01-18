@@ -6,14 +6,14 @@ Please take the time to get to know your robot by going through these tutorials 
 
 ## What Version of Robot Do I Have?
 
-Stretch RE1 and RE2 are very similar. One quick way to tell the difference is to look at the robot's hostame:
+Stretch RE1 and Stretch 2 are very similar. One quick way to tell the difference is to look at the robot's hostname:
 
 ```bash
 >>$ hostname
 stretch-re2-2001
 ```
 
-Another way is to look for the distinctive  pink stripe on the RE2 base:
+Another way is to look for the distinctive  pink stripe on the base of Stretch 2:
 
 ![](./images/pink_strip.png)
 
@@ -22,7 +22,7 @@ Another way is to look for the distinctive  pink stripe on the RE2 base:
 | ---- | ------------------------------------------- | -------------------------------------------------- |
 | 1    | [Safety Guide](safety_guide.md)             | Guide to safe operation of the Stretch             |
 | 2    | [Quick Start RE1](quick_start_guide_re1.md) | Unboxing Stretch RE1 and getting started           |
-| 2    | [Quick Start RE2](quick_start_guide_re2.md) | Unboxing Stretch RE2 and getting started           |
+| 2    | [Quick Start Stretch 2](quick_start_guide_re2.md) | Unboxing Stretch 2 and getting started           |
 | 3    | [Best Practices](best_practices.md)         | Best practices to keep Stretch charged and healthy |
 | 4    | [Troubleshooting](troubleshooting_guide.md) | Solutions to common issues                         |
 
