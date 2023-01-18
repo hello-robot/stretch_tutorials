@@ -1,6 +1,6 @@
 ## Navigation Stack with Actual robot
 
-stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive Stretch around a mapped space. Running this code will require the robot to be untethered.
+stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive Stretch around a mapped space. Running this code will require the robot to be [untethered](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/).
 
 
 Then run the following commands to map the space that the robot will navigate in.
