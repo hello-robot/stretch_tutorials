@@ -95,6 +95,7 @@ nav:
         - Command Line Tools: ./getting_started/command_line_tools.md
         - Untethered Operation: ./getting_started/untethered_operation.md
         - Updating Software: ./getting_started/updating_software.md
+  
   - Stretch Body Python SDK:
     - Overview: ./stretch_body/README.md
     - Basics:
@@ -178,4 +179,13 @@ nav:
       - Deep Perception: ./ros2/deep_perception.md
       # - PointCloud Transformation: ./ros2/example_11.md
       # - ArUco Tag Locator: ./ros2/example_12.md
-
+  
+  - Stretch Tool Share:
+    - Overview: ./stretch_tool_share/README.md
+    - Basics:
+      - Gripper Removal: ./stretch_tool_share/gripper_removal.md
+      - Gripper Puller: ./stretch_tool_share/gripper_puller.md
+      - Dry Erase Holder: ./stretch_tool_share/dry_erase_marker.md
+      - DexWrist: ./stretch_tool_share/dexwrist.md
+    - Advanced:
+      - Updating URDF: ./stretch_tool_share/updating_urdf.md
