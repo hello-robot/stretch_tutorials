@@ -25,7 +25,6 @@ theme:
  favicon: images/hello_robot_favicon.png
  features:
   - navigation.instant
-  - navigation.tracking
 
 extra_css:
   - ./extra.css
