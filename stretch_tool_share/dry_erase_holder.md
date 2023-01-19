@@ -6,9 +6,9 @@ This tool allows Stretch to hold a dry erase marker.  It is spring loaded, allow
 
 The tool can be integrated into your robot URDF by integrating its [stretch_description](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/dry_erase_holder_V1/stretch_description) as described in the [Stretch ROS documentation](https://github.com/hello-robot/stretch_ros/tree/master/stretch_description).
 
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/dry_erase_holder_V1/images/dry_erase_A.PNG" alt="image"  height=400 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/dry_erase_holder_V1/images/dry_erase_A.PNG" alt="image"  height=400 />
 
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/dry_erase_holder_V1/images/marker_holder.png" alt="image"  height=400 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/dry_erase_holder_V1/images/marker_holder.png" alt="image"  height=400 />
 
 ## Parts List
 
@@ -25,7 +25,7 @@ The tool can be integrated into your robot URDF by integrating its [stretch_desc
 ## Assembly instructions
 [View 3D assembly](https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/dry_erase_holder_V1/CAD/ASSEM_Dry_Erase_Holder_V1.STL)
 
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/dry_erase_holder_V1/images/dry_erase_B.PNG" alt="image"  height=700 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/dry_erase_holder_V1/images/dry_erase_B.PNG" alt="image"  height=700 />
 
 1. Install the bolt into the dry_erase_bushing block and secure from below with an M5 nut.
 2. Attach the dry erase bushing block to the tool plate, securing from below with the wrist_end_cap_5mm and an M5 nut. Orient the block so the marker points forward. 

@@ -6,8 +6,8 @@ This is a a simple puller attachment for the Stretch Compliant Gripper. We've us
 
 It attaches to the 6-32 stud on the side of the gripper. By turning the gripper sideways during manipulation, the hook can drop over the drawer handle, allowing the arm to retract and pull the door open. 
 
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/puller_v1/images/drawer_pull_A.PNG" alt="image" height=300 />
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/puller_v1/images/drawer_pull_B.PNG" alt="image"  height=400 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/puller_v1/images/drawer_pull_A.PNG" alt="image" height=300 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/puller_v1/images/drawer_pull_B.PNG" alt="image"  height=400 />
 
 ## Parts List
 
@@ -20,7 +20,7 @@ It attaches to the 6-32 stud on the side of the gripper. By turning the gripper 
 ## Assembly instructions
 [View 3D assembly](https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/puller_v1/CAD/ASSEM_Puller_V1.STL)
 
-<img src="https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/puller_v1/images/drawer_pull_C.PNG" alt="image"  height=400 />
+<img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/puller_v1/images/drawer_pull_C.PNG" alt="image"  height=400 />
 
 1. Screw the standoff on to the gripper's threaded post. Secure tightly and add a drop of light duty Loctite if desired.
 2. Attach the plastic pull to the standoff using the BHCS. 

@@ -2,7 +2,7 @@
 
 The Stretch Compliant Gripper utilizes a Dynamixel XL430-W250-T servo to drive the spring grasper mechanism. The kinematics of the grasper mechanism are complex and non-linear relative to the motor position.  As shown, it includes mounting features on  one side to allow for attachment of simple rigid tools such as [hooks and pullers](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/puller_v1). 
 
-![image alt text](https://github.com/hello-robot/stretch_hardware_guides/blob/master/docs/images/re2/gripper.png)
+![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper.png)
 
 <table>
   <tr>
@@ -35,6 +35,6 @@ Here we describe removing the Stretch Compliant gripper. Installation is simply 
 3. Remove the gripper from the mounting bracket
 4. Unscrew the 8 screws holding the mounting bracket to the bottom of the tool plate.
 
-![image alt text](https://github.com/hello-robot/stretch_hardware_guides/blob/master/docs/images/re2/gripper_mount_b_rs.png)
+![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_b_rs.png)
 
-![image alt text](https://github.com/hello-robot/stretch_hardware_guides/blob/master/docs/images/re2/gripper_mount_a_rs.png)
+![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_a_rs.png)
