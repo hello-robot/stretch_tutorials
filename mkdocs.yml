@@ -186,6 +186,7 @@ nav:
       - Gripper Removal: ./stretch_tool_share/gripper_removal.md
       - Gripper Puller: ./stretch_tool_share/gripper_puller.md
       - Dry Erase Holder: ./stretch_tool_share/dry_erase_holder.md
-      - DexWrist: ./stretch_tool_share/dexwrist.md
+      - Dex Wrist: ./stretch_tool_share/dexwrist.md
+      - Dex to Standard Wrist: ./stretch_tool_share/dex_to_standard.md
     - Advanced:
       - Updating URDF: ./stretch_tool_share/updating_urdf.md
