@@ -3,12 +3,12 @@ This tutorial will guide you through the steps of replacing a gripper with Dex W
 
 ## Parts and Tools Required
 Please note that this procedure does not require any additional parts or tools apart from the ones that were shipped with the robot.
-* 8 [M2x6mm Torx FHCS bolts](https://www.mcmaster.com/90236A104/).
-* 4 [M2.5x4mm Torx FHCS bolts](https://www.mcmaster.com/92703A448/).
-* 2 [M2.5x8mm SHCS bolts](https://www.mcmaster.com/91290A102/).
-* T6 Torx wrench.
-* T8 Torx wrench.
-* 2mm Hex key.
+ - 8 [M2x6mm Torx FHCS bolts](https://www.mcmaster.com/90236A104/)
+ - 4 [M2.5x4mm Torx FHCS bolts](https://www.mcmaster.com/92703A448/)
+ - 2 [M2.5x8mm SHCS bolts](https://www.mcmaster.com/91290A102/)
+ - T6 Torx wrench
+ - T8 Torx wrench
+ - 2mm Hex key
 
 ## Removing Dex Wrist Gripper
 Here we describe removing the Dex Wrist gripper. Please ensure that the robot is turned off before proceeding.
