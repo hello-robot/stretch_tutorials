@@ -47,7 +47,8 @@ Affix the 4 screws, with the shorter two going to the servo side, to hold the gr
 ## Software Instructions
 Once the hardware has been replaced, it's time to make the software changes for Stretch to recognize the Standart Wrist gripper. Turn on the robot and follow the instructions below.
 
-To revert the changes in stretch_configuration_params.yaml, download the [dex_to_standard_configure_params.py script]() and execute it in a terminal as below: ```bash
+To revert the changes in stretch_configuration_params.yaml, download the [dex_to_standard_configure_params.py script](https://github.com/hello-robot/stretch_tutorials/blob/master/stretch_tool_share/dex_to_standard_configure_params.py) and execute it in a terminal as below: 
+```bash
 python3 dex_to_standard_configure_params.py
 ```
 
@@ -74,4 +75,4 @@ stretch_gripper_home.py
 stretch_wrist_yaw_home.py
 ```
 
-If you encounter any issues, please contact us at support@hello-robot.com
+If you encounter any issues, please contact support.
