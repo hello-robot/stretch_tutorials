@@ -1,6 +1,6 @@
 # Command Line Tools
 
-The Stretch RE1 or RE2 comes with a set of command line tools that are helpful for introspection during general use or while troubleshooting issues. This page provides an overview of these tools. If you like, visit the [stretch_body](https://github.com/hello-robot/stretch_body/tree/master/tools/bin) repository to have a look under the hood.
+The Stretch robot comes with a set of command line tools that are helpful for introspection during general use or while troubleshooting issues. This page provides an overview of these tools. If you like, visit the [stretch_body](https://github.com/hello-robot/stretch_body/tree/master/tools/bin) repository to have a look under the hood.
 
 You can execute these commands from anywhere in the terminal. We recommend you to execute these commands as we follow each one of them. You can also find the description for the utility each tool provides by passing the optional '-h' flag along with the tool name in the terminal. For example, from anywhere in the terminal execute:
 ```console

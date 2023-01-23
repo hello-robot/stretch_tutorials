@@ -1,6 +1,6 @@
-# Stretch RE2: Quick Start Guide
+# Stretch 2: Quick Start Guide
 
-Congratulations on your Stretch RE2! This guide will get you started with your new robot. 
+Congratulations on your Stretch 2! This guide will get you started with your new robot. 
 
 ## Safety
 
@@ -98,7 +98,7 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 * Manually moving the head and wrist. They will move but they want to go at their own speed.
 * The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
 
-**NOTE**: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp prior to powering down the NUC computer
+**NOTE**: The Stretch 2 lift descends faster than the Stretch RE1. For Stretch 2 we recommend always attaching the clip-clamp prior to powering down the NUC computer
 
 
 **Things that can hurt the robot**: 

@@ -87,8 +87,8 @@ nav:
       - Overview: ./getting_started/README.md
       - Basics:
         - Safety Guide: ./getting_started/safety_guide.md
-        - Quick Start RE1: ./getting_started/quick_start_guide_re1.md
-        - Quick Start RE2: ./getting_started/quick_start_guide_re2.md
+        - Quick Start Stretch RE1: ./getting_started/quick_start_guide_re1.md
+        - Quick Start Stretch 2: ./getting_started/quick_start_guide_re2.md
         - Best Practices: ./getting_started/best_practices.md
         - Troubleshooting: ./getting_started/troubleshooting_guide.md
       - Advanced:
