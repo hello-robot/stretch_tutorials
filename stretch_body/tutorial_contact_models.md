@@ -71,7 +71,7 @@ A contact model is simply a function that, given a user specified contact thresh
 
 ### The Effort-Pct Contact Model
 
-[Effort-Pct](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py) is the default contact model for Stretch RE2. It simply scales the maximum range of motor currents into the range of [-100,100]. Thus, if you desire to have the robot arm extend but stop at 50% of its maximum current, you would write:
+[Effort-Pct](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py) is the default contact model for Stretch 2. It simply scales the maximum range of motor currents into the range of [-100,100]. Thus, if you desire to have the robot arm extend but stop at 50% of its maximum current, you would write:
 
 ```python
 robot.arm.move_by(0.1,contact_thresh_pos=50.0)

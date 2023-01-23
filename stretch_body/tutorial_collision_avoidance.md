@@ -8,7 +8,7 @@ Stretch Body includes a system to prevent inadvertent self-collisions.  It will 
 
 **NOTE**: Self collisions are still possible while using the collision-avoidance system. The factory default collision models are coarse and not necessarily complete.
 
-This system is turned off by default starting with RE2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:
+This system is turned off by default starting with Stretch 2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:
 
 ```bash
 >>$ stretch_params.py | grep use_collision_manager
