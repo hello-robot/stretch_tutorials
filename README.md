@@ -1,7 +1,7 @@
 ![](./images/banner.png)
 # Overview
 ![](./images/stretch_top_view.png)
-The Stretch Tutorials reposotory provides tutorials on programming the Stretch robots. The tutorials are organized into the following tracks.
+The Stretch Tutorials repository provides tutorials on programming Stretch robots. The tutorials are organized into the following tracks.
 
 
 | Tutorial Track                                         | Description                                                       |
