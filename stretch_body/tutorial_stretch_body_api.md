@@ -5,7 +5,7 @@ See the [Stretch Body Tutorials](https://docs.hello-robot.com/0.2/stretch-tutori
 
 ## The Robot Class
 
-The most common interface to Stretch is the [Robot](#stretch_body.robot.Robot) class. It is typically initialized as:
+The most common interface to Stretch is the [Robot](#stretch_body.robot.Robot) class. This class encapsulates all devices on the robot. It is typically initialized as:
 
 ```python linenums='1'
 import stretch_body.robot
@@ -38,15 +38,17 @@ r.pimu.pretty_print()
 r.stop()
 ```
 
-Each of these devices is defined in separate modules within `stretch_body`. In the following section, we'll look at the API of these classes. The [`stop()`](#stretch_body.robot.Robot.stop) method shuts down communication with the robot's devices. All methods in the [Robot](#stretch_body.robot.Robot) class are documented below.
+Each of these devices is defined in separate modules within `stretch_body`. In the following section, we'll look at the API of these classes. The [`stop()`](#stretch_body.robot.Robot.stop) method shuts down communication with the robot's devices.
+
+All methods in the [Robot](#stretch_body.robot.Robot) class are documented below.
 
 ::: stretch_body.robot.Robot
 
 ## The Device Class
 
-The `stretch_body` library is modular in design. Each subcomponent of Stretch is defined in its class and the [Robot class](#the-robot-class) provides an interface that ties all of these classes together. This modularity allows users to plug in new/modified subcomponents into the [Robot](#stretch_body.robot.Robot) interface by extending a Device class.
+The `stretch_body` library is modular in design. Each subcomponent of Stretch is defined in its class and the [Robot class](#the-robot-class) provides an interface that ties all of these classes together. This modularity allows users to plug in new/modified subcomponents into the [Robot](#stretch_body.robot.Robot) interface by extending the Device class.
 
-It is possible to interface with a single subcomponent of Stretch by initializing its device class directly. In this section, we'll look at the API of seven subclasses of the Device class: the [arm](#stretch_body.arm.Arm), [lift](#stretch_body.lift.Lift), [base](#stretch_body.base.Base), [head](#stretch_body.head.Head), [end of arm](#stretch_body.end_of_arm.EndOfArm), [wacc](#stretch_body.wacc.Wacc), and [pimu](#stretch_body.pimu.Pimu) subcomponents of Stretch.
+It is possible to interface with a single subcomponent of Stretch by initializing its device class directly. In this section, we'll look at the API of seven subclasses of the Device class: the [Arm](#stretch_body.arm.Arm), [Lift](#stretch_body.lift.Lift), [Base](#stretch_body.base.Base), [Head](#stretch_body.head.Head), [EndOfArm](#stretch_body.end_of_arm.EndOfArm), [Wacc](#stretch_body.wacc.Wacc), and [Pimu](#stretch_body.pimu.Pimu) subcomponents of Stretch.
 
 ### Using the Arm class
 
@@ -88,7 +90,9 @@ a.push_command()
 a.motor.wait_until_at_setpoint()
 ```
 
-The [`move_to()`](#stretch_body.arm.Arm.move_to) and [`move_by()`](#stretch_body.arm.Arm.move_by) methods queue absolute and relative position commands to the arm, respectively, while the nonblocking [`push_command()`](#stretch_body.arm.Arm.push_command) method pushes the queued position commands to the hardware for execution. The attribute `motor`, an instance of the [Stepper](#stretch_body.stepper.Stepper) class, has the method [`wait_until_at_setpoint()`](#stretch_body.stepper.Stepper.wait_until_at_setpoint) which blocks program execution until the joint reaches the commanded goal. With [P1 or greater firmware](https://github.com/hello-robot/stretch_firmware/blob/master/tutorials/docs/updating_firmware.md) installed, it is also possible to queue a waypoint trajectory for the arm to follow:
+The [`move_to()`](#stretch_body.arm.Arm.move_to) and [`move_by()`](#stretch_body.arm.Arm.move_by) methods queue absolute and relative position commands to the arm, respectively, while the nonblocking [`push_command()`](#stretch_body.arm.Arm.push_command) method pushes the queued position commands to the hardware for execution.
+
+The attribute `motor`, an instance of the [Stepper](#stretch_body.stepper.Stepper) class, has the method [`wait_until_at_setpoint()`](#stretch_body.stepper.Stepper.wait_until_at_setpoint) which blocks program execution until the joint reaches the commanded goal. With [firmware P1 or greater](https://github.com/hello-robot/stretch_firmware/blob/master/tutorials/docs/updating_firmware.md) installed, it is also possible to queue a waypoint trajectory for the arm to follow:
 
 ```python linenums='26'
 starting_position = a.status['pos']
@@ -104,7 +108,9 @@ a.follow_trajectory()
 import time; time.sleep(9)
 ```
 
-The attribute `trajectory`, an instance of the [PrismaticTrajectory](#stretch_body.trajectories.PrismaticTrajectory) class, has the method [`add()`](#stretch_body.trajectories.PrismaticTrajectory.add) which adds a single waypoint in a linear sliding trajectory. For a well formed `trajectory` (see [`is_valid()`](#stretch_body.trajectories.Spline.is_valid)), the [`follow_trajectory()`](#stretch_body.arm.Arm.follow_trajectory) method kicks off trajectory following for the telescoping arm. It is also possible to dynamically restrict the arm joint's range:
+The attribute `trajectory`, an instance of the [PrismaticTrajectory](#stretch_body.trajectories.PrismaticTrajectory) class, has the method [`add()`](#stretch_body.trajectories.PrismaticTrajectory.add) which adds a single waypoint in a linear sliding trajectory. For a well-formed `trajectory` (see [`is_valid()`](#stretch_body.trajectories.Spline.is_valid)), the [`follow_trajectory()`](#stretch_body.arm.Arm.follow_trajectory) method starts tracking the trajectory for the telescoping arm.
+
+It is also possible to dynamically restrict the arm joint range:
 
 ```python linenums='37'
 range_upper_limit = 0.3 # meters
@@ -123,7 +129,9 @@ print(a.status['pos']) # we should expect to see ~0.3
 a.stop()
 ```
 
-The [`set_soft_motion_limit_min/max()`](#stretch_body.arm.Arm.set_soft_motion_limit_min) methods form the basis of an experimental [self-collision avoidance](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py#L47) system built into Stretch Body. All methods in the [Arm class](#stretch_body.arm.Arm) are documented below.
+The [`set_soft_motion_limit_min/max()`](#stretch_body.arm.Arm.set_soft_motion_limit_min) methods form the basis of an experimental [self-collision avoidance](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py#L47) system built into Stretch Body.
+
+All methods in the [Arm class](#stretch_body.arm.Arm) are documented below.
 
 ::: stretch_body.arm.Arm
 
@@ -147,7 +155,7 @@ l.home()
 # interact with the lift here
 ```
 
-The [`startup()`](#stretch_body.lift.Lift.startup) and [`home()`](#stretch_body.lift.Lift.home) methods are extended from the [Device](#stretch_body.device.Device) class. Reading the lift's current state and sending commands to the joint occurs similarly as in the [Arm](#stretch_body.arm.Arm) class:
+The [`startup()`](#stretch_body.lift.Lift.startup) and [`home()`](#stretch_body.lift.Lift.home) methods are extended from the [Device](#stretch_body.device.Device) class. Reading the lift's current state and sending commands to the joint occurs similarly to the [Arm](#stretch_body.arm.Arm) class:
 
 ```python linenums='11'
 starting_position = l.status['pos']
@@ -158,7 +166,7 @@ l.push_command()
 l.motor.wait_until_at_setpoint()
 ```
 
-The attribute `status` is a dictionary of the joint's current status. This state information is updated in the background in real time by default (disable by initializing as [`startup(threading=False)`](#stretch_body.lift.Lift.startup)). Use the [`pretty_print()`](#stretch_body.lift.Lift.pretty_print) method to print out this state info in a human interpretable format. Setting up waypoint trajectories for the lift is also similar to the [Arm](#stretch_body.arm.Arm):
+The attribute `status` is a dictionary of the joint's current status. This state information is updated in the background in real-time by default (disable by initializing as [`startup(threading=False)`](#stretch_body.lift.Lift.startup)). Use the [`pretty_print()`](#stretch_body.lift.Lift.pretty_print) method to print out this state info in a human-interpretable format. Setting up waypoint trajectories for the lift is also similar to the [Arm](#stretch_body.arm.Arm):
 
 ```python linenums='17'
 starting_position = l.status['pos']
@@ -173,7 +181,9 @@ l.follow_trajectory()
 import time; time.sleep(6)
 ```
 
-The attribute `trajectory` is also an instance of the [PrismaticTrajectory](#stretch_body.trajectories.PrismaticTrajectory) class, and by providing the instantaneous velocity argument `v_m` to the [`add()`](#stretch_body.trajectories.PrismaticTrajectory.add) method, a cubic spline can be loaded into the joint's `trajectory`. The call to [`follow_trajectory()`](#stretch_body.lift.Lift.follow_trajectory) begins hardware tracking of the spline. Finally, setting soft motion limits for the lift's range can be done using:
+The attribute `trajectory` is also an instance of the [PrismaticTrajectory](#stretch_body.trajectories.PrismaticTrajectory) class, and by providing the instantaneous velocity argument `v_m` to the [`add()`](#stretch_body.trajectories.PrismaticTrajectory.add) method, a cubic spline can be loaded into the joint's `trajectory`. The call to [`follow_trajectory()`](#stretch_body.lift.Lift.follow_trajectory) begins hardware tracking of the spline.
+
+Finally, setting soft motion limits for the lift's range can be done using:
 
 ```python linenums='27'
 # cut out 0.2m from the top and bottom of the lift's range
@@ -184,7 +194,9 @@ l.push_command()
 l.stop()
 ```
 
-The [`set_soft_motion_limit_min/max()`](#stretch_body.lift.Lift.set_soft_motion_limit_min) methods perform clipping of the joint's range at the firmware level (can persist across reboots). All methods in the [Lift](#stretch_body.lift.Lift) class are documented below.
+The [`set_soft_motion_limit_min/max()`](#stretch_body.lift.Lift.set_soft_motion_limit_min) methods perform clipping of the joint's range at the firmware level (can persist across reboots).
+
+All methods in the [Lift](#stretch_body.lift.Lift) class are documented below.
 
 ::: stretch_body.lift.Lift
 
@@ -213,7 +225,7 @@ if not b.startup():
 # interact with the base here
 ```
 
-Stretch's mobile base is a differential drive configuration. The left and right wheels are accessible through [Base](#stretch_body.base.Base) `left_wheel` and  `right_wheel` attributes, both of which are instances of the [Stepper](#stretch_body.stepper.Stepper) class. The [`startup()`](#stretch_body.base.Base.startup) method is extended from the [Device](#stretch_body.device.Device) class. Since the mobile base is unconstrained, there is no homing method. We can read the base's current state and send commands using:
+Stretch's mobile base is a differential drive configuration. The left and right wheels are accessible through [Base](#stretch_body.base.Base) `left_wheel` and  `right_wheel` attributes, both of which are instances of the [Stepper](#stretch_body.stepper.Stepper) class. The [`startup()`](#stretch_body.base.Base.startup) method is extended from the [Device](#stretch_body.device.Device) class. Since the mobile base is unconstrained, there is no homing method. The [`pretty_print()`](#stretch_body.base.Base.pretty_print) method prints out mobile base state information in a human-interpretable format. We can read the base's current state and send commands using:
 
 ```python linenums='10'
 b.pretty_print()
@@ -229,7 +241,9 @@ b.push_command()
 b.left_wheel.wait_until_at_setpoint()
 ```
 
-The [`pretty_print()`](#stretch_body.base.Base.pretty_print) method prints out mobile base state information in a human interpretable format. The [`translate_by()`](#stretch_body.base.Base.translate_by) and [`rotate_by()`](#stretch_body.base.Base.rotate_by) methods send relative commands similar to the way [`move_by()`](#stretch_body.lift.Lift.move_by) behaves for the single degree of freedom joints. The mobile base also supports velocity control:
+The [`translate_by()`](#stretch_body.base.Base.translate_by) and [`rotate_by()`](#stretch_body.base.Base.rotate_by) methods send relative commands similar to the way [`move_by()`](#stretch_body.lift.Lift.move_by) behaves for the single degree of freedom joints.
+
+The mobile base also supports velocity control:
 
 ```python linenums='21'
 # command the base to translate forward at 5cm / second
@@ -252,7 +266,9 @@ b.enable_freewheel_mode()
 b.push_command()
 ```
 
-The [`set_translate_velocity()`](#stretch_body.base.Base.set_translate_velocity) and [`set_rotational_velocity()`](#stretch_body.base.Base.set_rotational_velocity) methods give velocity control over the translational and rotational components of the mobile base independently. The [`set_velocity()`](#stretch_body.base.Base.set_velocity) method gives control over both of these components simultaneously. To halt motion, you can command zero velocities or command the base into freewheel mode using [`enable_freewheel_mode()`](#stretch_body.base.Base.enable_freewheel_mode). The mobile base also supports waypoint trajectory following, but the waypoints are part of the SE2 group (a.k.a. each of the base's desired waypoints is defined as an (x, y) point and a theta orientation):
+The [`set_translate_velocity()`](#stretch_body.base.Base.set_translate_velocity) and [`set_rotational_velocity()`](#stretch_body.base.Base.set_rotational_velocity) methods give velocity control over the translational and rotational components of the mobile base independently. The [`set_velocity()`](#stretch_body.base.Base.set_velocity) method gives control over both of these components simultaneously.
+
+To halt motion, you can command zero velocities or command the base into freewheel mode using [`enable_freewheel_mode()`](#stretch_body.base.Base.enable_freewheel_mode). The mobile base also supports waypoint trajectory following, but the waypoints are part of the SE2 group, where a desired waypoint is defined as an (x, y) point and a theta orientation:
 
 ```python linenums='39'
 # reset odometry calculation
@@ -273,9 +289,11 @@ b.stop()
 ```
 
 !!! warning
-    The [Base](#stretch_body.base.Base) waypoint trajectory following has no notion of obstacles in the environment. It will blindly follow the commanded waypoints. For obstacle avoidance, perception and a path planner should be employed.
+    The [Base](#stretch_body.base.Base) waypoint trajectory following has no notion of obstacles in the environment. It will blindly follow the commanded waypoints. For obstacle avoidance, we recommend employing perception and a path planner.
 
-The attribute `trajectory` is an instance of the [DiffDriveTrajectory](#stretch_body.trajectories.DiffDriveTrajectory) class. The call to [`follow_trajectory()`](#stretch_body.base.Base.follow_trajectory) begins hardware tracking of the spline. All methods of the [Base](#stretch_body.base.Base) class are documented below.
+The attribute `trajectory` is an instance of the [DiffDriveTrajectory](#stretch_body.trajectories.DiffDriveTrajectory) class. The call to [`follow_trajectory()`](#stretch_body.base.Base.follow_trajectory) begins hardware tracking of the spline.
+
+All methods of the [Base](#stretch_body.base.Base) class are documented below.
 
 ::: stretch_body.base.Base
 
@@ -284,7 +302,7 @@ The attribute `trajectory` is an instance of the [DiffDriveTrajectory](#stretch_
 ![Stretch head blueprint](./images/tilt_detail_rs.png#only-light)
 ![Stretch head blueprint](./images/tilt_detail_rs.png#only-dark)
 
-The interface to Stretch's head is the [Head](#stretch_body.head.Head) class. The head contains an Intel Realsense D435i depth camera. The pan/tilt joints in the head allow Stretch to swivel and capture depth imagery of its surrounding. The head is typically initialized as:
+The interface to Stretch's head is the [Head](#stretch_body.head.Head) class. The head contains an Intel Realsense D435i depth camera. The pan and tilt joints in the head allow Stretch to swivel and capture depth imagery of its surrounding. The head is typically initialized as:
 
 ```python linenums='1'
 import stretch_body.head
@@ -298,7 +316,7 @@ h.home()
 # interact with the head here
 ```
 
-[Head](#stretch_body.head.Head) is a subclass of the [DynamixelXChain](#stretch_body.dynamixel_X_chain.DynamixelXChain) class, which in turn is a subclass of the [Device](#stretch_body.device.Device) class. Therefore, some of [Head's](#stretch_body.head.Head) methods, such as [`startup()`](#stretch_body.head.Head.startup) and [`home()`](#stretch_body.head.Head.home) methods are extended from the [Device](#stretch_body.device.Device) class, while others come from the [DynamixelXChain](#stretch_body.dynamixel_X_chain.DynamixelXChain) class. Reading the head's current state and sending commands to its revolute joints (head pan and tilt) can be achieved using:
+[Head](#stretch_body.head.Head) is a subclass of the [DynamixelXChain](#stretch_body.dynamixel_X_chain.DynamixelXChain) class, which in turn is a subclass of the [Device](#stretch_body.device.Device) class. Therefore, some of [Head's](#stretch_body.head.Head) methods, such as [`startup()`](#stretch_body.head.Head.startup) and [`home()`](#stretch_body.head.Head.home) are extended from the [Device](#stretch_body.device.Device) class, while others come from the [DynamixelXChain](#stretch_body.dynamixel_X_chain.DynamixelXChain) class. Reading the head's current state and sending commands to its revolute joints (head pan and tilt) can be achieved using:
 
 ```python linenums='10'
 starting_position = h.status['head_pan']['pos']
@@ -324,7 +342,7 @@ The attribute `status` is a dictionary of dictionaries, where each subdictionary
 
 Commanding the head's revolute joints is done through the [`move_to()`](#stretch_body.head.Head.move_to) and [`move_by()`](#stretch_body.head.Head.move_by) methods. Notice that, unlike the previous joints, no push command call is required here. These joints are Dynamixel servos, which behave differently than the Hello Robot steppers. Their commands are not queued and are executed as soon as they're received.
 
-[Head's](#stretch_body.head.Head) two joints, the 'head_pan' and 'head_tilt', are instances of the [DynamixelHelloXL430](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430) class, and are retreiveable using the [`get_joint()`](#stretch_body.head.Head.get_joint) method. They have the [`wait_until_at_setpoint()`](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430.wait_until_at_setpoint) method, which blocks program execution until the joint reaches the commanded goal.
+[Head's](#stretch_body.head.Head) two joints, the 'head_pan' and 'head_tilt' are instances of the [DynamixelHelloXL430](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430) class and are retrievable using the [`get_joint()`](#stretch_body.head.Head.get_joint) method. They have the [`wait_until_at_setpoint()`](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430.wait_until_at_setpoint) method, which blocks program execution until the joint reaches the commanded goal.
 
 The [`pose()`](#stretch_body.head.Head.pose) method makes it easy to command the head to common head poses (e.g. looking 'ahead', at the end-of-arm 'tool', obstacles in front of the 'wheels', or 'up').
 
@@ -344,7 +362,9 @@ h.follow_trajectory()
 import time; time.sleep(6)
 ```
 
-The head pan and tilt [DynamixelHelloXL430](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430) instances have an attribute `trajectory`, which is an instance of the [RevoluteTrajectory](#stretch_body.trajectories.RevoluteTrajectory) class. The call to [`follow_trajectory()`](#stretch_body.dynamixel_X_chain.DynamixelXChain.follow_trajectory) begins software tracking of the spline. Finally, setting soft motion limits for the head's pan and tilt range can be achieved using:
+The head pan and tilt [DynamixelHelloXL430](#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430) instances have an attribute `trajectory`, which is an instance of the [RevoluteTrajectory](#stretch_body.trajectories.RevoluteTrajectory) class. The call to [`follow_trajectory()`](#stretch_body.dynamixel_X_chain.DynamixelXChain.follow_trajectory) begins software tracking of the spline.
+
+Finally, setting soft motion limits for the head's pan and tilt range can be achieved using:
 
 ```python linenums='38'
 # clip the head_pan's range
@@ -358,13 +378,15 @@ h.get_joint('head_tilt').set_soft_motion_limit_max(0.1)
 h.stop()
 ```
 
-The [`set_soft_motion_limit_min/max()`](#stretch_body.dynamixel_X_chain.DynamixelXChain.set_soft_motion_limit_min) methods perform clipping of the joint's range at the software level (cannot persist across reboots). All methods of the [Head](#stretch_body.head.Head) class are documented below.
+The [`set_soft_motion_limit_min/max()`](#stretch_body.dynamixel_X_chain.DynamixelXChain.set_soft_motion_limit_min) methods perform clipping of the joint's range at the software level (cannot persist across reboots).
+
+All methods of the [Head](#stretch_body.head.Head) class are documented below.
 
 ::: stretch_body.head.Head
 
 ### Using the EndOfArm class
 
-The interface to Stretch's end of arm is the [EndOfArm](#stretch_body.end_of_arm.EndOfArm) class. It is typically initialized as:
+The interface to Stretch's end-of-arm is the [EndOfArm](#stretch_body.end_of_arm.EndOfArm) class. It is typically initialized as:
 
 ```python linenums='1'
 import stretch_body.end_of_arm

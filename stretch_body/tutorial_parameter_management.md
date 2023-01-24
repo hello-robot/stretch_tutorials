@@ -1,10 +1,10 @@
 # Tutorial: Parameter Management
 
-In this tutorial we will discuss how parameters are managed in Stretch Body and show examples of how to customize your robot by overriding parameters.
+In this tutorial, we will discuss how parameters are managed in Stretch Body and show examples of how to customize your robot by overriding parameters.
 
 ## Overview
 
-Stretch Body shares a global set of parameters across all of the hardware it manages. All members of the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py) have an instance of [RobotParams](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_params.py). This class constructs a dictionary of the device parameters and well as the global parameters for each device. For example from iPython try:
+Stretch Body shares a global set of parameters across all of the hardware it manages. All members of the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py) have an instance of [RobotParams](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_params.py). This class constructs a dictionary of the device parameters as well as the global parameters for each device. For example, from iPython try:
 
 ```python
 import stretch_body.arm
@@ -31,7 +31,7 @@ Out[7]:
  'range_m': [0.0, 0.52]}
 ```
 
-Or to access another device params:
+or to access another device params:
 
 ```python
 a.robot_params['lift']
@@ -64,10 +64,10 @@ Stretch Body utilizes a prioritized parameter organization such that default set
 | 1        | user_params           | $HELLO_FLEET_PATH/$HELLO_FLEET_ID/ stretch_user_params.yaml  | Yaml file for users to override default settings and to define custom configurations. |
 | 2        | configuration_params  | $HELLO_FLEET_PATH/$HELLO_FLEET_ID/  stretch_configuration_params.yaml | Robot specific data  (eg, serial numbers and calibrations). Calibration tools may update these. |
 | 3        | external_params       | Imported via a list defined as `params` in stretch_user_params.yaml | External Python parameter dictionaries for 3rd party devices and peripherals. |
-| 4        | nominal_params        | stretch_body.robot_params_RE2V0.py                           | Generic systems settings (Common across all robots of a given model. |
-| 5        | nominal_system_params | stretch_body.robot_params.py                                 | Generic systems settings (Common across all robots models).  |
+| 4        | nominal_params        | stretch_body.robot_params_RE2V0.py                           | Generic systems settings (common across all robots of a given model. |
+| 5        | nominal_system_params | stretch_body.robot_params.py                                 | Generic systems settings (common across all robot models).  |
 
- This allows the user to override any of the parameters by defining it in their `stretch_user_params.yaml`. It also allows Hello Robot to periodically update parameters defined in the Python files via Pip upadates.
+ This allows the user to override any of the parameters by defining it in their `stretch_user_params.yaml`. It also allows Hello Robot to periodically update parameters defined in the Python files via Pip updates.
 
 The tool `stretch_params.py` will print out all of the robot parameters as well as their origin. For example:
 
@@ -98,9 +98,9 @@ stretch_body.robot_params.nominal_params	param.arm.motion.slow.vel_m			0.05
 ...               
 ```
 
-The tool display each parameter's value as well as which parameter file it was loaded from.
+The tool displays each parameter's value as well as which parameter file it was loaded from.
 
-Now let's say you want to override the default motion settings for the arm. You could add the following to your `stretch_user_params.yaml`:
+For example, if you want to override the default motion settings for the arm, you could add the following to your `stretch_user_params.yaml`:
 
 ```yaml
 arm:
@@ -118,24 +118,24 @@ stretch_body.robot_params.nominal_params	param.arm.motion.default.accel_m	0.1
 stretch_body.robot_params.nominal_params	param.arm.motion.default.vel_m		0.1  
 ```
 
-The factory parameter settings should suffice for most use cases. 
+!!! note
+    The factory parameter settings should suffice for most use cases. 
 
 ## Programmatically Modifying and Storing Parameters
 
-A user want to compute the value of a parameter programmatically and modify the robot settings accordingly. For example, in the Stretch Factory tool [REx_base_calibrate_wheel_seperation.py](https://github.com/hello-robot/stretch_factory/blob/master/python/tools/REx_base_calibrate_wheel_separation.py) we see that the parameter `wheel_seperation_m` is recomputed as the variable `d_avg`. This new value could be used during the robot execution by simply
+A user can compute the value of a parameter programmatically and modify the robot settings accordingly. For example, in the Stretch Factory tool [REx_base_calibrate_wheel_seperation.py](https://github.com/hello-robot/stretch_factory/blob/master/python/tools/REx_base_calibrate_wheel_separation.py) we see that the parameter `wheel_seperation_m` is recomputed as the variable `d_avg`. This new value could be used during the robot execution by simply:
 
 ```python
 robot.base.params['wheel_seperation_m']=d_vag
 ```
 
-, or it could be saved as a user override as :
+or it could be saved as a user override:
 
 ```python
 robot.write_user_param_to_YAML('base.wheel_separation_m', d_avg)
 ```
 
-This will update the file `stretch_user_params.yaml`
-
+This will update the file `stretch_user_params.yaml`.
 
 ------
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
