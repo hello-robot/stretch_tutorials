@@ -1,5 +1,5 @@
 # Dex to Standard Wrist
-This tutorial will guide you through the steps of replacing a gripper with Dex Wrist (3-DoF) for one with a Standard Wrist (1-DoF).
+This tutorial will guide you through the steps of replacing a gripper with a Dex Wrist (3-DoF) for one with a Standard Wrist (1-DoF).
 
 ## Parts and Tools Required
 Please note that this procedure does not require any additional parts or tools apart from the ones that were shipped with the robot.
@@ -13,7 +13,7 @@ Please note that this procedure does not require any additional parts or tools a
 ## Removing Dex Wrist Gripper
 Here we describe removing the Dex Wrist gripper. Please ensure that the robot is turned off before proceeding.
 
-First, inspect the parts and ensure that you have everthing you need for the procedure.
+First, inspect the parts and ensure that you have everything you need for the procedure.
 
 ![Dex Wrist](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/dex_wrist_cable_detail.png)
 
@@ -48,7 +48,7 @@ Then, route the Dynamixel cable through the center of the standard gripper mount
 
 ![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_a_rs.png)
 
-Now, affix the four screws, with the shorter two going to the servo side, to hold the gripper to the bracket. Lastly, route the dynamixel cable through the back of the gripper and plug it securely into the servo.
+Now, affix the four screws, with the shorter two going to the servo side, to hold the gripper to the bracket. Lastly, route the Dynamixel cable through the back of the gripper and plug it securely into the servo.
 
 ![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_b_rs.png)
 
@@ -62,7 +62,7 @@ python3 dex_to_standard_configure_params.py
 
 Next, to ensure the correct gripper is recognized by ROS, we need to update the URDF. For this, first open the stretch_description.xacro file like below.
 ```bash
-cd ~/catkin_ws/src/stretch_ros/stretch_description
+cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
 gedit stretch_description.xacro
 ```
 
