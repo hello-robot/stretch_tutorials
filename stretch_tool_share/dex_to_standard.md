@@ -2,7 +2,8 @@
 This tutorial will guide you through the steps of replacing a gripper with a Dex Wrist (3-DoF) for one with a Standard Wrist (1-DoF).
 
 ## Parts and Tools Required
-Please note that this procedure does not require any additional parts or tools apart from the ones that were shipped with the robot.
+Please note that this procedure does not require any additional parts or tools apart from the ones that were shipped with the robot:
+
 - 8 [M2x6mm Torx FHCS bolts](https://www.mcmaster.com/90236A104/)
 - 4 [M2.5x4mm Torx FHCS bolts](https://www.mcmaster.com/92703A448/)
 - 2 [M2.5x8mm SHCS bolts](https://www.mcmaster.com/91290A102/)
