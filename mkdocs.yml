@@ -151,7 +151,9 @@ nav:
       - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
-      # - Navigation Stack: ./ros2/navigation_stack.md
+      - Nav2 Stack:
+        - Nav2 Basics: ./ros2/navigation_stack.md
+        - Nav2 Simple Commander: ./ros2/navigation_simple_commander.md
       - MoveIt 2:
         - MoveIt Basics: ./ros2/moveit_basics.md
         - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
