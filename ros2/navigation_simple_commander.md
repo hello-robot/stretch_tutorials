@@ -36,10 +36,10 @@ colcon build
 ```
 
 ## See It In Action
-Go ahead and execute the following command to run the demo and visualize the result in RViz:
+Go ahead and execute the following command to run the demo and visualize the result in RViz. Be sure to pass the correct path to the map YAML:
 Terminal 1:
 ```bash
-ros2 launch stretch_navigation demo_security.launch.py
+ros2 launch stretch_navigation demo_security.launch.py map:=${HELLO_ROBOT_FLEET}/maps/<map_name>.yaml
 ```
 
 <p align="center">
