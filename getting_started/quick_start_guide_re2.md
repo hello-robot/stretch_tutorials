@@ -1,6 +1,6 @@
-# Stretch RE2: Quick Start Guide
+# Stretch 2: Quick Start Guide
 
-Congratulations on your Stretch RE2! This guide will get you started with your new robot. 
+Congratulations on your Stretch 2! This guide will get you started with your new robot. 
 
 ## Safety
 
@@ -8,7 +8,7 @@ Stretch has the potential to cause harm if not properly used. All users should r
 
 ## Unboxing
 
-Please watch the [Stretch Unboxing Video](https://youtu.be/O-6VrqqGlig).
+Please watch the [Stretch Unboxing Video](https://youtu.be/O-6VrqqGlig). Please note that the unboxing instructions for a Stretch 2 are the same as for a Stretch RE1.
 
 ## Robot Tour
 
@@ -77,14 +77,14 @@ If you're done, let's power down. First attach the clip-clamp just below the sho
 
 Hold down the Shutdown PC button on the Xbox controller for 2 seconds. This will cause the PC to turn off. You can then power down the robot with the On/Off switch. 
 
-Now that you're familiar with the robot, take a minute to watch the [Stretch Powered Best Practices Video](https://youtu.be/iEaapHNfEWA).
+Now that you're familiar with the robot, take a minute to watch the [Stretch Powered Best Practices Video](https://youtu.be/iEaapHNfEWA). Please note that the best practices instructions for a Stretch 2 are the same as for a Stretch RE1.
 
 
 ### Safe Handling
 
 Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. 
 
-The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provides a quick overview of how to work with the robot.
+The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provides a quick overview of how to work with the robot. Please note that the best practices instructions for a Stretch 2 are the same as for a Stretch RE1.
 
 **Things that won't hurt the robot**:
 
@@ -98,7 +98,7 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 * Manually moving the head and wrist. They will move but they want to go at their own speed.
 * The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
 
-**NOTE**: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp prior to powering down the NUC computer
+**NOTE**: The Stretch 2 lift descends faster than the Stretch RE1. For Stretch 2 we recommend always attaching the clip-clamp prior to powering down the NUC computer
 
 
 **Things that can hurt the robot**: 

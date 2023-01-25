@@ -2,7 +2,7 @@
 
 ![](./images/warning_rs.png)
 
-The Stretch RE1 and RE2 are potentially dangerous machine with safety hazards. **If improperly used it can cause injury or death.** 
+The Stretch robots are potentially dangerous machines with safety hazards. **If improperly used they can cause injury or death.** 
 
 * **All users must carefully read the following safety information prior to using the robot.**
 * Anyone near the robot who has not read this safety information must be closely supervised at all times and made aware that the robot could be dangerous.
@@ -10,7 +10,7 @@ The Stretch RE1 and RE2 are potentially dangerous machine with safety hazards. *
 
 ## Intended Use
 
-**The Stretch RE1/RE2 (“Stretch”) are intended for use by researchers to conduct research in controlled indoor environments.** This product is not intended for other uses and lacks the required certifications for other uses, such as use in the home by consumers.
+**The Stretch robots are intended for use by researchers to conduct research in controlled indoor environments.** This product is not intended for other uses and lacks the required certifications for other uses, such as use in a home environment by consumers.
 
 ## Safety Hazards
 
@@ -172,7 +172,7 @@ The runstop logic is:
 
 ### Sharp Edges
 
-Stretch RE1/RE2 is a piece of laboratory equipment. As such, its structure has moderately sharp edges and corners that can be unsafe. These edges can get snagged during motion, or they may cause lacerations when sufficient force is applied to a person. Care should be taken when grasping or otherwise making contact with Stretch that a sharp corner or edge is not contacted.
+The Stretch robot is a piece of laboratory equipment. As such, its structure has moderately sharp edges and corners that can be unsafe. These edges can get snagged during motion, or they may cause lacerations when sufficient force is applied to a person. Care should be taken when grasping or otherwise making contact with Stretch that a sharp corner or edge is not contacted.
 
 ### Toppling
 

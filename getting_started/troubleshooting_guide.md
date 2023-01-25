@@ -23,9 +23,9 @@ In addition, check that the provided USB dongle is plugged into the robot USB po
 
     Please review the troubleshooting section of the [RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/).
 
-=== "Stretch RE2"
+=== "Stretch 2"
 
-    Please review the troubleshooting section of the [RE2 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re2).
+    Please review the troubleshooting section of the [Stretch 2 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re2).
 
 ## RPC Transport Errors (Stretch doesn't respond to commands)
 

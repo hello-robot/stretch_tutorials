@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Stretch Body exposes a host of sensor data through the status dictionaries of its devices.  In this tutorial we'll cover how to access, view, and configure this sensor data. 
+Stretch Body exposes a host of sensor data through the status dictionaries of its devices. In this tutorial, we'll cover how to access, view, and configure this sensor data. 
 
 ## Tools to View Sensor Data
 
-There are two useful tools for scoping Pimu and Wacc  sensor data in real-time:
+There are two useful tools for scoping Pimu and Wacc sensor data in real-time:
 
 ```bash
 >>$ stretch_pimu_scope.py --help
@@ -39,7 +39,7 @@ optional arguments:
   --bump      Scope base imu bump level
 ```
 
-And,
+and,
 
 ```bash
 >>$ stretch_wacc_scope.py --help
@@ -116,7 +116,7 @@ Firmware version: Stepper.v0.2.0p1
 
 ## Accessing the Status Dictionaries
 
-Each Robot device has a status dictionary that is automatically updates with the latest sensor data. The primary dictionaries are:
+Each Robot device has a status dictionary that is automatically updated with the latest sensor data. The primary dictionaries are:
 
 * [Stepper Status](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/stepper.py#L104)
 * [Wacc Status](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py#L44)
@@ -139,7 +139,7 @@ for i in range(10):
 
 ## Base IMU
 
-The base has a 9 DOF IMU using the 9 DOF FXOS8700 + FXAS21002 chipset. This is the same chipset as used on the [Adafruit NXP IMU board](https://www.adafruit.com/product/3463). 
+The base has a 9-DoF IMU using the 9-DoF FXOS8700 + FXAS21002 chipset. This is the same chipset used on the [Adafruit NXP IMU board](https://www.adafruit.com/product/3463). 
 
 The [Pimu](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py) reports back the IMU sensor readings in its [IMU status dictionary](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py#L27). For example, from iPython try:
 
@@ -200,7 +200,7 @@ It reports:
 
 These values are computed on the Pimu. As we can see in [its firmware code](https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp), a 100Hz Madgwick filter is used to compute the orientation. 
 
-Stretch Body also implements a bump detector using the the IMU accelerometers. This detector simply [computes the sum-of-squares of AX, AY, and AZ](https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp#L223). This value is then compared to the following threshold to determine if a bump is present:
+Stretch Body also implements a bump detector using the IMU accelerometers. This detector simply [computes the sum of squares of AX, AY, and AZ](https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp#L223). This value is then compared to the following threshold to determine if a bump is detected:
 
 ```bash
 >>$ stretch_params.py | grep pimu | grep bump
@@ -224,11 +224,12 @@ for i in range(100):
     print('Bump event count %d'%r.pimu.status['bump_event_cnt'])
 ```
 
-**NOTE**: The IMU is calibrated by Hello Robot at the factory. Please contact Hello Robot support for details on recalibrating your IMU.
+!!! note
+    The IMU is calibrated by Hello Robot at the factory. Please contact Hello Robot support for details on recalibrating your IMU.
 
 ## Wrist Accelerometer
 
-The wrist includes a 3 axis [ADXL343](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf) accelerometer which provides bump and tap detection capabilities. The Wacc reports back AX, AY, and AZ [in its status dictionary](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py#L44) From iPython try:
+The wrist includes a 3 axis [ADXL343](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf) accelerometer which provides bump and tap detection capabilities. The Wacc reports back AX, AY, and AZ [in its status dictionary](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py#L44). For example, from iPython try:
 
 ```python
 import stretch_body.robot
@@ -276,9 +277,9 @@ Firmware version: Wacc.v0.2.0p1
 
 ```
 
-In addition to AX, AY, and AZ we also see the `single_tap_count` value which reports back  a count of the number of single-tap contacts the accelerometer has experiences since power-up. 
+In addition to AX, AY, and AZ we also see the `single_tap_count` value which reports back a count of the number of single-tap contacts the accelerometer has experienced since power-up. 
 
-The following Wacc parameters configure the accelerometer low-pass filter and single-tap settings. See the  [ADXL343](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf)  datasheet for more details.
+The following Wacc parameters configure the accelerometer low-pass filter and single-tap settings. See the [ADXL343](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf) datasheet for more details.
 
 ```bash
 >>$ stretch_params.py | grep wacc
@@ -290,11 +291,9 @@ stretch_body.robot_params.nominal_params      param.wacc.config.accel_single_tap
 stretch_configuration_params.yaml              param.wacc.config.accel_gravity_scale      1.0 
 ```
 
-
-
 ## Cliff Sensors
 
-Stretch has four Sharp GP2Y0A51SK0F IR cliff sensors pointed towards the floor. These report the distance to the floor, allowing for detection of thresholds, stair edges, etc. 
+Stretch has four Sharp GP2Y0A51SK0F IR cliff sensors pointed toward the floor. These report the distance to the floor, allowing for the detection of thresholds, stair edges, etc. 
 
 Relevant parameters for the cliff sensors are:
 
@@ -325,9 +324,10 @@ Calibration passed. Storing to YAML...
 
 The  `stop_at_cliff` field causes the robot to execute a Runstop when the cliff sensor readings exceed the value `cliff_thresh`. The parameter `cliff_LPF` defines the low-pass-filter rate (Hz) on the analog sensor readings.
 
-**Note: As configured at the factory,  `stop_at_cliff` is set to zero and Stretch does not stop its motion based on the cliff sensor readings. Hello Robot makes no guarantees as to the reliability of Stretch's ability to avoid driving over ledges and stairs when this flag is enabled.**
+!!! note
+    As configured at the factory,  `stop_at_cliff` is set to zero and Stretch does not stop its motion based on the cliff sensor readings. Hello Robot makes no guarantees as to the reliability of Stretch's ability to avoid driving over ledges and stairs when this flag is enabled.
 
-The  range values from the sensors can be read from the `robot.pimu.status` message. Relevant fields are:
+The range values from the sensors can be read from the `robot.pimu.status` message. The relevant fields are:
 
 ```python
 import stretch_body.robot
@@ -345,7 +345,7 @@ Out[5]: False
 
 ```
 
-The `cliff_event` flag is set when any of the four sensor readings exceed `cliff_thresh` and `stop_at_cliff` is enabled. In the event of a Cliff Event, it must be reset by `robot.pimu.cliff_event_reset()`in order to reset the generated Runstop.
+The `cliff_event` flag is set when any of the four sensor readings exceed `cliff_thresh` and `stop_at_cliff` is enabled. In the event of a Cliff Event, it must be reset by `robot.pimu.cliff_event_reset()` to reset the generated Runstop.
 
 The cliff detection logic can be found in the [Pimu firmware](https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/Pimu.cpp).
 

@@ -1,6 +1,6 @@
 ![](../images/banner.png)
 # Tutorial Track: Stretch Body
-[Stretch Body](https://github.com/hello-robot/stretch_body) is a set of Python packages that allow a developer to directly program the hardware of the Stretch RE1 and RE2 robots. The Stretch Body interface is intended for users who choose to not use ROS.
+[Stretch Body](https://github.com/hello-robot/stretch_body) is a set of Python packages that allow a developer to directly program the hardware of the Stretch robots. The Stretch Body interface is intended for users who are looking for an alternative to ROS.
 
 
 Stretch Body currently supports both Python2 and Python3. These tutorials assume a general familiarity with Python as well as basic robot motion control.

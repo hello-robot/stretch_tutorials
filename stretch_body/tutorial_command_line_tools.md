@@ -1,10 +1,10 @@
 # Tutorial: Stretch Body Command Line Tools
 
-Stretch Body includes the package [hello-robot-stretch-body-tools](https://github.com/hello-robot/stretch_body/tree/master/tools) --  a suite of command line tools that allow direct interaction with hardware subsystems. 
+Stretch Body includes the package [hello-robot-stretch-body-tools](https://github.com/hello-robot/stretch_body/tree/master/tools) - a suite of command line tools that allow direct interaction with hardware subsystems. 
 
 These tools are useful when developing and debugging applications. They also serve as code examples when developing applications for Stretch_Body.
 
-These tools can be found by tab completion of  'stretch_' from a terminal.
+These tools can be found by tab completion of 'stretch_' from a terminal.
 
 ```console
 $ stretch_
@@ -45,7 +45,7 @@ stretch_wrist_yaw_jog.py
 stretch_xbox_controller_teleop.py
 ```
 
-All tools accept '--help' as a command line argument to learn its function. For example:
+All tools accept the '--help' flag as a command line argument to describe its function. For example:
 
 ```console
 >>$ stretch_pimu_scope.py --help
@@ -78,21 +78,20 @@ optional arguments:
   --bump      Scope base imu bump level
 ```
 
-### Commonly Used Tools
+## Commonly Used Tools
 
-These are the tools a typical user will want to become familiar with.
+These are the tools a typical user is expected to interact with regularly and would benefit from becoming familiar with.
 
 | **Tool**                              | **Utility**                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | **stretch_robot_home.py**             | Commonly run after booting up the robot in-order to calibrate the joints |
-| **stretch_robot_system_check.py**     | Scans for all hardware devices and ensure they are present on the bus and reporting valid values. Useful to verify that the robot is in good working order prior to commanding motion. It will report all success in green, failures in red. |
+| **stretch_robot_system_check.py**     | Scans for all hardware devices and ensures they are present on the bus and reporting valid values. Useful to verify that the robot is in good working order prior to commanding motion. It will report all success in green, failures in red. |
 | **stretch_robot_stow.py**             | Useful to return the robot arm and tool to a safe position within the base footprint. It can also be useful if a program fails to exit cleanly and the robot joints are not backdriveable. It will restore them to their 'Safety' state. |
 | **stretch_robot_battery_check.py**    | Quick way to check the battery voltage / current consumption |
 | **stretch_xbox_controller_teleop.py** | Useful to quickly test if a robot can achieve a task by manually teleoperating the robot |
-| **stretch_robot_dynamixel_reboot.py** | This will reset all Dynamixels in the robot, which may be needed if a servo overheats during high use and enters an error state. |
+| **stretch_robot_dynamixel_reboot.py** | Resets all Dynamixels in the robot, which might be necessary if a servo overheats during use and enters an error state. |
 
 Take a minute to explore each of these tools from the console.
-
 
 
 ------

@@ -1,5 +1,5 @@
 # Tutorial: Introduction to Stretch Body
-The Stretch_Body package provides a low level Python API to the Stretch hardware.  The Stretch_Body package is intended for advanced users who prefer to not use ROS to control the robot. It assumes a moderate level of experience programming robot sensors and actuators.
+The Stretch_Body package provides a low-level Python API to the Stretch hardware.  The Stretch_Body package is intended for advanced users who prefer to not use ROS to control the robot. It assumes a moderate level of experience programming robot sensors and actuators.
 
 The package is available on [Git and installable via Pip](https://github.com/hello-robot/stretch_body).
 
@@ -9,11 +9,11 @@ It encapsulates the:
 * Arm 
 * Lift 
 * Head actuators
-* End -of-arm-actuators
-* Wrist  board with accelerometer (Wacc)
+* End-of-arm-actuators
+* Wrist board with accelerometer (Wacc)
 * Base power and IMU board (Pimu)
 
-As shown below, the primary programming interface to Stretch Body is the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py).  This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicate the robot's firmware over USB using various utility classes.
+As shown below, the primary programming interface to Stretch Body is the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py). This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicates with the robot firmware over USB using various utility classes.
 
 ![alt_text](images/stretch_body_overview.png "image_tooltip")
 
@@ -22,8 +22,6 @@ Stretch also includes 3rd party hardware devices that are not accessible through
 * Laser range finder:  [rplidar](https://github.com/SkoltechRobotics/rplidar)
 * Respeaker: [respeaker_python_library](https://github.com/respeaker/respeaker_python_library)
 * D435i: [pyrealsense2](https://pypi.org/project/pyrealsense2/)
-
-
 
 
 ## Robot Interface
@@ -35,7 +33,7 @@ The primary developer interface to  Stretch_Body is the [Robot class](https://gi
 In [1]: 
 ```
 
-And type in the following:
+Then type in the following:
 
 ```python linenums="1"
 import time
@@ -52,7 +50,7 @@ robot.stop()
 
 ```
 
-As you can see, this prints all Robot sensor and state data to the console every 250ms. 
+As you can see, this prints all robot sensors and state data to the console every 250ms. 
 
 
 
@@ -64,7 +62,7 @@ robot=stretch_body.robot.Robot()
 robot.startup()
 ```
 
-Here we instantiated an instance of our Robot. The call to `startup()` opens the serial ports to the various devices, loads the Robot YAML parameters, and launches a few helper threads.
+Here we instantiated an instance of our robot through the Robot class. The call to `startup()` opens the serial ports to the various devices, loads the robot YAML parameters, and launches a few helper threads.
 
 ```python linenums="7"
 for i in range(10):
@@ -78,11 +76,11 @@ The call to `pretty_print()` prints to console all of the robot's sensor and sta
 robot.stop()
 ```
 
-Finally, the `stop()` method shuts down the Robot threads and cleanly closes the open serial ports.
+Finally, the `stop()` method shuts down the threads and cleanly closes the open serial ports.
 
 ### Units
 
-The Robot API uses SI units of:
+The Robot API uses SI units:
 
 * meters
 * radians
@@ -98,7 +96,7 @@ Parameters may be named with a suffix to help describe the unit type. For exampl
 
 ### The Robot Status
 
-The Robot derives from the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py). It also encapsulates a number of other Devices:
+The Robot derives from the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py). It also encapsulates several other Devices:
 
 * [robot.head](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py)
 * [robot.arm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/arm.py)
@@ -118,7 +116,7 @@ class Arm(Device):
                        'motor':self.motor.status,'timestamp_pc':0}
 ```
 
-The Status dictionaries are  automatically updated by a background thread of the Robot at around 25Hz. The Status data can be accessed via the Robot. For example:
+The Status dictionaries are automatically updated by a background thread of the Robot class at around 25Hz. The Status data can be accessed via the Robot class as below:
 
 ```python
 if robot.arm.status['pos']>0.25:
@@ -129,8 +127,6 @@ If an instantaneous snapshot of the entire Robot Status is needed, the `get_stat
 
 ```python
 status=robot.get_status()
-if status['arm']['pos']>0.25:
-    print('Arm extension greater than 0.25m')
 ```
 
 ### The Robot Command
@@ -169,18 +165,29 @@ The `move_by()` method queues up the command to the stepper motor controller. Ho
 robot.push_command()
 ```
 
-The `push_command()` causes all queued up commands to be executed at once. This allows for synchronization of motion across joints. For example, the following code will cause the base, arm, and lift to initiate motion simultaneously:
+The `push_command()` causes all queued-up commands to be executed at once. This allows for the synchronization of motion across joints. For example, the following code will cause the base, arm, and lift to initiate motion simultaneously:
 
-```python
+```python linenums="1"
+import time
+import stretch_body.robot
+
+robot=stretch_body.robot.Robot()
+robot.startup()
+
 robot.arm.move_by(0.1)
 robot.lift.move_by(0.1)
 robot.base.translate_by(0.1)
 robot.push_command()
+time.sleep(2.0)
+	
+robot.stop()
 ```
 
-**NOTE**: In this example we call `sleep()` to allow time for the motion to complete before initiating a new motion.
+!!! note
+	In this example we call `sleep()` to allow time for the motion to complete before initiating a new motion.
 
-**NOTE**: The Dynamixel servos do not use the Hello Robot communication protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. 
+!!! note
+	The Dynamixel servos do not use the Hello Robot communication protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. 
 
 ------
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
