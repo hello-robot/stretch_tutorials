@@ -7,11 +7,9 @@ This tutorial introduces the Stretch Body contact detection system and explains 
 Guarded contact is our term for the Stretch contact sensitive behaviors. The guarded contact behavior is simply:
 
 1. Detect when the actuator effort exceeds a user-specified threshold during joint motion.
-
 2. If the threshold is exceeded:
-
-   1. Enable the default safety controller for the joint
-   2. Remain in safety mode until a subsequent joint command is received
+    1. Enable the default safety controller for the joint
+    2. Remain in safety mode until a subsequent joint command is received
 
 Practically this enables the arm, for example, to move out yet stop upon collision. Let's test this out with the following script:
 

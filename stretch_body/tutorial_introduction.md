@@ -183,9 +183,11 @@ time.sleep(2.0)
 robot.stop()
 ```
 
-**NOTE**: In this example we call `sleep()` to allow time for the motion to complete before initiating a new motion.
+!!! note
+	In this example we call `sleep()` to allow time for the motion to complete before initiating a new motion.
 
-**NOTE**: The Dynamixel servos do not use the Hello Robot communication protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. 
+!!! note
+	The Dynamixel servos do not use the Hello Robot communication protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. 
 
 ------
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
