@@ -179,7 +179,7 @@ nav:
       - Deep Perception: ./ros2/deep_perception.md
       # - PointCloud Transformation: ./ros2/example_11.md
       # - ArUco Tag Locator: ./ros2/example_12.md
-  
+
   - Stretch Tool Share:
     - Overview: ./stretch_tool_share/README.md
     - Basics:
