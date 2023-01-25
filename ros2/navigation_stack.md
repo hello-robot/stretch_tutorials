@@ -6,13 +6,13 @@ Navigation is a key aspect of an autonomous agent because, often, to do anything
 Stretch's mobile base enables this capability and this tutorial will explore how we can autonomously plan and execute mobile base trajectories. Running this tutorial will require the robot to be untethered, so please ensure that the robot is adequetly charged.
 
 ## Mapping
-The first step is to map the space that the robot will navigate in. The `mapping.launch.py` file will enable you to do this. First run:
+The first step is to map the space that the robot will navigate in. The `offline_mapping.launch.py` file will enable you to do this. First run:
 
 ```bash
-ros2 launch stretch_navigation mapping.launch.py
+ros2 launch stretch_navigation offline_mapping.launch.py
 ```
 
-Rviz will show the robot and the map that is being constructed. First, click on the "Startup" button in the RViz window to activate the lifecycle nodes. Now, use the xbox controller (or keyboard) to teleoperate the robot around. To teleoperate the robot using the xbox controller, keep the front left (LB) button pressed while using the right joystick for translation and rotation.
+Rviz will show the robot and the map that is being constructed. Now, use the xbox controller (see instructions below for using a keyboard) to teleoperate the robot around. To teleoperate the robot using the xbox controller, keep the front left (LB) button pressed while using the right joystick for translation and rotation.
 
 Avoid sharp turns and revisit previously visited spots to form loop closures.
 
@@ -24,48 +24,52 @@ Avoid sharp turns and revisit previously visited spots to form loop closures.
   <img height=500 src="https://user-images.githubusercontent.com/97639181/206606439-a3e346d4-83d9-45ec-93cc-8804a2b9719c.gif"/>
 </p>
 
-In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to `stretch_navigation/` and `stretch_user/` directories.
+In Rviz, once you see a map that has reconstructed the space well enough, open a new terminal and run the following commands to save the map to the `stretch_user/` directory.
 
 ```bash
-mkdir ~/ament_ws/src/stretch_ros2/stretch_navigation/maps
-ros2 run nav2_map_server map_saver_cli -f ~/ament_ws/src/strech_ros2/stretch_navigation/maps/<map_name>
+mkdir ${HELLO_FLEET_PATH}/maps
+ros2 run nav2_map_server map_saver_cli -f ${HELLO_FLEET_PATH}/maps/<map_name>
 ```
 
-The `<map_name>` does not include an extension. The map_saver node will save two files as `<map_name>.pgm` and `<map_name>.yaml`.
-
-If you want to preserve the generated map or use it across different ROS distributions, copy the files in the `stretch_user` directory.
+!!! note
+    The `<map_name>` does not include an extension. The map_saver node will save two files as `<map_name>.pgm` and `<map_name>.yaml`.
+    
+!!! tip
+    For a quick sanity check, you can inspect the saved map using a pre-installed tool called Eye of Gnome (eog) by running the following command:
 
 ```bash
-mkdir -p ~/stretch_user/maps
-cp ~/ament_ws/src/stretch_ros2/stretch_navigation/maps/* ~/stretch_user/maps
+eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
 ```
 
 ## Navigation
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
 ```bash
-ros2 launch stretch_navigation navigation.launch map:=~/ament_ws/src/stretch_ros2/stretch_navigation/maps/<map_name>.yaml
+ros2 launch stretch_navigation navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
-Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location in the map does not match the robot's location in the real space. In the top bar of Rviz, use 2D Pose Estimate to lay an arrow down roughly where the robot is located in the real space. AMCL, the localization package, will better localize our pose once we give the robot a 2D Nav Goal. 
+A new RViz window should pop up with a `Startup` button in a menu at the bottom left of the window. Press the `Startup` button to kick-start all navigation related lifecycle nodes. Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location in the map does not match the robot's location in the real space. To correct this, from the top bar of Rviz, use `2D Pose Estimate` to lay an arrow down roughly where the robot is located in the real space. This gives an initial estimate of the robot's location to AMCL, the localization package. AMCL will better localize the robot once we pass the robot a `2D Nav Goal`. 
 
-In the top bar of Rviz, use 2D Nav Goal to lay down an arrow where you'd like the robot to go. In the terminal, you'll see Nav2 go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior - spinning around 180 degrees in place or backing up.
+In the top bar of Rviz, use `2D Nav Goal` to lay down an arrow where you'd like the robot to navigate. In the terminal, you'll see Nav2 go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior - spinning around 180 degrees in place or backing up.
 
 <p align="center">
   <img height=500 src="https://user-images.githubusercontent.com/97639181/206606699-9f3b87b1-a7d1-4074-b68a-2e880fc576a3.gif"/>
 </p>
 
-## Note
-The launch files expose the launch argument "teleop_type". By default, this argument is set to "joystick", which launches joystick teleop in the terminal with the xbox controller that ships with Stretch RE1. The xbox controller utilizes a dead man's switch safety feature to avoid unintended movement of the robot. This is the switch located on the front left side of the controller marked "LB". Keep this switch pressed and translate or rotate the base using the joystick located on the right side of the xbox controller.
+!!! tip
+    If navigation fails or the robot becomes unresponsive to subsequent goals through RViz, you can still teleoperate the robot using Xbox controller.
 
-If the xbox controller is not available, the following commands will launch mapping or navigation, respectively, with keyboard teleop:
+## Note
+The launch files expose the launch argument "teleop_type". By default, this argument is set to "joystick", which launches joystick teleop in the terminal with the Xbox controller that ships with Stretch. The Xbox controller utilizes a dead man's switch safety feature to avoid unintended movement of the robot. This is the switch located on the front left side of the controller marked "LB". Keep this switch pressed while translating or rotating the base using the joystick located on the right side of the Xbox controller.
+
+If the Xbox controller is not available, the following commands will launch mapping or navigation, respectively, with keyboard teleop:
 
 ```bash
-ros2 launch stretch_navigation mapping.launch teleop_type:=keyboard
+ros2 launch stretch_navigation offline_mapping.launch.py teleop_type:=keyboard
 ```
 or
 ```bash
-ros2 launch stretch_navigation navigation.launch teleop_type:=keyboard
+ros2 launch stretch_navigation navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 ## Simple Commander API
