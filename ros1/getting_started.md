@@ -1,6 +1,7 @@
 # Getting Started
 
 ## Prerequisites
+
 1. A Stretch robot (see below for simulation instructions if you don’t have a robot)
 2. Follow the [Getting Started]() guide (hello_robot_xbox_teleop must not be running in the background)
 3. Interacting with Linux through the [command line](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
@@ -14,11 +15,12 @@ If you cannot access the robot through ssh due to your network settings, you wil
 Users who don’t have a Stretch, but want to try the tutorials can set up their computer with Stretch Gazebo.
 
 Although lower specifications might be sufficient, for the best experience we recommend the following for running the simulation:
-**Processor**: Intel i7 or comparable
-**Memory**: 16 GB
-**Storage**: 50 GB
-**OS**: Ubuntu 20.04
-**Graphics Card**: NVIDIA GTX2060 (optional)
+
+* **Processor**: Intel i7 or comparable
+* **Memory**: 16 GB
+* **Storage**: 50 GB
+* **OS**: Ubuntu 20.04
+* **Graphics Card**: NVIDIA GTX2060 (optional)
 
 ### Setup
 Hello Robot is currently running Stretch on Ubuntu 20.04 and ROS Noetic. To begin the setup, follow the [Run the new robot installation script](https://github.com/hello-robot/stretch_install/blob/master/docs/robot_install.md#run-the-new-robot-installation-script) on your system.
