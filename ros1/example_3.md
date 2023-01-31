@@ -3,19 +3,19 @@ This example aims to combine the two previous examples and have Stretch utilize 
 
 Begin by running the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then, in a new terminal, type the following to activate the LiDAR sensor.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core rplidar.launch
 ```
 
 To set `navigation` mode and to activate the [avoider.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/avoider.py) node, type the following in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python3 avoider.py

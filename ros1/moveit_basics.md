@@ -16,7 +16,7 @@ roslaunch stretch_moveit_config moveit_rviz.launch
 ## MoveIt! Without Hardware
 To begin running MoveIt! on stretch, run the demo launch file. This doesn't require any simulator or robot to run.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_moveit_config demo.launch
 ```
 
@@ -42,19 +42,19 @@ Additionally, the demo allows a user to select from the three groups, `stretch_a
 
 To run in Gazebo, execute:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_gazebo gazebo.launch
 ```
 
 Then, in a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=keyboard
 ```
 
 In a separate terminal, launch:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_moveit_config demo_gazebo.launch
 ```
 

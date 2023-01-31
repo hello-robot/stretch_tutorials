@@ -4,20 +4,20 @@ This example aims to combine the [ReSpeaker Microphone Array](respeaker_micropho
 
 Begin by running the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Switch the mode to `position` mode using a rosservice call. Then run the `respeaker.launch` file. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 rosservice call /switch_to_position_mode
 roslaunch stretch_core respeaker.launch
 ```
 
 Then run the [voice_teleoperation_base.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py) node in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 voice_teleoperation_base.py
 ```

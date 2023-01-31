@@ -2,13 +2,13 @@
 
 Begin by starting up the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then utilize the ROS command-line tool [rostopic](http://wiki.ros.org/rostopic) to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rostopic echo /joint_states -n1
 ```
 
@@ -34,7 +34,7 @@ effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 Let's say you are interested in only seeing the `header` component of the `/joint_states` topic, you can output this within the rostopic command-line tool by typing the following command.
 
-```bash
+```{.bash .shell-prompt}
 rostopic echo /joint_states/header -n1
 ```
 
@@ -53,7 +53,7 @@ Additionally, if you were to type `rostopic echo /` in the terminal, then press 
 
 A powerful tool to visualize ROS communication is the ROS [rqt_graph package](http://wiki.ros.org/rqt_graph). By typing the following in a new terminal, you can see a graph of topics being communicated between nodes.
 
-```bash
+```{.bash .shell-prompt}
 rqt_graph
 ```
 <p align="center">

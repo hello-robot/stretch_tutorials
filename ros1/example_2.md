@@ -37,26 +37,26 @@ Knowing the orientation of the LiDAR allows us to filter the scan values for a d
 
 First, open a terminal and run the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then in a new terminal run the `rplidar.launch` file from `stretch_core`.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core rplidar.launch
 ```
 
 To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the [scan_filter.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py) node by typing the following in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 scan_filter.py
 ```
 
 Then run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 ```
 

@@ -4,19 +4,19 @@ The Stretch robot is equipped with the [Intel RealSense D435i camera](https://ww
 
 Begin by running the stretch `driver.launch` file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core d435i_low_resolution.launch
 ```
 
 Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz) with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 ```
 

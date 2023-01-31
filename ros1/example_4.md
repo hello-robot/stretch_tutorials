@@ -6,13 +6,13 @@
 
 Let's bring up Stretch in the Willow Garage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
 
 The `rviz` flag will open an RViz window to visualize a variety of ROS topics. In a new terminal, run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py) node.
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 marker.py
 ```
@@ -180,4 +180,4 @@ while not rospy.is_shutdown():
 	rate.sleep()
 ```
 
-This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a `Ctrl-c` or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
+This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a `Ctrl+c` or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.

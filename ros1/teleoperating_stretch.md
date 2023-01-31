@@ -7,13 +7,13 @@ If you have not already had a look at the [Xbox Controller Teleoperation](https:
 
 For full-body teleoperation with the keyboard, you first need to run the `stretch_driver.launch` in a terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then in a new terminal, type the following command
 
-```bash
+```{.bash .shell-prompt}
 rosrun stretch_core keyboard_teleop
 ```
 
@@ -60,13 +60,13 @@ To stop the node from sending twist messages, press `Ctrl` + `c` in the terminal
 
 Begin by running the following command in your terminal:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
-To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to `navigation` for the robot to receive `Twist` messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the *cmd_vel* topic name to *stretch/cmd_vel*.
+To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to `navigation` for the robot to receive `Twist` messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the `cmd_vel` topic name to `stretch/cmd_vel`.
 
-```bash
+```{.bash .shell-prompt}
 rosservice call /switch_to_navigation_mode
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=stretch/cmd_vel
 ```
@@ -111,13 +111,13 @@ To move Stretch's mobile base using a python script, please look at [Teleoperate
 ### Keyboard Teleoperating: Mobile Base
 For keyboard teleoperation of the Stretch's mobile base, first, [startup Stretch in simulation](gazebo_basics.md). Then run the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_gazebo gazebo.launch
 ```
 
 In a new terminal, type the following
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=keyboard
 ```
 
@@ -126,7 +126,7 @@ The same keyboard commands will be presented to a user to move the robot.
 ### Xbox Controller Teleoperating
 An alternative for robot base teleoperation is to use an Xbox controller. Stop the keyboard teleoperation node by typing `Ctrl` + `c` in the terminal where the command was executed. Then connect the Xbox controller device to your local machine and run the following command.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core teleop_twist.launch twist_topic:=/stretch_diff_drive_controller/cmd_vel linear:=1.0 angular:=2.0 teleop_type:=joystick
 ```
 

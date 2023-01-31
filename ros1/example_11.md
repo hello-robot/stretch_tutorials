@@ -4,24 +4,24 @@ This tutorial highlights how to create a [PointCloud](http://docs.ros.org/en/mel
 
 Begin by starting up the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core d435i_low_resolution.launch
 ```
 Then run the [pointCloud_transformer.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py) node. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 pointcloud_transformer.py
 ```
 
 Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/PointCloud_transformer_example.rviz) with the `PointCloud` in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
 ```
 

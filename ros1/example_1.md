@@ -7,13 +7,13 @@ The goal of this example is to give you an enhanced understanding of how to cont
 
 Begin by running the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Switch to `navigation` mode using a rosservice call. Then, in a new terminal, drive the robot forward with the [move.py](https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py) node.
 
-```bash
+```{.bash .shell-prompt}
 rosservice call /switch_to_navigation_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python3 move.py
@@ -153,7 +153,7 @@ self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queu
 
 After saving the edited node, bring up [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the following in a new terminal
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 move.py
 ```

@@ -3,7 +3,7 @@ stretch_navigation provides the standard ROS navigation stack as two launch file
 
 Then run the following commands to map the space that the robot will navigate in.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation mapping.launch
 ```
 
@@ -15,7 +15,7 @@ Rviz will show the robot and the map that is being constructed. With the termina
 
 In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to `stretch_user/`.
 
-```bash
+```{.bash .shell-prompt}
 mkdir -p ~/stretch_user/maps
 rosrun map_server map_saver -f ${HELLO_FLEET_PATH}/maps/<map_name>
 ```
@@ -25,7 +25,7 @@ rosrun map_server map_saver -f ${HELLO_FLEET_PATH}/maps/<map_name>
 
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation navigation.launch map_yaml:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
@@ -36,14 +36,14 @@ It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In
 ## Running in Simulation
 To perform mapping and navigation in the Gazebo simulation of Stretch, substitute the `mapping_gazebo.launch` and `navigation_gazebo.launch` files into the commands above. The default Gazebo environment is the Willow Garage HQ. Use the "world" ROS argument to specify the Gazebo world within which to spawn Stretch.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:=worlds/willowgarage.world
 ```
 
 ### Teleop using a Joystick Controller
 The mapping launch files, `mapping.launch` and `mapping_gazebo.launch`, expose the ROS argument `teleop_type`. By default, this ROS argument is set to `keyboard`, which launches keyboard teleop in the terminal. If the Xbox controller that ships with Stretch is plugged into your computer, the following command will launch mapping with joystick teleop:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation mapping.launch teleop_type:=joystick
 ```
 
@@ -56,18 +56,18 @@ If you have set up [ROS Remote Master](https://docs.hello-robot.com/0.2/stretch-
 
 On the robot, execute:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation mapping.launch rviz:=false teleop_type:=none
 ```
 
 On your machine, execute:
 
-```bash
+```{.bash .shell-prompt}
 rviz -d `rospack find stretch_navigation`/rviz/mapping.launch
 ```
 
 In a separate terminal on your machine, execute:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core teleop_twist.launch teleop_type:=keyboard
 ```

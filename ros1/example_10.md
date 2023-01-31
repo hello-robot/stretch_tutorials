@@ -6,19 +6,19 @@ For the tf2 static broadcaster node, we will be publishing three child static fr
 
 Begin by starting up the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/tf2_broadcaster_example.rviz) with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 ```
 
 Then run the [tf2_broadcaster.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py) node to visualize three static frames. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 tf2_broadcaster.py
 ```
@@ -34,8 +34,7 @@ The GIF below visualizes what happens when running the previous node.
 
 In a terminal, execute:
 
-```bash
-# Terminal 4
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 stow_command.py
 ```

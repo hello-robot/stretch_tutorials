@@ -10,7 +10,7 @@ In this section we will use command line tools in the [Stretch_Body](https://git
 
 Begin by typing the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 stretch_respeaker_test.py
 ```
 
@@ -35,7 +35,7 @@ A [ROS package for the ReSpeaker](https://index.ros.org/p/respeaker_ros/#melodic
 
 Begin by running the `sample_respeaker.launch` file in a terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch respeaker_ros sample_respeaker.launch
 ```
 
@@ -43,7 +43,7 @@ This will bring up the necessary nodes that will allow the ReSpeaker to implemen
 
 Below are executables you can run to see the ReSpeaker results.
 
-```bash
+```{.bash .shell-prompt}
 rostopic echo /sound_direction    # Result of Direction (in Radians) of Audio
 rostopic echo /sound_localization # Result of Direction as Pose (Quaternion values)
 rostopic echo /is_speeching       # Result of Voice Activity Detector
@@ -54,8 +54,8 @@ rostopic echo /speech_to_text     # Voice recognition
 
 An example is when you run the `speech_to_text` executable and speak near the microphone array. In a new terminal, execute:
 
-```bash
-hello-robot@stretch-re1-1005:~$ rostopic echo /speech_to_text
+```{.bash .shell-prompt}
+rostopic echo /speech_to_text
 ```
 
 In this instance, "hello robot" was said. The following will be displayed in your terminal:
@@ -69,6 +69,6 @@ confidence: []
 
 You can also set various parameters via `dynamic_reconfigure` by running the following command in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rqt_reconfigure rqt_reconfigure
 ```

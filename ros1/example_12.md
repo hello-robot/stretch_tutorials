@@ -17,31 +17,31 @@ Below is what needs to be included in the [stretch_marker_dict.yaml](https://git
 ## Getting Started
 Begin by running the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core d435i_high_resolution.launch
 ```
 
 Next, run the stretch ArUco launch file which will bring up the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers) node. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_aruco.launch
 ```
 
 Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz) with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 ```
 
 Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/aruco_tag_locator.py) node. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 aruco_tag_locator.py
 ```

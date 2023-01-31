@@ -14,6 +14,7 @@ If you cannot access the robot through ssh due to your network settings, you wil
 ## Setting Up Stretch in Simulation
 Users who don’t have a Stretch, but want to try the tutorials can set up their computer with Stretch Gazebo.
 
+### Requirements
 Although lower specifications might be sufficient, for the best experience we recommend the following for running the simulation:
 
 * **Processor**: Intel i7 or comparable

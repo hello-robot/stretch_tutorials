@@ -2,13 +2,13 @@
 
 You can utilize RViz to visualize Stretch's sensor information. To begin, in a terminal, run the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Then, run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d `rospack find stretch_core`/rviz/stretch_simple_test.rviz
 ```
 
@@ -29,7 +29,7 @@ There are further tutorials for RViz which can be found [here](http://wiki.ros.o
 ## Running RViz and Gazebo (Simulation)
 Let's bring up Stretch in the willow garage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
 

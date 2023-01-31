@@ -8,13 +8,13 @@ In this example, we will review a Python script that prints and stores the effor
 
 Begin by running the following command in a terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 Switch the mode to `position` mode using a rosservice call. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/effort_sensing.py) node. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 rosservice call /switch_to_position_mode
 cd catkin_ws/src/stretch_tutorials/src/
 python3 effort_sensing.py
@@ -303,7 +303,7 @@ file_name = '2022-06-30_11:26:20-AM'
 
 Once you have changed the file name, then run the following in a new command.
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 stored_data_plotter.py
 ```

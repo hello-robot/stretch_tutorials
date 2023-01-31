@@ -9,19 +9,19 @@ In this example, we will review the [image_view](http://wiki.ros.org/image_view?
 
 Begin by running the stretch `driver.launch` file.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 To activate the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/) and publish topics to be visualized, run the following launch file in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_core d435i_low_resolution.launch
 ```
 
 Within this tutorial package, there is an RViz config file with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 ```
 
@@ -30,7 +30,7 @@ There are a couple of methods to save an image using the [image_view](http://wik
 
 **OPTION 1:** Use the `image_view` node to open a simple image viewer for ROS *sensor_msgs/image* topics. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 rosrun image_view image_view image:=/camera/color/image_raw_upright_view
 ```
 
@@ -38,14 +38,14 @@ Then you can save the current image by right-clicking on the display window. By 
 
 **OPTION 2:** Use the `image_saver` node to save an image to the terminal's current work directory. In a new terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 rosrun image_view image_saver image:=/camera/color/image_raw_upright_view
 ```
 
 ## Capture Image with Python Script
 In this section, we will use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py) node to save a .jpeg image of the image topic `/camera/color/image_raw_upright_view`. In a terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 cd ~/catkin_ws/src/stretch_tutorials/src
 python3 capture_image.py
 ```
@@ -191,7 +191,7 @@ Give control to ROS.  This will allow the callback to be called whenever new mes
 ## Edge Detection
 In this section, we highlight a node that utilizes the [Canny Edge filter](https://www.geeksforgeeks.org/python-opencv-canny-function/) algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. In a terminal, execute:
 
-```bash
+```{.bash .shell-prompt}
 cd ~/catkin_ws/src/stretch_tutorials/src
 python3 edge_detection.py
 ```

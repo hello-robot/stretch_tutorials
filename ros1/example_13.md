@@ -7,7 +7,7 @@ First, begin by building a map of the space the robot will be navigating in. If 
 ## Getting Started
 Next, with your created map, we can navigate the robot around the mapped space. Run:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch stretch_navigation navigation.launch map_yaml:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
@@ -22,7 +22,7 @@ Where `${HELLO_FLEET_PATH}` is the path of the `<map_name>.yaml` file.
 
 Now we are going to use a node to send a move_base goal half a meter in front of the map's origin. run the following command in a new terminal to execute the [navigation.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py) node.
 
-```bash
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 navigation.py
 ```
