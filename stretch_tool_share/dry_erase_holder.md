@@ -2,7 +2,7 @@
 
 **Created by**: Hello Robot Inc
 
-This tool allows Stretch to hold a dry erase marker.  It is spring loaded, allowing for compliant interaction between the marker and a white board. 
+This tool allows Stretch to hold a dry-erase marker.  It is spring-loaded, allowing for compliant interaction between the marker and a whiteboard. 
 
 The tool can be integrated into your robot URDF by integrating its [stretch_description](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/dry_erase_holder_V1/stretch_description) as described in the [Stretch ROS documentation](https://github.com/hello-robot/stretch_ros/tree/master/stretch_description).
 
@@ -28,7 +28,7 @@ The tool can be integrated into your robot URDF by integrating its [stretch_desc
 <img src="https://raw.githubusercontent.com/hello-robot/stretch_tool_share/master/tool_share/dry_erase_holder_V1/images/dry_erase_B.PNG" alt="image"  height=700 />
 
 1. Install the bolt into the dry_erase_bushing block and secure from below with an M5 nut.
-2. Attach the dry erase bushing block to the tool plate, securing from below with the wrist_end_cap_5mm and an M5 nut. Orient the block so the marker points forward. 
-3. Attach the shaft collar to your dry erase marker, approximately 8mm from the back of the marker.
+2. Attach the dry-erase bushing block to the tool plate, securing from below with the wrist_end_cap_5mm and an M5 nut. Orient the block so the marker points forward. 
+3. Attach the shaft collar to your dry-erase marker, approximately 8mm from the back of the marker.
 4. Slide the marker into the bushing block. Loop a rubber band around the back of the marker and over to one of the pegs on the side of the bushing block. Repeat with the other peg.
-5. The marker should now easily spring back when pushed against. You're ready to write!
+5. The marker should now easily spring back when pushed against it. You're ready to write!

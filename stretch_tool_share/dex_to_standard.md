@@ -57,12 +57,14 @@ Now, affix the four screws, with the shorter two going to the servo side, to hol
 Once the hardware has been replaced, it's time to make the software changes for Stretch to recognize the Standart Wrist gripper. Turn on the robot and follow the instructions below.
 
 To revert the changes in stretch_configuration_params.yaml, download the [dex_to_standard_configure_params.py script](https://github.com/hello-robot/stretch_tutorials/blob/master/stretch_tool_share/dex_to_standard_configure_params.py) and execute it in a terminal as below: 
-```bash
+
+```{.bash .shell-prompt}
 python3 dex_to_standard_configure_params.py
 ```
 
 Next, to ensure the correct gripper is recognized by ROS, we need to update the URDF. For this, first open the stretch_description.xacro file like below.
-```bash
+
+```{.bash .shell-prompt}
 cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
 gedit stretch_description.xacro
 ```
@@ -70,17 +72,20 @@ gedit stretch_description.xacro
 Then, replace the contents of the file with the default [stretch_description.xacro](https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_description.xacro).
 
 Lastly, to generate the updated URDF, execute the following commands in a terminal.
-```bash
+
+```{.bash .shell-prompt}
 rosrun stretch_calibration update_urdf_after_xacro_change.sh
 cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
 ./export_urdf.sh
 ```
 
 You can ensure that the gripper is functional by homing the Dynamixel servos with the following commands:
-```bash
+
+```{.bash .shell-prompt}
 stretch_gripper_home.py
 ```
-```bash
+
+```{.bash .shell-prompt}
 stretch_wrist_yaw_home.py
 ```
 

@@ -168,8 +168,6 @@ ipython
 Now let's move the robot around using the [Stretch Body Robot API](https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_stretch_body_api/). Try typing in these interactive commands in the iPython prompt:
 
 ```{.python .no-copy}
->>$ ipython
-...
 import stretch_body.robot
 robot=stretch_body.robot.Robot()
 robot.startup()

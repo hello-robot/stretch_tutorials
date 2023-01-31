@@ -1,8 +1,8 @@
 # Example 10
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+    ROS 2 tutorials are still under active development. 
 
-
-This tutorial provides you an idea of what tf2 can do in the Python track. We will elaborate how to create a tf2 static broadcaster and listener.
+This tutorial provides you with an idea of what tf2 can do in the Python track. We will elaborate on how to create a tf2 static broadcaster and listener.
 
 ## tf2 Static Broadcaster
 
@@ -10,39 +10,35 @@ For the tf2 static broadcaster node, we will be publishing three child static fr
 
 Begin by starting up the stretch driver launch file.
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 Open RViz in another terminal and add the RobotModel and TF plugins in the left hand panel
 
-```bash
-# Terminal 2
+```{.bash .shell-prompt}
 ros2 run rviz2 rviz2
 ```
 Then run the tf2 broadcaster node to visualize three static frames.
 
-```bash
-# Terminal 3
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials tf2_broadcaster
 ```
 
-The gif below visualizes what happens when running the previous node.
+The GIF below visualizes what happens when running the previous node.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster.gif"/>
 </p>
 
 **OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the stow command node and observe the tf frames in RViz.
 
-```bash
-# Terminal 4
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials stow_command
 ```
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster_with_stow.gif"/>
 </p>
-
 
 ### The Code
 
@@ -140,6 +136,7 @@ Now let's break the code down.
 ```python
 #!/usr/bin/env python3
 ```
+
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
@@ -149,6 +146,7 @@ from tf2_ros import TransformBroadcaster
 import tf_transformations
 from geometry_msgs.msg import TransformStamped
 ```
+
 You need to import rclpy if you are writing a ROS 2 node. Import `tf_transformations` to get quaternion values from Euler angles. Import the `TransformStamped` from the `geometry_msgs.msg` package because we will be publishing static frames and it requires this message type. The `tf2_ros` package provides an implementation of a `TransformBroadcaster.` to help make the task of publishing transforms easier.
 
 ```python
@@ -157,6 +155,7 @@ class FixedFrameBroadcaster(Node):
         super().__init__('stretch_tf_broadcaster')
         self.br = TransformBroadcaster(self)
 ```
+
 Here we create a `TransformStamped` object which will be the message we will send over once populated.
 
 ```python
@@ -165,6 +164,7 @@ Here we create a `TransformStamped` object which will be the message we will sen
         self.lift.header.frame_id = 'link_lift'
         self.lift.child_frame_id = 'fk_link_lift'
 ```
+
 We need to give the transform being published a timestamp, we'll just stamp it with the current time, `self.get_clock().now().to_msg()`. Then, we need to set the name of the parent frame of the link we're creating, in this case *link_lift*. Finally, we need to set the name of the child frame of the link we're creating. In this instance, the child frame is *fk_link_lift*.
 
 ```python
@@ -172,6 +172,7 @@ We need to give the transform being published a timestamp, we'll just stamp it w
         self.mast.transform.translation.y = 0.0
         self.mast.transform.translation.z = 0.0
 ```
+
 Set the translation values for the child frame.
 
 ```python
@@ -181,6 +182,7 @@ Set the translation values for the child frame.
         self.lift.transform.rotation.z = q[2]
         self.lift.transform.rotation.w = q[3]
 ```
+
 The `quaternion_from_euler()` function takes in a Euler angle argument and returns a quaternion values. Then set the rotation values to the transformed quaternions.
 
 This process will be completed for the *link_mast* and *link_wrist_yaw* as well.
@@ -188,6 +190,7 @@ This process will be completed for the *link_mast* and *link_wrist_yaw* as well.
 ```python
 self.br.sendTransform(self.lift)
 ```
+
 Send the three transforms using the `sendTransform()` function.
 
 ```python
@@ -201,6 +204,7 @@ Instantiate the `FixedFrameBroadcaster()` class.
 ```python
 rclpy.spin(tf_broadcaster)
 ```
+
 Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.
@@ -211,25 +215,25 @@ In the previous section of the tutorial, we created a tf2 broadcaster to publish
 
 Begin by starting up the stretch driver launch file.
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
+
 Then run the tf2 broadcaster node to create the three static frames.
 
-```bash
-# Terminal 2
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials tf2_broadcaster
 ```
+
 Finally, run the tf2 listener node to print the transform between two links.
 
-```bash
-# Terminal 3
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials tf2_listener
 ```
+
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
 
-```bash
+```{.bash .no-copy}
 [INFO] [1659551318.098168]: The pose of target frame link_grasp_center with reference from fk_link_lift is:
 translation:
   x: 1.08415191335
@@ -245,7 +249,6 @@ rotation:
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_listener.png"/>
 </p>
-
 
 ### The Code
 
@@ -305,19 +308,20 @@ if __name__ == '__main__':
     main()
 ```
 
-
 ### The Code Explained
 
 ```python
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 ```
+
 Here, we create a `TransformListener` object. Once the listener is created, it starts receiving tf2 transformations over the wire, and buffers them for up to 10 seconds.
 
 ```python
         from_frame_rel = self.target_frame
         to_frame_rel = 'fk_link_mast'
 ```
+
 Store frame names in variables that will be used to compute transformations.
 
 ```python
@@ -332,4 +336,5 @@ Store frame names in variables that will be used to compute transformations.
                 f'Could not transform {to_frame_rel} to {from_frame_rel}: {ex}')
             return
 ```
+
 Try to look up the transform we want. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Look up transform between *from_frame_rel* and *to_frame_rel* frames with the `lookup_transform()` function.

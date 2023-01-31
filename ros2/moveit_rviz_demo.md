@@ -2,7 +2,7 @@
 
 1. The easiest way to run MoveIt 2 on your robot is through the RViz plugin. With RViz you can plan, visualize, and also execute trajectories for various planning groups on your robot. To get started using MoveIt 2 with RViz, execute the following command in a terminal. (Press Ctrl+C in the terminal to terminate)
 
-```
+```{.bash .shell-prompt}
 ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
 ```
 

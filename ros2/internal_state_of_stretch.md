@@ -1,20 +1,23 @@
 ## Getting the State of the Robot
 
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+    ROS 2 tutorials are still under active development. 
 
 Begin by starting up the stretch driver launch file by typing the following in a terminal.
-```bash
+
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 Then utilize the ROS command-line tool, ros2 topic, to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
-```bash
+
+```{.bash .shell-prompt}
 ros2 topic echo /stretch/joint_states
 ```
 
 Your terminal will then output the information associated with the `/stretch/joint_states` topic. Your `header`, `position`, `velocity`, and `effort` information may vary from what is printed below.
 
-```
+```{.bash .no-copy}
 header:
   seq: 70999
   stamp:
@@ -29,14 +32,15 @@ velocity: [0.00015598730463972836, -0.00029395074514369584, -0.00028038454542173
 effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ---
 ```
+
 Additionally, if you type `ros2 topic list` in the terminal, you will see the list of active topics being published.
 
 A powerful tool to visualize the ROS communication is through the rqt_graph package. You can see a graph of topics being communicated between nodes by typing the following.
 
-```
+```{.bash .shell-prompt}
 ros2 run rqt_graph rqt_graph
 ```
+
 ![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rqt_graph.png)
 
 The graph allows a user to observe and affirm if topics are broadcasted to the correct nodes. This method can also be utilized to debug communication issues.
-

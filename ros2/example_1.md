@@ -1,25 +1,26 @@
 ## Example 1
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+	ROS 2 tutorials are still under active development. 
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/move_stretch.gif"/>
 </p>
 
 The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending `Twist` messages to a Stretch robot.
 
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 To drive the robot in circles with the move node, type the following in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 ros2 run stetch_ros_tutorials move
 ```
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### The Code
 Below is the code which will send *Twist* messages to drive the robot in circles.
-
 
 ```python
 #!/usr/bin/env python3
@@ -89,7 +90,7 @@ We create a timer with a period of 0.5 seconds. This timer ensures that the func
 ```Python
 command = Twist()
 ```
-Make a Twist message.  We're going to set all of the elements, since we
+Make a Twist message.  We're going to set all of the elements since we
 can't depend on them defaulting to safe values.
 
 ```python
@@ -97,7 +98,7 @@ can't depend on them defaulting to safe values.
 		command.linear.y = 0.0
 		command.linear.z = 0.0
 ```
-A Twist has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y direction or the z direction. We set the linear velocities to 0.
+A Twist has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y direction or the z-direction. We set the linear velocities to 0.
 
 
 ```python
@@ -138,4 +139,4 @@ After saving the edited node, bringup [Stretch in the empty world simulation](ga
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ``` -->
-To stop the node from sending twist messages, type **Ctrl** + **c**.
+To stop the node from sending twist messages, type `Ctrl + c`.

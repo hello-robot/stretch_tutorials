@@ -1,17 +1,20 @@
 ## Visualizing with RViz
 
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+    ROS 2 tutorials are still under active development. 
 
 You can utilize RViz to visualize Stretch's sensor information. To begin, run the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-```bash
+
+```{.bash .shell-prompt}
 ros2 run rviz2 rviz2 -d `ros2 pkg prefix --share stretch_calibration`/rviz/stretch_simple_test.rviz
 ```
+
 An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.
 
 ![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/simple_rviz.png)

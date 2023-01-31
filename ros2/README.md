@@ -1,11 +1,12 @@
 ![](../images/banner.png)
 # Tutorial Track: Stretch ROS 2 (Beta)
 
-NOTE: Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
+!!! note
+    Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
 
 ## Robot Operating System 2 (ROS 2)
 
-Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allows for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of mutiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
+Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allow for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of multiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
 
 This tutorial track is for users looking to get familiar with programming Stretch robots via ROS 2. We recommend going through the tutorials in the following order:
 
@@ -28,7 +29,7 @@ This tutorial track is for users looking to get familiar with programming Stretc
 | 14 | [Other Nav Stack Features](coming_soon.md)                               | Advanced features for Nav 2. | -->
 
 ## Other Examples
-To help get you get started on your software development, here are examples of nodes to have the stretch perform simple tasks.
+To help get you started on your software development, here are examples of nodes to have Stretch perform simple tasks.
 
 
 |   | Tutorial                                        | Description                                        |

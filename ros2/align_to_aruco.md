@@ -27,20 +27,21 @@ Since we want Stretch to stop at a fixed distance with respect to the marker, we
 
 Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the [Follow Joint Trajectory Commands](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/) tutorial to know how to command Stretch using the Joint trajectory Server.
 
-## Warnings
-Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Execute the command:
-```bash
+!!! warning
+    Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in.
+
+```{.bash .shell-prompt}
 stretch_robot_stow.py
 ```
 
 ## See It In Action
 First, we need to point the camera towards the marker. To do this, you could use the keyboard teleop node. To do this, run:
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core keyboard_teleop.launch.py
 ```
 
 When you are ready, execute the following command:
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core align_to_aruco.launch.py
 ```
 

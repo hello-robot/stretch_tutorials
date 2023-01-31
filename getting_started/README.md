@@ -8,8 +8,11 @@ Please take the time to get to know your robot by going through these tutorials 
 
 Stretch RE1 and Stretch 2 are very similar. One quick way to tell the difference is to look at the robot's hostname:
 
-```bash
->>$ hostname
+```{.bash .shell-prompt}
+hostname
+```
+```{.bash .no-copy}
+--- OUTPUT ---
 stretch-re2-2001
 ```
 

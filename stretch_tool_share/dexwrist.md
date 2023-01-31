@@ -7,8 +7,6 @@ The [Stretch Dex Wrist](https://hello-robot.com/stretch-dex-wrist) is commercial
 * [Stretch RE1 DexWrist Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re1/)
 * [Stretch 2 DexWrist Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re2/)
 
-
-
 Additional resources available here include:
 
 * [Gazebo Support](https://github.com/hello-robot/stretch_tool_share/blob/master/tool_share/stretch_dex_wrist/gazebo_support/README.md)

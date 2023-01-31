@@ -1,14 +1,13 @@
 
 ## Example 2
-**NOTE**: ROS 2 tutorials are still under active development. 
-
-
-The aim of this example is to provide instruction on how to filter scan messages.
+!!! note
+	ROS 2 tutorials are still under active development. 
+	
+This example aims to provide instructions on how to filter scan messages.
 
 For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](https://github.com/ros2/common_interfaces/tree/galactic/sensor_msgs) package called [LaserScan](https://github.com/ros2/common_interfaces/blob/galactic/sensor_msgs/msg/LaserScan.msg) to hold information about a given scan. Let's take a look at the message specification itself:
 
-```
-#
+```{.bash .no-copy}
 # Laser scans angles are measured counter clockwise,
 # with Stretch's LiDAR having both angle_min and angle_max facing forward
 # (very closely along the x-axis) of the device frame
@@ -24,6 +23,7 @@ float32 range_max        # maximum range value [m]
 float32[] ranges         # range data [m] (Note: values < range_min or > range_max should be discarded)
 float32[] intensities    # intensity data [device-specific units]
 ```
+
 The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.
 
 <p align="center">
@@ -36,33 +36,32 @@ end angle, `angle_max`, are closely located along the x-axis of Stretch's frame.
 <p align="center">
   <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png"/>
   <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png"/>
-
 </p>
-
 
 Knowing the orientation of the LiDAR allows us to filter the scan values for a desired range. In this case, we are only considering the scan ranges in front of the stretch robot.
 
 First, open a terminal and run the stretch driver launch file.
 
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 Then in a new terminal run the rplidar launch file from `stretch_core`.
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core rplidar.launch.py
 ```
 
 To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.
 
-```bash
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials scan_filter
 ```
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-```bash
+```{.bash .shell-prompt}
 ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/rviz/stretch_simple_test.rviz
 ```
+
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 
 <p align="center">
@@ -112,7 +111,6 @@ Now let's break the code down.
 ```
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
-
 ```python
 import rclpy
 from rclpy.node import Node
@@ -120,6 +118,7 @@ from numpy import linspace, inf
 from math import sin
 from sensor_msgs.msg import LaserScan
 ```
+
 You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, that's why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.
 
 ```python
@@ -131,11 +130,13 @@ We're going to assume that the robot is pointing up the x-axis, so that any poin
 ```python
 self.sub = self.create_subscription(LaserScan, '/scan', self.scan_filter_callback, 10)
 ```
+
 Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.
 
 ```python
 self.pub = self.create_publisher(LaserScan, '/filtered_scan', 10)
 ```
+
 This declares that your node is publishing to the *filtered_scan* topic using the message type LaserScan. This lets any nodes listening on *filtered_scan* that we are going to publish data on that topic.
 
 ```python
@@ -158,7 +159,7 @@ If the absolute value of a point's y-coordinate is under *self.extent* then keep
 msg.ranges = new_ranges
 self.pub.publish(msg)
 ```
-Substitute in the new ranges in the original message, and republish it.
+Substitute the new ranges in the original message, and republish it.
 
 ```python
 def main(args=None):
@@ -172,6 +173,7 @@ Setup Scanfilter class with `scan_filter = Scanfilter()`
 ```python
 rclpy.spin(scan_filter)
 ```
+
 Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.

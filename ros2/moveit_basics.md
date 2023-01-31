@@ -1,6 +1,7 @@
 # MoveIt! Basics
 
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+    ROS 2 tutorials are still under active development. 
 
 ## Overview
 
@@ -14,7 +15,7 @@ Stretch has a kinematically simple 3 DoF arm (+2 with DexWrist) that is suitable
 
 Before we proceed, it's always a good idea to home the robot first by running the following script so that we have the correct joint positions being published on the /joint_states topic. This is necessary for planning trajectories on Stretch with MoveIt.
 
-```
+```{.bash .shell-prompt}
 stretch_robot_home.py
 ```
 
@@ -22,11 +23,11 @@ stretch_robot_home.py
 
 The easiest way to run MoveIt 2 on your robot is through RViz. With RViz you can plan, visualize, and also execute trajectories for various planning groups on your robot. To launch RViz with MoveIt 2, run the following command. (Press Ctrl+C in the terminal to terminate)
 
-```
+```{.bash .shell-prompt}
 ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
 ```
 
-Follow instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_rviz_demo) to plan and execute trajectories using the interactive markers in RViz.
+Follow the instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_rviz_demo) to plan and execute trajectories using the interactive markers in RViz.
 
 Use the interactive markers to drag joints to desired positions or go to the manipulation tab in the Motion Planning pane to fine-tune joint values using the sliders. Next, click the 'Plan' button to plan the trajectory. If the plan is valid, you should be able to execute the trajectory by clicking the 'Execute' button. Below we see Stretch raising its arm without any obstacle in the way.
 
@@ -40,10 +41,10 @@ To plan with obstacles, you can insert objects like a box, cyclinder or sphere, 
 
 If you want to integrate MoveIt 2 into your planning pipeline and want greater control over its various functionalities, using the MoveGroup API is the way to go. Execute the launch file again and go through the comments in the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit_config/src/movegroup_test.cpp) to understand what's going on. (Press Ctrl+C in the terminal to terminate)
 
-```
+```{.bash .shell-prompt}
 ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
 ```
 
-Follow instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_movegroup_demo) to plan and execute trajectories using the MoveGroup C++ API.
+Follow the instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_movegroup_demo) to plan and execute trajectories using the MoveGroup C++ API.
 
 ![StowEdited](https://user-images.githubusercontent.com/97639181/166838248-cbfd537b-973e-4fb4-b60c-b5b3c111e02d.gif)

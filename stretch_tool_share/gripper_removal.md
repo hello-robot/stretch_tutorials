@@ -1,6 +1,6 @@
 # Gripper
 
-The Stretch Compliant Gripper utilizes a Dynamixel XL430-W250-T servo to drive the spring grasper mechanism. The kinematics of the grasper mechanism are complex and non-linear relative to the motor position.  As shown, it includes mounting features on  one side to allow for attachment of simple rigid tools such as [hooks and pullers](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/puller_v1). 
+The Stretch Compliant Gripper utilizes a Dynamixel XL430-W250-T servo to drive the spring grasper mechanism. The kinematics of the grasper mechanism is complex and non-linear relative to the motor position.  As shown, it includes mounting features on one side to allow for the attachment of simple rigid tools such as [hooks and pullers](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/puller_v1). 
 
 ![image alt text](https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper.png)
 
@@ -22,9 +22,9 @@ The Stretch Compliant Gripper utilizes a Dynamixel XL430-W250-T servo to drive t
   </tr>
 </table>
 
-The attachment features are spaced at 9mm.
+The attachment features are spaced at 9 mm.
 
-The weight of the Stretch Compliant Gripper is 240g.
+The weight of the Stretch Compliant Gripper is 240 g.
 
 ## Gripper Removal
 

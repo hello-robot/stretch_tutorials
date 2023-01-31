@@ -1,7 +1,7 @@
 ## Teleoperating Stretch
 
-### NOTE
-Teleoperation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to teleoperate Stretch in ROS 2.
+!!! note
+   Teleoperation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to teleoperate Stretch in ROS 2.
 
 Refer to the instructions below if you want to test this functionality in ROS 1.
 
@@ -10,21 +10,21 @@ If you have not already had a look at the [Xbox Controller Teleoperation](https:
 
 ### Keyboard Teleoperating: Full Body
 
-For full body teleoperation with the keyboard, you first need to run the `stretch_driver.launch` in a terminal.
+For full-body teleoperation with the keyboard, you first need to run the `stretch_driver.launch` in a terminal.
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
+
 Then in a new terminal, type the following command
 
-```bash
-# Terminal 2
+```{.bash .shell-prompt}
 rosrun stretch_core keyboard_teleop
 ```
 
-Below are the keyboard commands that allow a user to control all of Stretch's joints.  
-```
+Below are the keyboard commands that allow a user to control all of Stretch's joints.
+
+```{.bash .no-copy}
 ---------- KEYBOARD TELEOP MENU -----------
 
               i HEAD UP                    
@@ -57,29 +57,28 @@ Below are the keyboard commands that allow a user to control all of Stretch's jo
               q QUIT                       
 
 -------------------------------------------
-
 ```
+
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### Keyboard Teleoperating: Mobile Base
 
 Begin by running the following command in your terminal:
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
 
 To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to *nagivation* for the robot to receive *Twist* messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the *cmd_vel* topic name to *stretch/cmd_vel*.
 
-```bash
-# Terminal 2
+```{.bash .shell-prompt}
 rosservice call /switch_to_navigation_mode
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=stretch/cmd_vel
 ```
 
 Below are the keyboard commands that allow a user to move Stretch's base.  
-```
+
+```{.bash .no-copy}
 Reading from the keyboard  and Publishing to Twist!
 ---------------------------
 Moving around:
@@ -107,6 +106,7 @@ CTRL-C to quit
 currently:	speed 0.5	turn 1.0
 
 ```
+
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### Create a node for Mobile Base Teleoperating

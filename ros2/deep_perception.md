@@ -2,31 +2,31 @@
 Ever wondered if there is a way to make a robot do awesome things without explicitly having to program it to do so? Deep Perception is a branch of Deep Learning that enables sensing the elements that make up an environment with the help of artificial neural networks without writing complicated code. Well, almost. The most wonderful thing about Stretch is that it comes preloaded with software that makes it a breeze to get started with topics such as Deep Learning. In this tutorial, we will deploy deep neural networks on Stretch using two popular Deep Learning frameworks, namely, PyTorch and OpenVino.
 
 ## YOLOv5 with PyTorch
-[PyTorch](https://pytorch.org/) is an open source end-to-end machine learning framework that makes many pretrained production quality neural networks available for general use. In this tutorial we will use the YOLOv5s model trained on the COCO dataset.
+[PyTorch](https://pytorch.org/) is an open-source end-to-end machine learning framework that makes many pretrained production-quality neural networks available for general use. In this tutorial, we will use the YOLOv5s model trained on the COCO dataset.
 
-[YOLOv5](https://github.com/ultralytics/yolov5) is a popular object detection model that divides a supplied image into a grid and detects objects in each cell of the grid recursively. The YOLOv5s model that we have deployed on Stretch has been pretrained on the [COCO dataset](https://cocodataset.org/#home) which allows Stretch to detect a wide range of day to day objects. However, that’s not all, in this demo we want to go a step further and use this extremely versatile object detection model to extract useful information about the scene.
+[YOLOv5](https://github.com/ultralytics/yolov5) is a popular object detection model that divides a supplied image into a grid and detects objects in each cell of the grid recursively. The YOLOv5s model that we have deployed on Stretch has been pretrained on the [COCO dataset](https://cocodataset.org/#home) which allows Stretch to detect a wide range of day-to-day objects. However, that’s not all, in this demo we want to go a step further and use this extremely versatile object detection model to extract useful information about the scene.
 
 ## Extracting Bounding Boxes and Depth Information
 Often, it’s not enough to simply identify an object. Stretch is a mobile manipulator and its job is to manipulate objects in its environment. But before it can do that, it needs information of where exactly the object is located with respect to itself so that a motion plan to reach the object can be generated. This is possible by knowing which pixels correspond to the object of interest in the image frame and then using that to extract the depth information in the camera frame. Once we have this information, it is possible to compute a transform of these points in the end effector frame for Stretch to generate a motion plan. 
 
-For the sake of brevity, we will limit the scope of this tutorial to drawing bounding boxes around objects of interest to point to pixels in the image frame, and drawing a detection plane corresponding to depth pixels in the camera frame.
+For the sake of brevity, we will limit the scope of this tutorial to drawing bounding boxes around objects of interest to point to pixels in the image frame and drawing a detection plane corresponding to depth pixels in the camera frame.
 
-## Warning
-Running inference on Stretch results in continuous high current draw by the CPU. Pleas ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
+!!! warning
+    Running inference on Stretch results in a continuously high current draw by the CPU. Please ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
 
 ## See It In Action
 Go ahead and execute the following command to run the inference and visualize the detections in RViz:
 
-```
+```{.bash .shell-prompt}
 ros2 launch stretch_deep_perception stretch_detect_objects.launch.py
 ```
 
 ![detect_objects](https://user-images.githubusercontent.com/97639181/196327689-9c5d3a0b-15a3-4432-a3db-6326125262f0.gif)
 
-Voila! You just executed your first deep learning model on Stretch!
+Voila! You just executed your first deep-learning model on Stretch!
 
 ## Code Breakdown
-Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to breakdown the code into funtional blocks to understand the detection pipeline.
+Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to break down the code into functional blocks to understand the detection pipeline.
 
 The control flow begins with executing the [detect_objects.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detect_objects.py) script. In the main() function, we create an instance of the ObjectDetector class from the [object_detect_pytorch.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/object_detect_pytorch.py) script where we configure the YOLOv5s model. Next, we pass this detector to an instance of the DetectionNode class from the [detection_node.py](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_deep_perception/stretch_deep_perception/detection_node.py) script and call the main function.
 ```python
@@ -121,13 +121,13 @@ Detecting objects is just one thing Stretch can do well, it can do much more usi
 
 With that, let’s jump right into it!
 
-## Warning
-Running inference on Stretch results in continuous high current draw by the CPU. Pleas ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
+!!! warning
+    Running inference on Stretch results in a continuously high current draw by the CPU. Please ensure proper ventilation with the onboard fan. It is recommended to run the demo in tethered mode.
 
 ## See It In Action
 First, let’s execute the following command to see what it looks like:
 
-```
+```{.bash .shell-prompt}
 ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ```
 
@@ -156,7 +156,7 @@ In the main() method, we see a similar structure as with the object detction nod
     node.main()
 ```
 
-In addition to detecting faces, this class also enables detecting facial landmarks as well as estimating head pose. The constructor initializes and configures three separate models, namely head_detection_model, head_pose_model and landmarks_model,  with the help of the renamed_cv2.dnn.readNet() wrappers. Note that renamed_cv2 is simply the opencv_python_inference_engine library compiled under a different namespace for use with Stretch so as not to conflict with the regular OpenCV library and having functionalities from both available to users concurrently.
+In addition to detecting faces, this class also enables detecting facial landmarks as well as estimating head pose. The constructor initializes and configures three separate models, namely head_detection_model, head_pose_model and landmarks_model,  with the help of the renamed_cv2.dnn.readNet() wrappers. Note that renamed_cv2 is simply the opencv_python_inference_engine library compiled under a different namespace for use with Stretch so as not to conflict with the regular OpenCV library and have functionalities from both available to users concurrently.
 ```python
 class HeadPoseEstimator:
     def __init__(self, models_directory, use_neural_compute_stick=False):

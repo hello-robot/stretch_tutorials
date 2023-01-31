@@ -1,26 +1,29 @@
 ## FollowJointTrajectory Commands
-**NOTE**: ROS 2 tutorials are still under active development. 
+!!! note
+    ROS 2 tutorials are still under active development. 
 
-Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html) action service for its arm. Within this tutorial we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.
+Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html) action service for its arm. Within this tutorial, we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.
 
 ## Stow Command Example
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stow_command.gif"/>
 </p>
 
 Begin by launching stretch_driver in a terminal.
 
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 In a new terminal type the following commands.
 
-```bash
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials stow_command
 ```
 
 This will send a FollowJointTrajectory command to stow Stretch's arm.
+
 ### The Code
 
 ```python
@@ -102,6 +105,7 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from sensor_msgs.msg import JointState
 ```
+
 You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.msg](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs) package to define robot trajectories.
 
 ```python
@@ -109,11 +113,13 @@ class StowCommand(Node):
     def __init__(self):
         super().__init__('stretch_stow_command')
 ```
+
 The `StowCommand ` class inherits from the `Node` class from and is initialized.
 
 ```python
 def issue_stow_command(self):
 ```
+
 The `issue_stow_command()` method will stow Stretch's arm. Within the function, we set *stow_point* as a `JointTrajectoryPoint`and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively. These are defined in the next set of the code.
 
 ```python
@@ -134,6 +140,7 @@ The `issue_stow_command()` method will stow Stretch's arm. Within the function, 
     trajectory_goal.trajectory.header.stamp = self.get_clock().now().to_msg()
     trajectory_goal.trajectory.header.frame_id = 'base_link'
 ```
+
 Set *trajectory_goal* as a `FollowJointTrajectory.Goal()` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by the positions set in *stow_point*. Specify the coordinate frame that we want (base_link) and set the time to be now.
 
 ```python
@@ -154,12 +161,14 @@ def main(args=None):
     stow_command.destroy_node()
     rclpy.shutdown()
 ```
+
 Create a funcion, `main()`, to do all of the setup in the class and issue the stow command. Initialize the `StowCommand()` class and set it to *node* and run the `main()` function.
 
 ```python
 if __name__ == '__main__':
     main()
 ```
+
 To make the script executable call the main() function like above.
 
 
@@ -171,19 +180,20 @@ To make the script executable call the main() function like above.
 
 If you have killed the above instance of stretch_driver relaunch it again through the terminal.
 
-```bash
+```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 In a new terminal type the following commands.
 
-```bash
+```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials multipoint_command
 ```
 
 This will send a list of JointTrajectoryPoint's to move Stretch's arm.
 
 ### The Code
+
 ```python
 #!/usr/bin/env python3
 import sys
@@ -266,10 +276,11 @@ Seeing that there are similarities between the multipoint and stow command nodes
         point1.positions = [0.3, 0.1, 2.0]
         point1.time_from_start = duration1.to_msg()
 ```
+
 Set *point1* as a `JointTrajectoryPoint`and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively.
 
-**IMPORTANT NOTE**: The lift and wrist extension can only go up to 0.2 m/s. If you do not provide any velocities or accelerations for the lift or wrist extension, then they go to their default values. However, the Velocity and Acceleration of the wrist yaw will stay the same from the previous value unless updated.
-
+!!! note
+    The lift and wrist extension can only go up to 0.2 m/s. If you do not provide any velocities or accelerations for the lift or wrist extension, then they go to their default values. However, the Velocity and Acceleration of the wrist yaw will stay the same from the previous value unless updated.
 
 ```python
         trajectory_goal = FollowJointTrajectory.Goal()
@@ -280,4 +291,5 @@ Set *point1* as a `JointTrajectoryPoint`and provide desired positions (in meters
         self.trajectory_client.send_goal_async(trajectory_goal)
         self.get_logger().info('Sent stow goal = {0}'.format(trajectory_goal))
 ```
+
 Set *trajectory_goal* as a `FollowJointTrajectory.Goal()` and define the joint names as a list. Then `trajectory_goal.trajectory.points` is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.

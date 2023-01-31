@@ -19,7 +19,7 @@ In addition, check that the provided USB dongle is plugged into the robot USB po
 
 === "Stretch RE1"
 
-    Please review the troubleshooting section of the [RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/).
+    Please review the troubleshooting section of the [Stretch RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/).
 
 === "Stretch 2"
 
