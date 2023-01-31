@@ -264,8 +264,10 @@ For more information on guarded motion, see the [Contact Models Tutorial](./tuto
 
 The Arm, Lift, and Base actuators have a hardware synchronization mechanism. This allows for stepper controller commands to be time synchronized across joints.  This behavior can be disabled via the user YAML. By default the settings are:
 
-```bash
->>$ stretch_params.py | grep enable_sync_mode
+```{.bash .shell-prompt}
+stretch_params.py | grep enable_sync_mode
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params   param.hello-motor-arm.gains.enable_sync_mode         1                             
 stretch_body.robot_params.nominal_params   param.hello-motor-left-wheel.gains.enable_sync_mode  1                             
 stretch_body.robot_params.nominal_params   param.hello-motor-lift.gains.enable_sync_mode        1                             
