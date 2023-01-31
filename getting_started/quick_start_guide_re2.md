@@ -94,7 +94,8 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 * Manually moving the head and wrist. They will move but they want to go at their own speed.
 * The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
 
-**NOTE**: The Stretch 2 lift descends faster than the Stretch RE1. For Stretch 2 we recommend always attaching the clip-clamp before powering down the NUC computer
+!!! note
+    The Stretch 2 lift descends faster than the Stretch RE1. For Stretch 2 we recommend always attaching the clip-clamp before powering down the NUC computer
 
 **Things that can hurt the robot**: 
 
@@ -121,6 +122,7 @@ Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/s
 ## Get Plugged In
 
 Let's get plugged in.
+
 * Power up the robot
 * Plug in a mouse, keyboard and HDMI monitor to the robot trunk
 * Plug in the battery charger
@@ -132,10 +134,11 @@ Log in to the robot computer. The default user credentials came in the box with 
 
 Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low-level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
 
-**NOTE**: Stretch is configured to run the Xbox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
+!!! note
+    Stretch is configured to run the Xbox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
 
 ```{.bash .shell-prompt}
-$ pkill -f stretch_xbox*
+pkill -f stretch_xbox*
 ```
 
 While you're at it, disable this autoboot feature. You can always turn it back on later. 
@@ -147,26 +150,24 @@ Search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xb
 Now open up a Terminal. From the command line, first, verify that all of the hardware is present and happy
 
 ```{.bash .shell-prompt}
-$ stretch_robot_system_check.py
+stretch_robot_system_check.py
 ```
 
 You may see a few joints reported in red because they haven't yet been calibrated. If so, home the robot
 
 ```{.bash .shell-prompt}
-$ stretch_robot_home.py
+stretch_robot_home.py
 ```
 
 Once the robot has homed, let's write some quick test code:
 
 ```{.bash .shell-prompt}
-$ ipython
-Python 3.8.10 (default, Jun 22 2022, 20:18:18) 
-...
+ipython
 ```
 
-Now let's move the robot around using the [Stretch Body Robot API](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py). Try typing in these interactive commands at the iPython prompt:
+Now let's move the robot around using the [Stretch Body Robot API](https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_stretch_body_api/). Try typing in these interactive commands in the iPython prompt:
 
-```python
+```{.python .no-copy}
 >>$ ipython
 ...
 import stretch_body.robot
@@ -205,7 +206,7 @@ robot.stop()
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 
 
 ```{.bash .shell-prompt}
-$ sudo passwd hello-robot
+sudo passwd hello-robot
 ```
 
 If you'd like to set up a new user account, check out the [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md). In a lab setting, it's useful for lab members to have their own user accounts to run experiments.

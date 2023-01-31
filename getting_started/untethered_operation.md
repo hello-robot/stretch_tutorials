@@ -16,13 +16,13 @@ This is the recommended approach if you are running Windows or MacOS. This metho
 While Stretch is tethered to the monitor, keyboard, and mouse setup, first verify that the robot is connected to the wireless network then install Vino VNC server using the following command:
 
 ```{.bash .shell-prompt}
-$ sudo apt install vino
+sudo apt install vino
 ```
 
 Go to System Settings. Select the Sharing tab and turn it on then, turn on Screen Sharing and choose a password. If you plan to connect to the robot from a Windows or MacOS machine, then open a terminal and run the following command.
 
 ```{.bash .shell-prompt}
-$ sudo gsettings set org.gnome.Vino require-encryption false
+sudo gsettings set org.gnome.Vino require-encryption false
 ```
 
 Finally, we need the robot's IP address, username, and password. Open a terminal and run `ifconfig`, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. The robot's default username and password are printed on papers that came in the tools box alongside the robot.
@@ -44,7 +44,7 @@ The first step is to identify the robot's IP address on the local network. While
 To SSH into the robot, run the following. It will require the password and may ask you to add the robot to the known hosts.
 
 ```{.bash .shell-prompt}
-$ ssh -X username@ip-address
+ssh -X username@ip-address
 ```
 
 Now that you're SSH-ed into the robot, you can disconnect any wires from the robot. You can accomplish any of the same tasks through the terminal. For example, you can type in `ipython` and interact with the robot using Stretch Body, as explained in the [Quick Start Guide](./quick_start_guide_re2.md#start-coding).
@@ -57,12 +57,12 @@ It's common to need to move files to/from the robot wirelessly and a tool simila
 
 To send the files from your computer to the robot, run:
 ```{.bash .shell-prompt}
-$ scp ./filename username@ip-address:~/path/to/put/it/
+scp ./filename username@ip-address:~/path/to/put/it/
 ```
 
 To copy the files from the robot to your computer, run the reverse:
 ```{.bash .shell-prompt}
-$ scp username@ip-address:/path/to/filename ~/path/to/put/it/
+scp username@ip-address:/path/to/filename ~/path/to/put/it/
 ```
 
 This works for [copying directories](https://stackoverflow.com/a/11304926/4753010) and their contents as well.
@@ -82,15 +82,15 @@ First, identify your robot's and computer's IP address on the network (e.g. usin
 Next, run the following on the robot:
 
 ```{.bash .shell-prompt}
-$ export ROS_IP=robot-ip-address
-$ export ROS_MASTER_URI=http://robot-ip-address:11311/
+export ROS_IP=robot-ip-address
+export ROS_MASTER_URI=http://robot-ip-address:11311/
 ```
 
 Next, start the ROS launch files on the robot as you normally would. Finally, on your computer, run:
 
 ```{.bash .shell-prompt}
-$ export ROS_IP=computer-ip-address
-$ export ROS_MASTER_URI=http://robot-ip-address:11311
+export ROS_IP=computer-ip-address
+export ROS_MASTER_URI=http://robot-ip-address:11311
 ```
 
 If you use ROS Remote Master often, you can export these environment variables in your [bashrc](https://www.maketecheasier.com/what-is-bashrc/).
@@ -128,13 +128,13 @@ The method of SSH described in [SSH & X Server](#ssh-x-server) uses basic passwo
 The first step is to generate public and private keys on your computer. Linux and MacOS machines can simply open the terminal and run:
 
 ```{.bash .shell-prompt}
-$ ssh-keygen -t ed25519 -f <key_filepath_without_extension> -C "<some comment>"
+ssh-keygen -t ed25519 -f <key_filepath_without_extension> -C "<some comment>"
 ```
 
 It will prompt you to enter a password. If you do, you'll need it to use the private key when you SSH into the robot. Next, we give the robot the public key. Linux and MacOS machines can run:
 
 ```{.bash .shell-prompt}
-$ ssh-copy-id -i <key_filepath_without_extension> username@ip-address
+ssh-copy-id -i <key_filepath_without_extension> username@ip-address
 ```
 
 This requires you to know the username and IP address of the robot. Instructions on how to find this information are found in the [SSH & X Server](#ssh-x-server) section. You may now SSH into the robot as normal, and no prompt for the robot's password will appear.

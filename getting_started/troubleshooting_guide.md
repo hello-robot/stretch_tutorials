@@ -31,7 +31,7 @@ If more than one instance of Stretch Body's [Robot](https://github.com/hello-rob
 
 These errors can appear as
 
-```
+```{.bash .no-copy}
 Transport RX Error on RPC_ACK_SEND_BLOCK_MORE False 0 102
 ---- Debug Exception
 --------------- New RPC -------------------------
@@ -41,7 +41,7 @@ Framer sent RPC_START_NEW_RPC
 
 or as
 
-```
+```{.bash .no-copy}
 IOError(None): None
 ...
 ```
@@ -49,7 +49,7 @@ IOError(None): None
 To check if an instance of [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py) is already instantiated, you may use the Unix [top](https://www.unixtutorial.org/commands/top) command to monitor active processes. You may use the Unix [pkill](https://linuxize.com/post/pkill-command-in-linux/) command to end the background instance of Robot.
 
 ```{.bash .shell-prompt}
-$ pkill -9 python
+pkill -9 python
 ```
 
 As shipped, Stretch launches [stretch_xbox_controller_teleop.py](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py) upon boot. It is necessary to turn off this automatic launch feature, otherwise, your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.

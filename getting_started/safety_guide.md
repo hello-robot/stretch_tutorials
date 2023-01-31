@@ -4,7 +4,7 @@
 
 The Stretch robots are potentially dangerous machines with safety hazards. **If improperly used they can cause injury or death.** 
 
-* **All users must carefully read the following safety information prior to using the robot.**
+* **All users must carefully read the following safety information before using the robot.**
 * Anyone near the robot who has not read this safety information must be closely supervised at all times and made aware that the robot could be dangerous.
 * Only use the robot after inspecting the surrounding environment for potential hazards.
 
@@ -16,29 +16,28 @@ The Stretch robots are potentially dangerous machines with safety hazards. **If 
 
 As described later in this document, we have designed Stretch to be safer than previous commercially-available human-scale mobile manipulators, so that researchers can explore the future of mobile manipulation. For example, we have made it smaller and lighter weight with backdrivable torque-sensing joints that can stop when they detect contact.
 
-Nonetheless, Stretch is a research robot that can be dangerous. It is essential that researchers use Stretch carefully to avoid damage, injury, or death. Here, we list a number of safety hazards that researchers must consider prior to use and during use of Stretch. 
+Nonetheless, Stretch is a research robot that can be dangerous. Researchers must use Stretch carefully to avoid damage, injury, or death. Here, we list several safety hazards that researchers must consider before and while using Stretch. 
 
 ### Stretch Can Put People And Animals At Risk
 
-As described in more detail later, Stretch can put people and animals at risk. People and animals near the robot must be closely supervised at all times. At all times, an experienced researcher must carefully monitor the robot and be prepared to stop it. Any people near the robot must be made aware that the robot could be dangerous. Prior to any use of the robot near people or animals, researchers must carefully assess and minimize risks.  
+As described in more detail later, Stretch can put people and animals at risk. People and animals near the robot must be closely supervised at all times. At all times, an experienced researcher must carefully monitor the robot and be prepared to stop it. Any people near the robot must be made aware that the robot could be dangerous. Before any use of the robot near people or animals, researchers must carefully assess and minimize risks.  
 
-**Researchers who use the robot near children, animals, vulnerable adults, or other people do so at their own risk. Researchers must take appropriate precautions and obtain required approvals from their organizations.**
+**Researchers who use the robot near children, animals, vulnerable adults, or other people do so at their own risk. Researchers must take appropriate precautions and obtain the required approvals from their organizations.**
 
 ### Stretch Can Topple Onto A Person
 
-The robot may drive off stairs, push or pull itself over with its telescoping arm, fall over while attempting to traverse a threshold, or encounter obstacles that cause it to fall on or otherwise collide with people, causing injury. 
+The robot may drive off stairs, push or pull itself over with its telescoping arm, fall over while attempting to traverse a threshold or encounter obstacles that cause it to fall on or otherwise collide with people, causing injury. 
 
 **Operate the robot only on flat surfaces away from stairs or other obstacles that may cause it to topple, and do not allow the robot to push or pull itself over.**
 
 ### Stretch Should Not Be Lifted By A Single Person
 
-Stretch with the standard gripper weighs about 23Kg (50.5lb), so two or more people should lift and carry the robot. A single person can move the robot around by enabling the runstop button, tilting it over, and rolling it on flat ground. 
+Stretch with the standard gripper weighs about 23 kg (50.5 lb), so two or more people should lift and carry the robot. A single person can move the robot around by enabling the runstop button, tilting it over, and rolling it on flat ground. 
 
 **At least two people should lift and carry the robot when needed.**
 
 ### Stretch Can Cause Lacerations
-
-The robot wrist and tool have sharp edges that can cause lacerations or punctures to skin or the eyes. 
+The robot's wrist and tool have sharp edges that can cause lacerations or punctures to the skin or the eyes. 
 
 **Operate the robot away from eyes and other sensitive body parts.**
 
@@ -46,7 +45,7 @@ The robot wrist and tool have sharp edges that can cause lacerations or puncture
 
 The robot has moving joints that can trap, crush or pinch hands, fingers, or other body parts. The robot could also injure a person or animal by driving over a body part. 
 
-**Keep body parts away from trap, crush, and pinch points during robot motion, including underneath the wheels.**
+**Keep body parts away from the trap, crush, and pinch points during robot motion, including underneath the wheels.**
 
 ### Stretch Can Entrap Loose Clothing Or Hair
 
@@ -76,7 +75,7 @@ Stretch is a versatile robot capable of performing many actions, including actio
 
 Stretch is an open platform with user-modifiable and user-extensible hardware and software. User changes to the hardware or software can entail serious risks. For example, when shipped, the robot has conservative settings that restrict its speed and the forces it applies to reduce the risks associated with the robot. By modifying the robot, users could enable the robot to move at unsafe speeds and apply unsafe forces. As another example, improper electrical connections could result in a fire. 
 
-**Researchers who choose to modify or extend the robot’s hardware or software do so at their own risk, and should be careful to understand the implications of their modifications or extensions. Changes to the robot could result in dangerous situations that cause injury or death.**
+**Researchers who choose to modify or extend the robot’s hardware or software do so at their own risk and should be careful to understand the implications of their modifications or extensions. Changes to the robot could result in dangerous situations that cause injury or death.**
 
 ## Additional Risks
 
@@ -107,28 +106,23 @@ Stretch is a complex device that includes many mechanical, electrical, and compu
 
 We have considered safety from the outset in the design of Stretch. 
 
-* **Runstop**: The illuminated runstop button on Stretch’s head can be used to pause operation of the four primary joints (base, lift, and arm) of the robot when it is in motion. 
-* **Lightweight design:** The overall mass of Stretch with the standard gripper is 23Kg (50.5lb), and the majority of the mass is in the base. The carbon fiber arm and aluminum mast make for a remarkably lightweight upper body. While this reduces the risk of crushing, crushing injury can still occur and should be carefully monitored.
+* **Runstop**: The illuminated runstop button on Stretch’s head can be used to pause the operation of the four primary joints (base, lift, and arm) of the robot when it is in motion. 
+* **Lightweight design:** The overall mass of Stretch with the standard gripper is 23Kg (50.5lb), and the majority of the mass is in the base. The carbon fiber arm and aluminum mast make for a remarkably lightweight upper body. While this reduces the risk of crushing, crushing injuries can still occur and should be carefully monitored.
 * **Gravity friendly**: Due to Stretch’s design, its actuators don't have to counteract gravity on a large lever arm. As a result, the motors and gearboxes are lower torque and lower weight than a conventional mobile manipulator with a comparable reach, avoiding the often dangerously strong shoulder joints of typical robot arms.
-* **Low gear ratio**: The primary joints of Stretch (base, lift, and arm) have low gear-ratios (approx 5:1), allowing for backdriving of joints when powered off. A low gear-ratio also reduces the effective inertia of each joint, limiting the impacted force during undesired contacts with people and the environment.
+* **Low gear ratio**: The primary joints of Stretch (base, lift, and arm) have low gear-ratios (approx 5:1), allowing for backdriving of joints when powered off. A low gear-ratio also reduces the effective inertia of each joint, limiting the impacted force during undesired contact with people and the environment.
 * **Contact Sensitivity**: The four primary joints of Stretch (base, lift, and arm) have contact sensitivity. We measure motor currents to estimate contact forces. Because Stretch is a low gear-ratio robot, current sensing provides a fairly sensitive measure of contact forces.
 * **Firmware limits**: Motor torques are limited at the lowest level of the firmware to configured bounds.
 * **Velocity limits**: Fast motions of the base are restricted when the arm is up high and the tool is outside the base footprint. This limits the likelihood of toppling or snagging the tool during base motion.
-* **Tilt detection**: The robot can detect when its body is tilted beyond a safe threshold. The robot can be configured to  trigger a runstop event during an over-tilt event.
+* **Tilt detection**: The robot can detect when its body is tilted beyond a safe threshold. The robot can be configured to trigger a runstop event during an over-tilt event.
 
 ## Safety Markings
 
 Stretch has the following safety markings:
-
-Top of shoulder, indicating potential pinch point between rollers and mast.
+Top of the shoulder, indicating potential pinch point between rollers and mast.
 
 ![](./images/hand_crush_rs.png)
 
-
-
-
-
-Top of base, indicating potential pinch point between arm and base.
+Top of the base, indicating potential pinch point between arm and base.
 
 ![](./images/hand_crush2_rs.png)
 
@@ -138,7 +132,8 @@ Top of base, indicating potential pinch point between arm and base.
 
 The runstop allows the user to pause the motion of the four primary actuators (base, lift, and arm) by tapping the illuminated button on the head. An experienced operator should always keep the runstop within reach, allowing them to stop the motion of the robot if it is deemed unsafe.
 
-**NOTE: The runstop is not equivalent to an Emergency Stop found on industrial equipment and no safety guarantees are made by its function**.
+!!! warning
+    The runstop is not equivalent to an Emergency Stop found on industrial equipment and no safety guarantees are made by its function.
 
 When the runstop is enabled, these actuators are in a ‘Safety Mode’ that inhibits the motion controller at the firmware level. Disabling the runstop allows normal operation to resume.
 
@@ -176,13 +171,14 @@ The Stretch robot is a piece of laboratory equipment. As such, its structure has
 
 ### Toppling
 
-Stretch is a relatively lightweight robot. In some kinematic configurations a high center of gravity can make it prone to toppling. Toppling can occur when:
+Stretch is a relatively lightweight robot. In some kinematic configurations, a high center of gravity can make it prone to toppling. Toppling can occur when:
 
-*  The mobile base is moving at moderate or fast speed and hits a bump, threshold, or other change in floor property.
-*  The arm is raised up high and pushes or pulls on the environment with sufficient force.
-*  The robot drives over a drop-off such as a stair or curb.
+*  The mobile base is moving at a moderate or fast speed and hits a bump, threshold, or other change in floor property.
+*  The arm is raised high and pushes or pulls on the environment with sufficient force.
+*  The robot drives over a drop-off such as a stair or a curb.
 
-**NOTE: While Stretch has cliff sensors, they do not currently inhibit motion of the base. During typical use, the robot will not attempt to stop itself at a cliff, and can fall down stairs and hurt itself or a person.**
+!!! warning
+    While Stretch has cliff sensors, they do not currently inhibit motion of the base. During typical use, the robot will not attempt to stop itself at a cliff, and can fall down stairs and hurt itself or a person.
 
 ### Pinch Points
 

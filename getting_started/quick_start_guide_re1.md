@@ -72,7 +72,8 @@ Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let 
 
 ![](./images/xbox.png)
 
-**Note**: You will find the USB Dongle already plugged into the USB port of the base trunk.
+!!! note
+    You will find the USB Dongle already plugged into the USB port of the base trunk.
 
 To start the demo after unboxing:
 
@@ -80,7 +81,9 @@ To start the demo after unboxing:
 * Wait for about 45 seconds. You will hear the Ubuntu startup sound, followed by two beeps (indicating the demo is running). 
 * Hit the Connect button on the controller. The upper two LEDs of the ring will illuminate.
 * Hit the Home Robot button. Stretch will go through its homing calibration routine. 
-  * **Note**: make sure the space around the robot is clear before running the Home function
+
+!!! warning
+    Make sure the space around the robot is clear before running the Home function
 
 You're ready to go! A few things to try:
 
@@ -111,10 +114,11 @@ Log in to the robot computer. The default user credentials came in the box with 
 
 Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low-level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
 
-**NOTE**: Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
+!!! note
+    Stretch is configured to run the Xbox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
 
 ```{.bash .shell-prompt}
-$ pkill -f stretch_xbox*
+pkill -f stretch_xbox*
 ```
 
 While you're at it, disable this autoboot feature. You can always turn it back on later. 
@@ -126,26 +130,24 @@ Search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xb
 Now open up a Terminal. From the command line, first, verify that that all of the hardware is present and happy
 
 ```{.bash .shell-prompt}
-$ stretch_robot_system_check.py
+stretch_robot_system_check.py
 ```
 
 You may see a few joints reported in red because they haven't yet been calibrated. If so, home the robot
 
 ```{.bash .shell-prompt}
-$ stretch_robot_home.py
+stretch_robot_home.py
 ```
 
 Once the robot has homed, let's write some quick test code:
 
 ```{.bash .shell-prompt}
-$ ipython
-Python 2.7.17 (default, Apr 15 2020, 17:20:14)
-...
+ipython
 ```
 
 Now let's move the robot around using the Robot API. Try typing in these interactive commands at the iPython prompt:
 
-```python
+```{.python .no-copy}
 import stretch_body.robot
 robot=stretch_body.robot.Robot()
 robot.startup()
@@ -182,7 +184,7 @@ robot.stop()
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 
 
 ```{.bash .shell-prompt}
-$ sudo passwd hello-robot
+sudo passwd hello-robot
 ```
 
 If you'd like to set up a new user account, check out the [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md). In a lab setting, it's useful for lab members to have their own user accounts to run experiments.
