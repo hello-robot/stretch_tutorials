@@ -11,14 +11,18 @@ Stretch Body includes a system to prevent inadvertent self-collisions.  It will 
 
 This system is turned off by default starting with Stretch 2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:
 
-```bash
->>$ stretch_params.py | grep use_collision_manager
+```{.bash .shell-prompt}
+stretch_params.py | grep use_collision_manager
+```
+
+Output:
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params       param.robot.use_collision_manager         1
 ```
 
 If it is turned off you can enable it by adding the following to your stretch_user_yaml.py:
 
-```bash
+```{.bash .no-copy}
 robot:
   use_collision_manager: 1
 ```
@@ -37,8 +41,12 @@ Fortunately, the simple kinematics of Stretch make self-collisions fairly uncomm
 
 The collision avoidance system works by dynamically modifying the acceptable range of motion for each joint. By default, a joint's range is set to the physical hard stop limits. For example, the lift has a mechanical throw of 1.1m:
 
-```bash
->>$stretch_params.py | grep range | grep lift
+```{.bash .shell-prompt}
+stretch_params.py | grep range | grep lift
+```
+
+Output:
+```{.bash .no-copy}
 stretch_body.robot_params.factory_params       param.lift.range_m      [0.0, 1.1]                
 ```
 
@@ -78,11 +86,14 @@ The [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/bod
 
 We can see which collision models will execute when `use_collision_manager` is set to 1:
 
-```bash
->>$ stretch_params.py | grep collision | grep enabled
+```{.bash .shell-prompt}
+stretch_params.py | grep collision | grep enabled
+```
+
+Output:
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params    param.collision_arm_camera.enabled           1                             
 stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enabled      1  
-
 ```
 
 We see two models. One that protects the camera from the arm, and one that protects the base from the gripper. Each model is registered with the [RobotCollision](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py) instance as a loadable plug-in. The [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py) class calls the `RobotCollision.step` method periodically at approximately 10hz. 
@@ -218,8 +229,8 @@ In this example, we include the `safety_margin` as a way to introduce some hyste
 
 The following command should be run to add the working directory to the PYTHONPATH env. This can also be added to our `.bashrc` to permanently edit the path:
 
-```bash
->>$ export PYTHONPATH=$PYTHONPATH:/<path_to_modules>
+```{.bash .shell-prompt}
+export PYTHONPATH=$PYTHONPATH:/<path_to_modules>
 ```
 
 Next, we configure RobotCollision to use our CollisionArmTable model in `stretch_re1_user_yaml`:
@@ -238,8 +249,8 @@ collision_arm_table:
 
 Finally, test out the model by driving the arm and lift around using the Xbox teleoperation tool:
 
-```bash
->>$ stretch_xbox_controller_teleop.py
+```{.bash .shell-prompt}
+stretch_xbox_controller_teleop.py
 ```
 
 ------

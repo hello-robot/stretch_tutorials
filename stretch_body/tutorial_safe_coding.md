@@ -17,8 +17,10 @@ robot:
 
 The Runstop deactivates all robot motion. It can be triggered by the physical button on the robot's head. It can also be triggered by internal monitors of the system state. The default configuration of these parameters is:
 
-```bash
->>$ stretch_params.py | grep stop_at
+```{.bash .shell-prompt}
+stretch_params.py | grep stop_at
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_cliff       0                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_high_current   0                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_low_voltage  1                             
@@ -45,8 +47,10 @@ The [Robot Monitor](https://github.com/hello-robot/stretch_body/blob/master/pyth
 
 The default parameters associated with RobotMonitor are:
 
-```bash
->>$ stretch_params.py | grep monitor
+```{.bash .shell-prompt}
+stretch_params.py | grep monitor
+```
+```{.bash .no-copy}
 ...             
 stretch_body.robot_params.nominal_params   param.robot.use_monitor            1               
 stretch_body.robot_params.nominal_params  param.robot_monitor.monitor_base_bump_event    1                        
@@ -81,9 +85,10 @@ robot:
 
 Then run the tool and hit the Runstop button, and then hold it down for 2 seconds:
 
-```bash
->>$ stretch_robot_monitor.py
-stretch_robot_monitor.py 
+```{.bash .shell-prompt}
+stretch_robot_monitor.py
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 

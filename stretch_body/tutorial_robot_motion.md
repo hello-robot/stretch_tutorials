@@ -66,11 +66,12 @@ All joints support [trapezoidal motion profile](https://www.motioncontroltips.co
 
 We provide 'defaults' for the velocity and acceleration settings, as well as 'fast', and 'slow' settings. These values have been tuned to be appropriate for the safe movement of the robot. These values can be queried using the `stretch_params.py` tool:
 
-```bash
->>$stretch_params.py | grep arm | grep motion | grep default
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep motion | grep default
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params      param.arm.motion.fast.accel_m     0.14                           
-stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       0.14 
-
+stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       0.14
 ```
 
 We see that the arm motion in 'default' mode will move with a velocity of 0.14 m/s and an acceleration of 0.14 m/s^2. 
@@ -91,8 +92,10 @@ The motion will use the 'default' motion profile settings if no values are speci
 
 All joints obey motion limits which are specified in the robot parameters. 
 
-```bash
->>$ stretch_params.py | grep arm | grep range_m
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep range_m
+```
+```{.bash .no-copy}
 stretch_user_params.yaml          param.arm.range_m     [0.0, 0.515] 
 ```
 

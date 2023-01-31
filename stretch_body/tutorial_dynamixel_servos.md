@@ -6,8 +6,12 @@ In this tutorial, we will go into the details with Dynamixel servos and Stretch.
 
 Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:
 
-```bash
->>$ ls  /dev/hello-dynamixel-*
+```{.bash .shell-prompt}
+ls  /dev/hello-dynamixel-*
+```
+
+Output:
+```{.bash .no-copy}
 /dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
 ```
 
@@ -22,8 +26,12 @@ Typically, users will interact with these devices through either the [Head](http
 
 You can directly command each servo using the command line tool `REx_dynamixel_servo_jog.py`. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:
 
-```bash
-$ REx_dynamixel_jog.py /dev/hello-dynamixel-head 11
+```{.bash .shell-prompt}
+REx_dynamixel_jog.py /dev/hello-dynamixel-head 11
+```
+
+Output:
+```{.bash .no-copy}
 [Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
 ------ MENU -------
 m: menu
@@ -51,8 +59,12 @@ e: enable torque
 
 Under high-load conditions, the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the `stretch_robot_dynamixel_reboot.py` tool: 
 
-```bash
-$ stretch_robot_dynamixel_reboot.py
+```{.bash .shell-prompt}
+stretch_robot_dynamixel_reboot.py
+```
+
+Output:
+```{.bash .no-copy}
 For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 
 ---- Rebooting Head ---- 
@@ -67,8 +79,12 @@ For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 
 If it is unclear which servos are on the bus, and at what baud rate, you can use the `REx_dynamixel_id_scan.py` tool. Here we see that the two head servos are at ID `11` and `12` at baud `57600`.
 
-```bash
-$ REx_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
+```{.bash .shell-prompt}
+REx_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
+```
+
+Output:
+```{.bash .no-copy}
 Scanning bus /dev/hello-dynamixel-head at baud rate 57600
 ----------------------------------------------------------
 [Dynamixel ID:000] ping Failed.
@@ -102,8 +118,12 @@ Scanning bus /dev/hello-dynamixel-head at baud rate 57600
 
 Stretch ships with its Dynamixel servos configured to `baudrate=115200`.  When adding your servos to the end-of-arm tool, you may want to set the servo baud using the `REx_dynamixel_set_baud.py` tool. For example:
 
-```bash
-$ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+```{.bash .shell-prompt}
+REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+```
+
+Output:
+```{.bash .no-copy}
 ---------------------
 Checking servo current baud for 57600
 ----
@@ -118,8 +138,12 @@ Success at changing baud
 
 Dynamixel servos come with `ID=1` from the factory. When adding your servos to the end-of-arm tool, you may want to set the servo ID using the `REx_dynamixel_id_change.py` tool. For example:
 
-```bash
-$ REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
+```{.bash .shell-prompt}
+REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
+```
+
+Output:
+```{.bash .no-copy}
 [Dynamixel ID:001] ping Succeeded. Dynamixel model number : 1080
 Ready to change ID 1 to 13. Hit enter to continue:
 
@@ -150,13 +174,17 @@ The [EndOfArm](https://github.com/hello-robot/stretch_body/blob/master/body/stre
 
 DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython, let's look at the status message for DynamixelHelloXL430
 
-```bash
+```python
 import stretch_body.dynamixel_hello_XL430 
 
 m = stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430('head_pan')
 m.startup()
 
 m.pretty_print()
+```
+
+Output:
+```{.python .no-copy}
 ----- HelloXL430 ------ 
 Name head_pan
 Position (rad) -0.0
@@ -181,14 +209,16 @@ Range (rad) [ 1.9174759848570513  ,  -3.953068490381297 ]
 Stalled True
 Stall Overload False
 Is Calibrated 0
-
 ```
 
 We see that it reports the position in both radians (with respect to the joint frame) and ticks (with respect to the servo encoder). DynamixelHelloXL430 handles the calibration between the two using its method `ticks_to_world_rad` through the following params:
 
-```bash
->>$ stretch_params.py | grep head_pan | grep '_t '
-...              
+```{.bash .shell-prompt}
+stretch_params.py | grep head_pan | grep '_t '
+```
+
+Output:
+```{.bash .no-copy} 
 stretch_configuration_params.yaml         param.head_pan.range_t           [0, 3827]                     
 stretch_configuration_params.yaml         param.head_pan.zero_t            1250 
 ```

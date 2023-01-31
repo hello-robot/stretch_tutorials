@@ -11,6 +11,9 @@ import stretch_body.arm
 a=stretch_body.arm.Arm()
 
 a.params
+```
+
+```{.python .no-copy}
 Out[7]: 
 {'chain_pitch': 0.0167,
  'chain_sprocket_teeth': 10,
@@ -35,7 +38,9 @@ or to access another device params:
 
 ```python
 a.robot_params['lift']
+```
 
+```{.python .no-copy}
 Out[9]: 
 {'calibration_range_bounds': [1.094, 1.106],
  'contact_model': 'effort_pct',
@@ -71,9 +76,11 @@ Stretch Body utilizes a prioritized parameter organization such that default set
 
 The tool `stretch_params.py` will print out all of the robot parameters as well as their origin. For example:
 
-```bash
->>$stretch_params.py 
-############################################################ Parameters for stretch-re2-2002 
+```{.bash .shell-prompt}
+stretch_params.py 
+```
+```{.bash .no-copy}
+############################################################ Parameters for stretch-re2-xxxx 
 Origin          Parameter                                                              Value                         
 --------------------------------------------------------------------------------------------------------------------------------- ...         
 stretch_body.robot_params.nominal_params         param.arm.chain_pitch          0.0167                        
@@ -85,8 +92,10 @@ stretch_configuration_params.yaml       param.arm.contact_models.effort_pct.cont
 
 A quick way to query parameters is with the `stretch_params.py` tool. For example, to look at parameters relating to the arm motion:
 
-```bash
->>$ stretch_params.py | grep arm | grep motion
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep motion
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params	param.arm.motion.default.accel_m	0.14                          
 stretch_body.robot_params.nominal_params	param.arm.motion.default.vel_m		0.14                          
 stretch_body.robot_params.nominal_params	param.arm.motion.fast.accel_m		0.3                           
@@ -112,8 +121,10 @@ arm:
 
 Run the tool again and we see:
 
-```bash
->>$ stretch_params.py | grep arm | grep motion | grep default
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep motion | grep default
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params	param.arm.motion.default.accel_m	0.1                          
 stretch_body.robot_params.nominal_params	param.arm.motion.default.vel_m		0.1  
 ```

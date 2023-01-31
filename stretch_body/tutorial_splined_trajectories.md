@@ -16,8 +16,10 @@ Splined trajectories are particularly useful when you want to coordinate motion 
 
 Stretch Body includes [a graphical tool for exploring splined trajectory control](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py) on the robot:
 
-```bash
+```{.bash .shell-prompt}
 stretch_trajectory_jog.py -h
+```
+```{.bash .no-copy}
 usage: stretch_trajectory_jog.py [-h] [--text] [--preloaded_traj {1,2,3}] (--head_pan | --head_tilt | --wrist_yaw | --gripper | --arm | --lift | --base_translate | --base_rotate | --full_body)
 
 Test out splined trajectories on the various joint from a GUI or text menu.
@@ -36,7 +38,6 @@ optional arguments:
   --base_translate      Test translational trajectories on diff-drive base
   --base_rotate         Test rotational trajectories on diff-drive base
   --full_body           Test trajectories on all joints at once
-
 ```
 
 The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:
@@ -48,8 +49,8 @@ The tool GUI allows you to interactively construct a splined trajectory and then
 
 Finally, you can explore a full-body trajectory using the non-GUI version of the tool:
 
-```bash
->>$ stretch_trajectory_jog.py --full_body
+```{.bash .shell-prompt}
+stretch_trajectory_jog.py --full_body
 ```
 
 ## Programming Trajectories
@@ -100,14 +101,20 @@ For example, the arm trajectory below has a large excursion outside of the joint
 
 ![](./images/bad_trajectory.png)
 
-Often the trajectory waypoints will be generated from a motion planner. It is important for the planner to incorporate the position, velocity, and acceleration constraints of the joint. These can be found by, for example:
+Often the trajectory waypoints will be generated from a motion planner. The planner needs to incorporate the position, velocity, and acceleration constraints of the joint. These can be found by, for example:
 
-```bash
->>$ stretch_params.py | grep arm | grep motion | grep trajectory
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep motion | grep trajectory
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params  param.arm.motion.trajectory_max.vel_m    0.4             
-stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   0.4 
+stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   0.4
+```
 
->>$ stretch_params.py | grep arm | grep range_m
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep range_m
+```
+```{.bash .no-copy}
 stretch_user_params.yaml       param.arm.range_m      [0.0, 0.515] 
 ```
 

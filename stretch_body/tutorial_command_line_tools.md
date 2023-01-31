@@ -6,8 +6,8 @@ These tools are useful when developing and debugging applications. They also ser
 
 These tools can be found by tab completion of 'stretch_' from a terminal.
 
-```console
-$ stretch_
+```{.bash .shell-prompt}
+stretch_
 
 stretch_about.py
 stretch_about_text.py
@@ -47,8 +47,12 @@ stretch_xbox_controller_teleop.py
 
 All tools accept the '--help' flag as a command line argument to describe its function. For example:
 
-```console
->>$ stretch_pimu_scope.py --help
+```{.bash .shell-prompt}
+stretch_pimu_scope.py --help
+```
+
+Output:
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 

@@ -8,8 +8,10 @@ Stretch Body exposes a host of sensor data through the status dictionaries of it
 
 There are two useful tools for scoping Pimu and Wacc sensor data in real-time:
 
-```bash
->>$ stretch_pimu_scope.py --help
+```{.bash .shell-prompt}
+stretch_pimu_scope.py --help
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 
@@ -41,8 +43,10 @@ optional arguments:
 
 and,
 
-```bash
->>$ stretch_wacc_scope.py --help
+```{.bash .shell-prompt}
+stretch_wacc_scope.py --help
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 
@@ -64,8 +68,10 @@ optional arguments:
 
 Each motor also has associated sensor data available in its status dictionaries. The corresponding 'jog' tool for each joint will pretty-print the sensor data for that motor to the console. For example:
 
-```bash
->>$ stretch_arm_jog.py 
+```{.bash .shell-prompt}
+stretch_arm_jog.py 
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 ...
@@ -133,8 +139,7 @@ r=stretch_body.robot.Robot()
 r.startup()
 for i in range(10):
     print('Arm position (m)%f'%r.arm.status['pos'])
-    time.sleep(0.1)
-    
+    time.sleep(0.1) 
 ```
 
 ## Base IMU
@@ -187,7 +192,6 @@ QZ 0.023505505174398422
 Roll (deg) 2.095733642578125
 Pitch (deg) -1.6964653730392456
 Heading (deg) 73.26100921630858
-
 ```
 
 It reports:
@@ -202,8 +206,10 @@ These values are computed on the Pimu. As we can see in [its firmware code](http
 
 Stretch Body also implements a bump detector using the IMU accelerometers. This detector simply [computes the sum of squares of AX, AY, and AZ](https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp#L223). This value is then compared to the following threshold to determine if a bump is detected:
 
-```bash
->>$ stretch_params.py | grep pimu | grep bump
+```{.bash .shell-prompt}
+stretch_params.py | grep pimu | grep bump
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params   param.pimu.config.bump_thresh       20.0 
 ```
 
@@ -281,9 +287,10 @@ In addition to AX, AY, and AZ we also see the `single_tap_count` value which rep
 
 The following Wacc parameters configure the accelerometer low-pass filter and single-tap settings. See the [ADXL343](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf) datasheet for more details.
 
-```bash
->>$ stretch_params.py | grep wacc
-...
+```{.bash .shell-prompt}
+stretch_params.py | grep wacc
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params      param.wacc.config.accel_LPF         10.0                          
 stretch_body.robot_params.nominal_params      param.wacc.config.accel_range_g        4                             
 stretch_body.robot_params.nominal_params      param.wacc.config.accel_single_tap_dur       70                            
@@ -297,8 +304,10 @@ Stretch has four Sharp GP2Y0A51SK0F IR cliff sensors pointed toward the floor. T
 
 Relevant parameters for the cliff sensors are:
 
-```bash
->>$ stretch_params.py | grep cliff
+```{.bash .shell-prompt}
+stretch_params.py | grep cliff
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params  param.pimu.config.cliff_LPF           10.0                          
 stretch_body.robot_params.nominal_params  param.pimu.config.cliff_thresh        -50                           
 stretch_body.robot_params.nominal_params  param.pimu.config.stop_at_cliff        0                           
@@ -308,8 +317,10 @@ stretch_body.robot_params.nominal_params  param.robot_monitor.monitor_base_cliff
 
 The sensors are calibrated such that a zero value (as defined by `cliff_zero`) indicates the sensor is at the correct height from the floor surface. A negative value indicates a drop off such as a stair ledge while a positive value indicates an obstacle like a threshold or high pile carpet.  You may want to recalibrate this zero based on the surface the robot is on (eg, carpet, tile, etc). To do this:
 
-```bash
->>$REx_cliff_sensor_calibrate.py 
+```{.bash .shell-prompt}
+REx_cliff_sensor_calibrate.py 
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 

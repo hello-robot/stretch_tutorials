@@ -28,9 +28,8 @@ Stretch also includes 3rd party hardware devices that are not accessible through
 
 The primary developer interface to  Stretch_Body is the [Robot class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py).  Let's write some code to explore the interface. Launch an interactive Python terminal:
 
-```bash
->>$ ipython
-In [1]: 
+```{.bash .shell-prompt}
+ipython
 ```
 
 Then type in the following:

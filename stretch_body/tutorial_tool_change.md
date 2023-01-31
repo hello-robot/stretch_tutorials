@@ -14,14 +14,19 @@ Stretch Body supports two tool interfaces by default: The [ToolNone & ToolStretc
 
 Stretch is configured to load the ToolStretchGripper interface by default. This tool is loaded according to the `robot.tool` parameter:
 
-```bash
->>$ stretch_params.py | grep robot.tool
+```{.bash .shell-prompt}
+stretch_params.py | grep robot.tool
+```
+```{.bash .no-copy}
 stretch_body.robot_params.nominal_params     param.robot.tool               tool_stretch_gripper
 ```
 
 We can interact with this tool from iPython
+```{.bash .shell-prompt}
+ipython
+```
 
-```python
+```{.python .no-copy}
 In [1]: import stretch_body.robot as robot
 
 In [2]: r=robot.Robot()
@@ -77,8 +82,8 @@ The [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share/) is 
 
 To use Stretch Tool Share tools, first update your installation:
 
-```console
-$ pip install -U hello-robot-stretch-tool-share
+```{.bash .shell-prompt}
+pip install -U hello-robot-stretch-tool-share
 ```
 
 As an example, we see on the Tool Share that there is a tool, the [ToolDryEraseToolHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py) which [extends the EndOfArm](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py) class. To load this tool interface, modify your `stretch_user_params.yaml` to load the tool as before. We will also need to tell it where to find the tool's [parameter file](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py):
@@ -116,24 +121,24 @@ Next, we'll see how to change the ROS interface for a tool. Here we will continu
 
 Next, ensure ROS is up to date:
 
-```console
-$ cd ~/catkin_ws/src/stretch_ros/
-$ git pull
+```{.bash .shell-prompt}
+cd ~/catkin_ws/src/stretch_ros/
+git pull
 ```
 
 To access the URDF data for the [ToolDryEraseHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py#L3) we'll need to clone the Tool Share repository:
 
-```console
-$ cd ~/repos
-$ git clone https://github.com/hello-robot/stretch_tool_share
+```{.bash .shell-prompt}
+cd ~/repos
+git clone https://github.com/hello-robot/stretch_tool_share
 ```
 
 Copy the tool's URDF data into the Stretch ROS repository:
 
-```console
-$ cd ~/repos/stretch_tool_share/tool_share/dry_erase_holder_v1
-$ cp stretch_description/urdf/*.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
-$ cp stretch_description/meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
+```{.bash .shell-prompt}
+cd ~/repos/stretch_tool_share/tool_share/dry_erase_holder_v1
+cp stretch_description/urdf/*.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
+cp stretch_description/meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
 ```
 
 Now we will update the tool Xacro for Stretch. Open the file `~/catkin_ws/src/stretch_ros/stretch_description/urdf/stretch_description.xacro` in an editor. Comment out the current tool Xacro and include the Xacro for the dry-erase holder.
@@ -155,16 +160,16 @@ Now we will update the tool Xacro for Stretch. Open the file `~/catkin_ws/src/st
 
 Finally, we'll update the calibrated URDF to use this new tool:
 
-```console
-$ cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
-$ cp stretch.urdf stretch.urdf.bak
-$ rosrun stretch_calibration update_urdf_after_xacro_change.sh
+```{.bash .shell-prompt}
+cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
+cp stretch.urdf stretch.urdf.bak
+rosrun stretch_calibration update_urdf_after_xacro_change.sh
 ```
 
 Press Ctrl-C when the `rosrun` command terminates and you're ready to visualize the tool in RViz:
 
-```console
-$ roslaunch stretch_calibration simple_test_head_calibration.launch
+```{.bash .shell-prompt}
+roslaunch stretch_calibration simple_test_head_calibration.launch
 ```
 
 ![](./images/dry_erase_rviz.png)

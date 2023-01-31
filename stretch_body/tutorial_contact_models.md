@@ -59,8 +59,10 @@ In this method, you can optionally specify a contact threshold in the positive a
 !!! warning
     The parameters `contact_thresh_pos_N` and `contact_thresh_neg_N` are deprecated and no longer supported.
 
-```bash
->>$ stretch_params.py | grep arm | grep contact
+```{.bash .shell-prompt}
+stretch_params.py | grep arm | grep contact
+```
+```{.bash .no-copy}
 ...                                              
 stretch_configuration_params.yaml            param.arm.contact_models.effort_pct.contact_thresh_default    [-45.0, 45.0]    
 ...
@@ -140,8 +142,10 @@ The Stretch Factory package provides a tool to allow advanced users to recalibra
 
 The tool sweeps the joint through its range of motion for `n-cycle` iterations. It computes the maximum contact forces in both directions, adds padding, `contact_thresh_calibration_margin`, to this value, and stores it to the robot's configuration YAML.
 
-```bash
->>$ REx_calibrate_guarded_contact.py -h
+```{.bash .shell-prompt}
+REx_calibrate_guarded_contact.py -h
+```
+```{.bash .no-copy}
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 
