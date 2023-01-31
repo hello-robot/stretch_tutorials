@@ -16,14 +16,9 @@ A few items you'll want to know about before getting started.
 
 ### Power
 
-The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch
+The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop before hitting the Off switch
 
 ![](./images/trunk_rs.png)
-
-
-​    
-
-
 
 The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:
 
@@ -40,9 +35,9 @@ Please review the [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/s
 
 ### Runstop
 
-The illuminated button on the head is its Runstop. Just tap it, you'll hear a beep and it will start flashing. This will pause motion of the primary robot joints during operation. This can be useful if the robot makes an unsafe motion, or if you just want to free up the robot motors while you roll it around.
+The illuminated button on the head is its Runstop. Just tap it, you'll hear a beep and it will start flashing. This will pause the motion of the primary robot joints during operation. This can be useful if the robot makes an unsafe motion, or if you just want to free up the robot motors while you roll it around.
 
-To allow motion once again, hold the button down for two seconds. After the beep, motion can resume.
+To allow motion once again, hold the button down for two seconds. After the beep, the motion can resume.
 
 ![](./images/runstop_rs.png)
 
@@ -68,16 +63,16 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 
 * Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.
 * Getting the gripper stuck on something and then driving the arm, lift, or base. 
-* Laying the robot down with it weight on its camera.
+* Laying the robot down with its weight on its camera.
 * Trying to ride on the robot, getting it wet, etc. (eg, common sense)
 
 ## Hello World Demo
 
-Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot capabilities by teleoperating it with an Xbox Controller. 
+Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot's capabilities by teleoperating it with an Xbox Controller. 
 
 ![](./images/xbox.png)
 
-**Note**: You will find the USB Dongle already plugged into the the USB port of the base trunk.
+**Note**: You will find the USB Dongle already plugged into the USB port of the base trunk.
 
 To start the demo after unboxing:
 
@@ -87,28 +82,25 @@ To start the demo after unboxing:
 * Hit the Home Robot button. Stretch will go through its homing calibration routine. 
   * **Note**: make sure the space around the robot is clear before running the Home function
 
-
- You're ready to go! A few things to try:
+You're ready to go! A few things to try:
 
 * Hit the Stow Robot button. The robot will assume the stow pose.
 * Practice driving the robot around. 
 * Pull the Fast Base trigger while driving. When stowed, it will make Stretch drive faster
 * Manually stop the arm or lift from moving to make it stop upon contact.
 * Try picking up your cellphone from the floor 
-* Try grasping cup from a counter top
+* Try grasping a cup from a countertop
 * Try delivering an object to a person
 
 If you're done, hold down the Shutdown PC button for 2 seconds. This will cause the PC to turn off. You can then power down the robot. Or proceed to the next step...
 
 Now that you're familiar with the robot, take a minute to watch the [Stretch Powered Best Practices Video](https://youtu.be/iEaapHNfEWA).
 
-
-
 ## Get Plugged In
 
 Let's get plugged in.
 
-* Remove the 'trunk' cover and power on the robot if its not already on.
+* Remove the 'trunk' cover and power on the robot if it's not already on.
 * Plug in a mouse, keyboard and HDMI monitor to the robot trunk
 * Plug in the battery charger
 * Place the charger in SUPPLY mode
@@ -117,11 +109,11 @@ Log in to the robot computer. The default user credentials came in the box with 
 
 ## Start Coding
 
-Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
+Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low-level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
 
-**NOTE**: Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need kill off this process so that it doesn't contend with your code.
+**NOTE**: Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
 
-```console
+```{.bash .shell-prompt}
 $ pkill -f stretch_xbox*
 ```
 
@@ -129,27 +121,23 @@ While you're at it, disable this autoboot feature. You can always turn it back o
 
 Search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop' 
 
-
-
 ![](./images/xbox_off_rs.png)
 
+Now open up a Terminal. From the command line, first, verify that that all of the hardware is present and happy
 
-
-Now open up a Terminal. From the command line, first verify that that all of the hardware is present and happy
-
-```console
+```{.bash .shell-prompt}
 $ stretch_robot_system_check.py
 ```
 
 You may see a few joints reported in red because they haven't yet been calibrated. If so, home the robot
 
-```console
+```{.bash .shell-prompt}
 $ stretch_robot_home.py
 ```
 
 Once the robot has homed, let's write some quick test code:
 
-```console
+```{.bash .shell-prompt}
 $ ipython
 Python 2.7.17 (default, Apr 15 2020, 17:20:14)
 ...
@@ -189,21 +177,19 @@ robot.stow()
 robot.stop()
 ```
 
-
-
 ## Change Credentials
 
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 
 
-```console
+```{.bash .shell-prompt}
 $ sudo passwd hello-robot
 ```
 
-If you'd like to setup a new user account, check out the [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md). In a lab setting, it's useful for lab members to have their own user accounts to run experiments.
+If you'd like to set up a new user account, check out the [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md). In a lab setting, it's useful for lab members to have their own user accounts to run experiments.
 
 ## Power Down
 
-The recommended power down procedure is
+The recommended power-down procedure is
 
 1. Place a clamp on the mast below the shoulder to prevent dropping
 2. Shutdown the computer from the Desktop
@@ -213,15 +199,15 @@ The recommended power down procedure is
 
 ## Join the Community Forum
 
-Join the [Hello Robot Community](https://forum.hello-robot.com). We'd welcome hearing your feedback as you get to know your robot. 
+Join the [Hello Robot Community](https://forum.hello-robot.com). We'd welcome hearing your feedback as you get to know your robot.
 
 Hello Robot support monitors the forum closely and will quickly get back to you on any questions or issues you post.
 
 ## Further Exploration
 
-Encounter any issues while getting started? Please let us know at support@hello-robot.com. Also take a minute to review the [Stretch Troubleshooting Guide](./troubleshooting_guide.md)
+Encounter any issues while getting started? Please let us know at support@hello-robot.com. Also, take a minute to review the [Stretch Troubleshooting Guide](./troubleshooting_guide.md)
 
-We recommend next exploring the ROS based demos that ship with Stretch.  These [are found in the stretch_ros repository](https://docs.hello-robot.com/0.2/stretch-ros/stretch_demos/).
+We recommend next exploring the ROS-based demos that ship with Stretch.  These [are found in the stretch_ros repository](https://docs.hello-robot.com/0.2/stretch-ros/stretch_demos/).
 
 That's it. Happy coding!
 
