@@ -17,7 +17,7 @@ Stretch ROS is the [Robot Operating System](https://www.ros.org/about-ros/) (ROS
 **Warning**: Before you proceed, please ensure that all your personal files in the catkin or ament workspace have been backed up safely. This is important because executing the following set of commands deletes your existing workspace and replaces it with a fresh one.
 
 To download the stretch_install repo, execute:
-```console
+```{.bash .shell-prompt}
 cd ~/
 git clone https://github.com/hello-robot/stretch_install.git
 cd stretch_install
@@ -25,19 +25,19 @@ git pull
 ```
 
 To replace the ROS Melodic catkin_ws in Ubuntu 18.04, execute:
-```console
+```{.bash .shell-prompt}
 # Create a ROS workspace
 ./factory/18.04/stretch_create_catkin_workspace.sh -w <optional-path-to-ws>
 ```
 
 To replace the ROS Noetic catkin_ws in Ubuntu 20.04, execute:
-```console
+```{.bash .shell-prompt}
 # Create a ROS workspace
 ./factory/20.04/stretch_create_catkin_workspace.sh -w <optional-path-to-ws>
 ```
 
 To replace the ROS 2 Galactic ament_ws in Ubuntu 20.04, execute:
-```console
+```{.bash .shell-prompt}
 # Create a ROS2 workspace
 ./factory/20.04/stretch_create_ament_workspace.sh -w <optional-path-to-ws>
 ```
@@ -47,7 +47,7 @@ To replace the ROS 2 Galactic ament_ws in Ubuntu 20.04, execute:
 Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands depending on the Python version.
 
 If you are using Python2, execute:
-```console
+```{.bash .shell-prompt}
 $ pip install -U hello-robot-stretch-body
 $ pip install -U hello-robot-stretch-body-tools
 $ pip install -U hello-robot-stretch-factory
@@ -55,7 +55,7 @@ $ pip3 install -U hello_robot_stretch_body_tools_py3
 ```
 
 For Python3, execute:
-```console
+```{.bash .shell-prompt}
 python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body
 python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body-tools
 python3 -m pip -q install --no-warn-script-location hello-robot-stretch-factory
@@ -66,7 +66,7 @@ python3 -m pip -q install --no-warn-script-location hello-robot-stretch-tool-sha
 
 The firmware and the Python SDK (called Stretch Body) communicate on an established protocol. Therefore, it is important to maintain a protocol match between the different firmware and Stretch Body versions. Fortunately, there is a script that handles this automatically. In the command line, run the following command:
 
-```console
+```{.bash .shell-prompt}
 $ REx_firmware_updater.py --status
 ```
 
@@ -76,7 +76,7 @@ This script will automatically determine what version is currently running on th
 
 The operating system upon which Stretch is built is called Ubuntu. This operating system provides the underlying packages that power Stretch's software packages. Furthermore, users of Stretch depend on this operating system and the underlying packages to develop software on Stretch. Therefore, it is important to keep the OS and these underlying packages up to date. In the command line, run the following command:
 
-```console
+```{.bash .shell-prompt}
 $ sudo apt update
 $ sudo apt upgrade
 ```
@@ -101,7 +101,7 @@ Please upgrade the firmware and/or version of Stretch Body.
 
 This error appears because the low level Python SDK and the firmware cannot communicate to each other. There is a protocol mismatch preventing communication between the two. Simply run the following script and follow its recommendations to upgrade/downgrade the firmware as necessary to match the protocol level of Stretch Body.
 
-```console
+```{.bash .shell-prompt}
 $ REx_firmware_updater.py --status
 ```
 
