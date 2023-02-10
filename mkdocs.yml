@@ -152,6 +152,7 @@ nav:
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
       - Nav2 Stack:
+        - Overview: ./ros2/navigation_overview.md
         - Nav2 Basics: ./ros2/navigation_stack.md
         - Nav2 Simple Commander: ./ros2/navigation_simple_commander.md
       - MoveIt 2:
