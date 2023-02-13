@@ -81,14 +81,14 @@ First, identify your robot's and computer's IP address on the network (e.g. usin
 
 Next, run the following on the robot:
 
-```{.bash .shell-prompt}
+```{.bash .no-copy}
 export ROS_IP=robot-ip-address
 export ROS_MASTER_URI=http://robot-ip-address:11311/
 ```
 
 Next, start the ROS launch files on the robot as you normally would. Finally, on your computer, run:
 
-```{.bash .shell-prompt}
+```{.bash .no-copy}
 export ROS_IP=computer-ip-address
 export ROS_MASTER_URI=http://robot-ip-address:11311
 ```
