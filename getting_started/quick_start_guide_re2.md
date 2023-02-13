@@ -94,9 +94,6 @@ The [Stretch Unpowered Best Practices Video](https://youtu.be/mQdOGEksdYM) provi
 * Manually moving the head and wrist. They will move but they want to go at their own speed.
 * The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. 
 
-!!! note
-    The Stretch 2 lift descends faster than the Stretch RE1. For Stretch 2 we recommend always attaching the clip-clamp before powering down the NUC computer
-
 **Things that can hurt the robot**: 
 
 * Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.
