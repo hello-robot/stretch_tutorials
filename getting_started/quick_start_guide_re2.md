@@ -134,8 +134,7 @@ Log in to the robot computer. The default user credentials came in the box with 
 
 Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low-level Python interface to the robot. Detailed information on the [Stretch Body Interface](../stretch_body/README.md) can be found here.
 
-!!! note
-    Stretch is configured to run the Xbox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
+Stretch is configured to run the Xbox Controller demo in the background at startup. To run your own code you'll need to kill this process so that it doesn't contend with your code.
 
 ```{.bash .shell-prompt}
 pkill -f stretch_xbox*
