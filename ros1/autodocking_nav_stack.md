@@ -203,4 +203,4 @@ This demo serves as an experimental setup to explore self-charging with Stretch.
 - The controller implementation is not robust to erroneous predock pose supplied by the camera and friction introduced by floor surfaces like carpet
 - The current design of the docking station is minimal and it is recommended that users find ways to stick the station to the floor to prevent it from moving while docking
 
-Here's a performance characterization for this demo. We obtained a success rate of 30% in a controlled setup. Users are encouraged to try this demo and submit improvements. Wish you the best!
+Here's a [performance characterization](https://docs.google.com/spreadsheets/d/1LysVWZdXbnpXpgcIjYZoCPiFHwBvkA3mtWk2lSyAseU/edit#gid=0) for this demo. We obtained a success rate of 30% in a controlled setup. Users are encouraged to try this demo and submit improvements. Wish you the best!
