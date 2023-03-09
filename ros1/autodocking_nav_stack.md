@@ -36,12 +36,19 @@ To launch the demo, execute the following command:
 roslaunch stretch_demos autodocking.launch
 ```
 
-Add GIF of autodocking in action
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/97639181/224141937-6024cbb5-994b-4d15-83c7-bddbfaaee08f.gif" width="400">
+</p>
 
 ## Theory
-Add image of the autodocking BT
 
-Add image of simple controller setup
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/97639181/224143721-71ed392e-3e3f-47b8-a6b4-757da2dfefe5.png" width="600">
+</p>
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/97639181/224143937-22c302e4-5fd0-4c7e-97e0-b56fc6f40217.png" width="600">
+</p>
 
 ## Code Breakdown
 Let's jump into the code to see how things work under the hood. Follow along [here]() to have a look at the entire script.
