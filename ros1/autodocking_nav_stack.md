@@ -1,20 +1,20 @@
 # Autodocking with Nav Stack
-Would not it be awesome if after a hard day's work, Stretch would just go charge itself without you having to pull it to the charger. In this tutorial we will explore an experimental code that allows Stretch to locate a charging station and charge itself autonomously. This demo will build on top of some of the tutorials that we have explored earlier like [ArUco detection](), [base teleoperation]() and using the [Nav Stack](). Be sure to check them out.
+Wouldn't it be awesome if after a hard day's work, Stretch would just go charge itself without you having to worry about it? In this tutorial we will explore an experimental code that allows Stretch to locate a charging station and charge itself autonomously. This demo will build on top of some of the tutorials that we have explored earlier like [ArUco detection](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/aruco_marker_detection/), [base teleoperation](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_1/) and using the [Nav Stack](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/navigation_stack/). Be sure to check them out.
 
 ## Docking Station
-The [Stretch Docking Station]() is a Stretch accessory that allows one to autonomously charge the robot. The top part of the docking station has an ArUco marker number 245 from the 6x6, 250 dictionary. To understand why this is important, refer to [this](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html) handy guide provided by OpenCV. This marker enables Stretch to accurately locate the docking station in its environment. The docking station also has a Y-shaped recess in its base plate to guide the caster wheel of the robot towards the charging port in case of minor misalignments while backing up. Overall, it's a minimal yet effective way to charge the robot autonomously.
+The [Stretch Docking Station](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/stretch_docking_station) is a Stretch accessory that allows one to autonomously charge the robot. The top part of the docking station has an ArUco marker number 245 from the 6x6, 250 dictionary. To understand why this is important, refer to [this](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html) handy guide provided by OpenCV. This marker enables Stretch to accurately locate the docking station in its environment. The docking station also has a Y-shaped recess in its base plate to guide the caster wheel of the robot towards the charging port in case of minor misalignments while backing up. Overall, it's a minimal yet effective way to allow Stretch to charge itself.
 
 ## Behaviour Trees
-Traditionally, high level task planning has been achieved using Finite State Machines or FSMs which break down each functional element of the task into states that have to be traversed to accomplish the major task. This approach has recently gone out of vogue in favour of Behavior Trees or BTs. BTs, also known as Directed Acyclic Graphs, have been popularized through their use in the gaming industry to impart complex behaviors to NPCs. BTs organize behaviors in a tree representation where the control flow is achieved not through state transitions but in a depth first traversal fashion. Additionally, conditions and actions form distinct leafs in the tree which results in better modularity. This ensures that augmenting behaviors by way of additional leafs in the tree does not require a restructuring of previous and following leafs but only the final tree graph. This also means that actions in complex behaviors can be developed independently resulting in higher scalability.
+Traditionally, high level task planning has been achieved using Finite State Machines or FSMs which break down each functional element of the task into states that have to be traversed in a cyclic manner to accomplish the major task. This approach has recently gone out of vogue in favour of [Behavior Trees](https://robohub.org/introduction-to-behavior-trees/) or BTs. BTs, also known as Directed Acyclic Graphs, have been popularized through their use in the gaming industry to impart complex behaviors to NPCs. BTs organize behaviors in a tree representation where the control flow is achieved not through cyclic state transitions but in a tree traversal fashion. Additionally, conditions and actions form distinct leafs in the tree which results in better modularity. This ensures that augmenting behaviors by way of additional leafs in the tree does not require a restructuring of previous and following leafs but only the final tree graph. This also means that actions in complex behaviors can be developed independently resulting in higher scalability.
 
 ## Py-trees
-We decided to implement this demo using [py-trees]() because of its following features:
+We decided to implement this demo using the open-source behvaior trees library called [py-trees](https://py-trees.readthedocs.io/en/devel/introduction.html) because of its following features:
 
 - Open-source
 - Pythonic for quicker adoption and turnaround
-- Well-documented to make it easier to on-board users
-- Scalable to work equally well on all levels of our software stack
-- Well-supported to allow us to continue to build on top for longer
+- Well-documented to enable users to self-learn
+- Scalable to work equally well on all levels of our software stack, including ROS 2
+- Well-supported to allow us to continue to build on top for the forseebale future
 
 ## Prerequisites
 
@@ -28,8 +28,10 @@ sudo apt install ros-noetic-py-trees-ros ros-noetic-rqt-py-trees
 
 Once you have the above covered, we are ready to setup the demo.
 
-## See It In Action
-The demo requires the docking station to be rested against a wall with the charger connected to the back. To launch the demo, execute the following command:
+## Setup and Launch
+The demo requires the docking station to be rested against a wall with the charger connected to the back. It is also necessary for the robot to be close to the origin of the map for the robot to have the correct pose estimate at startup. If not, the pose estimate will have to be supplied manually using the `2D Pose Estimate` button in RViz as soon as the demo starts.
+
+To launch the demo, execute the following command:
 ```{.bash .shell-prompt}
 roslaunch stretch_demos autodocking.launch
 ```
