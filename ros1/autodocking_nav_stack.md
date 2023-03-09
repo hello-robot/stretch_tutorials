@@ -29,7 +29,12 @@ sudo apt install ros-noetic-py-trees-ros ros-noetic-rqt-py-trees
 Once you have the above covered, we are ready to setup the demo.
 
 ## Setup and Launch
-The demo requires the docking station to be rested against a wall with the charger connected to the back. It is also necessary for the robot to be close to the origin of the map for the robot to have the correct pose estimate at startup. If not, the pose estimate will have to be supplied manually using the `2D Pose Estimate` button in RViz as soon as the demo starts.
+The demo requires the docking station to be rested against a wall with the charger connected to the back and the arm to be stowed for safety. It is also necessary for the robot to be close to the origin of the map for the robot to have the correct pose estimate at startup. If not, the pose estimate will have to be supplied manually using the `2D Pose Estimate` button in RViz as soon as the demo starts.
+
+Let's stow the arm first:
+```{.bash .shell-prompt}
+stretch_robot_stow.py
+```
 
 To launch the demo, execute the following command:
 ```{.bash .shell-prompt}
@@ -40,18 +45,30 @@ roslaunch stretch_demos autodocking.launch
     <img src="https://user-images.githubusercontent.com/97639181/224141937-6024cbb5-994b-4d15-83c7-bddbfaaee08f.gif" width="400">
 </p>
 
-## Theory
+## How It Works
+
+Below is a simplified version of the behavior tree we implemented for this demo. Please be advised that the actual implementation has minor variations, but the below image should serve well to understand the control flow. Before moving ahead, we recommend supplementing reading this tutorial with the concept of behaviour trees. Let's dig in!
+
+The root of our tree is the `sequence` node (right-pointing arrow) below the `repeat` decorator node (circular arrow). This sequence node succeeds only when all of its children succeed, else it returns a failure.
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/97639181/224143721-71ed392e-3e3f-47b8-a6b4-757da2dfefe5.png" width="600">
 </p>
 
+It has the `fallback` node (question mark) at the left as its first child. As per rules of tree traversal, this fallback node is the first to be executed. In turn, this fallback nodes has two children - the `Predock found?` condition node and the `Camera scan` action node. The `Predock found?` condition node is a subscriber that waits for the predock pose to be published on a topic called `\predock_pose`. At the start of the demo, we expect this to fail as the robot does not know where the pose is. This triggers the `Camera scan` action node which is an action client for the `ArucoHeadScan` action server that detects the docking station ArUco marker. If this action node succeeds it published the predock pose and the next child of the sequence node is ticked.
+
+The second child of the sequence node is again a `fallback` node with two children - the `At predock?` condition node and the `Move to predock` action node. The `At predock?` condition node is simply a TF lookup, wrapped in a Behavior Tree class called CheckTF, that checks if the base_link frame is aligned with the predock_pose frame. We expect this to fail initially as the robot needs to travel to the predock pose for this condition to be met. This triggers the `Move to predock` action node which is an action client for the MoveBase action server from the Nav stack. This action client passes the predock pose as the goal to the robot. If this action succeeds, the robot navigates to the predock pose and the next child of the root node is triggered.
+
+The third child of the root node is the `Move to dock` action node. This is a simple error-based controller wrapped in a Behavior Tree class called `VisualServoing`. It's working is explained in the image below. This controller enables the robot to back up and align itself to the docking station in case the navigation stack introduces error in getting to the predock pose. 
+
 <p align="center">
     <img src="https://user-images.githubusercontent.com/97639181/224143937-22c302e4-5fd0-4c7e-97e0-b56fc6f40217.png" width="600">
 </p>
 
+The fourth and final child of the sequence node is another `fallback` node with two children - the `Charging?` condition node and the `Move to predock` action node with an `inverter` decorator node (+/- sign). The `Charging?` condition node is a subscriber that checks if the 'present' attribute of the `BatteryState` message is True. If the robot has backed up correctly into the docking station and the charger port latched, this node should return SUCCESS and the autodocking would succeed. If not, the robot moves back to the predock pose through the `Move to predock` action node and tries again.
+
 ## Code Breakdown
-Let's jump into the code to see how things work under the hood. Follow along [here]() to have a look at the entire script.
+Let's jump into the code to see how things work under the hood. Follow along [here]() (TODO after merge) to have a look at the entire script.
 
 We start off by importing the dependencies. The ones of interest are those relating to py-trees and the various behaviour classes in autodocking.autodocking_behaviours, namely, MoveBaseActionClient, CheckTF and VisualServoing. We also created custom ROS action messages for the ArucoHeadScan action defined in the action directory of stretch_demos package.
 ```python
@@ -178,3 +195,12 @@ The main() method is where the behavior tree is ticked. First, we create an inst
         except KeyboardInterrupt:
             self.behaviour_tree.interrupt()
 ```
+
+## Results and Expectations
+This demo serves as an experimental setup to explore self-charging with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
+
+- The aruco detection fails often and the user might be required to experiment with different locations for the docking station and lighting for better results
+- The controller implementation is not robust to erroneous predock pose supplied by the camera and friction introduced by floor surfaces like carpet
+- The current design of the docking station is minimal and it is recommended that users find ways to stick the station to the floor to prevent it from moving while docking
+
+Here's a performance characterization for this demo. We obtained a success rate of 30% in a controlled setup. Users are encouraged to try this demo and submit improvements. Wish you the best!
