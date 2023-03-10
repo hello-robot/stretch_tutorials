@@ -143,6 +143,7 @@ nav:
       - PointCloud Transformation: ./ros1/example_11.md
       - ArUco Tag Locator: ./ros1/example_12.md
       - 2D Navigation Goals: ./ros1/example_13.md
+      - Autodocking: ./ros1/autodocking_nav_stack.md
   - ROS 2 (Beta):
     - Overview: ./ros2/README.md
     - Basics:
