@@ -1,3 +1,6 @@
+!!! note
+    Please be advised that this code is under active development. This tutorial in its present form is a result of a short development sprint where our intention was to develop the autodocking feature for Stretch based on our existing code base and using the behavior tree framework. While the demo is usable, we make no promises pertaining to its performance or fitness for use in a user application.
+
 # Autodocking with Nav Stack
 Wouldn't it be awesome if after a hard day's work, Stretch would just go charge itself without you having to worry about it? In this tutorial we will explore an experimental code that allows Stretch to locate a charging station and charge itself autonomously. This demo will build on top of some of the tutorials that we have explored earlier like [ArUco detection](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/aruco_marker_detection/), [base teleoperation](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_1/) and using the [Nav Stack](https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/navigation_stack/). Be sure to check them out.
 
@@ -203,4 +206,4 @@ This demo serves as an experimental setup to explore self-charging with Stretch.
 - The controller implementation is not robust to erroneous predock pose supplied by the camera and friction introduced by floor surfaces like carpet
 - The current design of the docking station is minimal and it is recommended that users find ways to stick the station to the floor to prevent it from moving while docking
 
-Here's a [performance characterization](https://docs.google.com/spreadsheets/d/1LysVWZdXbnpXpgcIjYZoCPiFHwBvkA3mtWk2lSyAseU/edit#gid=0) for this demo. We obtained a success rate of 30% in a controlled setup. Users are encouraged to try this demo and submit improvements. Wish you the best!
+Users are encouraged to try this demo and submit improvements.
