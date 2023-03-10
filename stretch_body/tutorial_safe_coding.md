@@ -43,7 +43,7 @@ The [Pimu firmware](https://github.com/hello-robot/stretch_firmware/tree/master/
 
 ## Robot Monitor
 
-The [Robot Monitor](https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_monitor.py) is a thread that monitors the Robot Status data for significant events. For example, it can monitor the error flags from the Dynamixel servos and notify when a thermal overload occurs. The Robot Monitor logs warnings to a log file by default.
+The [Robot Monitor](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_monitor.py) is a thread that monitors the Robot Status data for significant events. For example, it can monitor the error flags from the Dynamixel servos and notify when a thermal overload occurs. The Robot Monitor logs warnings to a log file by default.
 
 The default parameters associated with RobotMonitor are:
 
@@ -99,7 +99,7 @@ Starting Robot Monitor. Ctrl-C to exit
 
 ## Robot Sentry
 
-The [Robot Sentry](https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_sentry.py) is a thread that can override and also generate commands to the robot hardware. Its purpose is to keep the robot operating within a safe regime. For example, the Robot Sentry monitors the position of the Lift and Arm and limits the maximum base velocity and acceleration to reduce the chance of toppling. The Robot Sentry reports events to the log file as well. 
+The [Robot Sentry](https://github.com/hello-robot/stretch_body/blob/331fa7f737628719264f66670c4cfb5a2ab94173/body/stretch_body/wrist_yaw.py#L35) is a thread that can override and also generate commands to the robot hardware. Its purpose is to keep the robot operating within a safe regime. For example, the Robot Sentry monitors the position of the Lift and Arm and limits the maximum base velocity and acceleration to reduce the chance of toppling. The Robot Sentry reports events to the log file as well. 
 
 | YAML                     | Function                                                     |
 | ------------------------ | ------------------------------------------------------------ |

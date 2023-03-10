@@ -134,10 +134,10 @@ stretch_body.robot_params.nominal_params	param.arm.motion.default.vel_m		0.1
 
 ## Programmatically Modifying and Storing Parameters
 
-A user can compute the value of a parameter programmatically and modify the robot settings accordingly. For example, in the Stretch Factory tool [REx_base_calibrate_wheel_seperation.py](https://github.com/hello-robot/stretch_factory/blob/master/python/tools/REx_base_calibrate_wheel_separation.py) we see that the parameter `wheel_seperation_m` is recomputed as the variable `d_avg`. This new value could be used during the robot execution by simply:
+A user can compute the value of a parameter programmatically and modify the robot settings accordingly. For example, in the Stretch Factory tool [REx_base_calibrate_wheel_separation.py](https://github.com/hello-robot/stretch_factory/blob/master/python/tools/REx_base_calibrate_wheel_separation.py) we see that the parameter `wheel_separation_m` is recomputed as the variable `d_avg`. This new value could be used during the robot execution by simply:
 
 ```python
-robot.base.params['wheel_seperation_m']=d_vag
+robot.base.params['wheel_separation_m']=d_vag
 ```
 
 or it could be saved as a user override:
