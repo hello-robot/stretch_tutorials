@@ -8,10 +8,15 @@ Begin by running the following command in a new terminal.
 roslaunch stretch_core stretch_driver.launch
 ```
 
-Switch the mode to `position` mode using a rosservice call. Then run the `respeaker.launch` file. In a new terminal, execute:
+Switch the mode to `position` mode using a rosservice call.
 
 ```{.bash .shell-prompt}
 rosservice call /switch_to_position_mode
+```
+
+Then run the `respeaker.launch` file. In a new terminal, execute:
+
+```{.bash .shell-prompt}
 roslaunch stretch_core respeaker.launch
 ```
 
