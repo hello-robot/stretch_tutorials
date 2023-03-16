@@ -2,7 +2,7 @@
 # Tutorial Track: Stretch ROS 2 (Beta)
 
 !!! note
-    Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
+    Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs in the [stretch_ros2](https://github.com/hello-robot/stretch_ros2) repository, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
 
 ## Robot Operating System 2 (ROS 2)
 
