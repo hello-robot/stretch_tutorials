@@ -24,7 +24,7 @@ stretch_robot_home.py
 The easiest way to run MoveIt 2 on your robot is through RViz. With RViz you can plan, visualize, and also execute trajectories for various planning groups on your robot. To launch RViz with MoveIt 2, run the following command. (Press Ctrl+C in the terminal to terminate)
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
+ros2 launch stretch_moveit2 movegroup_moveit2.launch.py
 ```
 
 Follow the instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_rviz_demo) to plan and execute trajectories using the interactive markers in RViz.
@@ -39,10 +39,10 @@ To plan with obstacles, you can insert objects like a box, cyclinder or sphere, 
 
 ### Planning with MoveIt 2 Using the MoveGroup C++ API
 
-If you want to integrate MoveIt 2 into your planning pipeline and want greater control over its various functionalities, using the MoveGroup API is the way to go. Execute the launch file again and go through the comments in the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit_config/src/movegroup_test.cpp) to understand what's going on. (Press Ctrl+C in the terminal to terminate)
+If you want to integrate MoveIt 2 into your planning pipeline and want greater control over its various functionalities, using the MoveGroup API is the way to go. Execute the launch file again and go through the comments in the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit2/src/movegroup_test.cpp) to understand what's going on. (Press Ctrl+C in the terminal to terminate)
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
+ros2 launch stretch_moveit2 movegroup_moveit2.launch.py
 ```
 
 Follow the instructions in this [tutorial](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_movegroup_demo) to plan and execute trajectories using the MoveGroup C++ API.

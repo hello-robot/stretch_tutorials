@@ -2,13 +2,13 @@
 
 If you want to integrate MoveIt 2 into your planning pipeline and want greater control over its various functionalities, using the MoveGroup API is the way to go. For this tutorial, we are going to use the RViz Visual Tools plugin to execute the C++ source code part by part to explore more sophisticated functionalities.
 
-Execute the launch file again to begin the tutorial. You can follow along in the C++ [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit_config/src/movegroup_test.cpp) to inspect finer details. (Press Ctrl+C in the terminal to terminate) (Ensure you have enough room around the robot before running the script)
+Execute the launch file again to begin the tutorial. You can follow along in the C++ [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit2/src/movegroup_test.cpp) to inspect finer details. (Press Ctrl+C in the terminal to terminate) (Ensure you have enough room around the robot before running the script)
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
+ros2 launch stretch_moveit2 movegroup_moveit2.launch.py
 ```
 
-To execute the script and interact with the robot, all you need to do is press the Next button in the RViz Visual Tools window at the bottom left. Follow the prompts on the terminal to run through the tutorial. While executing the script, it's also a good idea to study and understand the script that is being executed. Find it [here](https://github.com/hello-robot/stretch_ros2/blob/feature/hybrid_planning/stretch_moveit_config/src/movegroup_test.cpp).
+To execute the script and interact with the robot, all you need to do is press the Next button in the RViz Visual Tools window at the bottom left. Follow the prompts on the terminal to run through the tutorial. While executing the script, it's also a good idea to study and understand the script that is being executed. Find it [here](https://github.com/hello-robot/stretch_ros2/blob/feature/hybrid_planning/stretch_moveit2/src/movegroup_test.cpp).
 
 ![RVizVisualTools](https://user-images.githubusercontent.com/97639181/181854836-6f9b43cd-edf9-46e8-8ca1-1ac782d5b70b.png)
 
@@ -45,7 +45,7 @@ Press Ctrl+C to end this demo.
 
 8. To wrap it up, the final act! This one is a surprise that's only a click away. Go on and execute the following command:
 ```bash
-ros2 launch stretch_moveit_config moveit_draw.launch.py
+ros2 launch stretch_moveit2 moveit_draw.launch.py
 ```
 
 ![draw](https://user-images.githubusercontent.com/97639181/196334258-3c585f45-c976-483c-b2cb-1f540460596f.gif)

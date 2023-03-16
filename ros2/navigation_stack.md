@@ -9,7 +9,7 @@ Stretch's mobile base enables this capability and this tutorial will explore how
 The first step is to map the space that the robot will navigate in. The `offline_mapping.launch.py` file will enable you to do this. First, run:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_navigation offline_mapping.launch.py
+ros2 launch stretch_nav2 offline_mapping.launch.py
 ```
 
 Rviz will show the robot and the map that is being constructed. Now, use the Xbox controller (see instructions below for using a keyboard) to teleoperate the robot around. To teleoperate the robot using the Xbox controller, keep the front left (LB) button pressed while using the right joystick for translation and rotation.
@@ -45,7 +45,7 @@ eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_navigation navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
+ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 A new RViz window should pop up with a `Startup` button in a menu at the bottom left of the window. Press the `Startup` button to kick-start all navigation related lifecycle nodes. Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location on the map does not match the robot's location in the real space. To correct this, from the top bar of Rviz, use `2D Pose Estimate` to lay an arrow down roughly where the robot is located in real space. This gives an initial estimate of the robot's location to AMCL, the localization package. AMCL will better localize the robot once we pass the robot a `2D Nav Goal`. 
@@ -65,13 +65,13 @@ The launch files expose the launch argument "teleop_type". By default, this argu
 If the Xbox controller is not available, the following commands will launch mapping or navigation, respectively, with keyboard teleop:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_navigation offline_mapping.launch.py teleop_type:=keyboard
+ros2 launch stretch_nav2 offline_mapping.launch.py teleop_type:=keyboard
 ```
 
 or
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_navigation navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
+ros2 launch stretch_nav2 navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 ## Simple Commander API

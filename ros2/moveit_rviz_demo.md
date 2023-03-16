@@ -3,7 +3,7 @@
 1. The easiest way to run MoveIt 2 on your robot is through the RViz plugin. With RViz you can plan, visualize, and also execute trajectories for various planning groups on your robot. To get started using MoveIt 2 with RViz, execute the following command in a terminal. (Press Ctrl+C in the terminal to terminate)
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_moveit_config movegroup_moveit2.launch.py
+ros2 launch stretch_moveit2 movegroup_moveit2.launch.py
 ```
 
 2. You should see Stretch visualized in RViz with joint positions exactly as they appear on the actual robot (If not, home the robot and start from step 1!). You can select a Planning Group from the drop down menu that allows you to choose a group of joints to plan for and control using MoveIt. When you select a Planning Group the joints that can be controlled are highlighted with interactive markers. Let’s go ahead and select the stretch_arm planning group.
