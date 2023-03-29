@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 from __future__ import print_function
 import stretch_body.hello_utils
 import stretch_body.robot_params
