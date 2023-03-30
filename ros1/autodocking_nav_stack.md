@@ -41,7 +41,7 @@ stretch_robot_stow.py
 
 To launch the demo, execute the following command:
 ```{.bash .shell-prompt}
-roslaunch stretch_demos autodocking.launch
+roslaunch stretch_demos autodocking.launch map_yaml:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 <p align="center">
