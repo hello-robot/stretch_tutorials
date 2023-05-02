@@ -56,11 +56,25 @@ Now, affix the four screws, with the shorter two going to the servo side, to hol
 ## Software Instructions
 Once the hardware has been replaced, it's time to make the software changes for Stretch to recognize the Standart Wrist gripper. Turn on the robot and follow the instructions below.
 
-To revert the changes in stretch_configuration_params.yaml, download the [dex_to_standard_configure_params.py script](https://github.com/hello-robot/stretch_tutorials/blob/master/stretch_tool_share/dex_to_standard_configure_params.py) and execute it in a terminal as below: 
+To revert the changes in stretch_configuration_params.yaml, first download the [dex_to_standard_configure_params.py script](https://github.com/hello-robot/stretch_tutorials/blob/master/stretch_tool_share/dex_to_standard_configure_params.py) using:
+```{. bash .shell-prompt}
+cd ~/Desktop
+wget https://raw.githubusercontent.com/hello-robot/stretch_tutorials/master/stretch_tool_share/dex_to_standard_configure_params.py
+```
+
+Then, change execution permissions and execute it in a terminal as below: 
 
 ```{.bash .shell-prompt}
+chmod +x dex_to_standard_configure_params.py
 python3 dex_to_standard_configure_params.py
 ```
+
+Ensure that the changes were written correctly to stretch_params:
+```{.bash .shell-prompt}
+stretch_params.py | grep robot.tool
+```
+
+This should return the tool as `tool_stretch_gripper`.
 
 Next, to ensure the correct gripper is recognized by ROS, we need to update the URDF. For this, first open the stretch_description.xacro file like below.
 
@@ -69,7 +83,7 @@ cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
 gedit stretch_description.xacro
 ```
 
-Then, replace the contents of the file with the default [stretch_description.xacro](https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_description.xacro).
+Then, replace the contents of the file with that of the default [stretch_description.xacro](https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_description.xacro) by copying and pasting the contents from the file in the link to the open file.
 
 Lastly, to generate the updated URDF, execute the following commands in a terminal.
 
