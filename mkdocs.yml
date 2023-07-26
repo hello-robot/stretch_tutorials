@@ -156,10 +156,10 @@ nav:
         - Overview: ./ros2/navigation_overview.md
         - Nav2 Basics: ./ros2/navigation_stack.md
         - Nav2 Simple Commander: ./ros2/navigation_simple_commander.md
-      - MoveIt 2:
-        - MoveIt Basics: ./ros2/moveit_basics.md
-        - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
-        - MoveGroup C++ API: ./ros2/moveit_movegroup_demo.md
+      # - MoveIt 2:
+      #   - MoveIt Basics: ./ros2/moveit_basics.md
+      #   - MoveIt with RViz: ./ros2/moveit_rviz_demo.md
+      #   - MoveGroup C++ API: ./ros2/moveit_movegroup_demo.md
       # - Perception: ./ros2/perception.md
       # - ArUco Marker Detection: ./ros2/aruco_marker_detection.md
       # - ReSpeaker Microphone Array: ./ros2/respeaker_microphone_array.md
