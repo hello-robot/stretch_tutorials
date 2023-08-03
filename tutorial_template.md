@@ -38,12 +38,12 @@ Running this tutorial on Stretch might result in *harm to robot, humans or the s
 ## See It In Action
 Go ahead and execute the following commands to run the demo and visualize the result in RViz:
 Terminal 1:
-```bash
+```{.bash .shell-prompt}
 Enter first command here
 ```
 
 Terminal 2:
-```bash
+```{.bash .shell-prompt}
 Enter second command here
 ```
 
