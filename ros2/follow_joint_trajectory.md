@@ -1,6 +1,7 @@
 ## FollowJointTrajectory Commands
 !!! note
     ROS 2 tutorials are still under active development. 
+
 !!! note 2
     For this exercise you'll need to have Ubuntu 22.04 and ROS Iron for it to work completly.
 
