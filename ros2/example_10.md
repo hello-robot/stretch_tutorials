@@ -21,7 +21,7 @@ ros2 run rviz2 rviz2
 Then run the tf2 broadcaster node to visualize three static frames.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_broadcaster
+ros2 run stretch_ros_tutorials tf_broadcaster
 ```
 
 The GIF below visualizes what happens when running the previous node.
@@ -222,13 +222,13 @@ ros2 launch stretch_core stretch_driver.launch.py
 Then run the tf2 broadcaster node to create the three static frames.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_broadcaster
+ros2 run stretch_ros_tutorials tf_broadcaster
 ```
 
 Finally, run the tf2 listener node to print the transform between two links.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_listener
+ros2 run stretch_ros_tutorials tf_listener
 ```
 
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
