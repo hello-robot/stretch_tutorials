@@ -41,7 +41,6 @@ A powerful tool to visualize the ROS communication is through the rqt_graph pack
 ros2 run rqt_graph rqt_graph
 ```
 
-![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rqt_graph.png)
 ![image](https://github.com/hello-robot/stretch_tutorials/assets/141784078/9d6a303c-1681-4723-932c-212f5ced1044)
 
 
