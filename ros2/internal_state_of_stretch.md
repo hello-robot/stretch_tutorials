@@ -42,7 +42,8 @@ ros2 run rqt_graph rqt_graph
 ```
 
 ![image](https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rqt_graph.png)
-![image](https://github.com/hello-robot/stretch_tutorials/assets/141784078/f34876b8-775c-4c25-9e63-5aa53b2fb006)
+![image](https://github.com/hello-robot/stretch_tutorials/assets/141784078/ab033d89-d861-44f4-92f3-966dba2d98de)
+
 
 
 
