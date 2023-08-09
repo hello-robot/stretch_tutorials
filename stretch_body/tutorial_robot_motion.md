@@ -4,6 +4,7 @@ As we've seen in previous tutorials, commanding robot motion is simple and strai
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
@@ -18,6 +19,7 @@ The absolute motion can be commanded by:
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
@@ -34,6 +36,7 @@ In the above examples, we executed a `time.sleep()` after `robot.push_command()`
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
@@ -130,6 +133,7 @@ As we see here, the `robot.push_command()` call is not required as the motion be
 
 ```python
 import stretch_body.robot
+import time
 from stretch_body.hello_utils import deg_to_rad
 
 robot=stretch_body.robot.Robot()
@@ -152,6 +156,7 @@ Similar to the stepper joints, the Dynamixel joints accept motion profile and mo
 
 ```python
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
