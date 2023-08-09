@@ -84,7 +84,7 @@ The joint_states_callback is the callback method that receives the most recent j
         self.joint_state = joint_state
 ```
 
-The copute_difference() method is where we call the get_transform() method from the FrameListener class to compute the difference between the base_link and base_right frame with an offset of 0.5 m in the negative y-axis.
+The compute_difference() method is where we call the get_transform() method from the FrameListener class to compute the difference between the base_link and base_right frame with an offset of 0.5 m in the negative y-axis.
 ```python
     def compute_difference(self):
         self.trans_base, self.trans_camera = self.node.get_transforms()
@@ -103,7 +103,7 @@ To compute the (x, y) coordinates of the SE2 pose goal, we compute the transform
         base_position_y = P_base[1, 0]
 ```
 
-From this, it is relatively straightforward to compute the angle phi and the euclidean distance dist. We then compute the angle z_rot_base to perform the last angle correction.
+From this, it is relatively straightforward to compute the angle **ph**i and the euclidean distance **dist**. We then compute the angle z_rot_base to perform the last angle correction.
 ```python
         phi = atan2(base_position_y, base_position_x)
         
