@@ -115,7 +115,6 @@ All devices contain a Status dictionary. The Status contains the most recent sen
 ```python
 class Arm(PrismaticJoint):
     def __init__(self,usb=None):
-        
 ```
 As we can see the arm class is part of the PrismaticJoint class but this is also part of the Device class as we can see here:
 
