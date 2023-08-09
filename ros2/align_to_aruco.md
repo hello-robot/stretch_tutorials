@@ -103,7 +103,7 @@ To compute the (x, y) coordinates of the SE2 pose goal, we compute the transform
         base_position_y = P_base[1, 0]
 ```
 
-From this, it is relatively straightforward to compute the angle **ph**i and the euclidean distance **dist**. We then compute the angle z_rot_base to perform the last angle correction.
+From this, it is relatively straightforward to compute the angle **phi** and the euclidean distance **dist**. We then compute the angle z_rot_base to perform the last angle correction.
 ```python
         phi = atan2(base_position_y, base_position_x)
         
