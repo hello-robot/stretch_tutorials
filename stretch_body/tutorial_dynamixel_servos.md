@@ -32,7 +32,7 @@ REx_dynamixel_jog.py /dev/hello-dynamixel-head 11
 
 Output:
 ```{.bash .no-copy}
-[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
+[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080. Baud 115200
 ------ MENU -------
 m: menu
 a: increment position 50 tick
@@ -52,6 +52,10 @@ t: set max temp
 i: set id
 d: disable torque
 e: enable torque
+x: put in multi-turn mode
+y: put in position mode
+w: put in pwm mode
+f: put in vel mode
 -------------------
 ```
 
@@ -67,12 +71,14 @@ Output:
 ```{.bash .no-copy}
 For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 
----- Rebooting Head ---- 
+Rebooting: head_pan
 [Dynamixel ID:011] Reboot Succeeded.
+Rebooting: head_tilt
 [Dynamixel ID:012] Reboot Succeeded.
----- Rebooting Wrist ---- 
-[Dynamixel ID:013] Reboot Succeeded.
+Rebooting: stretch_gripper
 [Dynamixel ID:014] Reboot Succeeded.
+Rebooting: wrist_yaw
+[Dynamixel ID:013] Reboot Succeeded.
 ```
 
 ### Identify Servos on the Bus
@@ -80,38 +86,42 @@ For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 If it is unclear which servos are on the bus, and at what baud rate, you can use the `REx_dynamixel_id_scan.py` tool. Here we see that the two head servos are at ID `11` and `12` at baud `57600`.
 
 ```{.bash .shell-prompt}
-REx_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
+REx_dynamixel_id_scan.py /dev/hello-dynamixel-head
 ```
 
 Output:
 ```{.bash .no-copy}
 Scanning bus /dev/hello-dynamixel-head at baud rate 57600
 ----------------------------------------------------------
-[Dynamixel ID:000] ping Failed.
-[Dynamixel ID:001] ping Failed.
-[Dynamixel ID:002] ping Failed.
-[Dynamixel ID:003] ping Failed.
-[Dynamixel ID:004] ping Failed.
-[Dynamixel ID:005] ping Failed.
-[Dynamixel ID:006] ping Failed.
-[Dynamixel ID:007] ping Failed.
-[Dynamixel ID:008] ping Failed.
-[Dynamixel ID:009] ping Failed.
-[Dynamixel ID:010] ping Failed.
-[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
-[Dynamixel ID:012] ping Succeeded. Dynamixel model number : 1060
-[Dynamixel ID:013] ping Failed.
-[Dynamixel ID:014] ping Failed.
-[Dynamixel ID:015] ping Failed.
-[Dynamixel ID:016] ping Failed.
-[Dynamixel ID:017] ping Failed.
-[Dynamixel ID:018] ping Failed.
-[Dynamixel ID:019] ping Failed.
-[Dynamixel ID:020] ping Failed.
-[Dynamixel ID:021] ping Failed.
-[Dynamixel ID:022] ping Failed.
-[Dynamixel ID:023] ping Failed.
-[Dynamixel ID:024] ping Failed.
+Scanning bus /dev/hello-dynamixel-head
+Checking ID 0
+Checking ID 1
+Checking ID 2
+Checking ID 3
+Checking ID 4
+Checking ID 5
+Checking ID 6
+Checking ID 7
+Checking ID 8
+Checking ID 9
+Checking ID 10
+Checking ID 11
+[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080. Baud 115200
+Checking ID 12
+[Dynamixel ID:012] ping Succeeded. Dynamixel model number : 1060. Baud 115200
+Checking ID 13
+Checking ID 14
+Checking ID 15
+Checking ID 16
+Checking ID 17
+Checking ID 18
+Checking ID 19
+Checking ID 20
+Checking ID 21
+Checking ID 22
+Checking ID 23
+Checking ID 24
+
 ```
 
 ### Setting the Servo Baud Rate
@@ -125,10 +135,8 @@ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
 Output:
 ```{.bash .no-copy}
 ---------------------
-Checking servo current baud for 57600
-----
-Identified current baud of 57600. Changing baud to 115200
-Success at changing baud
+
+Success at changing baud. Current baud is 115200 for servo 13 on bus /dev/hello-dynamixel-wrist
 ```
 
 !!! note
@@ -139,15 +147,15 @@ Success at changing baud
 Dynamixel servos come with `ID=1` from the factory. When adding your servos to the end-of-arm tool, you may want to set the servo ID using the `REx_dynamixel_id_change.py` tool. For example:
 
 ```{.bash .shell-prompt}
-REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
+REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13
 ```
 
 Output:
 ```{.bash .no-copy}
-[Dynamixel ID:001] ping Succeeded. Dynamixel model number : 1080
+[Dynamixel ID:001] ping Succeeded. Dynamixel model number : 1080. Baud 115200
 Ready to change ID 1 to 13. Hit enter to continue:
 
-[Dynamixel ID:013] ping Succeeded. Dynamixel model number : 1080
+[Dynamixel ID:013] ping Succeeded. Dynamixel model number : 1080. Baud 115200
 Success at setting ID to 13
 ```
 
@@ -219,6 +227,7 @@ stretch_params.py | grep head_pan | grep '_t '
 
 Output:
 ```{.bash .no-copy} 
+stretch_body.robot_params.nominal_params  param.head_pan.range_pad_t       [50.0, -50.0]                 
 stretch_configuration_params.yaml         param.head_pan.range_t           [0, 3827]                     
 stretch_configuration_params.yaml         param.head_pan.zero_t            1250 
 ```
