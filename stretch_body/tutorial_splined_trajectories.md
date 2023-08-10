@@ -61,6 +61,7 @@ Programming a splined trajectory is straightforward. For example, try the follow
 import stretch_body.robot
 r=stretch_body.robot.Robot()
 r.startup()
+#r.arm.motor.disable_sync_mode() **If you want to try running the code with this command you'll need to coment the r.push_command() and it will work as well
 
 #Define the waypoints
 times = [0.0, 10.0, 20.0]
@@ -73,6 +74,8 @@ for waypoint in zip(times, positions, velocities):
 
 #Begin execution
 r.arm.follow_trajectory()
+r.push_command()
+time.sleep(0.1)
 
 #Wait unti completion
 while r.arm.is_trajectory_active():
@@ -87,7 +90,7 @@ This will cause the arm to move from its current position to 0.45m, then back to
 * This will execute a Cubic spline as we did not pass in accelerations to in `r.arm.trajectory.add`
 * The call to `r.arm.follow_trajectory` is non-blocking and the trajectory generation is handled by a background thread of the Robot class
 
-If you're interested in exploring the trajectory API further the [code for the `stretch_trajectory_jog.py`](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py) is a great reference to get started.
+If you're interested in exploring the trajectory API further. the [code for the `stretch_trajectory_jog.py`](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py) is a great reference to get started.
 
 ## Advanced: Controller Parameters
 
