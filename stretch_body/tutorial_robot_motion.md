@@ -11,7 +11,7 @@ robot.startup()
 robot.arm.move_by(0.1)
 robot.push_command()
 time.sleep(2.0)
-	
+
 robot.stop()
 ```
 
@@ -26,7 +26,7 @@ robot.startup()
 robot.arm.move_to(0.1)
 robot.push_command()
 time.sleep(2.0)
-	
+
 robot.stop()
 ```
 
@@ -121,7 +121,7 @@ robot.arm.wait_until_at_setpoint()
 robot.arm.move_to(0.5)
 robot.push_command()
 robot.arm.wait_until_at_setpoint()
-	
+
 robot.stop()
 ```
 
@@ -148,7 +148,7 @@ robot.head.move_to('head_pan',deg_to_rad(90.0))
 robot.head.move_to('head_tilt',deg_to_rad(45.0))
 
 time.sleep(3.0)
-	
+
 robot.stop()
 ```
 
@@ -177,7 +177,7 @@ a = robot.params['head_pan']['motion']['slow']['accel']
 robot.head.move_to('head_pan',deg_to_rad(90.0),v_r=v, a_r=a)
 
 time.sleep(3.0)
-	
+
 robot.stop()
 ```
 
