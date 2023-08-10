@@ -227,7 +227,6 @@ stretch_params.py | grep head_pan | grep '_t '
 
 Output:
 ```{.bash .no-copy} 
-stretch_body.robot_params.nominal_params  param.head_pan.range_pad_t       [50.0, -50.0]                 
 stretch_configuration_params.yaml         param.head_pan.range_t           [0, 3827]                     
 stretch_configuration_params.yaml         param.head_pan.zero_t            1250 
 ```
