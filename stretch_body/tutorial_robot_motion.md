@@ -53,7 +53,7 @@ robot.push_command()
 time.sleep(2.0)
 robot.arm.move_to(0.0)
 robot.arm.wait_until_at_setpoint()
-	
+
 robot.stop()
 ```
 
