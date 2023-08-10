@@ -15,7 +15,9 @@ a.params
 
 ```{.python .no-copy}
 Out[7]: 
-{'chain_pitch': 0.0167,
+{'usb_name': '/dev/hello-motor-arm',
+ 'force_N_per_A': 55.9
+ 'chain_pitch': 0.0167,
  'chain_sprocket_teeth': 10,
  'gr_spur': 3.875,
  'i_feedforward': 0,
@@ -42,7 +44,9 @@ a.robot_params['lift']
 
 ```{.python .no-copy}
 Out[9]: 
-{'calibration_range_bounds': [1.094, 1.106],
+{'usb_name': '/dev/hello-motor-lift',
+ 'force_N_per_A': 75.0
+ 'calibration_range_bounds': [1.094, 1.106],
  'contact_model': 'effort_pct',
  'contact_model_homing': 'effort_pct',
  'contact_models': {'effort_pct': {'contact_thresh_calibration_margin': 10.0,
