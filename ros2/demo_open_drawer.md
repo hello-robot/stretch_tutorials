@@ -125,3 +125,13 @@ return Trigger.Response(
     message='Completed opening the drawer!'
 )
 ```
+
+## Results and Expectations
+
+This demo serves as an experimental setup to explore drawer opening with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
+
+- The demo performs a blind hook operation using contacts sensitivity. Special care must be taken so as to not damage the target surface.
+
+- The code might command the Stretch to lift its arm by a large amount which might cause collisions in the workspace. The code also does not take into account the configuration space of the robot.
+
+Users are encouraged to try this demo and submit improvements.

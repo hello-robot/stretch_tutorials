@@ -173,4 +173,12 @@ pose = {'translate_mobile_base': grasp_mobile_base_m,
 
 The node then proceeds to grasp the object by sending our goal joint positions.
 
+## Results and Expectations
 
+This demo serves as an experimental setup to explore object grasping with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
+
+- The grasp object candidate detection often fails due to the quality of the input point cloud.
+
+- After grasp candidate detection, the segmented point cloud might not cover the entire surface for an object. Hence, the calculated grasp point will have a constant offset from the ideal grasp location.
+
+Users are encouraged to try this demo and submit improvements.

@@ -155,3 +155,13 @@ with self.move_lock:
         self.move_to_pose(pose)
         self.handover_goal_ready = False
 ```
+
+## Results and Expectations
+
+This demo serves as an experimental setup to explore object delivery with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
+
+- The node requires the target user's face to be in the camera view while triggering the demo. As it stands, it does not keep any past face detections in its memory.
+
+- Facial landmarks detection might not work well for some faces and is highly variable to the deviation from the faces that the algorithm was originally trained on.
+
+Users are encouraged to try this demo and submit improvements.

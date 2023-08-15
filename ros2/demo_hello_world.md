@@ -109,3 +109,13 @@ return Trigger.Response(
     message='Completed writing hello!'
 )
 ```
+
+## Results and Expectations
+
+This demo serves as an experimental setup to explore whiteboard writing with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
+
+- Each Stretch has unique calibration thresholds. The contacts thresholds defined in the stock demo code might not work for your Stretch. Additional tuning might be necessary.
+
+- The quality of the written text structure is also highly dependent on mobile base movements. Currently, navigation is open-loop and does not account for accumulated error terms.
+
+Users are encouraged to try this demo and submit improvements.
