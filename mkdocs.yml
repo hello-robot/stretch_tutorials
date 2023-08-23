@@ -149,6 +149,8 @@ nav:
     - Basics:
       - Getting Started: ./ros2/getting_started.md
       # - Teleoperating Stretch: ./ros2/teleoperating_stretch.md
+      - Introduction to ROS 2: ./ros2/intro_to_ros2.md
+      - Introduction to HelloNode: ./ros2/intro_to_hellonode.md
       - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
@@ -181,6 +183,7 @@ nav:
       - Obstacle Avoider: ./ros2/obstacle_avoider.md
       - Align to ArUco: ./ros2/align_to_aruco.md
       - Deep Perception: ./ros2/deep_perception.md
+      - Avoiding Race Conditions and Deadlocks: ./ros2/avoiding_deadlocks_race_conditions.md
       # - PointCloud Transformation: ./ros2/example_11.md
       # - ArUco Tag Locator: ./ros2/example_12.md
 
