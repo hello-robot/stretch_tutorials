@@ -182,10 +182,10 @@ Provides a service to quickly stop any motion currently executing on the robot.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.stop_the_robot_service(TriggerRequest())
+temp.stop_the_robot_service.call_async(Trigger.Request())
 ```
 
 ##### /stow_the_robot ([std_srvs/Trigger](https://docs.ros2.org/latest/api/std_srvs/srv/Trigger.html))
@@ -195,10 +195,10 @@ Provides a service to stow the robot arm.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.stow_the_robot_service(TriggerRequest())
+temp.stow_the_robot_service.call_async(Trigger.Request())
 ```
 
 ##### /home_the_robot ([std_srvs/Trigger](https://docs.ros2.org/latest/api/std_srvs/srv/Trigger.html))
@@ -208,10 +208,10 @@ Provides a service to home the robot joints.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.home_the_robot_service(TriggerRequest())
+temp.home_the_robot_service.call_async(Trigger.Request())
 ```
 
 ##### /switch_to_trajectory_mode ([std_srvs/Trigger](https://docs.ros2.org/latest/api/std_srvs/srv/Trigger.html))
@@ -221,10 +221,10 @@ Provides a service to quickly stop any motion currently executing on the robot.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.switch_to_trajectory_mode_service(TriggerRequest())
+temp.switch_to_trajectory_mode_service.call_async(Trigger.Request())
 ```
 
 ##### /switch_to_position_mode ([std_srvs/Trigger](https://docs.ros2.org/latest/api/std_srvs/srv/Trigger.html))
@@ -234,10 +234,10 @@ Provides a service to quickly stop any motion currently executing on the robot.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.switch_to_position_mode_service(TriggerRequest())
+temp.switch_to_position_mode_service.call_async(Trigger.Request())
 ```
 
 ##### /switch_to_navigation_mode ([std_srvs/Trigger](https://docs.ros2.org/latest/api/std_srvs/srv/Trigger.html))
@@ -247,8 +247,8 @@ Provides a service to quickly stop any motion currently executing on the robot.
 ```python
 # launch the stretch driver launch file beforehand
 
-from std_srvs.srv import TriggerRequest
+from std_srvs.srv import Trigger
 import hello_helpers.hello_misc as hm
 temp = hm.HelloNode.quick_create('temp')
-temp.switch_to_navigation_mode_service(TriggerRequest())
+temp.switch_to_navigation_mode_service.call_async(Trigger.Request())
 ```
