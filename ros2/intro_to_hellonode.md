@@ -107,6 +107,10 @@ print(t.transform.translation)
 
 Returns the current estimated x, y position and angle of the robot on the floor. This is typically called with respect to the odom frame or the map frame. x and y are in meters and the angle is in radians.
 
+!!! note
+    To get the robot pose with respect to the odom frame we need to launch stretch_driver along with the broadcast_odom_tf parameter set to True. To do this execute the command: 
+    `ros2 launch stretch_core stretch_driver.launch.py broadcast_odom_tf:=True`
+
 ```python
 # launch the stretch driver launch file beforehand
 
