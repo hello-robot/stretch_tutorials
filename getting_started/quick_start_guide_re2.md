@@ -194,7 +194,8 @@ robot.end_of_arm.move_to('stretch_gripper',-50)
 robot.stow()
 robot.stop()
 ```
-!!! note If you haven't use iPython before you can copy all the code and paste it in the terminal instead of line by line! Also if you want to exit the iPython prompt write exit()
+!!! note
+    If you haven't use iPython before you can copy all the code and paste it in the terminal instead of line by line! Also if you want to exit the iPython prompt write exit()
 
 ## Change Credentials
 
