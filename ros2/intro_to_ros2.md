@@ -156,7 +156,7 @@ req.b = 20
 req_future = cli.call_async(req)
 rclpy.spin_until_future_complete(node, req_future, timeout_sec=2.0)
 
-print("Received response: {}".format(req_future.result().sum)
+print("Received response: {}".format(req_future.result().sum))
 ```
 
 ### rclpy.spin_until_future_complete()
