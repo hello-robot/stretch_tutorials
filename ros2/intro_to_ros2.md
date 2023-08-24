@@ -122,7 +122,7 @@ Voila! Finally, close both the terminals to end the session.
 Let’s explore another common way of using ROS 2. Imagine a case where you need to request some information from a node and you expect to receive a response. This can be achieved using the service client paradigm in ROS 2. Let’s fire up IPython again and create a quick service:
 ```{.bash .shell-prompt}
 import rclpy
-from example_interfaces.srv import AddTwoInt
+from example_interfaces.srv import AddTwoInts
 rclpy.init()
 
 def add_ints(req, res):
@@ -143,7 +143,7 @@ The add_ints() method is the callback method for the service server. Once a serv
 Now, while retaining the current IPython session, open another session of the IPython interpreter in another terminal to write the service client:
 ```{.bash .shell-prompt}
 import rclpy
-from example_interfaces.srv import AddTwoInt
+from example_interfaces.srv import AddTwoInts
 rclpy.init()
 node = rclpy.create_node('temp2')
 
