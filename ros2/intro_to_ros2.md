@@ -134,9 +134,11 @@ node = rclpy.create_node('temp')
 srv = node.create_service(AddTwoInts, 'add_ints', add_ints)
 
 # you need to spin to receive the request
-rclpy.spin_once(node, timeout_sec=2.0)
+rclpy.spin_once(node, timeout_sec=60.0)
 ```
-
+!!! note
+    You need to execute the next section of this tutorial within 60 seconds as the timeout defined for the spin_once() method to receive incoming requests is defined as 60 seconds. If the time elapses, you can execute the spin_once() method again before issuing a service request in the next section. Alternatively, you can call the spin() method to listen for incoming requests indefinitely.
+	
 The add_ints() method is the callback method for the service server. Once a service request is received, this method will act on it to generate the response. Since a service request is a ROS message, we need to invoke the executor with a spin method to receive the message.
 
 ### create_client()
