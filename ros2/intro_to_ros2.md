@@ -11,7 +11,7 @@ python3 -m IPython
 
 Try out the following snippets for a ROS 2 quickstart:
 
-## Initializationa and Shutdown
+## Initialization and Shutdown
 ### rclpy.init()
 All rclpy functionality can be exposed after initialization:
 ```{.bash .shell-prompt}
@@ -56,7 +56,7 @@ node.destroy_node()
 rclpy.shutdown()
 ```
 
-## Publishing and subscribing
+## Publishing and Subscribing
 ### create_publisher()
 ROS 2 is a distributed communication system and one way to send data is through a publisher. It takes the following arguments: msg_type, msg_topic and a history depth (formerly queue_size):
 ```{.bash .shell-prompt}
