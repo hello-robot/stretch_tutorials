@@ -24,7 +24,7 @@ class CaptureImage(Node):
         self.save_path = '/home/hello-robot/ament_ws/src/stretch_tutorials/stored_data'
         self.br = CvBridge()
 
-    def image_callback(self, msg, data):
+    def image_callback(self, msg):
         """
         A callback function that converts the ROS image to a CV2 image and stores the
         image.
