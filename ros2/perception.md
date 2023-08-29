@@ -17,7 +17,7 @@ ros2 launch stretch_core d435i_low_resolution.launch.py
 Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz) with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```{.bash .shell-prompt}
-ros2 run rviz2 rviz2 -d `ros2 pkg prefix --share stretch_tutorials`/rviz/perception_example.rviz
+ros2 run rviz2 rviz2 -d /home/hello-robot/ament_ws/src/stretch_tutorials/rviz/perception_example.rviz
 ```
 
 ### PointCloud2 Display
