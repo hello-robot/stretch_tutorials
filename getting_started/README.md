@@ -6,7 +6,7 @@ Please take the time to get to know your robot by going through these tutorials 
 
 ## What Version of Robot Do I Have?
 
-Stretch RE1 and Stretch 2 are very similar. One quick way to tell the difference is to look at the robot's hostname:
+Stretch RE1, Stretch 2, and Stretch 3 are very similar. One quick way to tell the difference is to look at the robot's hostname:
 
 ```{.bash .shell-prompt}
 hostname

@@ -1,7 +1,7 @@
 site_name: Stretch Tutorials
 site_url: https://docs.hello-robot.com/stretch_tutorials
 site_description: "Hello Robot Stretch Tutorials"
-copyright: 'Copyright &copy; 2022 Hello Robot Inc'
+copyright: 'Copyright &copy; 2023 Hello Robot Inc'
 site_author: Hello Robot Inc
 use_directory_urls: True
 docs_dir: .
@@ -87,8 +87,9 @@ nav:
       - Overview: ./getting_started/README.md
       - Basics:
         - Safety Guide: ./getting_started/safety_guide.md
-        - Quick Start Stretch RE1: ./getting_started/quick_start_guide_re1.md
+        - Quick Start Stretch 3: ./getting_started/quick_start_guide_stretch_3.md
         - Quick Start Stretch 2: ./getting_started/quick_start_guide_re2.md
+        - Quick Start Stretch RE1: ./getting_started/quick_start_guide_re1.md
         - Best Practices: ./getting_started/best_practices.md
         - Troubleshooting: ./getting_started/troubleshooting_guide.md
       - Advanced:
@@ -144,7 +145,7 @@ nav:
       - ArUco Tag Locator: ./ros1/example_12.md
       - 2D Navigation Goals: ./ros1/example_13.md
       - Autodocking: ./ros1/autodocking_nav_stack.md
-  - ROS 2 (Beta):
+  - ROS 2:
     - Overview: ./ros2/README.md
     - Basics:
       - Getting Started: ./ros2/getting_started.md
