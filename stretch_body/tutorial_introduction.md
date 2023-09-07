@@ -95,24 +95,35 @@ Parameters may be named with a suffix to help describe the unit type. For exampl
 
 ### The Robot Status
 
-The Robot derives from the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py). It also encapsulates several other Devices:
+The Robot derives from the [Device class](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py) and we have subclasses that derives from this Device class such as the [Prismatic Joint](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/prismatic_joint.py) and the [Dynamixel XL460](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py). It also encapsulates several other Devices:
 
-* [robot.head](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py)
-* [robot.arm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/arm.py)
-* [robot.lift](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/lift.py)
+**Device**
 * [robot.base](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/base.py)
 * [robot.wacc](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py)
 * [robot.pimu](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py)
+
+**Prismatic Joint**
+* [robot.arm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/arm.py)
+* [robot.lift](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/lift.py)
+
+**Dynamixel XL460**
+* [robot.head](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py)
 * [robot.end_of_arm](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py)
 
 All devices contain a Status dictionary. The Status contains the most recent sensor and state data of that device. For example, looking at the Arm class we see:
 
 ```python
-class Arm(Device):
-    def __init__(self):
+class Arm(PrismaticJoint):
+    def __init__(self,usb=None):
+```
+As we can see the arm class is part of the PrismaticJoint class but this is also part of the Device class as we can see here:
+
+```python
+class PrismaticJoint(Device):
+    def __init__(self,name,usb=None):
         ...
-		self.status = {'pos': 0.0, 'vel': 0.0, 'force':0.0, \
-                       'motor':self.motor.status,'timestamp_pc':0}
+		self.status = {'timestamp_pc':0,'pos':0.0, 'vel':0.0, \
+                       'force':0.0,'motor':self.motor.status}
 ```
 
 The Status dictionaries are automatically updated by a background thread of the Robot class at around 25Hz. The Status data can be accessed via the Robot class as below:

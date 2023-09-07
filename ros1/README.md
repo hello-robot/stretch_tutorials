@@ -17,12 +17,11 @@ This tutorial track is for users looking to get familiar with programming Stretc
 | 4 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
 | 5 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
 | 6 | [Navigation Stack](navigation_stack.md)                                         | Motion planning and control for the mobile base using Nav stack. |
-| 7 | [MoveIt! Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
-| 8 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
-| 9 | [Perception](perception.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
-| 10 | [ArUco Marker Detection](aruco_marker_detection.md)                             | Localize objects using ArUco markers. |
-| 11 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | Learn to use the ReSpeaker Microphone Array. |
-| 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |
+| 7 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
+| 8 | [Perception](perception.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
+| 9 | [ArUco Marker Detection](aruco_marker_detection.md)                             | Localize objects using ArUco markers. |
+| 10 | [ReSpeaker Microphone Array](respeaker_microphone_array.md)                     | Learn to use the ReSpeaker Microphone Array. |
+| 11 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |
 
 
 ## Other Examples

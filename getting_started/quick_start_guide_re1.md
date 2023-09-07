@@ -143,7 +143,7 @@ Once the robot has homed, let's write some quick test code:
 ```{.bash .shell-prompt}
 ipython
 ```
-
+    
 Now let's move the robot around using the Robot API. Try typing in these interactive commands at the iPython prompt:
 
 ```{.python .no-copy}
@@ -177,7 +177,8 @@ robot.end_of_arm.move_to('stretch_gripper',-50)
 robot.stow()
 robot.stop()
 ```
-
+!!! note
+    The iPython interpreter also allows you to execute blocks of code in a single go instead of running commands line by line. To end the interpreter session, type exit() and press enter.
 ## Change Credentials
 
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 

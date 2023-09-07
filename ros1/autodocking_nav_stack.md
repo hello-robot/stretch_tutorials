@@ -71,7 +71,7 @@ The third child of the root node is the `Move to dock` action node. This is a si
 The fourth and final child of the sequence node is another `fallback` node with two children - the `Charging?` condition node and the `Move to predock` action node with an `inverter` decorator node (+/- sign). The `Charging?` condition node is a subscriber that checks if the 'present' attribute of the `BatteryState` message is True. If the robot has backed up correctly into the docking station and the charger port latched, this node should return SUCCESS and the autodocking would succeed. If not, the robot moves back to the predock pose through the `Move to predock` action node and tries again.
 
 ## Code Breakdown
-Let's jump into the code to see how things work under the hood. Follow along [here]() (TODO after merge) to have a look at the entire script.
+Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros/blob/noetic/stretch_demos/nodes/autodocking_bt.py) to have a look at the entire script.
 
 We start off by importing the dependencies. The ones of interest are those relating to py-trees and the various behaviour classes in autodocking.autodocking_behaviours, namely, MoveBaseActionClient, CheckTF and VisualServoing. We also created custom ROS action messages for the ArucoHeadScan action defined in the action directory of stretch_demos package.
 ```python

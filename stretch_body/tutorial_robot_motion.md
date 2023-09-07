@@ -4,13 +4,14 @@ As we've seen in previous tutorials, commanding robot motion is simple and strai
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
 robot.arm.move_by(0.1)
 robot.push_command()
 time.sleep(2.0)
-	
+
 robot.stop()
 ```
 
@@ -18,13 +19,14 @@ The absolute motion can be commanded by:
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
 robot.arm.move_to(0.1)
 robot.push_command()
 time.sleep(2.0)
-	
+
 robot.stop()
 ```
 
@@ -34,6 +36,7 @@ In the above examples, we executed a `time.sleep()` after `robot.push_command()`
 
 ```python linenums="1"
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
@@ -50,7 +53,7 @@ robot.push_command()
 time.sleep(2.0)
 robot.arm.move_to(0.0)
 robot.arm.wait_until_at_setpoint()
-	
+
 robot.stop()
 ```
 
@@ -118,7 +121,7 @@ robot.arm.wait_until_at_setpoint()
 robot.arm.move_to(0.5)
 robot.push_command()
 robot.arm.wait_until_at_setpoint()
-	
+
 robot.stop()
 ```
 
@@ -130,6 +133,7 @@ As we see here, the `robot.push_command()` call is not required as the motion be
 
 ```python
 import stretch_body.robot
+import time
 from stretch_body.hello_utils import deg_to_rad
 
 robot=stretch_body.robot.Robot()
@@ -144,7 +148,7 @@ robot.head.move_to('head_pan',deg_to_rad(90.0))
 robot.head.move_to('head_tilt',deg_to_rad(45.0))
 
 time.sleep(3.0)
-	
+
 robot.stop()
 ```
 
@@ -152,6 +156,7 @@ Similar to the stepper joints, the Dynamixel joints accept motion profile and mo
 
 ```python
 import stretch_body.robot
+import time
 robot=stretch_body.robot.Robot()
 robot.startup()
 
@@ -172,7 +177,7 @@ a = robot.params['head_pan']['motion']['slow']['accel']
 robot.head.move_to('head_pan',deg_to_rad(90.0),v_r=v, a_r=a)
 
 time.sleep(3.0)
-	
+
 robot.stop()
 ```
 

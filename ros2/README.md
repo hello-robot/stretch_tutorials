@@ -18,10 +18,10 @@ This tutorial track is for users looking to get familiar with programming Stretc
 | 2 | [Follow Joint Trajectory Commands](follow_joint_trajectory.md)                  | Control joints using joint trajectory server. |
 | 3 | [Internal State of Stretch](internal_state_of_stretch.md)                       | Monitor the joint states of Stretch. |
 | 4 | [RViz Basics](rviz_basics.md)                                                   | Visualize topics in Stretch. |
-| 5 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
+<!--| 5 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 6 | [MoveIt2 with Rviz](moveit_rviz_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 7 | [MoveIt2 MoveGroup C++ API](moveit_movegroup_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
-<!--| 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
+| 9 | [Perception](coming_soon.md)                                                     | Use the Realsense D435i camera to visualize the environment. |
 | 10 | [ArUco Marker Detection](coming_soon.md)                             | Localize objects using ArUco markers. |
 | 11 | [ReSpeaker Microphone Array](coming_soon.md)                     | Learn to use the ReSpeaker Microphone Array. |
 | 12 | [FUNMAP](https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap) | Fast Unified Navigation, Manipulation and Planning. |

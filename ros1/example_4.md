@@ -172,7 +172,7 @@ The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy
 
 Instantiate class with `Balloon()`.
 
-Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
+The `rospy.rate()` is the rate at which the node is going to publish information (10 Hz).
 
 ```python
 while not rospy.is_shutdown():
