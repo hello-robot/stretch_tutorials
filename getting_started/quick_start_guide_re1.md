@@ -178,7 +178,7 @@ robot.stow()
 robot.stop()
 ```
 !!! note
-    If you haven't use iPython before you can copy all the code and paste it in the terminal instead of line by line! Also if you want to exit the iPython prompt write exit()
+    The iPython interpreter also allows you to execute blocks of code in a single go instead of running commands line by line. To end the interpreter session, type exit() and press enter.
 ## Change Credentials
 
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 

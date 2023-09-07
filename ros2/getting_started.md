@@ -28,7 +28,7 @@ While Stretch ROS2 is in beta, there will be frequent updates to the ROS2 softwa
 We can test whether the ROS2 workspace was enabled successfully by testing out the ROS2 drivers package, called "stretch_core", with keyboard teleop. In one terminal, we'll launch Stretch's ROS2 drivers using:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py mode:=trajectory
+ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 In the second terminal, launch the keyboard teleop node using:
