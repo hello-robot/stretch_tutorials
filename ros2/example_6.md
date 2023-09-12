@@ -1,6 +1,6 @@
 ## Example 6
 
-In this example, we will review a Python script that prints and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [rostopic command-line tool](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
+In this example, we will review a Python script that prints and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [ros2 topic command-line tool](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/effort_sensing.gif"/>
@@ -30,9 +30,11 @@ import rclpy
 import hello_helpers.hello_misc as hm
 import os
 import csv
-import pandas as pd
-import matplotlib.pyplot as plt
 import time
+import pandas as pd
+import matplotlib
+matplotlib.use('tkagg')
+import matplotlib.pyplot as plt
 from matplotlib import animation
 from datetime import datetime
 from control_msgs.action import FollowJointTrajectory
@@ -46,6 +48,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.joint_effort = []
         self.save_path = '/home/hello-robot/ament_ws/src/stretch_tutorials/stored_data'
         self.export_data = export_data
+        self.result = False
+        self.file_name = datetime.now().strftime("effort_sensing_tutorial_%Y%m%d%I")
         
 
     def issue_command(self):
@@ -59,6 +63,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         trajectory_goal.trajectory.header.stamp = self.get_clock().now().to_msg()
         trajectory_goal.trajectory.header.frame_id = 'base_link'
 
+        while self.joint_state is None:
+            time.sleep(0.1)
         self._send_goal_future = self.trajectory_client.send_goal_async(trajectory_goal, self.feedback_callback)
         self.get_logger().info('Sent position goal = {0}'.format(trajectory_goal))
         self._send_goal_future.add_done_callback(self.goal_response_callback)
@@ -75,8 +81,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self._get_result_future.add_done_callback(self.get_result_callback)
 
     def get_result_callback(self, future):
-        result = future.result().result
-        self.get_logger().info('Sent position goal = {0}'.format(result))
+        self.result = future.result().result
+        self.get_logger().info('Sent position goal = {0}'.format(self.result))
 
     def feedback_callback(self, feedback_msg):
         if 'wrist_extension' in self.joints:
@@ -93,9 +99,9 @@ class JointActuatorEffortSensor(hm.HelloNode):
             print("effort: " + str(current_effort))
         else:
             self.joint_effort.append(current_effort)
-
+        
         if self.export_data:
-            file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+            file_name = self.file_name
             completeName = os.path.join(self.save_path, file_name)
             with open(completeName, "w") as f:
                 writer = csv.writer(f)
@@ -103,8 +109,9 @@ class JointActuatorEffortSensor(hm.HelloNode):
                 writer.writerows(self.joint_effort)
     
     def plot_data(self, animate = True):
-        time.sleep(0.1)
-        file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+        while not self.result:
+            time.sleep(0.1)
+        file_name = self.file_name
         self.completeName = os.path.join(self.save_path, file_name)
         self.data = pd.read_csv(self.completeName)
         self.y_anim = []
@@ -156,7 +163,6 @@ def main():
         node.plot_data()
         node.new_thread.join()
         
-        
     except KeyboardInterrupt:
         node.get_logger().info('interrupt received, so shutting down')
         node.destroy_node()
@@ -164,6 +170,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 ```
 
@@ -181,9 +188,11 @@ import rclpy
 import hello_helpers.hello_misc as hm
 import os
 import csv
-import pandas as pd
-import matplotlib.pyplot as plt
 import time
+import pandas as pd
+import matplotlib
+matplotlib.use('tkagg')
+import matplotlib.pyplot as plt
 from matplotlib import animation
 from datetime import datetime
 from control_msgs.action import FollowJointTrajectory
@@ -211,9 +220,11 @@ Create a list of the desired joints you want to print.
 self.joint_effort = []
 self.save_path = '/home/hello-robot/ament_ws/src/stretch_tutorials/stored_data'
 self.export_data = export_data
+self.result = False
+self.file_name = datetime.now().strftime("effort_sensing_tutorial_%Y%m%d%I")
 ```
 
-Create an empty list to store the joint effort values. The `self.save_path` is the directory path where the .txt file of the effort values will be stored. You can change this path to a preferred directory. The `self.export_data` is a boolean and its default value is set to `True`. If set to `False`, then the joint values will be printed in the terminal, otherwise, it will be stored in a .txt file and that's what we want to see the plot graph.
+Create an empty list to store the joint effort values. The `self.save_path` is the directory path where the .txt file of the effort values will be stored. You can change this path to a preferred directory. The `self.export_data` is a boolean and its default value is set to `True`. If set to `False`, then the joint values will be printed in the terminal, otherwise, it will be stored in a .txt file and that's what we want to see the plot graph. Also we want to give our text file a name since the beginning and we use the `self.file_name` to access this later.
 
 ```python
 self._send_goal_future = self.trajectory_client.send_goal_async(trajectory_goal, self.feedback_callback)
@@ -243,7 +254,7 @@ We need the goal_handle to request the result with the method get_result_async. 
 
 ```python
 def get_result_callback(self, future):
-        result = future.result().result
+        self.result = future.result().result
         self.get_logger().info('Sent position goal = {0}'.format(result))
 ```
 In the result callback we log the result of our poistion goal 
@@ -283,25 +294,26 @@ Use a conditional statement to print effort values in the terminal or store valu
 
 ```python
 if self.export_data:
-            file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+            file_name = self.file_name
             completeName = os.path.join(self.save_path, file_name)
             with open(completeName, "w") as f:
                 writer = csv.writer(f)
                 writer.writerow(self.joints)
                 writer.writerows(self.joint_effort)
 ```
-A conditional statement is used to export the data to a .txt file. The file's name is set to the date and time the node was executed.
+A conditional statement is used to export the data to a .txt file. The file's name is set to the one we created at the beginning.
 
 ```python
 def plot_data(self, animate = True):
-        time.sleep(0.1)
-        file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+        while not self.result:
+            time.sleep(0.1)
+        file_name = self.file_name
         self.completeName = os.path.join(self.save_path, file_name)
         self.data = pd.read_csv(self.completeName)
         self.y_anim = []
         self.animate = animate
 ```
-This function will help us initialize some values to plot our data, the file is going to be the one we created and we need to create an empty list for the animation
+This function will help us initialize some values to plot our data, we need to wait until we get the results to start plotting, because the file could still be storing values and we want to plot every point also we need to create an empty list for the animation.
 
 ```python
 for joint in self.data.columns:
