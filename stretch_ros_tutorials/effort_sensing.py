@@ -4,9 +4,11 @@ import rclpy
 import hello_helpers.hello_misc as hm
 import os
 import csv
-import pandas as pd
-import matplotlib.pyplot as plt
 import time
+import pandas as pd
+import matplotlib
+matplotlib.use('tkagg')
+import matplotlib.pyplot as plt
 from matplotlib import animation
 from datetime import datetime
 from control_msgs.action import FollowJointTrajectory
@@ -28,6 +30,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self.joint_effort = []
         self.save_path = '/home/hello-robot/ament_ws/src/stretch_tutorials/stored_data'
         self.export_data = export_data
+        self.result = False
+        self.file_name = datetime.now().strftime("effort_sensing_tutorial_%Y%m%d%I")
         
 
     def issue_command(self):
@@ -46,6 +50,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         trajectory_goal.trajectory.header.stamp = self.get_clock().now().to_msg()
         trajectory_goal.trajectory.header.frame_id = 'base_link'
 
+        while self.joint_state is None:
+            time.sleep(0.1)
         self._send_goal_future = self.trajectory_client.send_goal_async(trajectory_goal, self.feedback_callback)
         self.get_logger().info('Sent position goal = {0}'.format(trajectory_goal))
         self._send_goal_future.add_done_callback(self.goal_response_callback)
@@ -62,8 +68,8 @@ class JointActuatorEffortSensor(hm.HelloNode):
         self._get_result_future.add_done_callback(self.get_result_callback)
 
     def get_result_callback(self, future):
-        result = future.result().result
-        self.get_logger().info('Sent position goal = {0}'.format(result))
+        self.result = future.result().result
+        self.get_logger().info('Sent position goal = {0}'.format(self.result))
 
     def feedback_callback(self, feedback_msg):
         """
@@ -87,9 +93,9 @@ class JointActuatorEffortSensor(hm.HelloNode):
             print("effort: " + str(current_effort))
         else:
             self.joint_effort.append(current_effort)
-
+        
         if self.export_data:
-            file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+            file_name = self.file_name
             completeName = os.path.join(self.save_path, file_name)
             with open(completeName, "w") as f:
                 writer = csv.writer(f)
@@ -97,8 +103,9 @@ class JointActuatorEffortSensor(hm.HelloNode):
                 writer.writerows(self.joint_effort)
     
     def plot_data(self, animate = True):
-        time.sleep(0.1)
-        file_name = datetime.now().strftime("%Y-%m-%d_%I-%p")
+        while not self.result:
+            time.sleep(0.1)
+        file_name = self.file_name
         self.completeName = os.path.join(self.save_path, file_name)
         self.data = pd.read_csv(self.completeName)
         self.y_anim = []
