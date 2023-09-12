@@ -101,7 +101,6 @@ nav:
     - Basics:
         - Introduction: ./stretch_body/tutorial_introduction.md
         - Command line Tools: ./stretch_body/tutorial_command_line_tools.md
-        - Stretch Body API: ./stretch_body/tutorial_stretch_body_api.md
         - Robot Motion: ./stretch_body/tutorial_robot_motion.md
         - Robot Sensors: ./stretch_body/tutorial_robot_sensors.md
     - Advanced:
