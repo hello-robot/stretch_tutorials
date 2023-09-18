@@ -2,7 +2,7 @@
 In this tutorial, we will work with Stretch to explore the Simple Commander Python API to enable autonomous navigation programmatically. We will also demonstrate a security patrol routine for Stretch developed using this API. If you just landed here, it might be a good idea to first review the previous tutorial which covered mapping and navigation using RViz as an interface.
 
 ## The Simple Commander Python API
-To develop complex behaviors with Stretch where navigation is just one aspect of the autonomy stack, we need to be able to plan and execute navigation routines as part of a bigger program. Luckily, the Nav2 stack exposes a Python API that abstracts the ROS layer and the Behavior Tree framework (more on that later!) from the user through a pre-configured library called the [robot navigator](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_nav2/stretch_nav2/robot_navigator.py). This library defines a class called BasicNavigator which wraps the planner, controller and recovery action servers and exposes methods such as `goToPose()`, `goToPoses()` and `followWaypoints()` to execute navigation behaviors.
+To develop complex behaviors with Stretch where navigation is just one aspect of the autonomy stack, we need to be able to plan and execute navigation routines as part of a bigger program. Luckily, the Nav2 stack exposes a Python API that abstracts the ROS layer and the Behavior Tree framework (more on that later!) from the user through a pre-configured library called the [robot navigator](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/robot_navigator.py). This library defines a class called BasicNavigator which wraps the planner, controller and recovery action servers and exposes methods such as `goToPose()`, `goToPoses()` and `followWaypoints()` to execute navigation behaviors.
 
 Let's first see the demo in action and then explore the code to understand how this works!
 
@@ -16,7 +16,7 @@ stretch_robot_stow.py
 ```
 
 ## Setup
-Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the co-ordinates in the array called `security_route` in the [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30) file. 
+Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the co-ordinates in the array called `security_route` in the [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30) file. 
 
 First, execute the following command while passing the correct map YAML. Then, press the 'Startup' button:
 
@@ -24,7 +24,7 @@ First, execute the following command while passing the correct map YAML. Then, p
 ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_ROBOT_FLEET}/maps/<map_name>.yaml
 ```
 
-Since we expect the first point in the patrol route to be at the origin of the map, the first coordinates should be (0.0, 0.0). Next, to define the route, the easiest way to define the waypoints in the `security_route` array is by setting the robot at random locations in the map using the '2D Pose Estimate' button in RViz as shown below. For each location, note the x, and y coordinates in the position field of the base_footprint frame and add it to the `security_route` array in [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30).
+Since we expect the first point in the patrol route to be at the origin of the map, the first coordinates should be (0.0, 0.0). Next, to define the route, the easiest way to define the waypoints in the `security_route` array is by setting the robot at random locations in the map using the '2D Pose Estimate' button in RViz as shown below. For each location, note the x, and y coordinates in the position field of the base_footprint frame and add it to the `security_route` array in [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30).
 
 <p align="center">
   <img height=500 src="https://user-images.githubusercontent.com/97639181/206782270-e84b33c4-e155-468d-8a46-d926b88ba428.gif"/>
@@ -50,7 +50,7 @@ ros2 launch stretch_nav2 demo_security.launch.py map:=${HELLO_ROBOT_FLEET}/maps/
 </p>
 
 ## Code Breakdown
-Now, let's jump into the code to see how things work under the hood. Follow along in the [code](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_nav2/stretch_nav2/simple_commander_demo.py) to have a look at the entire script.
+Now, let's jump into the code to see how things work under the hood. Follow along in the [code](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py) to have a look at the entire script.
 
 First, we import the `BasicNavigator` class from the robot_navigator library which comes standard with the Nav2 stack. This class wraps around the planner, controller and recovery action servers.
 

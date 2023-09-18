@@ -12,7 +12,7 @@ LaserScanSpeckleFilter - We use this filter to remove phantom detections in the 
 
 LaserScanBoxFilter - Stretch is prone to returning false detections right over the mobile base. While navigating, since it’s safe to assume that Stretch is not standing right above an obstacle, we filter out any detections that are in a box shape over the mobile base.
 
-Beware that filtering laser scans comes at the cost of a sparser scan that might not be ideal for all applications. If you want to tweak the values for your end application, you could do so by changing the values in the [laser_filter_params.yaml](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/config/laser_filter_params.yaml) file and by following the laser_filters package wiki. Also, if you are feeling zany and want to use the raw unfiltered scans from the laser scanner, simply subscribe to the /scan topic instead of the /scan_filtered topic.
+Beware that filtering laser scans comes at the cost of a sparser scan that might not be ideal for all applications. If you want to tweak the values for your end application, you could do so by changing the values in the [laser_filter_params.yaml](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/laser_filter_params.yaml) file and by following the laser_filters package wiki. Also, if you are feeling zany and want to use the raw unfiltered scans from the laser scanner, simply subscribe to the /scan topic instead of the /scan_filtered topic.
 
 ![laser_filtering](https://user-images.githubusercontent.com/97639181/196327251-c39f3cbb-c898-48c8-ae28-2683564061d9.gif)
 
@@ -42,7 +42,7 @@ ros2 launch stretch_core rplidar_keepout.launch.py
 ![avoidance](https://user-images.githubusercontent.com/97639181/196327294-1b2dde5e-2fdc-4a67-a188-ae6b1f5e6a06.gif)
 
 ## Code Breakdown:
-Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/stretch_core/avoider.py) to have a look at the entire script.
+Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/avoider.py) to have a look at the entire script.
 
 The turning distance is defined by the distance attribute and the keepout distance is defined by the keepout attribute.
 

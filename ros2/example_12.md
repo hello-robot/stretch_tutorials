@@ -2,9 +2,9 @@
 For this example, we will send follow joint trajectory commands for the head camera to search and locate an ArUco tag. In this instance, a Stretch robot will try to locate the docking station's ArUco tag.
 
 ## Modifying Stretch Marker Dictionary YAML File
-When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/config/stretch_marker_dict.yaml), that holds the information about the markers. A further breakdown of the YAML file can be found in our [Aruco Marker Detection](aruco_marker_detection.md) tutorial.
+When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml), that holds the information about the markers. A further breakdown of the YAML file can be found in our [Aruco Marker Detection](aruco_marker_detection.md) tutorial.
 
-Below is what needs to be included in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/config/stretch_marker_dict.yaml) file so the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/stretch_core/detect_aruco_markers.py) node can find the docking station's ArUco tag.
+Below is what needs to be included in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml) file so the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py) node can find the docking station's ArUco tag.
 
 ```yaml
 '245':
@@ -27,19 +27,19 @@ To activate the RealSense camera and publish topics to be visualized, run the fo
 ros2 launch stretch_core d435i_high_resolution.launch.py
 ```
 
-Next, run the stretch ArUco launch file which will bring up the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_core/stretch_core/detect_aruco_markers.py) node. In a new terminal, execute:
+Next, run the stretch ArUco launch file which will bring up the [detect_aruco_markers](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py) node. In a new terminal, execute:
 
 ```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_aruco.launch.py
 ```
 
-Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/iron/rviz/aruco_detector_example.rviz) with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
+Within this tutorial package, there is an [RViz config file](https://github.com/hello-robot/stretch_tutorials/blob/humble/rviz/aruco_detector_example.rviz) with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.
 
 ```{.bash .shell-prompt}
 ros2 run rviz2 rviz2 -d /home/hello-robot/ament_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 ```
 
-Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/iron/stretch_ros_tutorials/aruco_tag_locator.py) node. In a new terminal, execute:
+Then run the [aruco_tag_locator.py](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/aruco_tag_locator.py) node. In a new terminal, execute:
 
 ```{.bash .shell-prompt}
 cd ament_ws/src/stretch_tutorials/stretch_ros_tutorials/
@@ -274,7 +274,7 @@ Now let's break the code down.
 #!/usr/bin/env python3
 ```
 
-Every Python ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rclpy
@@ -291,7 +291,7 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from geometry_msgs.msg import TransformStamped
 ```
 
-You need to import `rclpy` if you are writing a ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). Import other python modules needed for this node. Import the `FollowJointTrajectory` from the [control_msgs.action](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import `JointTrajectoryPoint` from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/iron/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros2/tree/iron/hello_helpers) package consists of a module that provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros2). In this instance, we are importing the `hello_misc` script.
+You need to import `rclpy` if you are writing a ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). Import other python modules needed for this node. Import the `FollowJointTrajectory` from the [control_msgs.action](http://wiki.ros.org/control_msgs) package to control the Stretch robot. Import `JointTrajectoryPoint` from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/humble/trajectory_msgs) package to define robot trajectories. The [hello_helpers](https://github.com/hello-robot/stretch_ros2/tree/humble/hello_helpers) package consists of a module that provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros2). In this instance, we are importing the `hello_misc` script.
 
 ```python
 def __init__(self):
