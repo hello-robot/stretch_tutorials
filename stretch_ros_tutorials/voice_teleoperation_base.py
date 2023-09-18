@@ -2,7 +2,6 @@
 
 # Import modules
 import math
-#import rospy
 import rclpy
 import sys
 from rclpy.duration import Duration
@@ -67,9 +66,7 @@ class GetVoiceCommands:
         self.sound_direction = 0
 
         # Initialize subscribers
-        #self.speech_to_text_sub  = rospy.Subscriber("/speech_to_text",  SpeechRecognitionCandidates, self.callback_speech)
         self.speech_to_text_sub = self.node.create_subscription(SpeechRecognitionCandidates, "/speech_to_text", self.callback_speech, 1)
-        #self.sound_direction_sub = rospy.Subscriber("/sound_direction", Int32,                       self.callback_direction)
         self.sound_direction_sub = self.node.create_subscription(Int32, "/sound_direction", self.callback_direction, 1)
 
     def callback_direction(self, msg):
@@ -162,12 +159,10 @@ class GetVoiceCommands:
         # Set the step size of translational and rotational base motions
         if (self.voice_command == "small") or (self.voice_command == "medium") or (self.voice_command == "big"):
             self.step_size = self.voice_command
-            #rospy.loginfo('Step size = {0}'.format(self.step_size))
             self.node.get_logger().info('Step size = {0}'.format(self.step_size))
 
         if self.voice_command == 'quit':
-            # Sends a signal to rospy to shutdown the ROS interfaces
-            #rospy.signal_shutdown("done")
+            # Sends a signal to ros to shutdown the ROS interfaces
             self.node.get_logger().info("done")
 
             # Exit the Python interpreter
@@ -229,7 +224,6 @@ class VoiceTeleopNode(hm.HelloNode):
 
             # Extract the increment type from the command dictionary
             inc = command['inc']
-            #rospy.loginfo('inc = {0}'.format(inc))
             self.get_logger().info('inc = {0}'.format(inc))
             new_value = inc
 
@@ -237,7 +231,6 @@ class VoiceTeleopNode(hm.HelloNode):
             point.positions = [new_value]
             trajectory_goal.trajectory.points = [point]
             trajectory_goal.trajectory.header.stamp = self.get_clock().now().to_msg()
-            #rospy.loginfo('joint_name = {0}, trajectory_goal = {1}'.format(joint_name, trajectory_goal))
             self.get_logger().info('joint_name = {0}, trajectory_goal = {1}'.format(joint_name, trajectory_goal))
 
             # Make the action call and send goal of the new joint position
@@ -259,9 +252,7 @@ class VoiceTeleopNode(hm.HelloNode):
         and call other methods in both the VoiceTeleopNode and GetVoiceCommands classes.
         :param self: The self reference.
         """
-        #rospy.Subscriber('/stretch/joint_states', JointState, self.joint_states_callback)
         self.create_subscription(JointState, '/stretch/joint_states', self.joint_states_callback, 1)
-        #rate = rospy.Rate(self.rate)
         rate = self.create_rate(self.rate)
         self.speech.print_commands()
             
