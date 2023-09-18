@@ -1,7 +1,7 @@
 ## Example 5
 In this example, we will review a Python script that prints out the positions of a selected group of Stretch joints. This script is helpful if you need the joint positions after you teleoperated Stretch with the Xbox controller or physically moved the robot to the desired configuration after hitting the run stop button.
 
-If you are looking for a continuous print of the joint states while Stretch is in action, then you can use the [ros2 topic command-line tool](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
+If you are looking for a continuous print of the joint states while Stretch is in action, then you can use the [ros2 topic command-line tool](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
 
 Begin by starting up the stretch driver launch file.
 
@@ -9,7 +9,7 @@ Begin by starting up the stretch driver launch file.
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
-You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to execute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/iron/stretch_ros_tutorials/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist. In a new terminal, execute:
+You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to execute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist. In a new terminal, execute:
 
 ```{.bash .shell-prompt}
 cd ament_ws/src/stretch_tutorials/stretch_ros_tutorials/
@@ -130,7 +130,7 @@ Now let's break the code down.
 #!/usr/bin/env python3
 ```
 
-Every Python ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rclpy

@@ -1,6 +1,6 @@
 ## Example 6
 
-In this example, we will review a Python script that prints and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [ros2 topic command-line tool](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
+In this example, we will review a Python script that prints and stores the effort values from a specified joint. If you are looking for a continuous print of the joint state efforts while Stretch is in action, then you can use the [ros2 topic command-line tool](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) shown in the [Internal State of Stretch Tutorial](https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/internal_state_of_stretch.md).
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/effort_sensing.gif"/>
@@ -12,7 +12,7 @@ Begin by running the following command in a terminal.
 ros2 launch stretch_core stretch_driver.launch.py
 ```
 
-There's no need to switch to the position mode in comparison with ROS1 because the default mode of the launcher is this position mode. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/iron/stretch_ros_tutorials/effort_sensing.py) node. In a new terminal, execute:
+There's no need to switch to the position mode in comparison with ROS1 because the default mode of the launcher is this position mode. Then run the [effort_sensing.py](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/effort_sensing.py) node. In a new terminal, execute:
 
 ```{.bash .shell-prompt}
 cd ament_ws/src/stretch_tutorials/stretch_ros_tutorials/
@@ -175,13 +175,14 @@ if __name__ == '__main__':
 ```
 
 ### The Code Explained
-This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/iron/stretch_ros_tutorials/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/iron/stretch_ros_tutorials/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
+This code is similar to that of the [multipoint_command](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/multipoint_command.py) and [joint_state_printer](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/joint_state_printer.py) node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.
 
 ```python
 #!/usr/bin/env python3
 ```
 
-Every Python ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html
+) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rclpy
@@ -199,7 +200,7 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 ```
 
-You need to import rclpy if you are writing a ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). Import the `FollowJointTrajectory` from the `control_msgs.action` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros2). In this instance, we are importing the `hello_misc` script.
+You need to import rclpy if you are writing a ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). Import the `FollowJointTrajectory` from the `control_msgs.action` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across [stretch_ros](https://github.com/hello-robot/stretch_ros2). In this instance, we are importing the `hello_misc` script.
 
 ```Python
 class JointActuatorEffortSensor(hm.HelloNode):

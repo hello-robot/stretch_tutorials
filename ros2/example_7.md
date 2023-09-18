@@ -28,7 +28,7 @@ ros2 run rviz2 rviz2 -d /home/hello-robot/ament_ws/src/stretch_tutorials/rviz/pe
 ```
 
 ## Capture Image with Python Script
-In this section, we will use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](stretch_ros_tutorials/capture_image.py) node to save a .jpeg image of the image topic `/camera/color/image_raw`. In a terminal, execute:
+In this section, we will use a Python node to capture an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/). Execute the [capture_image.py](https://github.com/hello-robot/stretch_tutorials/blob/humble/stretch_ros_tutorials/capture_image.py) node to save a .jpeg image of the image topic `/camera/color/image_raw`. In a terminal, execute:
 
 ```{.bash .shell-prompt}
 cd ~/ament_ws/src/stretch_tutorials/stretch_ros_tutorials
@@ -99,7 +99,7 @@ Now let's break the code down.
 ```python
 #!/usr/bin/env python3
 ```
-Every Python ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rclpy
@@ -108,7 +108,7 @@ import os
 import cv2
 ```
 
-You need to import `rclpy` if you are writing a ROS [Node](https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). There are functions from `sys`, `os`, and `cv2` that are required within this code. `cv2` is a library of Python functions that implements computer vision algorithms. Further information about cv2 can be found here: [OpenCV Python](https://www.geeksforgeeks.org/opencv-python-tutorial/).
+You need to import `rclpy` if you are writing a ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html). There are functions from `sys`, `os`, and `cv2` that are required within this code. `cv2` is a library of Python functions that implements computer vision algorithms. Further information about cv2 can be found here: [OpenCV Python](https://www.geeksforgeeks.org/opencv-python-tutorial/).
 
 ```python
 from rclpy.node import Node
