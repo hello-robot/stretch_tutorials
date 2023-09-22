@@ -172,7 +172,7 @@ nav:
       # - Other Nav Stack Features: ./ros2/other_nav_features.md
       # - Gazebo Basics:  ./ros2/gazebo_basics.md
     - Other Examples:
-      - Teleoperate Stretch with a Node: ./ros2/example_1.md
+      - Mobile Base Velocity Control: ./ros2/example_1.md
       - Filter Laser Scans: ./ros2/example_2.md
       - Mobile Base Collision Avoidance: ./ros2/example_3.md
       - Give Stretch a Balloon: ./ros2/example_4.md

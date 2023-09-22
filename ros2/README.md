@@ -40,7 +40,7 @@ To help get you started on your software development, here are examples of nodes
 
 |   | Tutorial                                        | Description                                        |
 |---|-------------------------------------------------|----------------------------------------------------|
-| 1 | [Teleoperate Stretch with a Node](example_1.md)                                   |  Use a python script that sends velocity commands.  | 
+| 1 | [Mobile Base Velocity Control](example_1.md)                                   |  Use a python script that sends velocity commands.  | 
 | 2 | [Filter Laser Scans](example_2.md)                                                |  Publish new scan ranges that are directly in front of Stretch.| 
 | 3 | [Mobile Base Collision Avoidance](example_3.md)                                   |  Stop Stretch from running into a wall.| 
 | 4 | [Give Stretch a Balloon](example_4.md)                                            |  Create a "balloon" marker that goes where ever Stretch goes.|
