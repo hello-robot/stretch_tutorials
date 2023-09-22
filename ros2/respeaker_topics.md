@@ -37,10 +37,10 @@ data: -114
 data: -65
 ---
 ```
-The Direction of Arrival (DOA) for the ReSpeaker goes from -180 to 180, to see know more about how is it in Stretch watch this DOA diagram:
+The Direction of Arrival (DOA) for the ReSpeaker goes from -180 to 180, to know more about how is it in Stretch watch this DOA diagram:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
+    <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/humble/images/respeaker_doa_stretch.jpg"/>
 </p>
 
 The next topic is the `sound_localization`, this is similar to the `sound_direction` topic but now the result it's as pose (Quaternion Values), try it out, execute the command:
@@ -146,7 +146,7 @@ ros2 run rqt_publisher rqt_publisher
 With this the rqt_publisher window will open, there you need to add the topic manually, search for the `/status_led` topic, then click in the plus button, this is the add new publisher button and the topic will be added, then you can start moving the RGBA values between 0 to 1 and that's it, you can try it with the next example:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
+    <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/humble/images/status_led_rqt.png"/>
 </p>
 
 You will see that there's a purple light coming out from the ReSpeaker, you can change the rate and color if you want.
@@ -165,5 +165,4 @@ And for the final way it's going to be with a python code, here you can modify t
 cd ament_ws/src/stretch_tutorials/stretch_ros_tutorials/
 python3 led_color_change.py
 ```
-With this we can change the colors as well but the difference is that we are able to create our own patterns, in the [RealSpeaker Documentation](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/#control-the-leds) there are more options to customize and control de LEDs.
-```
+With this we can change the colors as well but the difference is that we are able to create our own patterns, in the [ReSpeaker Documentation](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/#control-the-leds) there are more options to customize and control de LEDs.
