@@ -6,7 +6,7 @@
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py
+ros2 launch stretch_core stretch_driver.launch.py mode:=navigation
 ```
 
 Then in a new terminal type the following to activate the LiDAR sensor.
