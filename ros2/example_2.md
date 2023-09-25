@@ -59,9 +59,11 @@ ros2 run stretch_ros_tutorials scan_filter
 
 Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 ```{.bash .shell-prompt}
-ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/rviz/stretch_simple_test.rviz
+ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/share/stretch_calibration/rviz/stretch_simple_test.rviz
 ```
-
+!!! note
+	If the laser scan points published by the scan or the scan_filtered topic are not visible in RViz, you can visualize them by adding them using the 'Add' button in the left panel, selecting the 'By topic' tab, and then selecting the scan or scan_filtered topic.
+ 
 Change the topic name from the LaserScan display from */scan* to */filter_scan*.
 
 <p align="center">

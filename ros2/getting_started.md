@@ -22,13 +22,13 @@ We will disable ROS1 by commenting out the ROS1 related lines by adding '#' in f
 Save this configuration using **Ctrl + S**. Close out of the current terminal and open a new one. ROS2 is now enabled!
 
 ## Refreshing the ROS2 workspace
-While Stretch ROS2 is in beta, there will be frequent updates to the ROS2 software. Therefore, it makes sense to refresh the ROS2 software to the latest available release. In the ROS and ROS2 world, software is organized into "ROS Workspaces", where packages can be developed, compiled, and be made available to run from the command line. We are going to refresh the ROS2 workspace, which is called "~/ament_ws" and available in the home directory. Follow the [Create a new ROS Workspace guide](https://docs.hello-robot.com/0.2/stretch-install/docs/ros_workspace/) to run the `stretch_create_ament_workspace.sh` script. This will delete the existing "~/ament_ws", create a new one with all of the required ROS2 packages for Stretch, and compile it.
+While Stretch ROS2 is in beta, there will be frequent updates to the ROS2 software. Therefore, it makes sense to refresh the ROS2 software to the latest available release. In the ROS and ROS2 world, software is organized into "ROS Workspaces", where packages can be developed, compiled, and be made available to run from the command line. We are going to refresh the ROS2 workspace, which is called "~/ament_ws" and available in the home directory. Follow the [Create a new ROS Workspace guide](https://docs.hello-robot.com/0.2/stretch-install/docs/ros_workspace/) to run the `stretch_create_ament_workspace.sh` script. This will delete the existing "~/ament_ws", create a new one with all of the required ROS2 packages for Stretch, and compile it. Also we need to take into account that building the workspace is different in ROS2, we need to type colcon build instead of catkin make for it to work.
 
 ## Testing Keyboard Teleop
 We can test whether the ROS2 workspace was enabled successfully by testing out the ROS2 drivers package, called "stretch_core", with keyboard teleop. In one terminal, we'll launch Stretch's ROS2 drivers using:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py mode:=manipulation
+ros2 launch stretch_core stretch_driver.launch.py
 ```
 
 In the second terminal, launch the keyboard teleop node using:

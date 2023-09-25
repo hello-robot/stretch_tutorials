@@ -293,12 +293,12 @@ You can also actuate a single joint for the Stretch. Below is the list of joints
 
 ```{.bash .no-copy}
 ############################# JOINT LIMITS #############################
-joint_lift:      lower_limit =  0.15,  upper_limit =  1.10  # in meters
+joint_lift:      lower_limit =  0.00,  upper_limit =  1.10  # in meters
 wrist_extension: lower_limit =  0.00,  upper_limit =  0.50  # in meters
 joint_wrist_yaw: lower_limit = -1.75,  upper_limit =  4.00  # in radians
-joint_head_pan:  lower_limit = -2.80,  upper_limit =  2.90  # in radians
-joint_head_tilt: lower_limit = -1.60,  upper_limit =  0.40  # in radians
-joint_gripper_finger_left:  lower_limit = -0.35,  upper_limit =  0.165  # in radians
+joint_head_pan:  lower_limit = -3.90,  upper_limit =  1.50  # in radians
+joint_head_tilt: lower_limit = -1.53,  upper_limit =  0.79  # in radians
+joint_gripper_finger_left:  lower_limit = -0.6,  upper_limit =  0.6  # in radians
 
 # INCLUDED JOINTS IN POSITION MODE
 translate_mobile_base: No lower or upper limit. Defined by a step size in meters

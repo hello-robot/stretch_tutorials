@@ -101,7 +101,6 @@ nav:
     - Basics:
         - Introduction: ./stretch_body/tutorial_introduction.md
         - Command line Tools: ./stretch_body/tutorial_command_line_tools.md
-        - Stretch Body API: ./stretch_body/tutorial_stretch_body_api.md
         - Robot Motion: ./stretch_body/tutorial_robot_motion.md
         - Robot Sensors: ./stretch_body/tutorial_robot_sensors.md
     - Advanced:
@@ -130,7 +129,7 @@ nav:
       - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
       - Gazebo Basics:  ./ros1/gazebo_basics.md
     - Other Examples:
-      - Teleoperate Stretch with a Node: ./ros1/example_1.md
+      - Mobile Base Velocity Control: ./ros1/example_1.md
       - Filter Laser Scans: ./ros1/example_2.md
       - Mobile Base Collision Avoidance: ./ros1/example_3.md
       - Give Stretch a Balloon: ./ros1/example_4.md

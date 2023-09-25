@@ -1,4 +1,4 @@
-# Example 10
+## Example 10
 !!! note
     ROS 2 tutorials are still under active development. 
 
@@ -21,13 +21,13 @@ ros2 run rviz2 rviz2
 Then run the tf2 broadcaster node to visualize three static frames.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_broadcaster
+ros2 run stretch_ros_tutorials tf_broadcaster
 ```
 
 The GIF below visualizes what happens when running the previous node.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_broadcaster.gif"/>
 </p>
 
 **OPTIONAL**: If you would like to see how the static frames update while the robot is in motion, run the stow command node and observe the tf frames in RViz.
@@ -35,9 +35,8 @@ The GIF below visualizes what happens when running the previous node.
 ```{.bash .shell-prompt}
 ros2 run stretch_ros_tutorials stow_command
 ```
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_broadcaster_with_stow.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_broadcaster_with_stow.gif"/>
 </p>
 
 ### The Code
@@ -222,13 +221,13 @@ ros2 launch stretch_core stretch_driver.launch.py
 Then run the tf2 broadcaster node to create the three static frames.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_broadcaster
+ros2 run stretch_ros_tutorials tf_broadcaster
 ```
 
 Finally, run the tf2 listener node to print the transform between two links.
 
 ```{.bash .shell-prompt}
-ros2 run stretch_ros_tutorials tf2_listener
+ros2 run stretch_ros_tutorials tf_listener
 ```
 
 Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.
@@ -247,7 +246,7 @@ rotation:
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/tf2_listener.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_listener.png"/>
 </p>
 
 ### The Code

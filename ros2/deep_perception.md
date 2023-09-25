@@ -134,7 +134,7 @@ ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ![detect_faces](https://user-images.githubusercontent.com/97639181/196327737-7091cd61-f79a-4ff0-a291-039ab3f7127a.gif)
 
 ## Code Breakdown
-Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces, facial landmarks or estimat head pose instead of detecting objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin. 
+Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces, facial landmarks or estimate head pose instead of detecting objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin.
 
 In the main() method, we see a similar structure as with the object detction node. We first create an instance of the detector using the HeadPoseEstimator class from the [head_estimator.py](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/head_estimator.py) script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
 ```python

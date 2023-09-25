@@ -9,7 +9,7 @@ Let's bring up Stretch in RViz by using the following command.
 
 ```{.bash .shell-prompt}
 ros2 launch stretch_core stretch_driver.launch.py
-ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibrtion`/rviz/stretch_simple_test.rviz
+ros2 run rviz2 rviz2 -d `ros2 pkg prefix stretch_calibration`/share/stretch_calibration/rviz/stretch_simple_test.rviz
 ```
 
 In a new terminal run the following commands to create a marker.

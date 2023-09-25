@@ -194,6 +194,8 @@ robot.end_of_arm.move_to('stretch_gripper',-50)
 robot.stow()
 robot.stop()
 ```
+!!! note
+    The iPython interpreter also allows you to execute blocks of code in a single go instead of running commands line by line. To end the interpreter session, type exit() and press enter.
 
 ## Change Credentials
 

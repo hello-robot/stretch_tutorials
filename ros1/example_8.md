@@ -9,7 +9,7 @@ This example will showcase how to save the interpreted speech from Stretch's [Re
 Begin by running the `respeaker.launch` file in a terminal.
 
 ```{.bash .shell-prompt}
-roslaunch respeaker_ros sample_respeaker.launch
+roslaunch respeaker_ros respeaker.launch
 ```
 Then run the [speech_text.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/speech_text.py) node. In a new terminal, execute:
 

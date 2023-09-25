@@ -29,8 +29,6 @@ This tutorial track is for users looking to get familiar with programming Stretc
 <!--| 5 | [MoveIt2 Basics](moveit_basics.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 6 | [MoveIt2 with Rviz](moveit_rviz_demo.md)                                              | Motion planning and control for the arm using MoveIt. |
 | 7 | [MoveIt2 MoveGroup C++ API](moveit_movegroup_demo.md)                                 | Motion planning and control for the arm using MoveIt. |
-
-
 | 13 | [ROS testing](coming_soon.md)                                                   | Write ROS system tests for introspection. |
 | 14 | [Other Nav Stack Features](coming_soon.md)                               | Advanced features for Nav 2. | -->
 
