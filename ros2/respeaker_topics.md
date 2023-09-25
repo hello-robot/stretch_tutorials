@@ -40,7 +40,7 @@ data: -65
 The Direction of Arrival (DOA) for the ReSpeaker goes from -180 to 180, to know more about how is it in Stretch watch this DOA diagram:
 
 <p align="center">
-    <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/humble/images/respeaker_doa_stretch.jpg"/>
+    <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/humble/images/respeaker_doa_up.png"/>
 </p>
 
 The next topic is the `sound_localization`, this is similar to the `sound_direction` topic but now the result it's as pose (Quaternion Values), try it out, execute the command:
