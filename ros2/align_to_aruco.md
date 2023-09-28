@@ -4,7 +4,7 @@ ArUco markers are a type of fiducials that are used extensively in robotics for 
 ## ArUco Detection
 Stretch uses the OpenCV ArUco detection library and is configured to identify a specific set of ArUco markers belonging to the 6x6, 250 dictionary. To understand why this is important, please refer to [this](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html) handy guide provided by OpenCV.
 
-Stretch comes preconfigured to identify ArUco markers. The ROS node that enables this is the detect_aruco_markers [node](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/stretch_core/detect_aruco_markers.py) in the stretch_core package. Thanks to this node, identifying and estimating the pose of a marker is as easy as pointing the camera at the marker and running the detection node. It is also possible and quite convenient to visualize the detections with RViz.
+Stretch comes preconfigured to identify ArUco markers. The ROS node that enables this is the detect_aruco_markers [node](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py) in the stretch_core package. Thanks to this node, identifying and estimating the pose of a marker is as easy as pointing the camera at the marker and running the detection node. It is also possible and quite convenient to visualize the detections with RViz.
 
 ## Computing Transformations
 If you have not already done so, now might be a good time to review the [tf listener](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_10/) tutorial. Go on, we can wait…
@@ -50,7 +50,7 @@ ros2 launch stretch_core align_to_aruco.launch.py
 </p>
 
 ## Code Breakdown
-Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/stretch_core/align_to_aruco.py) to have a look at the entire script.
+Let's jump into the code to see how things work under the hood. Follow along [here](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py) to have a look at the entire script.
 
 We make use of two separate Python classes for this demo. The FrameListener class is derived from the Node class and is the place where we compute the TF transformations. For an explantion of this class, you can refer to the [TF listener](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_10/) tutorial.
 ```python
@@ -118,4 +118,4 @@ The align_to_marker() method is where we command Stretch to the pose goal in thr
     def align_to_marker(self):
 ```
 
-If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the [code](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/stretch_core/align_to_aruco.py#L44) to the one you wish to detect. Also, don't forget to add the marker in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/config/stretch_marker_dict.yaml) ArUco marker dictionary.
+If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the [code](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L44) to the one you wish to detect. Also, don't forget to add the marker in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml) ArUco marker dictionary.

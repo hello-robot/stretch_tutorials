@@ -5,7 +5,7 @@
 	
 This example aims to provide instructions on how to filter scan messages.
 
-For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](https://github.com/ros2/common_interfaces/tree/galactic/sensor_msgs) package called [LaserScan](https://github.com/ros2/common_interfaces/blob/galactic/sensor_msgs/msg/LaserScan.msg) to hold information about a given scan. Let's take a look at the message specification itself:
+For robots with laser scanners, ROS provides a special Message type in the [sensor_msgs](https://github.com/ros2/common_interfaces/tree/humble/sensor_msgs) package called [LaserScan](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg) to hold information about a given scan. Let's take a look at the message specification itself:
 
 ```{.bash .no-copy}
 # Laser scans angles are measured counter clockwise,
@@ -111,7 +111,7 @@ Now let's break the code down.
 ```python
 #!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
 import rclpy

@@ -87,7 +87,7 @@ Now let's break the code down.
 ```python
 #!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python
@@ -99,7 +99,7 @@ from hello_helpers.hello_misc import HelloNode
 import time
 ```
 
-You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.action](https://github.com/ros-controls/control_msgs/tree/master/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/rolling/trajectory_msgs/msg) package to define robot trajectories.
+You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the [control_msgs.action](https://github.com/ros-controls/control_msgs/tree/master/control_msgs) package to control the Stretch robot. Import JointTrajectoryPoint from the [trajectory_msgs](https://github.com/ros2/common_interfaces/tree/humble/trajectory_msgs/msg) package to define robot trajectories.
 
 ```python
 class StowCommand(HelloNode):

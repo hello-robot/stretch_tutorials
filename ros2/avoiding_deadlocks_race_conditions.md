@@ -19,10 +19,12 @@ With a MultiThreadedExecutor, callbacks can be serviced in parallel. However, th
 
 There are two different kinds of callback groups available. A MutuallyExclusiveCallbackGroup, the default, ensures that the callbacks belonging to this group never execute in parallel. You would use this when two callbacks access and write to the same shared memory space and having them execute them together would result in a race condition. A ReentrantCallbackGroup ensures that callbacks belonging to this group are able to execute parallelly. You would use this when a long running callback occupies the bulk of the executors time and you want shorter fast running callbacks to run in parallel.
 
-Now, let’s explore what we have learned so far in the form of a real example.
+Now, let’s explore what we have learned so far in the form of a real example. You can try them by creating a Python file and run it in your terminal as `python3 FILE_NAME`.
 
 ## Race Condition Example
 It is instructive to see an example code that generates a race condition. The below code simulates a race condition by defining two subscriber callbacks that write and read from shared memory simultaneously.
+!!! note
+	Before executing the Race Condition Example you first need to launch the stretch core driver as ros2 launch stretch_core stretch_driver.launch.py
 
 ```python
 import rclpy
@@ -97,7 +99,7 @@ Executing the above script, the expected behavior is to see the logged statement
 
 Executing the above code, you are presented with two prompts, first to select the executor, either a SingleThreadedExecutor or a MultiThreadedExecutor; and then to select a callback group type, either a MutuallyExclusiveCallbackGroup or a ReentrantCallbackGroup.
 
-Selecting a SingleThreadedExecutor, irrespective of which callback group is selected, results in callbacks being executed sequentially. This is because the executor is spun using a single thread that can only service one callback at a time. In this case, we see that there is no memory curroption and the observed behavior is the same as the expected behavior.
+Selecting a SingleThreadedExecutor, irrespective of which callback group is selected, results in callbacks being executed sequentially. This is because the executor is spun using a single thread that can only service one callback at a time. In this case, we see that there is no memory corruption and the observed behavior is the same as the expected behavior.
 
 Things get interesting when we choose the MultiThreadedExecutor along with a ReentrantCallbackGroup. Multiple threads are used by the executor to service callbacks, while callbacks are allowed to execute in parallel. This allows multiple threads to access the same memory space and execute read/write operations. The observed behavior is that, sometimes you see the callbacks print statements like  "Switching from True to True" or "Switching from False to False" which go against the conditions set in the callbacks. This is a race condition.
 
@@ -105,7 +107,7 @@ Selecting a MultiThreadedExecutor along with a MutuallyExclusiveCallbackGroup al
 
 ## Deadlock Example
 
-A great example of a deadlock is provided in the official ROS 2 documentation on [sync deadlock](https://docs.ros.org/en/humble/How-To-Guides/Sync-Vs-Async.html?highlight=timer#sync-deadlock), so this example will directly build off of the same code. The server side defines a callback method add_two_ints_callback() which returns the sum of two requested numbers. Notice the call to spin in the main() method which persistently executes the callback method as a service request arrives. 
+A great example of a deadlock is provided in the official ROS 2 documentation on [sync deadlock](https://docs.ros.org/en/iron/How-To-Guides/Sync-Vs-Async.html#sync-deadlock), so this example will directly build off of the same code. The server side defines a callback method add_two_ints_callback() which returns the sum of two requested numbers. Notice the call to spin in the main() method which persistently executes the callback method as a service request arrives. For the requested numbers you will need to input them in the terminal manually.
 
 ```python
 from example_interfaces.srv import AddTwoInts
@@ -196,6 +198,10 @@ def main():
 An alternative to this, a feature that's new to ROS 2, is to use an asynchronous service call. This allows one to monitor the response through what's called a future object in ROS 2. The future holds the status of whether a service call was accepted by the server and also the returned response. Since the future is returned immediately on making an async service call, the execution is not blocked and the executor can be invoked in the main execution thread. Here's how to do it:
 
 ```python
+class MinimalClientAsync(Node):
+	
+	...
+
 	def send_request(self, a, b):
         self.req.a = a
         self.req.b = b

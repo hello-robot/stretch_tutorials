@@ -6,7 +6,7 @@
 The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py
+ros2 launch stretch_core stretch_driver.launch.py mode:=navigation
 ```
 
 Then in a new terminal type the following to activate the LiDAR sensor.
@@ -77,7 +77,7 @@ Now let's break the code down.
 #!/usr/bin/env python3
 ```
 
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+Every Python ROS [Node](http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 
 ```python

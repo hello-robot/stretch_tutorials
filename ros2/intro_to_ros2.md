@@ -14,7 +14,7 @@ Try out the following snippets for a ROS 2 quickstart:
 ## Initialization and Shutdown
 ### rclpy.init()
 All rclpy functionality can be exposed after initialization:
-```{.bash .shell-prompt}
+```python
 import rclpy
 
 rclpy.init()
@@ -22,13 +22,13 @@ rclpy.init()
 
 ### rclpy.create_node()
 To create a new ROS 2 node, one can use the create_node method with the node name as the argument:
-```{.bash .shell-prompt}
+```python
 node = rclpy.create_node('temp')
 ```
 
 ### rclpy.logging.get_logger()
 The rclpy library also provides a logger to print messages with different severity levels to stdout. Here’s how you can use it:
-```{.bash .shell-prompt}
+```python
 import rclpy.logging
 logger = rclpy.logging.get_logger('temp')
 logger.info("Hello")
@@ -38,7 +38,7 @@ logger.error("Stretch")
 
 ### rclpy.ok()
 If you want to check whether rclpy has been initialized, you can run the following snippet. This is especially useful to simulate an infinite loop based on whether rclpy has been shutdown.
-```{.bash .shell-prompt}
+```python
 import time
 
 while rclpy.ok():
@@ -51,7 +51,7 @@ Press ctrl+c to get out of the infinite loop.
 ### rclpy.shutdown()
 Finally, to destroy a node safely and shutdown the instance of rclpy you can run:
 
-```{.bash .shell-prompt}
+```python
 node.destroy_node()
 rclpy.shutdown()
 ```
@@ -59,7 +59,7 @@ rclpy.shutdown()
 ## Publishing and Subscribing
 ### create_publisher()
 ROS 2 is a distributed communication system and one way to send data is through a publisher. It takes the following arguments: msg_type, msg_topic and a history depth (formerly queue_size):
-```{.bash .shell-prompt}
+```python
 from std_msgs.msg import String
 import rclpy
 
@@ -70,7 +70,7 @@ pub = node.create_publisher(String, 'hello', 10)
 
 ### create_subscription()
 To receive a message, we need to create a subscriber with a callback function that listens to the arriving messages. Let's create a subscriber and define a callback called hello_callback() that logs the a message as soon as one is received:
-```{.bash .shell-prompt}
+```python
 def hello_callback(msg):
 	print("Received message: {}".format(msg.data))
 
@@ -79,7 +79,7 @@ sub = node.create_subscription(String, 'hello', hello_callback, 10)
 
 ### publish()
 Now that you have defined a publisher and a subscriber, let’s send a message and see if it gets printed to the console:
-```{.bash .shell-prompt}
+```python
 msg = String()
 msg.data = "Hello"
 pub.publish(msg)
@@ -87,7 +87,7 @@ pub.publish(msg)
 
 ### rclpy.spin_once()
 That didn’t do it! Although the message was sent, it didn't get printed to the console. Why? Because the hello_callback() method was never called to print the message. In ROS, we don’t call this method manually, but rather leave it to what’s called the executor. The executor can be invoked by calling the spin_once() method. We pass the node object and a timeout of 2 seconds as the arguments. The timeout is important because the spin_once() method is blocking and it will wait for a message to arrive indefinitely if a timeout is not defined. It returns immediately once a message is received.
-```{.bash .shell-prompt}
+```python
 rclpy.spin_once(node, timeout_sec=2.0)
 ```
 
@@ -95,7 +95,7 @@ rclpy.spin_once(node, timeout_sec=2.0)
 The spin_once() method only does work equivalent to a single message callback. What if you want the executor to process callbacks continuously? This can be achieved using the spin() method. While retaining the current interpreter instance, let’s open a new terminal window with a new instance of IPython and execute the following:
 
 Terminal 2:
-```{.bash .shell-prompt}
+```python
 import rclpy
 from std_msgs.msg import String
 rclpy.init()
@@ -109,7 +109,7 @@ rclpy.spin(node)
 Now, from the first IPython instance, send a series of messages and see what happens:
 
 Terminal 1:
-```{.bash .shell-prompt}
+```python
 for i in range(10):
 	msg.data = "Hello {}".format(i)
 	pub.publish(msg)
@@ -120,7 +120,7 @@ Voila! Finally, close both the terminals to end the session.
 ## Service Server and Client
 ### create_service()
 Let’s explore another common way of using ROS 2. Imagine a case where you need to request some information from a node and you expect to receive a response. This can be achieved using the service client paradigm in ROS 2. Let’s fire up IPython again and create a quick service:
-```{.bash .shell-prompt}
+```python
 import rclpy
 from example_interfaces.srv import AddTwoInts
 rclpy.init()
@@ -143,7 +143,7 @@ The add_ints() method is the callback method for the service server. Once a serv
 
 ### create_client()
 Now, while retaining the current IPython session, open another session of the IPython interpreter in another terminal to write the service client:
-```{.bash .shell-prompt}
+```python
 import rclpy
 from example_interfaces.srv import AddTwoInts
 rclpy.init()
