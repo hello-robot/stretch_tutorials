@@ -22,6 +22,14 @@ roslaunch stretch_gazebo gazebo.launch rviz:=true
 
 At this point, we want to remove all wires tethered Stretch to our monitor/keyboard/etc. We'll set up "ROS Remote Master", which is a feature built into ROS that allows untethered operation. Follow this guide: https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/#ros-remote-master
 
+```
+# on the robot
+roslaunch stretch_core stretch.launch lidar_odom:=false respeaker:=false
+
+# on your personal computer
+rviz -d `rospack find stretch_core`/rviz/stretch.rviz
+```
+
 ## Teleoperation
 
 Switch to 'navigation' [mode](https://github.com/hello-robot/stretch_ros/tree/noetic/stretch_core#mode-std_msgsstring):
