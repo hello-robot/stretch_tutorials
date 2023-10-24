@@ -41,3 +41,32 @@ roslaunch stretch_core teleop_twist.launch teleop_type:=joystick
 The deadman button is the 'A' button (the green one).
 
 ![](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/images/xbox.png)
+
+### /stretch/cmd_vel
+
+The `/stretch/cmd_vel` topic accepts [Twist msgs](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html), where `twist.linear.x` and `twist.angular.z` are the translational and angular velocities the mobile base will execute.
+
+```
+$ rostopic echo /stretch/cmd_vel
+---
+linear: 
+  x: -0.04
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -0.05731585025787354
+---
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+---
+```
+
+## Mapping
