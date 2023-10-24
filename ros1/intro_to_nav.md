@@ -125,7 +125,53 @@ After moving around the environment for some time, you can save the map using:
 rosrun map_server map_saver -f ${HELLO_FLEET_PATH}/maps/oct24thmap
 ```
 
-## Global Planning
+## Planning
 
-TODO
+Stop all previous ROS commands. Start the following ROS commands on your Stretch.
 
+```
+roslaunch stretch_navigation navigation.launch map_yaml:=${HELLO_FLEET_PATH}/maps/oct24thmap.yaml rviz:=false
+```
+
+Start Rviz on your personal computer:
+
+```
+rviz -d `rospack find stretch_navigation`/rviz/navigation.rviz
+```
+
+### Localization
+
+AMCL is very commonly used for localization. It's a particle filtering library that works by comparing the robot's motion and sensor updates with a distribution of guesses at the robot's position in order to eliminate unlikely guesses every iteration. Running these motion/sensor update steps will allow the filter to converge on the robot's position as the robot sees landmarks. When the robot "wakes up", it doesn't know where it is, and the particles are evenly distributed across the map. We tell the robot where it is using:
+
+ 1. The position estimate GUI in Rviz
+ 2. Detecting a unique landmark (e.g. a Aruco marker taped to the wall)
+ 3. Spinning in a 360 degree circle
+
+For example, turn on particle filters visualization in Rviz, use the Pose Estimate GUI to put the robot off somewhere wrong, and run teleop:
+
+```
+roslaunch stretch_core teleop_twist.launch teleop_type:=joystick linear:=0.12 angular:=0.3
+```
+
+Now spin the robot in a 360 degree circle. This doesn't always work, especially in environments with repetitive features.
+
+### Costmaps
+
+### Global Plan ([slides](https://docs.google.com/presentation/d/1P86WW4Zh_Xr57MBmwCfGA0vgjo_maeoSe70MJrYjXWM/edit#slide=id.g24e00d17789_0_443))
+
+To visualize the global plan without moving the robot, switch the robot into position mode:
+
+```
+rosservice call /switch_to_position_mode
+```
+
+Use the Nav Goal GUI to send goals to MoveBase and visualize the global plans.
+
+Now cancel the plan:
+
+```
+rostopic pub /move_base/cancel actionlib_msgs/GoalID "stamp:
+  secs: 0
+  nsecs: 0
+id: ''"
+```
