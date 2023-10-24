@@ -190,3 +190,4 @@ The local planner is called [TrajectoryPlannerROS](https://wiki.ros.org/base_loc
 ## References
 
  - https://github.com/MetroRobots/navigation_university/
+ - https://github.com/hello-robot/stretch_ros/pull/120/files
