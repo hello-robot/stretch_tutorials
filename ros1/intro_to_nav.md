@@ -38,7 +38,7 @@ Switch to 'navigation' [mode](https://github.com/hello-robot/stretch_ros/tree/no
 rosservice call /switch_to_navigation_mode
 ```
 
-Run base keyboard teleop:
+On your personal computer, plug in the controller dongle and run base keyboard teleop:
 
 ```
 roslaunch stretch_core teleop_twist.launch
@@ -85,6 +85,47 @@ angular:
 
 Velocity commands must be sent at a regular control rate and must be faster than 2hz. There's two safety behaviors that prevent a runaway robot. A software check smoothly stops base motion after 0.5 seconds if no new command is received. A hardware check abruptly stops base motion after 1 second if no new command is received.
 
-## Mapping
+## Mapping ([slides](https://docs.google.com/presentation/d/1ZiZhw7uswBVzEkDrTCOjHh_HMbA6Duw5_YbPt8leqtY/edit#slide=id.g24dfd4ebf63_0_88))
+
+Stop all previous ROS commands. Start the following ROS commands on your Stretch.
+
+Start the mapping launch file:
+
+```
+roslaunch stretch_navigation mapping.launch rviz:=false teleop_type:=none
+```
+
+Turn on the robot's head camera as well:
+
+```
+roslaunch stretch_core stretch_realsense.launch publish_upright_img:=true
+```
+
+Use keyboard teleop to tilt the head camera downwards to look at the floor in front of the robot:
+
+```
+rosrun stretch_core keyboard_teleop
+```
+
+Now, on your computer, launch Rviz:
+
+```
+rviz -d `rospack find stretch_navigation`/rviz/mapping.rviz
+```
+
+Start controller teleop:
+
+```
+roslaunch stretch_core teleop_twist.launch teleop_type:=joystick linear:=0.12 angular:=0.3
+```
+
+After moving around the environment for some time, you can save the map using:
+
+```
+rosrun map_server map_saver -f ${HELLO_FLEET_PATH}/maps/oct24thmap
+```
+
+## Global Planning
 
 TODO
+
