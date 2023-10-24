@@ -26,8 +26,18 @@ Switch to 'navigation' [mode](https://github.com/hello-robot/stretch_ros/tree/no
 rosservice call /switch_to_navigation_mode
 ```
 
-Run base teleop:
+Run base keyboard teleop:
 
 ```
-TODO
+roslaunch stretch_core teleop_twist.launch
 ```
+
+or if you have the Xbox controller:
+
+```
+roslaunch stretch_core teleop_twist.launch teleop_type:=joystick
+```
+
+The deadman button is the 'A' button (the green one).
+
+![](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/images/xbox.png)
