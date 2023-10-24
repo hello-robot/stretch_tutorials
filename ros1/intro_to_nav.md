@@ -155,9 +155,11 @@ roslaunch stretch_core teleop_twist.launch teleop_type:=joystick linear:=0.12 an
 
 Now spin the robot in a 360 degree circle. This doesn't always work, especially in environments with repetitive features.
 
-### Costmaps
+### Costmaps ([slides](https://docs.google.com/presentation/d/1sxIqtTtSlSyvCpn6x0fwloD2D-W_K8swfpHEGsYEBLk/edit#slide=id.g24e0807281f_0_243))
 
 ### Global Plan ([slides](https://docs.google.com/presentation/d/1P86WW4Zh_Xr57MBmwCfGA0vgjo_maeoSe70MJrYjXWM/edit#slide=id.g24e00d17789_0_443))
+
+The global planner is called navfn/NavfnROS
 
 To visualize the global plan without moving the robot, switch the robot into position mode:
 
@@ -175,3 +177,16 @@ rostopic pub /move_base/cancel actionlib_msgs/GoalID "stamp:
   nsecs: 0
 id: ''"
 ```
+
+### Plan Follower
+
+The local planner is called [TrajectoryPlannerROS](https://wiki.ros.org/base_local_planner)
+
+## Code Examples
+
+ - https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_13/
+ - https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/autodocking_nav_stack/
+
+## References
+
+ - https://github.com/MetroRobots/navigation_university/
