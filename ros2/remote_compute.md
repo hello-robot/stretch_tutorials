@@ -44,7 +44,7 @@ ros2 launch stretch_funmap funmap.launch.py
 ```
 ```
 
-### Workstation Install Steps
+### Workstation Setup to work with Stretch
 
 This assumes the workstation side already has an active ROS2 distro (preferably Humble) colcon dependencies installed.
 You can find [ROS2 Installation step for Ubuntu here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Install-Binary.html#).
@@ -80,7 +80,11 @@ cd ~/ament_ws
 colcon build
 ```
 
-
+```
+cd ~/ 
+git clone https://github.com/hello-robot/stretch_deep_perception_models
+```
+TODO: [Parameterize models_directory](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_nearest_mouth.py#L60)
 
 
 
