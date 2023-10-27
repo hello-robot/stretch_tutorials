@@ -152,42 +152,21 @@ rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perceptio
 ![Object detection rviz](./images/remote_compute_object_detection_viz.png)
 
 
-## 6. Offload Object Detect Nearest MOuth Node to Remote Workstation
-Starts Bla Bla
+## 6. Offload Face  detection Node to Remote Workstation
+From the workstation, run the face detection node. The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose [path is pulled]([url](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5)) from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
 ```{.bash .shell-prompt}
-ros2 launch stretch_deep_perception stretch_detect_nearest_mouth.launch.py
+export HELLO_FLEET_PATH=~/
+ros2 run stretch_deep_perception detect_faces
 ```
-
+The node will load the
 ```{.bash .shell-prompt}
 head_detection_model.getUnconnectedOutLayers() = [112]
 head_detection_model output layer names = ['detection_out']
 head_detection_model output layer names = ('detection_out',)
 head_detection_model input layer = <dnn_Layer 0x7f7d1e695cd0>
-head_detection_model input layer name = data_bn
-head_detection_model out_layer = <dnn_Layer 0x7f7d1e695e10>
-head_pose_model.getLayerNames() = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
-head_pose_model.getUnconnectedOutLayers() = [1 2 3]
-head_pose_model output layer names = ['angle_p_fc', 'angle_r_fc', 'angle_y_fc']
-head_pose_model output layer names = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
-head_pose_model input layer = <dnn_Layer 0x7f7d1e695d30>
-head_pose_model input layer name = angle_p_fc
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695cd0>
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695dd0>
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695cd0>
-head_pose_model.getLayerNames() = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
-head_pose_model.getUnconnectedOutLayers() = [1 2 3]
-head_pose_model output layer names = ['angle_p_fc', 'angle_r_fc', 'angle_y_fc']
-head_pose_model output layer names = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
-head_pose_model input layer = <dnn_Layer 0x7f7d1e695dd0>
-head_pose_model input layer name = angle_p_fc
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695d30>
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695c50>
-head_pose_model out_layer = <dnn_Layer 0x7f7d1e695d30>
-landmarks_model.getLayerNames() = ('align_fc3',)
-landmarks_model.getUnconnectedOutLayers() = [1]
-landmarks_model output layer names = ['align_fc3']
-landmarks_model output layer names = ('align_fc3',)
-landmarks_model input layer = <dnn_Layer 0x7f7d1e695dd0>
+.
+.
+.
 landmarks_model input layer name = align_fc3
 landmarks_model out_layer = <dnn_Layer 0x7f7d1e695d30>
 [INFO] [1698383830.671699923] [DetectFacesNode]: DetectFacesNode started
@@ -195,11 +174,17 @@ landmarks_model out_layer = <dnn_Layer 0x7f7d1e695d30>
 
 ##### Visualiza in Rviz
 ```{.bash .shell-prompt}
+rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/face_detection.rviz
 ```
+![Object detection rviz](./images/remote_compute_face_Detect.png)
 
 
-
-TODO: [Parameterize models_directory that now looks for Hello fleet directory](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_nearest_mouth.py#L60)
+### Troubleshooting Notes
+- Using a dedicated Wi-Fi router would increase the data transmission speeds significantly.
+- Realtime PointCloud visualization in Rviz commonly lags because of subscribing to a large message data stream. We recommend turning off the point-cloud visualization in remote workstations when possible to decrease network overhead.
+- If the nodes in the remote network are unable to discover robot running nodes, here are two debug steps:
+  - Check if you can ping between the robot and remote workstation computer.
+  - Use `ifconfig` command and compare the Network assigned IP addresses of both the robot and workstation. The first two parts of the IP address should normally match for both computers to discover each other in the network.
 
 
 
