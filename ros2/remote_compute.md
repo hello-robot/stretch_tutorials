@@ -1,14 +1,14 @@
-# Using a Remote Workstation to Offload Heavy Compute
+# Offloading Heavy Robot Compute to Remote Workstation 
 In this tutorial, we will explore the method for offloading computationally intensive processes, such as running computer vision models, to a remote workstation computer. This approach offers several advantages such as:
-- Save processing power of the Robot.
+- Saving the robot's processing power.
 - Utilizing the available GPU hardware on powerful workstations to run large deep learning models.
-- Ability to strategically offload less critical high-computation process to enhance Robot's efficiency.
+- Ability to strategically offload less critical high-computation processes to enhance Robot's efficiency.
 
-In this tutorial, we will delve into the intricate process of **offloading [Stretch Deep Perception](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception) ROS2 nodes**. These nodes are known for their demanding computational requirements and are frequently used in [Stretch Demos](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos). 
+We will delve into the process of **offloading [Stretch Deep Perception](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception) ROS2 nodes**. These nodes are known for their demanding computational requirements and are frequently used in [Stretch Demos](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos). 
 
 *NOTE: All Stretch ROS2 packages are developed with Humble distro.*
 
-### Setting a ROS_DOMAIN_ID
+## 1. Setting a ROS_DOMAIN_ID
 
 ROS2 utilizes [DDS](https://design.ros2.org/articles/ros_on_dds.html) as the default middleware for communication. **DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same `ROS_DOMAIN_ID`**. This powerful mechanism ensures secure message passing between remote nodes as intended.
 
@@ -17,14 +17,14 @@ By default, all ROS 2 nodes are configured with domain ID 0. To avoid conflicts,
 export ROS_DOMAIN_ID=<ID>
 ```
 
-## Setup the Workstation to work with Stretch
-The workstation needs to be installed with the appropriate stretch related ros2 packages to have access Stretch robot meshes for accurate Visualization in Rviz,interfaces dependencies and essential perception packages.
+## 2. Setup the Workstation to work with Stretch
+The workstation needs to be installed with the stretch related ros2 packages to have access to robot meshes for Visualization in Rviz, custom interfaces dependencies and essential perception packages.
 
 This section assumes the workstation already has an active ROS2 distro and colcon dependencies pre-installed.
 You can find [ROS2 Installation step for Ubuntu here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Install-Binary.html#).
 
 
-##### Setup Essential stretch_ros2 Packages 
+#### Setup Essential stretch_ros2 Packages 
 
 Make sure the ROS2 distro is sourced.
 ```{.bash .shell-prompt}
@@ -55,10 +55,10 @@ Make sure to source the workspace to discover the packages in it.
 source ~/ament_ws/install/setup.bash
 ```
 
-##### Setup Robot URDF and Meshes
-All the robots are shipped with an calibrated URDF files configured with robot version specific meshes that would more accurately match the actual robot you are using. So we recommend you to **copy the `stretch_description` directory that exists in your robot and replace it with the one existing in the workstation**. The Stretch Description directory exists in the path `~/ament_ws/src/stretch_ros2/stretch_description`.
+#### Setup Robot URDF and Meshes
+All the robots will have calibrated URDF with pre-configured mesh files in the stretch_description package directory that is specific to your actual robot. So we recommend you to **copy the `stretch_description` directory that exists inside your robot and replace it with the one existing in the workstation**. The Stretch Description directory exists in the path `~/ament_ws/src/stretch_ros2/stretch_description`.
 
-If you dont want use the URDFs from the robot, you can manually generate the right URDF w.r.t your robot configuration using the following commands:
+If you dont want to use the URDFs from the robot, you can manually generate the uncalibrated URDF w.r.t your robot configuration using the following commands:
 ```{.bash .shell-prompt}
 cd ~/ament_ws/src/stretch_ros2/stretch_description/urdf/
 
@@ -72,59 +72,72 @@ ros2 run stretch_calibration update_uncalibrated_urdf
 cp stretch_uncalibrated.urdf stretch.urdf
 ```
 
-After setting up the 
-```
+After setting up the stretch_description folder, re-build the workspace to update the package with latest changes.
+```{.bash .shell-prompt}
 cd ~/ament_ws
 colcon build
 ```
 
-##### Download Stretch Deep Perception Models
+#### Download Stretch Deep Perception Models
+[stretch_deep_perception_models](https://github.com/hello-robot/stretch_deep_perception_models) provides open deep learning models from third parties for use. We are cloning this directory to the home folder in the workstation.
 ```{.bash .shell-prompt}
 cd ~/ 
 git clone https://github.com/hello-robot/stretch_deep_perception_models
 ```
-TODO: [Parameterize models_directory](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_nearest_mouth.py#L60)
 
 
+## 3. Start core Nodes on the Robot Compute 
+Start the core driver nodes for controlling the robot, streaming the Lidar and realsense depth camera/s data using the [stretch_core](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_core) package.
 
-## Robot Side Nodes
 
-##### Start Stretch Driver Node
-Starts bla bla
 ```{.bash .shell-prompt}
+# Terminal 1: Start the Stretch Driver Node
 ros2 launch stretch_core stretch_driver.launch.py
-```
-
-##### Start Realsense Camera Stream Node
-Starts bla bla
-```{.bash .shell-prompt}
+# Terminal 2: Start the realsense D435i stream.
 ros2 launch stretch_core d435i_high_resolution.launch.py
-```
-
-##### Start RP Lidar Node
-Starts bla bla
-```
+# Terminal 3: Start lidar.
 ros2 launch stretch_core rplidar.launch.py
 ```
 
+## 4. Verify Remote Workstation is able to discover Stretch Nodes
+After launching the above core nodes, all the robot control interfaces and sensor data streams should be exposed to all the other nodes in the same physical network with common ROS_DOMAIN_ID set.
+ 
+From the remote workstation try the following test commands:
+```{.bash .shell-prompt}
+# Check if all robot topics are visible.
+ros2 topic list
 
-## Workstation Side Node
+# Check if able to receive a sensor data by printing from Joint States topic.
+ros2 topic echo /joint_states
 
-##### Start 'Detect Nearest Mouth' Computer Vision Node
+# Check if able to send commands to robot by triggering stow_the_robot service
+ros2 service call /stow_the_robot std_srvs/srv/Trigger
+```
+
+
+## 5. Offload Object Detection Node to Remote Workstation
+
+From the workstation run the following to start 
+```{.bash .shell-prompt}
+```
+
+##### Visualiza in Rviz
+```{.bash .shell-prompt}
+```
+
+## 6. Offload Object Detection Node to Remote Workstation
 Starts Bla Bla
 ```{.bash .shell-prompt}
 ros2 launch stretch_deep_perception stretch_detect_nearest_mouth.launch.py
 ```
 
-##### Start Funmap Planner
-Starts Bla Bla
+##### Visualiza in Rviz
 ```{.bash .shell-prompt}
-ros2 launch stretch_funmap funmap.launch.py
 ```
 
-##### Visualization from Rviz
-```
-```
+
+
+TODO: [Parameterize models_directory that now looks for Hello fleet directory](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_nearest_mouth.py#L60)
 
 
 
