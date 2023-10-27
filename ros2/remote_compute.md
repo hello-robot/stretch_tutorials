@@ -117,7 +117,7 @@ ros2 service call /stow_the_robot std_srvs/srv/Trigger
 
 ## 5. Offload Object Detection Node to Remote Workstation
 
-From the workstation run the object detection node which runs a YoloV5 model.
+From the workstation, run the [object detection node](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_objects.py) which runs a YoloV5 model.
 ```{.bash .shell-prompt}
 ros2 run stretch_deep_perception detect_objects
 ```
@@ -153,7 +153,7 @@ rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perceptio
 
 
 ## 6. Offload Face  detection Node to Remote Workstation
-From the workstation, run the face detection node. The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose [path is pulled](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5) from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
+From the workstation, run the [face detection node](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_faces.py). The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose [path is pulled](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5) from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
 ```{.bash .shell-prompt}
 export HELLO_FLEET_PATH=~/
 ros2 run stretch_deep_perception detect_faces
