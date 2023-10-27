@@ -158,8 +158,8 @@ From the workstation, run the [face detection node](https://github.com/hello-rob
 export HELLO_FLEET_PATH=~/
 ros2 run stretch_deep_perception detect_faces
 ```
-The node will load the
-```{.bash .shell-prompt}
+The node will load the face detection model network and start poblishing the detection.
+```
 head_detection_model.getUnconnectedOutLayers() = [112]
 head_detection_model output layer names = ['detection_out']
 head_detection_model output layer names = ('detection_out',)
