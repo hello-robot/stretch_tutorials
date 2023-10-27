@@ -145,7 +145,7 @@ mouse  detected
 mouse  detected
 ```
 
-##### Visualiza in Rviz
+##### Visualize in Rviz
 ```{.bash .shell-prompt}
 rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/object_detection.rviz
 ```
@@ -172,7 +172,7 @@ landmarks_model out_layer = <dnn_Layer 0x7f7d1e695d30>
 [INFO] [1698383830.671699923] [DetectFacesNode]: DetectFacesNode started
 ```
 
-##### Visualiza in Rviz
+##### Visualize in Rviz
 ```{.bash .shell-prompt}
 rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/face_detection.rviz
 ```
