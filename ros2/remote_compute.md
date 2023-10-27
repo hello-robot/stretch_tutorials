@@ -1,8 +1,8 @@
 # Offloading Heavy Robot Compute to Remote Workstation 
 In this tutorial, we will explore the method for offloading computationally intensive processes, such as running computer vision models, to a remote workstation computer. This approach offers several advantages such as:
-- Saving the robot's processing power.
-- Utilizing the available GPU hardware on powerful workstations to run large deep learning models.
-- Ability to strategically offload less critical high-computation processes to enhance Robot's efficiency.
+- Saving robot's processing power.
+- Increasing robot's efficiency by offloading high-power consuming processes. 
+- Utilizing available GPU hardware on powerful workstations to run large deep learning models.
 
 We will delve into the process of **offloading [Stretch Deep Perception](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception) ROS2 nodes**. These nodes are known for their demanding computational requirements and are frequently used in [Stretch Demos](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos). 
 
@@ -10,7 +10,7 @@ We will delve into the process of **offloading [Stretch Deep Perception](https:/
 
 ## 1. Setting a ROS_DOMAIN_ID
 
-ROS2 utilizes [DDS](https://design.ros2.org/articles/ros_on_dds.html) as the default middleware for communication. **DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same `ROS_DOMAIN_ID`**. This powerful mechanism ensures secure message passing between remote nodes as intended.
+ROS2 utilizes [DDS](https://design.ros2.org/articles/ros_on_dds.html) as the default middleware for communication. **DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same [ROS_DOMAIN_ID](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html)**. This powerful mechanism ensures secure message passing between remote nodes as intended.
 
 By default, all ROS 2 nodes are configured with domain ID 0. To avoid conflicts, select a domain ID from the range of 0 to 101, and then set this chosen domain ID as the value for the `ROS_DOMAIN_ID` environment variable in both the Workstation and the Robot.
 ```{.bash .shell-prompt}
@@ -101,7 +101,7 @@ ros2 launch stretch_core rplidar.launch.py
 
 ## 4. Verify Remote Workstation is able to discover Stretch Nodes
 After launching the above core nodes, all the robot control interfaces and sensor data streams should be exposed to all the other nodes in the same physical network with common ROS_DOMAIN_ID set.
- 
+
 From the remote workstation try the following test commands:
 ```{.bash .shell-prompt}
 # Check if all robot topics are visible.
@@ -117,18 +117,80 @@ ros2 service call /stow_the_robot std_srvs/srv/Trigger
 
 ## 5. Offload Object Detection Node to Remote Workstation
 
-From the workstation run the following to start 
+From the workstation run the object detection node which runs a YoloV5 model.
 ```{.bash .shell-prompt}
+ros2 run stretch_deep_perception detect_objects
+```
+The node would start printing out the detected objects.
+```{.bash .shell-prompt}
+Fusing layers... 
+YOLOv5s summary: 213 layers, 7225885 parameters, 0 gradients
+Adding AutoShape... 
+[INFO] [1698379209.925727618] [DetectObjectsNode]: DetectObjectsNode started
+tv  detected
+keyboard  detected
+chair  detected
+mouse  detected
+mouse  detected
+tv  detected
+keyboard  detected
+chair  detected
+mouse  detected
+mouse  detected
+bowl  detected
+tv  detected
+keyboard  detected
+chair  detected
+mouse  detected
+mouse  detected
 ```
 
 ##### Visualiza in Rviz
 ```{.bash .shell-prompt}
+rviz2 -d ~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/object_detection.rviz
 ```
+![Object detection rviz](./images/remote_compute_object_detection_viz.png)
 
-## 6. Offload Object Detection Node to Remote Workstation
+
+## 6. Offload Object Detect Nearest MOuth Node to Remote Workstation
 Starts Bla Bla
 ```{.bash .shell-prompt}
 ros2 launch stretch_deep_perception stretch_detect_nearest_mouth.launch.py
+```
+
+```{.bash .shell-prompt}
+head_detection_model.getUnconnectedOutLayers() = [112]
+head_detection_model output layer names = ['detection_out']
+head_detection_model output layer names = ('detection_out',)
+head_detection_model input layer = <dnn_Layer 0x7f7d1e695cd0>
+head_detection_model input layer name = data_bn
+head_detection_model out_layer = <dnn_Layer 0x7f7d1e695e10>
+head_pose_model.getLayerNames() = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
+head_pose_model.getUnconnectedOutLayers() = [1 2 3]
+head_pose_model output layer names = ['angle_p_fc', 'angle_r_fc', 'angle_y_fc']
+head_pose_model output layer names = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
+head_pose_model input layer = <dnn_Layer 0x7f7d1e695d30>
+head_pose_model input layer name = angle_p_fc
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695cd0>
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695dd0>
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695cd0>
+head_pose_model.getLayerNames() = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
+head_pose_model.getUnconnectedOutLayers() = [1 2 3]
+head_pose_model output layer names = ['angle_p_fc', 'angle_r_fc', 'angle_y_fc']
+head_pose_model output layer names = ('angle_p_fc', 'angle_r_fc', 'angle_y_fc')
+head_pose_model input layer = <dnn_Layer 0x7f7d1e695dd0>
+head_pose_model input layer name = angle_p_fc
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695d30>
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695c50>
+head_pose_model out_layer = <dnn_Layer 0x7f7d1e695d30>
+landmarks_model.getLayerNames() = ('align_fc3',)
+landmarks_model.getUnconnectedOutLayers() = [1]
+landmarks_model output layer names = ['align_fc3']
+landmarks_model output layer names = ('align_fc3',)
+landmarks_model input layer = <dnn_Layer 0x7f7d1e695dd0>
+landmarks_model input layer name = align_fc3
+landmarks_model out_layer = <dnn_Layer 0x7f7d1e695d30>
+[INFO] [1698383830.671699923] [DetectFacesNode]: DetectFacesNode started
 ```
 
 ##### Visualiza in Rviz
