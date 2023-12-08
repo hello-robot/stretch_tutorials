@@ -6,9 +6,9 @@ The OpenAI API is a sophisticated language model, design to assist users with a 
 
 OpenAI's text generation models, such as GPT-4 and GPT-3.5, have undergone extensive training to comprehend both natural and formal language. These models, like GPT-4, are capable of generating text based on given inputs, often referred to as "prompts". To effectively utilize a model like GPT-4, the process involves designing prompts which essentially serve as instructions or examples to guide the model in successfully completing a given task. GPT-4 can be applied to a wide range of tasks including content or code generation, summarization, conversation, creative writing, and more.
 
-This text generation process text in chunks called tokens. Tokens represent commonly ocurring sequences of characters. You can checkout the OpenAI's [tokenizer tool](https://platform.openai.com/tokenizer) to test specific strings and see how they are translated into tokens. Why are tokens so important? It's simple, because depending in the number of tokens you use as well as the model (text generation, image or audio models), it will cost money. The good news, it's not that expensive and it's really useful. You can take a look at the [pricing](https://openai.com/pricing) page from OpenAI for more information.
+This text generation, process text in chunks called tokens. Tokens represent commonly ocurring sequences of characters. You can checkout the OpenAI's [tokenizer tool](https://platform.openai.com/tokenizer) to test specific strings and see how they are translated into tokens. Why are tokens so important? It's simple, because depending in the number of tokens you use, as well as the model (text generation, image or audio models), it will cost money. The good news, it's not that expensive and it's really useful. You can take a look at the [pricing](https://openai.com/pricing) page from OpenAI for more information.
 
-In this demo, we are using the GPT-3.5-turbo model, one of the newer text generation models alongside GPT-4 and GPT-4-turbo, we will use this model alongside the [Chat Completion API](https://platform.openai.com/docs/guides/text-generation/chat-completions-api), this will help us with out model,so that we can "chat" with Stretch and command some basic movements. If you want to know more about this and maybe create some applications, take a look at [this examples](https://platform.openai.com/examples).
+In this tutorial, we are using the GPT-3.5-turbo model, one of the newer text generation models alongside GPT-4 and GPT-4-turbo, we will use this model alongside the [Chat Completion API](https://platform.openai.com/docs/guides/text-generation/chat-completions-api), this will help us with our model,so that we can "chat" with Stretch and command some basic movements using natural language. If you want to know more about this and maybe create some applications, take a look at [this examples](https://platform.openai.com/examples).
 
 ## Chat Completion API
 Before jumping into the Stretch Chat code, there are some things to know well about the [Chat Completion API](https://platform.openai.com/docs/guides/text-generation/chat-completions-api), take a look at this example from the documentation:
@@ -27,15 +27,15 @@ response = client.chat.completions.create(
 )
 ```
 As you can see, there are different roles in the chat completion, the system, the user and the assistant, each one with it's own content. This is the base for the Chat Completion and even the base to create your own chatbot, this roles are simple to understand:
-1. The system: You will write direct instructions, sometimes the shorter and clearer is better, but if you have a long context for the AI to understand you need to be more specific (you'll see it in the demo)
+1. The system: You will write direct instructions, sometimes the shorter and clearer is better, but if you have a long context for the AI to understand you need to be more specific (you'll see it in the tutorial)
 2. The user: This will be your input text for the model to do something, it can be questions or even normal conversations, it depends on the context of the system as well, if you want the model to know everything about robotics and you ask something about chemistry or biotechnology it will output a message that it cannot process your request.
-3. The assistant: Here you can help the model to understand what you are going to do, this can also be a pre crafted bot response, take a look at the demo to understand this better.
+3. The assistant: Here you can help the model to understand what you are going to do, this can also be a pre crafted bot response, take a look at the tutorial to understand this better.
 
 ## Stretch Mobility with OpenAI
 !!! note
-    For your safety, put stretch in an open area when you try this demo.
+    For your safety, put stretch in an open area when you try this tutorial.
 
-For this demo, we are going to make Stretch move around writing what we want in the terminal, copy the next python code and paste it in your own folder, we are only going to use Stretch body and the OpenAI python library, if you haven't installed it yet don't worry, follow [this link](https://platform.openai.com/docs/quickstart/developer-quickstart) and read the quickstart guide, there you can create an OpenAI account and setup your API key as well, this is very important and it's only yours so be careful where you save it! To install the library just write down in your terminal:
+For this tutorial, we are going to make Stretch move around, writing using natural language what we want to do in the terminal, copy the next python code and paste it in your own folder, we are only going to use Stretch body and the OpenAI python library, if you haven't installed it yet don't worry, follow [this link](https://platform.openai.com/docs/quickstart/developer-quickstart) and read the quickstart guide, there you can create an OpenAI account and setup your API key as well, this is important and it's only yours so be careful where you save it! To install the library just write down in your terminal:
 ```{.bash .shell-prompt}
 pip3 install --upgrade openai
 ```
@@ -182,7 +182,7 @@ import time
 
 client = OpenAI(api_key=("OPEN_AI_KEY")) # <---------- USE YOUR API KEY HERE
 ```
-You need to import openai if you are going to use the API. Import robot from Stretch body for the movement and don't forget to use your secret key, if you don't use it nothing is going to work.
+You need to import openai if you are going to use the API. Import robot from Stretch body for the movement and don't forget to use your secret key, if you don't use it, it will not work.
 
 ```python
 def move_forward(robot):
@@ -282,7 +282,7 @@ def chatter(input_text):
     print(f"CHATGPT RESPONSE: {response_text}")
     return response_text
 ```
-We will begin with the chatter method, here we will initialize the LLM by defining the system message and the assistant message, we will need to be this specific for our code to run correctly, the content for the user role is our input in the terminal and to print this response we will need to use  `response.choices[0].message.content` as we can see in the documentation the `strip()` and `lower()` we use it to remove any trailing whitespaces, such as spaces or tabs, and to ensure the response is converted to a lower case, for example if the LLM outputs MOVE_FORWARD, we are going to convert it to mvoe_forward
+Let's commence with the chatter method. Here we initialize the Large Language Model (LLM) by specifying the system message and the assistant message. Precision in these initializations is crucial for the correct execution of our code. For the user role, we provide input via the terminal. To print the response, we utilize `response.choices[0].message.content` as outlined in the documentation. To ensure uniformity and ease of handling, we employ the `strip()` and `lower()` methods. The `strip()` function removes any trailing whitespaces, including spaces or tabs. Simultaneously, `lower()` converts the response to lowercase, For instance, if the LLM outputs "MOVE_FORWARD," we transform it into "move_forward." This standardization enhances consistency in handling the model's outputs.
 
 ```python
 def extract_action_sequence(response_text):
@@ -300,7 +300,7 @@ def extract_action_sequence(response_text):
         print("List of movements not found in the response.")
         return []
 ```
-Going into the method of extraction, we are going to look for the action list that the API will print, to do this we need to search for the square brackets, if this starts and ends with these brackets this is the list we are looking for and then proceed to split it and make a new formated list, if the model didn't found the list of movements it will return an empty list.
+Going into the method of extraction, our goal is to identify the action list printed by the API. To achieve this, we search for square brackets. If the content is enclosed within these brackets at both the start and end, we recognize this as the desired list. Subsequently, we proceed to split and create a newly formatted list. If the model fails to locate the list of movements, it returns an empty list.
 
 ```python
 def execute_robot_motions(final_motion_list):
