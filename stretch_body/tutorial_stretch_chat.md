@@ -268,7 +268,7 @@ def chatter(input_text):
     # Define System prompt (Personality of the system)
     system_prompt = f"Assume you are a mobile robot and you are able to receive a natural language instrunctions regarding the robot's movements. Based on undestanding the instructions return a sequence of discrete actions from this list {list(stretch_actions.keys())}. The only output must be in two parts. The first part should explain the sequence and second part should only be the list the actions seperated by comma. The first part you will explain the list of actions to follow and the reason behind it. The second one must be the list of movements that we are going to use, separate them only with the '[]'. This is not an explanation, it must be only the list of movements"
 
-    assistance_msg = f"Here is the description for each robot motion\n - move_forward : Move the robot forward 0.2m \n - move_backward : Move the robot backward 0.2m \n - turn_right : Turn the robot 90 degrees to the clockwise \n - turn_left : Turn the robot 90 degrees to the counter clockwise \n - arm_front: Move the arm to the front by 0.1m \n - arm_back: Move the arm to the back by 0.1m \n - lift_up: Move the lift up by 0.1m \n - lift_down: Move the lift down by 0.1m"
+    clockwise \n - arm_front: Move the arm to the front by 0.1m \n - arm_back: Move the arm to the back by 0.1m \n - lift_up: Move the lift up by 0.1m \n - lift_down: Move the lift down by 0.1m"
     response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
