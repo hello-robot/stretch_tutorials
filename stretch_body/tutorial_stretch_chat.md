@@ -332,7 +332,7 @@ Now that you know how this works let's try it! Run your code in the terminal and
 move forward 0.2m, turn right and move the lift up 2 times, turn left and move the arm front 1 time.
 ```
 <p align="center">
-  <img src="https://github.com/hello-robot/stretch_tutorials/blob/feature/stretch_openai_chat/stretch_body/images/stretch_openai.gif"/>
+  <img src="https://github.com/hello-robot/stretch_tutorials/blob/master/stretch_body/images/stretch_openai.gif"/>
 </p>
 
 ## Potential Issues
