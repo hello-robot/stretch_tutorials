@@ -6,11 +6,11 @@ Keeping Stretch charged is important to the long-term health of its batteries  -
 
 === "Stretch RE1"
 
-    [RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re1/)
+    [Stretch RE1 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re1/)
 
-=== "Stretch RE2"
+=== "Stretch 2"
 
-    [RE2 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/)
+    [Stretch 2 Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/)
 
 
 ## Keeping the Robot Healthy

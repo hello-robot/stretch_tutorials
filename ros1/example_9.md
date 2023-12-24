@@ -1,31 +1,35 @@
 ## Example 9
 
-The aim of example 9 is to combine the [ReSpeaker Microphone Array](respeaker_microphone_array.md) and [Follow Joint Trajectory](follow_joint_trajectory.md) tutorials to voice teleoperate the mobile base of the Stretch robot.
+This example aims to combine the [ReSpeaker Microphone Array](respeaker_microphone_array.md) and [Follow Joint Trajectory](follow_joint_trajectory.md) tutorials to voice teleoperate the mobile base of the Stretch robot.
 
 Begin by running the following command in a new terminal.
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 roslaunch stretch_core stretch_driver.launch
 ```
-Switch the mode to *position* mode using a rosservice call. Then run the `respeaker.launch` file.
 
-```bash
-# Terminal 2
+Switch the mode to `position` mode using a rosservice call.
+
+```{.bash .shell-prompt}
 rosservice call /switch_to_position_mode
+```
+
+Then run the `respeaker.launch` file. In a new terminal, execute:
+
+```{.bash .shell-prompt}
 roslaunch stretch_core respeaker.launch
 ```
+
 Then run the [voice_teleoperation_base.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py) node in a new terminal.
 
-```bash
-# Terminal 3
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 voice_teleoperation_base.py
 ```
+
 In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  
 
-```
-
+```{.bash .no-copy}
 ------------ VOICE TELEOP MENU ------------
 
 VOICE COMMANDS              
@@ -44,12 +48,13 @@ STEP SIZE
 "quit"   : QUIT AND CLOSE NODE            
 
 -------------------------------------------
-
 ```
-To stop the node from sending twist messages, type **Ctrl** + **c** or say "**quit**".
+
+To stop the node from sending twist messages, type `Ctrl` + `c` or say "**quit**".
 
 
 ### The Code
+
 ```python
 #!/usr/bin/env python3
 
@@ -265,6 +270,7 @@ This code is similar to that of the [multipoint_command](https://github.com/hell
 ```python
 #!/usr/bin/env python3
 ```
+
 Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
 ```python
@@ -279,18 +285,21 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 import hello_helpers.hello_misc as hm
 from speech_recognition_msgs.msg import SpeechRecognitionCandidates
 ```
-You need to import rospy if you are writing a ROS Node. Import the `FollowJointTrajectoryGoal` from the `control_msgs.msg` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across stretch_ros. In this instance, we are importing the `hello_misc` script.  Import `sensor_msgs.msg` so that we can subscribe to JointState messages.
+
+You need to import `rospy` if you are writing a ROS Node. Import the `FollowJointTrajectoryGoal` from the `control_msgs.msg` package to control the Stretch robot. Import `JointTrajectoryPoint` from the `trajectory_msgs` package to define robot trajectories. The `hello_helpers` package consists of a module that provides various Python scripts used across stretch_ros. In this instance, we are importing the `hello_misc` script.  Import `sensor_msgs.msg` so that we can subscribe to JointState messages.
 
 ```python
 class GetVoiceCommands:
 ```
-Create a class that subscribes to the speech to text recognition messages, prints a voice command menu, and defines step size for translational and rotational mobile base motion.
+
+Create a class that subscribes to the `speech-to-text` recognition messages, prints a voice command menu, and defines step size for translational and rotational mobile base motion.
 
 ```python
 self.step_size = 'medium'
 self.rad_per_deg = math.pi/180.0
 ```
-Set the default step size as medium and create a float value, *self.rad_per_deg*, to convert degrees to radians.
+
+Set the default step size as medium and create a float value, `self.rad_per_deg`, to convert degrees to radians.
 
 ```python
 self.small_deg = 5.0
@@ -305,6 +314,7 @@ self.big_deg = 20.0
 self.big_rad = self.rad_per_deg * self.big_deg
 self.big_translate = 0.1
 ```
+
 Define the three rotation and translation step sizes.
 
 ```python
@@ -313,14 +323,16 @@ self.sound_direction = 0
 self.speech_to_text_sub  = rospy.Subscriber("/speech_to_text",  SpeechRecognitionCandidates, self.callback_speech)
 self.sound_direction_sub = rospy.Subscriber("/sound_direction", Int32,                       self.callback_direction)
 ```
+
 Initialize the voice command and sound direction to values that will not result in moving the base.
 
-Set up two subscribers.  The first one subscribes to the topic */speech_to_text*, looking for `SpeechRecognitionCandidates` messages.  When a message comes in, ROS is going to pass it to the function `callback_speech` automatically. The second subscribes to */sound_direction* message and passes it to the `callback_direction` function.
+Set up two subscribers.  The first one subscribes to the topic `/speech_to_text`, looking for `SpeechRecognitionCandidates` messages.  When a message comes in, ROS is going to pass it to the function `callback_speech` automatically. The second subscribes to `/sound_direction` message and passes it to the `callback_direction` function.
 
 ```python
 self.sound_direction = msg.data * -self.rad_per_deg
 ```
-The `callback_direction` function converts the *sound_direction* topic from degrees to radians.
+
+The `callback_direction` function converts the `sound_direction` topic from degrees to radians.
 
 ```python
 if self.step_size == 'small':
@@ -331,7 +343,8 @@ if self.step_size == 'big':
     inc = {'rad': self.big_rad, 'translate': self.big_translate}
 return inc
 ```
-The `callback_speech` stores the increment size for translational and rotational base motion to *inc*. The increment size is contingent on the *self.step_size* string value.
+
+The `callback_speech` stores the increment size for translational and rotational base motion in `inc`. The increment size is contingent on the `self.step_size` string value.
 
 ```python
 command = None
@@ -346,21 +359,24 @@ if self.voice_command == 'right':
 if self.voice_command == 'stretch':
     command = {'joint': 'rotate_mobile_base', 'inc': self.sound_direction}
 ```
-In the `get_command()` function, the *command* is initialized as None, or set as a dictionary where the *joint* and *inc* values are stored. The *command* message type is dependent on the *self.voice_command* string value.
+
+In the `get_command()` function, the `command` is initialized as `None`, or set as a dictionary where the `joint` and `inc` values are stored. The `command` message type is dependent on the `self.voice_command` string value.
 
 ```python
 if (self.voice_command == "small") or (self.voice_command == "medium") or (self.voice_command == "big"):
     self.step_size = self.voice_command
     rospy.loginfo('Step size = {0}'.format(self.step_size))
 ```
-Based on the *self.voice_command* value, set the step size for the increments.
+
+Based on the `self.voice_command` value set the step size for the increments.
 
 ```python
 if self.voice_command == 'quit':
     rospy.signal_shutdown("done")
     sys.exit(0)
 ```
-If the *self.voice_command* is equal to "quit", then initiate a clean shutdown of ROS and exit the Python interpreter.
+
+If the `self.voice_command` is equal to `quit`, then initiate a clean shutdown of ROS and exit the Python interpreter.
 
 ```python
 class VoiceTeleopNode(hm.HelloNode):
@@ -379,7 +395,8 @@ class VoiceTeleopNode(hm.HelloNode):
         self.joint_state = None
         self.speech = GetVoiceCommands()
 ```
-A class that inherits the `HelloNode` class from `hm`, declares object from the `GetVoiceCommands` class, and sends joint trajectory commands.
+
+A class that inherits the `HelloNode` class from `hm` declares object from the `GetVoiceCommands` class and sends joint trajectory commands.
 
 ```python
 def send_command(self, command):
@@ -393,18 +410,21 @@ def send_command(self, command):
         point = JointTrajectoryPoint()
         point.time_from_start = rospy.Duration(0.0)
 ```
-The `send_command` function stores the joint state message and uses a conditional statement to send joint trajectory goals. Also, assign *point* as a `JointTrajectoryPoint` message type.
+
+The `send_command` function stores the joint state message and uses a conditional statement to send joint trajectory goals. Also, assign `point` as a `JointTrajectoryPoint` message type.
 
 ```python
 trajectory_goal = FollowJointTrajectoryGoal()
 trajectory_goal.goal_time_tolerance = rospy.Time(1.0)
 ```
-Assign *trajectory_goal* as a `FollowJointTrajectoryGoal` message type.
+
+Assign `trajectory_goal` as a `FollowJointTrajectoryGoal` message type.
 
 ```python
 joint_name = command['joint']
 trajectory_goal.trajectory.joint_names = [joint_name]
 ```
+
 Extract the joint name from the command dictionary.
 
 ```python
@@ -412,23 +432,27 @@ inc = command['inc']
 rospy.loginfo('inc = {0}'.format(inc))
 new_value = inc
 ```
+
 Extract the increment type from the command dictionary.
 
 ```python
 point.positions = [new_value]
 trajectory_goal.trajectory.points = [point]
 ```
+
 Assign the new value position to the trajectory goal message type.
 
 ```python
 self.trajectory_client.send_goal(trajectory_goal)
 rospy.loginfo('Done sending command.')
 ```
-Make the action call and send goal of the new joint position.
+
+Make the action call and send the goal of the new joint position.
 
 ```python
 self.speech.print_commands()
 ```
+
 Reprint the voice command menu after the trajectory goal is sent.
 
 ```python
@@ -443,7 +467,8 @@ def main(self):
       rate = rospy.Rate(self.rate)
       self.speech.print_commands()
 ```
-The main function instantiates the `HelloNode` class, initializes the subscriber, and call other methods in both the `VoiceTeleopNode` and `GetVoiceCommands` classes.
+
+The main function instantiates the `HelloNode` class, initializes the subscriber, and calls other methods in both the `VoiceTeleopNode` and `GetVoiceCommands` classes.
 
 ```python
 while not rospy.is_shutdown():
@@ -451,6 +476,7 @@ while not rospy.is_shutdown():
   self.send_command(command)
   rate.sleep()
 ```
+
 Run a while loop to continuously check speech commands and send those commands to execute an action.
 
 ```python
@@ -460,4 +486,5 @@ try:
 except KeyboardInterrupt:
   rospy.loginfo('interrupt received, so shutting down')
 ```
+
 Declare a `VoiceTeleopNode` object. Then execute the `main()` method.

@@ -1,28 +1,30 @@
 ## Example 4
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/balloon.png"/>
 </p>
 
-Let's bringup stretch in the willowgarage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
+Let's bring up Stretch in the Willow Garage world from the [gazebo basics tutorial](gazebo_basics.md) and RViz by using the following command.
 
-```bash
-# Terminal 1
+```{.bash .shell-prompt}
 roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 ```
-the `rviz` flag will open an RViz window  to visualize a variety of ROS topics. In a new terminal run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py) node.
 
-```bash
-# Terminal 2
+The `rviz` flag will open an RViz window to visualize a variety of ROS topics. In a new terminal, run the following commands to execute the [marker.py](https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py) node.
+
+```{.bash .shell-prompt}
 cd catkin_ws/src/stretch_tutorials/src/
 python3 marker.py
 ```
-The gif below demonstrates how to add a new `Marker` display type, and change the topic name from */visualization_marker* to */balloon*. A red sphere Marker should appear above the Stretch robot.
+
+The GIF below demonstrates how to add a new `Marker` display type, and change the topic name from `/visualization_marker` to `/balloon`. A red sphere marker should appear above the Stretch robot.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/balloon.gif"/>
 </p>
 
 ### The Code
+
 ```python
 #!/usr/bin/env python3
 
@@ -84,8 +86,8 @@ Now let's break the code down.
 ```python
 #!/usr/bin/env python3
 ```
-Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
+Every Python ROS [Node](http://wiki.ros.org/Nodes) will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.
 
 ```python
 import rospy
@@ -96,8 +98,8 @@ You need to import `rospy` if you are writing a ROS [Node](http://wiki.ros.org/N
 ```python
 self.pub = rospy.Publisher('balloon', Marker, queue_size=10)
 ```
-This section of code defines the talker's interface to the rest of ROS. `pub = rospy.Publisher("balloon", Twist, queue_size=1)` declares that your node is publishing to the */ballon* topic using the message type `Twist`.
 
+This section of code defines the talker's interface to the rest of ROS. `pub = rospy.Publisher("balloon", Twist, queue_size=1)` declares that your node is publishing to the `/ballon` topic using the message type `Twist`.
 
 ```python
 self.marker = Marker()
@@ -105,16 +107,19 @@ self.marker.header.frame_id = 'base_link'
 self.marker.header.stamp = rospy.Time()
 self.marker.type = self.marker.SPHERE
 ```
+
 Create a `Marker()` message type. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker)
 
 ```python
 self.marker.id = 0
 ```
-Each marker has a unique ID number. If you have more than one marker that you want displayed at a given time, then each needs to have a unique ID number. If you publish a new marker with the same ID number of an existing marker, it will replace the existing marker with that ID number.
+
+Each marker has a unique ID number. If you have more than one marker that you want to be displayed at a given time, then each needs to have a unique ID number. If you publish a new marker with the same ID number as an existing marker, it will replace the existing marker with that ID number.
 
 ```python
 self.marker.action = self.marker.ADD
 ```
+
 This line of code sets the action. You can add, delete, or modify markers.
 
 ```python
@@ -122,6 +127,7 @@ self.marker.scale.x = 0.5
 self.marker.scale.y = 0.5
 self.marker.scale.z = 0.5
 ```
+
 These are the size parameters for the marker. These will vary by marker type.
 
 ```python
@@ -129,11 +135,13 @@ self.marker.color.r = 1.0
 self.marker.color.g = 0.0
 self.marker.color.b = 0.0
 ```
+
 Color of the object, specified as r/g/b/a, with values in the range of [0, 1].
 
 ```python
 self.marker.color.a = 1.0
 ```
+
 The alpha value is from 0 (invisible) to 1 (opaque). If you don't set this then it will automatically default to zero, making your marker invisible.
 
 ```python
@@ -141,12 +149,14 @@ self.marker.pose.position.x = 0.0
 self.marker.pose.position.y = 0.0
 self.marker.pose.position.z = 2.0
 ```
+
 Specify the pose of the marker. Since spheres are rotationally invariant, we're only going to specify the positional elements. As usual, these are in the coordinate frame named in `frame_id`. In this case, the position will always be directly 2 meters above the frame_id (*base_link*), and will move with it.
 
 ```python
 def publish_marker(self):
 		self.publisher.publish(self.marker)
 ```
+
 Publish the Marker data structure to be visualized in RViz.
 
 ```python
@@ -154,16 +164,20 @@ rospy.init_node('marker', argv=sys.argv)
 balloon = Balloon()
 rate = rospy.Rate(10)
 ```
-The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. **NOTE:** the name must be a base name, i.e. it cannot contain any slashes "/".
 
-Instantiate class with `Balloon()`
+The next line, `rospy.init_node(NAME, ...)`, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. 
 
-Give control to ROS with `rospy.spin()`. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.
+!!! note
+	The name must be a base name, i.e. it cannot contain any slashes "/".
 
+Instantiate class with `Balloon()`.
+
+The `rospy.rate()` is the rate at which the node is going to publish information (10 Hz).
 
 ```python
 while not rospy.is_shutdown():
 	balloon.publish_marker()
 	rate.sleep()
 ```
-This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a **Ctrl-C** or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.
+
+This loop is a fairly standard rospy construct: checking the `rospy.is_shutdown()` flag and then doing work. You have to check `is_shutdown()` to check if your program should exit (e.g. if there is a `Ctrl+c` or otherwise). The loop calls `rate.sleep()`, which sleeps just long enough to maintain the desired rate through the loop.

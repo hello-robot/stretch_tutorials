@@ -1,26 +1,24 @@
 ## Respeaker Microphone Array
 
-For this tutorial, we will go over on a high level how to use Stretch's [Respeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/).  
+In this tutorial, we will go over how to use Stretch's [Respeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/).  
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
 </p>
 
-
 ### Stretch Respeaker Tool
 
 We'll begin by using the command-line Stretch Respeaker Tool to quickly try out the robot's microphone array and speakers. This tool doesn't use ROS, but we'll cover how to use the Respeaker from ROS in the next section. Type the following command in a new terminal:
 
-```bash
+```{.bash .shell-prompt}
 stretch_respeaker_test.py
 ```
 
 The following will be outputted in your terminal:
 
-```bash
+```{.bash .no-copy}
 hello-robot@stretch-re1-1005:~$ stretch_respeaker_test.py
 For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
-
 
 * waiting for audio...
 * recording 3 seconds
@@ -41,17 +39,17 @@ To stop the tool, type **Ctrl** + **C** in the terminal.
 
 Before getting started with the Respeaker ROS package, we'll confirm it is available to use. Type the following into a new terminal:
 
-```bash
+```{.bash .shell-prompt}
 rospack find respeaker_ros
 ```
 
-If you get an error like `[rospack] Error: package 'respeaker_ros' not found`, refresh your ROS workspace using the `stretch_catkin_refresh.sh` tool.
+If you get an error like `[rospack] Error: package 'respeaker_ros' not found`, refresh your ROS workspace using the [Creating a New ROS Workspace](https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md) tutorial.
 
 #### Getting started
 
 Run the `respeaker.launch` file in a new terminal using:
 
-```bash
+```{.bash .shell-prompt}
 roslaunch respeaker_ros respeaker.launch
 ```
 This will bring up the necessary ROS nodes to interface with the robot's microphone array and speakers. After initialization, you will see the following outputted in your terminal:
@@ -125,6 +123,6 @@ Due to echo-ing within the shell covering the Respeaker, the DOA can be inaccura
 
 You can also set various parameters via `dynamic_reconfigure`, by running the following command in a new terminal:
 
-```bash
+```{.bash .shell-prompt}
 rosrun rqt_reconfigure rqt_reconfigure
 ```
