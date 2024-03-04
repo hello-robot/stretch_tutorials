@@ -1,10 +1,12 @@
 ![](../images/banner.png)
 # Tutorial Track: Stretch ROS 2 (Beta)
 
-!!! note
-    Stretch's ROS2 packages and this ROS2 tutorial track are both under active development. They are considered 'beta', and we welcome any feedback. If you find any issues or bugs in the [stretch_ros2](https://github.com/hello-robot/stretch_ros2) repository, please see the [Stretch ROS2](https://github.com/hello-robot/stretch_ros2/issues) and [Stretch Tutorials](https://github.com/hello-robot/stretch_tutorials/issues) issue trackers.
-
 ## Robot Operating System 2 (ROS 2)
+
+ROS 2 is the successor to ROS,  The ROS in ROS 2 stands for "robot operating system", but despite the name, ROS is not an operating system. It's a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages.
+
+As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allow for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of multiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
+
 
 Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allow for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of multiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
 
