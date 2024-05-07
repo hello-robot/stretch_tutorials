@@ -165,7 +165,7 @@ TODO - [Link to file system video here](https://youtu.be/Fqu2P2M092Y)
 
 #### Flags
 
-TODO
+TODO - CLI flags
 
 ### APT Package Manager
 
