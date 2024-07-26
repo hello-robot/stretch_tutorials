@@ -209,7 +209,7 @@ class LocateArUcoTag(hm.HelloNode):
                     transform = self.tf_buffer.lookup_transform('base_link',
                                                             tag_name,
                                                             now)
-                    self.get_logger().info("Found Requested Tag: \n%s", transform)
+                    self.get_logger().info(f"Found Requested Tag: \n{transform}")
 
                     # Publish the transform
                     self.transform_pub.publish(transform)
