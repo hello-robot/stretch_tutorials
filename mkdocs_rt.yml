@@ -83,6 +83,7 @@ extra:
 
 nav:
   - Getting Started: ./getting_started.md
+  - Motion Commands: ./jogging.md
   - Robot Drivers: ./robot_drivers.md
   # - Writing Nodes: ./writing_nodes.md # TODO
   - Navigation with Nav2:
