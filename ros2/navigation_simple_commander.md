@@ -21,7 +21,7 @@ Let's set the patrol route up before you can execute this demo in your map. This
 First, execute the following command while passing the correct map YAML. Then, press the 'Startup' button:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_ROBOT_FLEET}/maps/<map_name>.yaml
+ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 Since we expect the first point in the patrol route to be at the origin of the map, the first coordinates should be (0.0, 0.0). Next, to define the route, the easiest way to define the waypoints in the `security_route` array is by setting the robot at random locations in the map using the '2D Pose Estimate' button in RViz as shown below. For each location, note the x, and y coordinates in the position field of the base_footprint frame and add it to the `security_route` array in [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30).
@@ -42,7 +42,7 @@ Go ahead and execute the following command to run the demo and visualize the res
 Terminal 1:
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_nav2 demo_security.launch.py map:=${HELLO_ROBOT_FLEET}/maps/<map_name>.yaml
+ros2 launch stretch_nav2 demo_security.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 <p align="center">
