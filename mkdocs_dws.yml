@@ -83,6 +83,7 @@ extra:
 
 nav:
   - The Basics: ./basics.md
+  - Launching Apps on Boot: ./onboot.md
   # - Networking Guide: ./networking.md # TODO
   # - Command Line Tools: ./cli.md
   # - Using Python with Stretch: ./python.md
