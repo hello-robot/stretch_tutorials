@@ -115,6 +115,7 @@ nav:
       - Collision Avoidance: ./ros2/example_3.md
       - Rviz Markers: ./ros2/example_4.md
       - Offloading Computation: ./ros2/remote_compute.md
+      - Align to ArUco: ./ros2/align_to_aruco.md
       - ArUco Locator: ./ros2/example_12.md
       - Voice Teleop: ./ros2/example_9.md
       - Playing Audio: ./ros2/example_9.md
