@@ -105,6 +105,10 @@ nav:
     - Rviz Markers: ./example_4.md
     - Offloading Computation: ./remote_compute.md
     - ArUco Locator: ./example_12.md
+    - Joints:
+      - Joint States: ./example_5.md
+      - Static Transformations: ./example_10.md
+      - Joint Effort: ./example_6.md
+    - Realsense Camera: ./example_7.md
+    - Microphones: ./example_8.md
     - Voice Teleop: ./example_9.md
-    - Playing Audio: ./example_9.md
-    - Rosbags & MCAPs: ./example_9.md
