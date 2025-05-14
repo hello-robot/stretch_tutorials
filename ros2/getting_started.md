@@ -7,7 +7,7 @@ This tutorial series covers writing ROS 2 software for Stretch. ROS 2 programs c
 Ensure that:
 
  1. Your Stretch has the latest robot distribution installed
-    - These tutorials were written for the latest robot distribution. Take a look at the [Distributions & Roadmap](../../../software/distributions/) guide to identify your current distribution and upgrade if necessary.
+    - These tutorials were written for the latest robot distribution. Take a look at the [Distributions & Roadmap](../../software/distributions/) guide to identify your current distribution and upgrade if necessary.
  2. You are comfortable developing with Stretch
     - If you've never developed with Stretch before or are new to programming, check out the [Developing with Stretch](../../developing/basics/) tutorial series. In particular, the [Using ROS 2 with Stretch](#TODO) tutorial from that series is a good resource for those new to ROS 2.
 
