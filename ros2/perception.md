@@ -45,4 +45,4 @@ The `DepthCloud` display is visualized in the main RViz window. This display tak
 </p>
 
 ## Deep Perception
-Hello Robot also has a ROS package that uses deep learning models for various detection demos. A link to the tutorials is provided: [stretch_deep_perception](https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/deep_perception/).
+Hello Robot also has a ROS package that uses deep learning models for various detection demos. A link to the tutorials is provided: [stretch_deep_perception](https://docs.hello-robot.com/latest/ros2/deep_perception/).
