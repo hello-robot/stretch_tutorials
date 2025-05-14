@@ -2,8 +2,8 @@
 ArUco markers are a type of fiducials that are used extensively in robotics for identification and pose estimation. In this tutorial we will learn how to identify ArUco markers with the ArUco detection node and enable Stretch to navigate and align itself with respect to the marker.
 
 There are three main parameters to creating an ArUco tag:
-- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more [below](./#aruco-detection))
-- ID (A unique identifier for the tag, see [Create a New ArUco Marker](./#create-a-new-aruco-marker) for reserved ID's)
+- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more [below](#aruco-detection))
+- ID (A unique identifier for the tag, see [Create a New ArUco Marker](#create-a-new-aruco-marker) for reserved ID's)
 - Marker Size (The physical dimensions of the tag in mm, this can be customized freely.)
 
 ## The ArUco Marker Dictionary
@@ -147,7 +147,7 @@ ros2 launch stretch_core align_to_aruco.launch.py
 1. Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run `stretch_robot_stow.py` from anywhere on a terminal.
 2. the ArUco tag needs to be laid flat and rotated to match the image in [Computing Transformations](https://docs.hello-robot.com/latest/ros2/align_to_aruco/#computing-transformations) above.
 3. The robot will move 0.75m away from the marker. This means that if the robot is within 0.75m, then it will rotate and move forward until it is at 0.75m. If the robot is too close while rotating, it may collide with its surroundings.
-4. If you wish to use a custom ArUco tag, 1. you should [create a tag](./#create-a-new-aruco-marker). 2. print it so you can place it in your environment. 3. Duplicate the `131` `base_right` marker in [stretch_marker_dict.yml](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml) and replace `131` with your marker's ID, `base_right` with a new name, and the `marker_size`, if it is different. 4. Lastly, you will need to pass the `aruco_tag_name` rosparam to the `stretch_aruco.py` node. You can do this either by editting the `align_to_aruco.launch.py` file or following the [Manual Launch](./#manual-launch) steps below.
+4. If you wish to use a custom ArUco tag, 1. you should [create a tag](#create-a-new-aruco-marker). 2. print it so you can place it in your environment. 3. Duplicate the `131` `base_right` marker in [stretch_marker_dict.yml](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml) and replace `131` with your marker's ID, `base_right` with a new name, and the `marker_size`, if it is different. 4. Lastly, you will need to pass the `aruco_tag_name` rosparam to the `stretch_aruco.py` node. You can do this either by editting the `align_to_aruco.launch.py` file or following the [Manual Launch](#manual-launch) steps below.
 
 
 ### Manual Launch
