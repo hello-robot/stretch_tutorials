@@ -99,16 +99,20 @@ nav:
     # - Navigation: ./writing_nodes.md #TODO
     # - Manipulation: ./writing_nodes.md # TODO
   - Perception: ./perception.md
-  - Examples:
-    - Filter Laser Scans: ./example_2.md
+  - Examples::
+    - Move Stretch with Twist Controller: ./ros2/example_1.md
+    - Obstacle Avoidance: ./ros2/obstacle_avoider.md
     - Collision Avoidance: ./example_3.md
     - Rviz Markers: ./example_4.md
     - Offloading Computation: ./remote_compute.md
+    - Align to ArUco: ./ros2/align_to_aruco.md
     - ArUco Locator: ./example_12.md
     - Joints:
       - Joint States: ./example_5.md
       - Static Transformations: ./example_10.md
       - Joint Effort: ./example_6.md
+    - Deep Perception: ./ros2/deep_perception.md
+    - Filter Laser Scans: ./example_2.md
     - Realsense Camera: ./example_7.md
     - Microphones: ./example_8.md
     - Voice Teleop: ./example_9.md
