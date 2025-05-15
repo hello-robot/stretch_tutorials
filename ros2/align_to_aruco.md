@@ -229,5 +229,60 @@ The align_to_marker() method is where we command Stretch to the pose goal in thr
 ```python
     def align_to_marker(self):
 ```
+If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the [code](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130) to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml) ArUco marker dictionary.
 
-If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the [code](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130) to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the [stretch_marker_dict.yaml](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml) ArUco marker dictionary.
+## Interactive Alignment Visualization
+
+Below is an interactive visualization that demonstrates how Stretch aligns with an ArUco marker:
+
+<div class="alignment-visualization">
+  <h2>Align to ArUco Visualization</h2>
+  <div class="container">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <div class="controls">
+      <label>
+        Marker Offset Distance (m)
+        <input type="range" id="offset" min="0.3" max="1.5" step="0.05" value="0.75">
+        <span id="offsetVal">0.75</span>
+      </label>
+      
+      <label>
+        Marker X Position (m)
+        <input type="range" id="markerX" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <span id="markerXVal">1.2</span>
+      </label>
+      
+      <label>
+        Marker Y Position (m)
+        <input type="range" id="markerY" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <span id="markerYVal">1.2</span>
+      </label>
+      
+      <label>
+        Marker Rotation (degrees)
+        <input type="range" id="markerRot" min="-180" max="180" step="5" value="-90">
+        <span id="markerRotVal">-90</span>
+      </label>
+      
+      <div class="button-group">
+        <button onclick="resetInputs()">Reset</button>
+        <button id="animateButton" onclick="startAnimation()">Animate Robot</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="../css/align_to_aruco_vis.css">
+
+<script src="../js/align_to_aruco_vis.js"></script>
+
+This interactive visualization illustrates the process of aligning Stretch with an ArUco marker:
+
+1. The visualization shows the initial pose of the robot (yellow arrow) and the ArUco marker (blue dot)
+2. The marker has its own coordinate system (red x-axis, green y-axis)
+3. The target position is calculated by moving a distance defined by "Marker Offset Distance" along the marker's y-axis
+4. The angle φ (phi) represents the angle the robot needs to turn to face the target position
+5. The final pose (orange arrow) shows how the robot will align itself relative to the marker
+
+You can adjust the marker's position, orientation, and offset distance using the sliders to see how these parameters affect the robot's alignment. Additionally, you can click the "Animate Robot" button to visualize the robot's movement from its initial pose to the final aligned position.
+
