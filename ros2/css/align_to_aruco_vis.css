@@ -1,0 +1,154 @@
+.alignment-visualization {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.alignment-visualization h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+
+#canvas {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 220px;
+    max-width: 100%;
+}
+
+.controls {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 220px;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+.controls input[type="range"] {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.controls span {
+    display: inline-block;
+    min-width: 40px;
+    text-align: right;
+    color: hsla(240, 57.77%, 49.22%, 1);
+    font-weight: bold;
+}
+
+.controls .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.controls button {
+    background-color: hsla(240, 57.77%, 49.22%, 1);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    flex: 1;
+}
+
+.controls button:hover {
+    background-color: #0056b3;
+}
+
+[data-md-color-scheme="slate"] .alignment-visualization {
+    background-color: #2d333b;
+}
+
+[data-md-color-scheme="slate"] .controls {
+    background-color: #22272e;
+    color: #adbac7;
+}
+
+[data-md-color-scheme="slate"] .controls label {
+    color: #adbac7;
+}
+
+[data-md-color-scheme="slate"] #canvas {
+    background-color: #22272e;
+    border-color: #444c56;
+}
+
+input[type=range] {
+    accent-color: hsla(240, 57.77%, 49.22%, 1);
+}
+
+[data-md-color-scheme="slate"] .controls button {
+    background-color: #539bf5;
+}
+
+[data-md-color-scheme="slate"] .controls button:hover {
+    background-color: #6cb6ff;
+}
+
+[data-md-color-scheme="slate"] .controls button#animateButton {
+    background-color: #ff7043;
+}
+
+[data-md-color-scheme="slate"] .controls button#animateButton:hover {
+    background-color: #ff8a65;
+}
+
+#animateButton {
+    background-color: rgb(255, 129, 169);
+}
+
+#animateButton:hover {
+    background-color: hsla(341.4084507,100%,86.07843137%,1);
+}
+
+/* Force side-by-side even on small screens */
+@media (max-width: 700px) {
+    .container {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        gap: 10px;
+    }
+    #canvas, .controls {
+        min-width: 120px;
+        max-width: 50vw;
+        font-size: 14px;
+        padding: 10px;
+    }
+    .controls label {
+        font-size: 13px;
+    }
+    .controls button {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
