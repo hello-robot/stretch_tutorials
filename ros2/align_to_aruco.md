@@ -121,7 +121,7 @@ The next task is to generate a simple motion plan for the mobile base to reach t
 
 1. Turn `phi` (φ) degrees towards the goal position. This would be the angle formed between the robot x-axis and the line connecting the start and the goal positions.
 2. Travel straight to the goal position. This would be the euclidean distance between the start and the goal positions.
-3. Turn `z_rot_base` degrees to attain the goal orientation. This would be the correction angle necessary to align the robot y-axis with the marker's.
+3. Turn `z_rot_base` degrees to attain the goal orientation. This would be the correction angle necessary to align the robot with the marker.
 
 <div class="alignment-visualization">
   <div class="container">
@@ -285,7 +285,7 @@ It then calculates:
 
 - `phi`: the angle to rotate to face the marker
 - `dist`: the forward distance to drive
-- `z_rot_base`: a final rotation to align with the marker’s x-axis
+- `z_rot_base`: a final rotation to align with robot gripper facing the marker
 
 ```python
 phi = atan2(base_position_y, base_position_x)
