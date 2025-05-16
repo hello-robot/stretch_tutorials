@@ -1,6 +1,14 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// Define constants for visualization
+const VISUAL_SCALE = 100;
+
+// Utility function for coordinate conversion
+function toCanvasCoords(x, y) {
+  return [canvas.width / 2 + x * VISUAL_SCALE, canvas.height / 2 - y * VISUAL_SCALE];
+}
+
 function radians(deg) {
   return (deg * Math.PI) / 180;
 }
@@ -86,7 +94,7 @@ function drawGrid() {
 // Add animation variables
 let animating = false;
 let animationStep = 0;
-const totalAnimationSteps = 200;
+const totalAnimationSteps = 100;
 let robotPosition = [0, 0]; // x, y
 let robotRotation = 0;
 let animationPhases = [];
@@ -168,11 +176,6 @@ function startAnimation() {
 }
 
 function animate() {
-  const visualScale = 100;
-
-  function toCanvasCoords(x, y) {
-    return [canvas.width / 2 + x * visualScale, canvas.height / 2 - y * visualScale];
-  }
   if (!animating) return;
 
   // Clear and redraw the background
@@ -231,12 +234,15 @@ function animate() {
 // Preload the robot image
 const robotImg = new Image();
 robotImg.src = "../images/align_aruco_stretch_base.png";
-
 function drawRobot(x, y, rotation) {
   // Uniformly scale the robot image based on its natural aspect ratio
   const scale = 2.0; // Adjust this value to scale up/down uniformly
   ctx.save();
-  ctx.translate(x, y);
+
+  // Center stretch base image with offsets
+  const xOffset = 0;
+  const yOffset = 9;
+  ctx.translate(x + xOffset, y + yOffset);
   rotation = rotation + Math.PI / 2; // Adjust rotation to match the robot's orientation
   ctx.rotate(rotation);
 
@@ -270,9 +276,17 @@ function drawRobot(x, y, rotation) {
   ctx.restore();
 }
 
+// Preload the marker image
+const markerImg = new Image();
+markerImg.src = "../images/aruco_131_6x6.png";
+markerImg.onload = function() {
+  // Redraw when the image is loaded
+  if (!animating) draw();
+};
+
 function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
   // Set better text rendering
-  ctx.font = "13px Arial";
+  ctx.font = "15px Arial";
   ctx.textBaseline = "middle";
 
   // Define visualization scale once to use consistently
@@ -299,10 +313,6 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
   const z_rot_base_deg = degrees(z_rot_base).toFixed(1);
   const reverse_offset_angle = Math.atan2(-base_y, -base_x);
 
-  function toCanvasCoords(x, y) {
-    return [canvas.width / 2 + x * visualScale, canvas.height / 2 - y * visualScale];
-  }
-
   function drawArrow(x1, y1, dx, dy, color, label = null, options = {}) {
     // Set default options
     const defaults = {
@@ -323,7 +333,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.strokeStyle = color;
-    ctx.lineWidth = settings.bold ? 4 : settings.lineWidth;
+    ctx.lineWidth = settings.bold ? 3 : settings.lineWidth;
     ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
     ctx.shadowBlur = 3;
     ctx.shadowOffsetX = 1;
@@ -333,7 +343,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
 
     // Draw the arrowhead
     const angle = Math.atan2(dy, dx);
-    const headLength = settings.bold ? 12 : settings.headLength;
+    const headLength = settings.bold ? 15 : settings.headLength;
     const angleOffset = Math.PI / 7; // slightly wider arrowhead angle
 
     const x3 = x2 - headLength * Math.cos(angle - angleOffset);
@@ -359,7 +369,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       if (settings.boldFont) {
-        ctx.font = 'bold 14px Arial';
+        ctx.font = 'bold 18px Arial';
       }
       ctx.fillText(label, x2 + settings.labelOffset.x, y2 + settings.labelOffset.y);
       ctx.restore();
@@ -403,14 +413,22 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
   const x_axis = [axisLen * Math.cos(angle), axisLen * Math.sin(angle)];
   const y_axis = [-axisLen * Math.sin(angle), axisLen * Math.cos(angle)];
 
-  const [mx_x, my_x] = toCanvasCoords(
-    marker_x + x_axis[0],
-    marker_y + x_axis[1]
-  );
-  const [mx_y, my_y] = toCanvasCoords(
-    marker_x + y_axis[0],
-    marker_y + y_axis[1]
-  );
+  // Draw the marker image centered at (mx, my), rotated by marker_rot_deg
+  // Image size (adjust as needed)
+  const imgSize = 40;
+  // If image is already loaded (from cache), draw immediately
+  if (markerImg.complete) {
+    ctx.save();
+    ctx.translate(mx, my);
+    ctx.rotate(-rotation_angle);
+    ctx.drawImage(markerImg, -imgSize / 2, -imgSize / 2, imgSize, imgSize);
+    ctx.restore();
+    // Draw axes on top of the loaded image
+    drawAxes();
+  } else {
+    // If image isn't loaded yet, draw axes anyway
+    drawAxes();
+  }
 
   // Draw distance arrow
   drawArrow(
@@ -418,14 +436,14 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
     oy,
     bx - ox,
     by - oy,
-    "#8E24AA",
+    "#4285F4",
     `dist=${dist.toFixed(2)}`,
     { labelOffset: { x: -(bx - ox) / 2 + 5, y: -(by - oy) / 2 } }
   );
 
   // φ arc
   const arc_radius = 20;
-  const midPhiAngle = drawArc(0, 0, arc_radius, 0, phi, "#34A853");
+  const midPhiAngle = drawArc(0, 0, arc_radius, 0, phi, "hsla(196, 86%, 29%, 1)");
 
   const [textX, textY] = toCanvasCoords(
     0.2 * Math.cos(midPhiAngle),
@@ -435,7 +453,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
   // Add phi label
   const phiLabel = `φ=${phi_deg}°`;
   ctx.save();
-  ctx.fillStyle = "#34A853";
+  ctx.fillStyle = "hsla(196, 86%, 29%, 1)";
   ctx.shadowColor = "white";
   ctx.shadowBlur = 3;
   ctx.shadowOffsetX = 0;
@@ -452,7 +470,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
     arc_radius_z,
     theta_start,
     theta_start + z_rot_base,
-    "#888888"
+    "hsla(196, 86%, 29%, 1)"
   );
 
   const labelDist = (arc_radius_z * 1.2) / 100;
@@ -462,12 +480,12 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
 
   const zRotLabel = `z_rot_base=${z_rot_base_deg}°`;
   ctx.save();
-  ctx.fillStyle = "#888888";
+  ctx.fillStyle = "hsla(196, 86%, 29%, 1)";
   ctx.shadowColor = "white";
   ctx.shadowBlur = 3;
   ctx.shadowOffsetX = 0;
   ctx.shadowOffsetY = 0;
-  ctx.fillText(zRotLabel, lx + 10, ly);
+  ctx.fillText(zRotLabel, lx + 10, ly - 5);
   ctx.restore();
 
   // Axes
@@ -476,13 +494,13 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
 
   // Initial pose arrow (along x-axis)
   if (!animating) {
-    const initial_pose_len = 0.3;
+    const initial_pose_len = 0.35;
     drawArrow(
       ox,
       oy,
       initial_pose_len * visualScale,
       0,
-      "#FBBC05",
+      "hsla(240, 57.77%, 49.22%, 1)",
       "Initial Pose",
       {
         bold: true,
@@ -490,42 +508,6 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
         labelOffset: { x: -85, y: 15 },
       }
     );
-  }
-
-  const axis_length_px = 40;
-
-  const x_dx = axis_length_px * Math.cos(angle);
-  const x_dy = -axis_length_px * Math.sin(angle);
-  const y_dx = -axis_length_px * Math.sin(angle);
-  const y_dy = -axis_length_px * Math.cos(angle);
-    // Draw marker image first (behind the axes)
-  const markerImg = new Image();
-  markerImg.src = "../images/aruco_131_6x6.png";
-  // Draw the image centered at (mx, my), rotated by marker_rot_deg
-  // Image size (adjust as needed)
-  const imgSize = 40;
-  markerImg.onload = function () {
-    ctx.save();
-    ctx.translate(mx, my);
-    ctx.rotate(-rotation_angle);
-    ctx.drawImage(markerImg, -imgSize / 2, -imgSize / 2, imgSize, imgSize);
-    ctx.restore();
-    
-    // Draw axes on top of the image after it loads
-    drawAxes();
-  };
-  // If image is already loaded (from cache), draw immediately
-  if (markerImg.complete) {
-    ctx.save();
-    ctx.translate(mx, my);
-    ctx.rotate(-rotation_angle);
-    ctx.drawImage(markerImg, -imgSize / 2, -imgSize / 2, imgSize, imgSize);
-    ctx.restore();
-    // Draw axes on top of the loaded image
-    drawAxes();
-  } else {
-    // If image isn't loaded yet, draw axes anyway
-    drawAxes();
   }
   
   // Function to draw axes on top of the marker image
@@ -543,7 +525,7 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
 
 
   // Final pose arrow
-  const final_pose_len = 0.3;
+  const final_pose_len = 0.35;
   const final_angle = z_rot_base + phi;
   const final_dx = final_pose_len * Math.cos(final_angle);
   const final_dy = final_pose_len * Math.sin(final_angle);
@@ -551,10 +533,10 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
 
   if (!animating) {
     // Only draw final pose arrow when not animating
-    drawArrow(bx, by, fdx, fdy, "#FF8C00", "Final Pose", {
+    drawArrow(bx, by, fdx, fdy, "hsla(240, 57.77%, 49.22%, 1)", "Final Pose", {
       bold: true,
       boldFont: true,
-      labelOffset: { x: 5, y: -5 },
+      labelOffset: { x: 5, y: -10 },
     });
   }
 
@@ -582,13 +564,8 @@ function renderStaticScene(offset, marker_x, marker_y, marker_rot_deg) {
   ctx.shadowBlur = 3;
   ctx.shadowOffsetX = 0;
   ctx.shadowOffsetY = 0;
-  ctx.fillText(offsetLabel, bx - 30, by + 10);
+  ctx.fillText(offsetLabel, bx + 10, by + 10);
   ctx.restore();
-
-  ctx.fillStyle = "white";
-  ctx.beginPath();
-  ctx.arc(mx, my, 3, 0, 2 * Math.PI);
-  ctx.fill();
 }
 
 function resetInputs() {
