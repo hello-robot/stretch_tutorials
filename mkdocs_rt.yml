@@ -99,9 +99,9 @@ nav:
     # - Navigation: ./writing_nodes.md #TODO
     # - Manipulation: ./writing_nodes.md # TODO
   - Perception: ./perception.md
-  - Examples::
-    - Move Stretch with Twist Controller: ./ros2/example_1.md
-    - Obstacle Avoidance: ./ros2/obstacle_avoider.md
+  - Examples:
+    - Move Stretch with Twist Controller: ./example_1.md
+    - Obstacle Avoidance: ./obstacle_avoider.md
     - Collision Avoidance: ./example_3.md
     - Rviz Markers: ./example_4.md
     - Offloading Computation: ./remote_compute.md
