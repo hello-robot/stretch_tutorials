@@ -1,6 +1,4 @@
 ## FollowJointTrajectory Commands
-!!! note
-    ROS 2 tutorials are still under active development. For this exercise you'll need to have Ubuntu 22.04 and ROS Iron for it to work completly.
 
 Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html) action service for its arm. Within this tutorial, we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.
 
