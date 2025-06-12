@@ -37,7 +37,7 @@ mkdir -p ~/ament_ws/src
 cd ~/ament_ws/src/
 git clone https://github.com/hello-robot/stretch_ros2
 git clone https://github.com/hello-binit/ros2_numpy -b humble
-git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-development
+git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-master
 git clone https://github.com/Slamtec/sllidar_ros2.git -b main
 git clone https://github.com/hello-binit/respeaker_ros2.git -b humble
 git clone https://github.com/hello-binit/audio_common.git -b humble
