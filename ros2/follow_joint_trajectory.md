@@ -11,8 +11,10 @@ Stretch driver offers a [`FollowJointTrajectory`](http://docs.ros.org/en/api/con
 Begin by launching stretch_driver in a terminal.
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py mode:=trajectory
+ros2 launch stretch_core stretch_driver.launch.py mode:=position
 ```
+
+> Note: `mode:=position` uses a trapezoidal motion profile. For advanced control, you may use `mode:=trajectory`.
 
 In a new terminal type the following commands.
 
@@ -180,8 +182,12 @@ To make the script executable call the main() function like above.
 If you have killed the above instance of stretch_driver relaunch it again through the terminal.
 
 ```{.bash .shell-prompt}
-ros2 launch stretch_core stretch_driver.launch.py mode:=trajectory
+ros2 launch stretch_core stretch_driver.launch.py mode:=position
 ```
+
+> Note: `mode:=position` uses a trapezoidal motion profile. For advanced control, you may use `mode:=trajectory`.
+
+
 
 In a new terminal type the following commands.
 
