@@ -101,6 +101,7 @@ nav:
   - Perception: ./perception.md
   - Examples:
     - Move Stretch with Twist Controller: ./example_1.md
+    - Trajectory Control: ./follow_joint_trajectory.md
     - Obstacle Avoidance: ./obstacle_avoider.md
     - Collision Avoidance: ./example_3.md
     - Rviz Markers: ./example_4.md
