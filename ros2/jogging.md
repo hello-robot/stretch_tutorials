@@ -105,3 +105,33 @@ effort: []
 We're misusing the [sensor_msgs/JointState](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html) message to publish the joint limits. The `name` array lists out each ranged joint. The `position` array lists the lower bound for each joint. The `velocity` array lists the upper bound. The length of these 3 arrays will be equal, because the index of the joint in the `name` array determines which index the corresponding limits will be in the other two arrays.
 
 The revolute joints will have their limits published in radians, and the prismatic joints will have them published in meters. See the [Hardware Overview](../../getting_started/stretch_hardware_overview/) to see the ranges represented visually.
+
+## Translating and rotating the base 
+
+You can also write a ROS2 node to send motion commands to the base:
+
+```python
+import hello_helpers.hello_misc as hm
+
+class MyNode(hm.HelloNode):
+    def __init__(self):
+        hm.HelloNode.__init__(self)
+
+    def main(self):
+        hm.HelloNode.main(self, 'my_node', 'my_node', wait_for_first_pointcloud=False)
+
+        # translate the base
+        self.move_to_pose({'translate_mobile_base': 0.2}, blocking=True)
+
+        # rotate the base
+        self.move_to_pose({'rotate_mobile_base': 0.2}, blocking=True)
+
+node = MyNode()
+node.main()
+```
+
+Copy the above into a file called "example.py" and run it using:
+
+```{.bash .shell-prompt .copy}
+python3 example.py
+```
