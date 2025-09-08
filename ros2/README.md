@@ -40,17 +40,17 @@ To help get you started on your software development, here are examples of nodes
 
 |   | Tutorial                                        | Description                                        |
 |---|-------------------------------------------------|----------------------------------------------------|
-| 1 | [Mobile Base Velocity Control](example_1.md)                                   |  Use a python script that sends velocity commands.  | 
-| 2 | [Filter Laser Scans](example_2.md)                                                |  Publish new scan ranges that are directly in front of Stretch.| 
-| 3 | [Mobile Base Collision Avoidance](example_3.md)                                   |  Stop Stretch from running into a wall.| 
-| 4 | [Give Stretch a Balloon](example_4.md)                                            |  Create a "balloon" marker that goes where ever Stretch goes.|
-| 5 | [Print Joint States](example_5.md)                                                |  Print the joint states of Stretch.| 
-| 6 | [Store Effort Values](example_6.md)                                               |  Print, store, and plot the effort values of the Stretch robot.| 
-| 7 | [Capture Image](example_7.md)                                                             |  Capture images from the RealSense camera data.| 
-| 8 | [Voice to Text](example_8.md)                                                             |  Interpret speech and save transcript to a text file.| 
-| 9 | [Voice Teleoperation of Base](example_9.md)                                               |  Use speech to teleoperate the mobile base.|
-| 10 | [Tf2 Broadcaster and Listener](example_10.md)                                            |  Create a tf2 broadcaster and listener.|
-| 11 | [ArUco Tag Locator](example_12.md)                               |  Actuate the head to locate a requested ArUco marker tag and return a transform.|
+| 1 | [Mobile Base Velocity Control](twist_control.md)                                   |  Use a python script that sends velocity commands.  | 
+| 2 | [Filter Laser Scans](lidar_filtering.md)                                                |  Publish new scan ranges that are directly in front of Stretch.| 
+| 3 | [Mobile Base Collision Avoidance](collision_avoidance.md)                                   |  Stop Stretch from running into a wall.| 
+| 4 | [Give Stretch a Balloon](rviz_markers.md)                                            |  Create a "balloon" marker that goes where ever Stretch goes.|
+| 5 | [Print Joint States](joint_states.md)                                                |  Print the joint states of Stretch.| 
+| 6 | [Store Effort Values](joint_effort_plotting.md)                                               |  Print, store, and plot the effort values of the Stretch robot.| 
+| 7 | [Capture Image](realsense_camera.md)                                                             |  Capture images from the RealSense camera data.| 
+| 8 | [Voice to Text](speech_to_text.md)                                                             |  Interpret speech and save transcript to a text file.| 
+| 9 | [Voice Teleoperation of Base](voice_teleop.md)                                               |  Use speech to teleoperate the mobile base.|
+| 10 | [Tf2 Broadcaster and Listener](tf2_transforms.md)                                            |  Create a tf2 broadcaster and listener.|
+| 11 | [ArUco Tag Locator](aruco_locator.md)                               |  Actuate the head to locate a requested ArUco marker tag and return a transform.|
 | 12 | [Obstacle Avoider](obstacle_avoider.md)                                                  |  Avoid obstacles using the planar lidar. |
 | 13 | [Align to ArUco](align_to_aruco.md)                                                      |  Detect ArUco fiducials using OpenCV and align to them.|
 | 14 | [Deep Perception](deep_perception.md)                                                    |  Use YOLOv5 to detect 3D objects in a point cloud.|

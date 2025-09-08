@@ -107,5 +107,5 @@ currently:	speed 0.5	turn 1.0
 To stop the node from sending twist messages, type **Ctrl** + **c**.
 
 ### Create a node for Mobile Base Teleoperating
-To move Stretch's mobile base using a python script, please look at [example 1](example_1.md) for reference.
+To move Stretch's mobile base using a python script, please look at [Teleoperate Stretch with a Node](twist_control.md) for reference.
 

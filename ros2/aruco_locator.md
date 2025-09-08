@@ -1,4 +1,5 @@
 # ArUco Locator
+
 For this example, we will send follow joint trajectory commands for the head camera to search and locate an ArUco tag. In this instance, a Stretch robot will try to locate the docking station's ArUco tag.
 
 ## Modifying Stretch Marker Dictionary YAML File
