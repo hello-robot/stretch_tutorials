@@ -1,10 +1,10 @@
 ## Teleoperating Stretch
 
 !!! note
-   Teleoperation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to teleoperate Stretch in ROS 2.
+      Teleoperation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to teleoperate Stretch in ROS 2.
 
 ### Xbox Controller Teleoperating
-If you have not already had a look at the [Xbox Controller Teleoperation](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/quick_start_guide_re2/#hello-world-demo) section in the Quick Start guide, now might be a good time to try it.
+If you have not already had a look at the [Xbox Controller Teleoperation](https://docs.hello-robot.com/0.3/getting_started/hello_robot/#gamepad-teleoperation) section in the Quick Start guide, now might be a good time to try it.
 
 ### Keyboard Teleoperating: Full Body
 

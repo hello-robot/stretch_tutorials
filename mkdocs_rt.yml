@@ -83,31 +83,30 @@ extra:
 
 nav:
   - Overview: ./getting_started.md
-  - Main Track:
-    - Creating Packages & Nodes: ./writing_nodes.md
-    - Simulation Tutorial: ./gazebo_basics.md
-    - Teleoperation: ./teleoperating_stretch.md
-    - RViz Tutorial: ./rviz_basics.md
-    - Follow Joint Trajectory & Joint States: ./follow_joint_trajectory.md
-    - Motion Commands via hello_utils: ./jogging.md
-    - Robot Driver: ./robot_drivers.md
-    - Twist Control: ./twist_control.md
-    - Sensors Tutorial: ./sensors_tutorial.md
-    - Nav Stack Tutorial:
-      - Overview: ./navigation_overview.md
-      - Nav2 Basics: ./navigation_stack.md
-      - Nav2 Simple Commander: ./navigation_simple_commander.md
-    - Perception Tutorial: ./perception.md
-    - Deep Perception: ./deep_perception.md
-    - ArUco Markers: ./aruco_marker_detection.md
-    - Offloading Computation Tutorial: ./remote_compute.md
-    - Autonomy Demos:
-      - Hello World: ./demo_hello_world.md
-      - Grasp Object: ./demo_grasp_object.md
-      - Handover Object: ./demo_handover_object.md
-      - Open Drawer: ./demo_open_drawer.md
-      - Surface Cleaning: ./demo_surface_cleaning.md
-    - FUNMAP Tutorial: ./funmap_tutorial.md
+  - Creating Packages & Nodes: ./writing_nodes.md
+  - Simulation Tutorial: ./stretch_simulation.md
+  - Teleoperation: ./teleoperating_stretch.md
+  - RViz Tutorial: ./rviz_basics.md
+  - Follow Joint Trajectory & Joint States: ./follow_joint_trajectory.md
+  - Motion Commands via hello_utils: ./jogging.md
+  - Robot Driver: ./robot_drivers.md
+  - Twist Control: ./twist_control.md
+  - Sensors Tutorial: ./sensors_tutorial.md
+  - Nav Stack Tutorial:
+    - Overview: ./navigation_overview.md
+    - Nav2 Basics: ./navigation_stack.md
+    - Nav2 Simple Commander: ./navigation_simple_commander.md
+  - Perception Tutorial: ./perception.md
+  - Deep Perception: ./deep_perception.md
+  - ArUco Markers: ./aruco_marker_detection.md
+  - Offloading Computation Tutorial: ./remote_compute.md
+  - Autonomy Demos:
+    - Hello World: ./demo_hello_world.md
+    - Grasp Object: ./demo_grasp_object.md
+    - Handover Object: ./demo_handover_object.md
+    - Open Drawer: ./demo_open_drawer.md
+    - Surface Cleaning: ./demo_surface_cleaning.md
+  - FUNMAP Tutorial: ./funmap_tutorial.md
   - Examples:
     - Voice Teleop: ./voice_teleop.md
     - Lidar Based Sensing: ./lidar_filtering.md
