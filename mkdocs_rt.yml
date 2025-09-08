@@ -82,7 +82,7 @@ extra:
 
 
 nav:
-  - Overview: ./getting_started.md
+  - Overview: ./README.md
   - Creating Packages & Nodes: ./writing_nodes.md
   - Simulation Tutorial: ./stretch_simulation.md
   - Teleoperation: ./teleoperating_stretch.md
@@ -109,10 +109,10 @@ nav:
   - FUNMAP Tutorial: ./funmap_tutorial.md
   - Examples:
     - Voice Teleop: ./voice_teleop.md
+    - Speech to Text: ./speech_to_text.md
     - Lidar Based Sensing: ./lidar_filtering.md
     - Custom RViz Marker: ./rviz_markers.md
     - Effort Value Plotting: ./joint_effort_plotting.md
-    - Speech to Text: ./speech_to_text.md
     - Tf2 Listener and Broadcaster: ./tf2_transforms.md
     - Realsense Camera: ./realsense_camera.md
     - Align to ArUco Tutorial: ./align_to_aruco.md
@@ -120,3 +120,5 @@ nav:
     - Joint States: ./joint_states.md
     - Collision Avoidance: ./collision_avoidance.md
     - Obstacle Avoidance: ./obstacle_avoider.md
+
+
