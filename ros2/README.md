@@ -9,7 +9,7 @@ Ensure that:
 
  1. Your Stretch has the latest robot distribution installed
     - These tutorials were written for the latest robot distribution. Take a look at the [Distributions & Roadmap](../../software/distributions/) guide to identify your current distribution and upgrade if necessary.
- 2. You have gone through the [Getting Started Tutorials](https://docs.hello-robot.com/0.3/getting_started/hello_robot/)
+ 2. You have gone through the [Getting Started Tutorials](../../getting_started/hello_robot/)
     - If you've never developed with Stretch before or are new to programming, check out the [Developing with Stretch](../../developing/basics/) tutorial series. In particular, the [Using ROS 2 with Stretch](#TODO) tutorial from that series is a good resource for those new to ROS 2.
 
 ## Robot Operating System 2 (ROS 2)
