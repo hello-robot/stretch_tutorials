@@ -59,10 +59,6 @@ stretch_joint_reader/
 ├── setup.py               # Python package setup
 ├── stretch_joint_reader/  # Python module directory
 │   └── __init__.py
-└── test/                  # Test files
-    ├── test_copyright.py
-    ├── test_flake8.py
-    └── test_pep257.py
 ```
 
 Let's examine what was created:
