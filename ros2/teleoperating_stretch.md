@@ -1,10 +1,8 @@
 ## Teleoperating Stretch
 
-!!! note
-      Teleoperation support for Stretch in ROS 2 is under active development. Please reach out to us if you want to teleoperate Stretch in ROS 2.
-
 ### Xbox Controller Teleoperating
-If you have not already had a look at the [Xbox Controller Teleoperation](https://docs.hello-robot.com/0.3/getting_started/hello_robot/#gamepad-teleoperation) section in the Quick Start guide, now might be a good time to try it.
+
+Make sure your Xbox controller is connected, then run `ros2 launch stretch_core stretch_driver.launch.py mode:=gamepad` to start the robot driver in gamepad mode.
 
 ### Keyboard Teleoperating: Full Body
 

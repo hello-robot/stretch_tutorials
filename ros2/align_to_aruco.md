@@ -102,7 +102,7 @@ Stretch comes preconfigured to identify ArUco markers. The ROS node that enables
 
 ## Computing Transformations
 
-If you have not already done so, now might be a good time to review the [tf listener](https://docs.hello-robot.com/latest/ros2/tf2_transforms/) tutorial. Go on, we can wait...
+If you have not already done so, now might be a good time to review the [tf listener](https://docs.hello-robot.com/latest/ros2/tf2_transforms/) tutorial.
 Now that we know how to program stretch to return the transform between known reference frames, we can use this knowledge to compute the transform between the detected marker and the robot's base_link. From its current pose, for Stretch to align itself in front of the marker, we need to command it to reach there. But even before that, we need to program Stretch to know the goal pose. We define the goal pose to be 0.75 meter outward from the marker in the marker negative y-axis (Green axis). This is easier to visualize through the figure below.
 
 <p align="center">
