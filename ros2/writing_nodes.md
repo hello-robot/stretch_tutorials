@@ -53,8 +53,6 @@ This command creates a new package called `stretch_joint_reader` with the follow
 ```
 stretch_joint_reader/
 ├── package.xml              # Package metadata and dependencies
-├── resource/
-│   └── stretch_joint_reader
 ├── setup.cfg               # Setup configuration
 ├── setup.py               # Python package setup
 ├── stretch_joint_reader/  # Python module directory
