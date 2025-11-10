@@ -1,4 +1,5 @@
-# Introduction to ROS 2
+# Introduction to ROS 2 and the python client library (rclpy)
+
 In this tutorial we will explore rclpy, the client library for interacting with ROS 2 using the Python API. The rclpy library forms the base of ROS 2 and you will notice that all tutorials in the following sections will use it. In this section we will focus on a few common constructs of rclpy and then follow some examples using the IPython interpreter to get familiar with them.
 
 ## IPython
@@ -163,3 +164,97 @@ print("Received response: {}".format(req_future.result().sum))
 
 ### rclpy.spin_until_future_complete()
 Notice that the spin method manifests itself as the spin_until_future_complete() method which takes the node, future and timeout_sec as the arguments. The future is an object in ROS 2 that’s returned immediately after an async service call has been made. We can then wait on the result of this future. This way the call to the service is not blocking and the code execution can continue as soon as the service call is issued.
+
+
+## Understanding ROS_DOMAIN_ID
+
+### What is ROS_DOMAIN_ID?
+
+ROS_DOMAIN_ID is an environment variable that determines which DDS (Data Distribution Service) domain your ROS2 nodes will communicate on. Think of it as a "channel" or "network ID" - only nodes with the same ROS_DOMAIN_ID can discover and communicate with each other.
+
+This is particularly useful in environments where:
+- Multiple robots or ROS2 systems are running on the same network
+- Multiple users are developing ROS2 applications simultaneously
+- You want to isolate your ROS2 communication from other systems
+
+The ROS_DOMAIN_ID can be any integer from 0 to 101 (some values may be reserved depending on your DDS implementation). The default value is 0.
+
+### Why is ROS_DOMAIN_ID Important?
+
+When working with Stretch robots, setting the correct ROS_DOMAIN_ID is crucial because:
+
+1. **Multi-robot environments**: If you have multiple Stretch robots on the same network, each should use a different ROS_DOMAIN_ID to prevent cross-talk
+2. **Shared networks**: In lab or classroom settings, different users' ROS2 nodes won't interfere with each other if they use different domain IDs
+3. **Debugging**: You can isolate your development environment from production systems
+
+### Setting ROS_DOMAIN_ID in the Terminal
+
+To set the ROS_DOMAIN_ID for the current terminal session only, use the `export` command:
+
+```{.bash .shell-prompt}
+export ROS_DOMAIN_ID=42
+```
+
+You can verify it's set correctly:
+
+```{.bash .shell-prompt}
+echo $ROS_DOMAIN_ID
+```
+
+This setting will only persist for the current terminal session. Once you close the terminal, the setting is lost.
+
+!!! warning
+    All terminals where you run ROS2 nodes that need to communicate with each other must have the same ROS_DOMAIN_ID set. If you launch the Stretch driver in one terminal with `ROS_DOMAIN_ID=42` and try to run your node in another terminal with `ROS_DOMAIN_ID=0`, they won't be able to see each other!
+
+### Setting ROS_DOMAIN_ID Permanently in ~/.bashrc
+
+To avoid setting the ROS_DOMAIN_ID every time you open a new terminal, you can add it to your `~/.bashrc` file. This file is executed automatically every time you open a new terminal.
+
+Add the following line to your `~/.bashrc`:
+
+```{.bash .shell-prompt}
+echo "export ROS_DOMAIN_ID=42" >> ~/.bashrc
+```
+
+Or manually edit the file:
+
+```{.bash .shell-prompt}
+nano ~/.bashrc
+```
+
+Add this line at the end of the file (replace 42 with your desired domain ID):
+
+```bash
+export ROS_DOMAIN_ID=42
+```
+
+Save and exit (in nano: Ctrl+X, then Y, then Enter).
+
+To apply the changes to your current terminal without closing it:
+
+```{.bash .shell-prompt}
+source ~/.bashrc
+```
+
+!!! tip
+    When working with a Stretch robot, it's a good practice to set the same ROS_DOMAIN_ID in the `~/.bashrc` file on both your development machine and the robot itself. This ensures consistent communication across all terminals and reboots.
+
+### Checking Your Current ROS_DOMAIN_ID
+
+You can always check what ROS_DOMAIN_ID is currently set:
+
+```{.bash .shell-prompt}
+echo $ROS_DOMAIN_ID
+```
+
+If this returns an empty line, it means ROS_DOMAIN_ID is not set, and ROS2 will use the default value of 0.
+
+### Example: Using ROS_DOMAIN_ID with Multiple Robots
+
+If you're working in a lab with multiple Stretch robots, you might organize them like this:
+
+- **Stretch Robot 1**: `ROS_DOMAIN_ID=10`
+- **Stretch Robot 2**: `ROS_DOMAIN_ID=11`
+- **Stretch Robot 3**: `ROS_DOMAIN_ID=12`
+
+Each robot and its corresponding development machine would have the same domain ID set in their `~/.bashrc` files.
