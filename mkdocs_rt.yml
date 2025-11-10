@@ -82,7 +82,7 @@ extra:
 
 
 nav:
-  - Overview: ./README.md
+  - Getting Started: ./getting_started.md
   - ROS2 Basics:
     - Creating Packages & Nodes: ./writing_nodes.md
     - ROS2 Client (rclpy): ./intro_to_ros2.md
@@ -119,7 +119,7 @@ nav:
     - Tf2 Listener and Broadcaster: ./tf2_transforms.md
     - Realsense Camera: ./realsense_camera.md
     - Align to ArUco Tutorial: ./align_to_aruco.md
-    - ArUco Locator: ./aruco_locator.md
+    - ArUco Locator: ./aruco_marker_detection#aruco-locator-example
     - Joint States: ./joint_states.md
     - Collision Avoidance: ./collision_avoidance.md
     - Obstacle Avoidance: ./obstacle_avoider.md

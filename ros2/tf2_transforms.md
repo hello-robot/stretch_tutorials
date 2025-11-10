@@ -1,8 +1,5 @@
 ## Example 10
 
-!!! note
-    ROS 2 tutorials are still under active development. 
-
 This tutorial provides you with an idea of what tf2 can do in the Python track. We will elaborate on how to create a tf2 static broadcaster and listener.
 
 ## tf2 Static Broadcaster

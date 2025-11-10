@@ -1,8 +1,5 @@
 # Sensors Tutorial
 
-!!! note
-    ROS 2 tutorials are still under active development.
-
 This tutorial covers how to work with Stretch's various sensors including the ReSpeaker microphone array, IMU, bump sensors, and cliff sensors.
 
 ## ReSpeaker Microphone Array

@@ -2,6 +2,8 @@
 
 This tutorial will guide you through setting up and using the Stretch robot simulation in ROS2.
 
+Note: You do not need to follow this tutorial if you are running on a Stretch robot.
+
 ## What You'll Learn
 
 By the end of this tutorial, you'll be able to:
