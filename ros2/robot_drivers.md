@@ -94,25 +94,3 @@ ros2 service call /stretch/stow_the_robot
 ros2 service call /stretch/stop_the_robot
 # TODO - verify commands and include outputs
 ```
-
-## Lidar Driver
-
-Rplidar Spinning Lidar
-
-## Camera Drivers
-
-Realsense Cameras
-
-### Head Camera
-
-### Eye in Hand Camera
-
-### Fisheye Navigation Camera
-
-## Mic Array Driver
-
-Respeaker Microphone Array
-
-## IMUs
-
-## Cliff Sensors

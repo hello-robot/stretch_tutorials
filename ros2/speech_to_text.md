@@ -1,4 +1,4 @@
-# Example 8
+## Example 8
 
 This example will showcase how to save the interpreted speech from Stretch's [ReSpeaker Mic Array v2.0](https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/) to a text file.
 
