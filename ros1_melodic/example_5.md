@@ -10,7 +10,7 @@ Begin by starting up the stretch driver launch file.
 # Terminal 1
 roslaunch stretch_core stretch_driver.launch
 ```
-You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to excecute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist.
+You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to execute the [joint_state_printer.py](https://github.com/hello-robot/stretch_tutorials/blob/main/src/joint_state_printer.py) which will print the joint positions of the lift, arm, and wrist.
 
 ```bash
 cd catkin_ws/src/stretch_tutorials/src/

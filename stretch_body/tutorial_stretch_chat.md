@@ -6,7 +6,7 @@ The OpenAI API is a sophisticated language model, design to assist users with a 
 
 OpenAI's text generation models, such as GPT-4 and GPT-3.5, have undergone extensive training to comprehend both natural and formal language. These models, like GPT-4, are capable of generating text based on given inputs, often referred to as "prompts". To effectively utilize a model like GPT-4, the process involves designing prompts which essentially serve as instructions or examples to guide the model in successfully completing a given task. GPT-4 can be applied to a wide range of tasks including content or code generation, summarization, conversation, creative writing, and more.
 
-This text generation, process text in chunks called tokens. Tokens represent commonly ocurring sequences of characters. You can checkout the OpenAI's [tokenizer tool](https://platform.openai.com/tokenizer) to test specific strings and see how they are translated into tokens. Why are tokens so important? It's simple, because depending in the number of tokens you use, as well as the model (text generation, image or audio models), it will cost money. The good news, it's not that expensive and it's really useful, just be careful when dealing with image generation, as the cost is calculated per image, in contrast to text, which is priced per 1,000 tokens, or audio, which is billed per minute. You can take a look at the [pricing](https://openai.com/pricing) page from OpenAI for more information.
+This text generation, process text in chunks called tokens. Tokens represent commonly occurring sequences of characters. You can checkout the OpenAI's [tokenizer tool](https://platform.openai.com/tokenizer) to test specific strings and see how they are translated into tokens. Why are tokens so important? It's simple, because depending in the number of tokens you use, as well as the model (text generation, image or audio models), it will cost money. The good news, it's not that expensive and it's really useful, just be careful when dealing with image generation, as the cost is calculated per image, in contrast to text, which is priced per 1,000 tokens, or audio, which is billed per minute. You can take a look at the [pricing](https://openai.com/pricing) page from OpenAI for more information.
 
 In this tutorial, we are using the GPT-3.5-turbo model, one of the newer text generation models alongside GPT-4 and GPT-4-turbo, we will use this model alongside the [Chat Completion API](https://platform.openai.com/docs/guides/text-generation/chat-completions-api), this will help us with our model,so that we can "chat" with Stretch and command some basic movements using natural language. If you want to know more about this and maybe create some applications, take a look at [this examples](https://platform.openai.com/examples).
 
@@ -122,7 +122,7 @@ def chatter(input_text):
         assistance_msg = assistance_msg + f"\n - {k} : {stretch_actions[k]} "
     
     # Define System prompt (Personality of the system)
-    system_prompt = f"Assume you are a mobile robot and you are able to receive a natural language instrunctions regarding the robot's movements. Based on undestanding the instructions return a sequence of discrete actions from this list {list(stretch_actions.keys())}. The only output must be in two parts. The first part should explain the sequence and second part should only be the list the actions seperated by comma. The first part you will explain the list of actions to follow and the reason behind it. The second one must be the list of movements that we are going to use, separate them only with the '[]'. This is not an explanation, it must be only the list of movements"
+    system_prompt = f"Assume you are a mobile robot and you are able to receive a natural language instrunctions regarding the robot's movements. Based on understanding the instructions return a sequence of discrete actions from this list {list(stretch_actions.keys())}. The only output must be in two parts. The first part should explain the sequence and second part should only be the list the actions separated by comma. The first part you will explain the list of actions to follow and the reason behind it. The second one must be the list of movements that we are going to use, separate them only with the '[]'. This is not an explanation, it must be only the list of movements"
 
     response = client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -266,7 +266,7 @@ def chatter(input_text):
         assistance_msg = assistance_msg + f"\n - {k} : {stretch_actions[k]} "
     
     # Define System prompt (Personality of the system)
-    system_prompt = f"Assume you are a mobile robot and you are able to receive a natural language instrunctions regarding the robot's movements. Based on undestanding the instructions return a sequence of discrete actions from this list {list(stretch_actions.keys())}. The only output must be in two parts. The first part should explain the sequence and second part should only be the list the actions seperated by comma. The first part you will explain the list of actions to follow and the reason behind it. The second one must be the list of movements that we are going to use, separate them only with the '[]'. This is not an explanation, it must be only the list of movements"
+    system_prompt = f"Assume you are a mobile robot and you are able to receive a natural language instrunctions regarding the robot's movements. Based on understanding the instructions return a sequence of discrete actions from this list {list(stretch_actions.keys())}. The only output must be in two parts. The first part should explain the sequence and second part should only be the list the actions separated by comma. The first part you will explain the list of actions to follow and the reason behind it. The second one must be the list of movements that we are going to use, separate them only with the '[]'. This is not an explanation, it must be only the list of movements"
 
     clockwise \n - arm_front: Move the arm to the front by 0.1m \n - arm_back: Move the arm to the back by 0.1m \n - lift_up: Move the lift up by 0.1m \n - lift_down: Move the lift down by 0.1m"
     response = client.chat.completions.create(
@@ -325,7 +325,7 @@ while True:
     response = input("What motion can I do for you?\n")
     stretch_chatter(response)
 ```
-The `stretch_chatter` will take the user input, this input is a natural language instruction regarding the robot movements and finaly we have the while loop, this ensures that the program keeps running, allowing us to input multiple requests without restarting the program.
+The `stretch_chatter` will take the user input, this input is a natural language instruction regarding the robot movements and finally we have the while loop, this ensures that the program keeps running, allowing us to input multiple requests without restarting the program.
 
 Now that you know how this works let's try it! Run your code in the terminal and try to input the next instructions:
 ```
@@ -336,7 +336,7 @@ move forward 0.2m, turn right and move the lift up 2 times, turn left and move t
 </p>
 
 ## Potential Issues
-- Ocassionally, the model can skip one movement (normally the final ones), like those involving the arm or lift. For instance, if you instruct it to move up/down or front/back twice and then return to the starting position, there's a possibility it might execute only one backward movement instead of two. Unfortunately, there isn't a real solution to this, however, you can mitigate this type of error by providing more specific instructions.
+- Occasionally, the model can skip one movement (normally the final ones), like those involving the arm or lift. For instance, if you instruct it to move up/down or front/back twice and then return to the starting position, there's a possibility it might execute only one backward movement instead of two. Unfortunately, there isn't a real solution to this, however, you can mitigate this type of error by providing more specific instructions.
 - Sometimes the list of actions can appear different, what the code does is to look inside the response text and find the list that starts and ends with the square brackets ‘[]’ and then proceeds to make the movements, but it can occur a case like this:
 ![image](https://github.com/hello-robot/stretch_tutorials/assets/141784078/3ff79191-fbbd-496c-9b21-8e25dcb78a76)
 

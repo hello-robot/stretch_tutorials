@@ -290,8 +290,8 @@ robot.arm.motor.status['effort_pct']		#Joint effort (-100 to 100) (derived from 
 robot.arm.motor.status['near_pos_setpoint']	#Is sensed position near commanded position
 robot.arm.motor.status['near_vel_setpoint'] #Is sensed velocity near commanded velocity
 robot.arm.motor.status['is_moving']			#Is the joint in motion
-robot.arm.motor.status['in_guarded_event']	#Has a guarded event occured
-robot.arm.motor.status['in_safety_event']	#Has a safety event occured
+robot.arm.motor.status['in_guarded_event']	#Has a guarded event occurred
+robot.arm.motor.status['in_safety_event']	#Has a safety event occurred
 ```
 
 ### Update Rates

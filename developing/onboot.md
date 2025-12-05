@@ -80,7 +80,7 @@ Your application might require sudo. The Web Teleop application requires it to r
 
 ![](./images/sudo_prompt.png)
 
-The solution is to enable the user to run some sudo commands without needing a password. There is a directory called `/etc/sudoers.d/` where you can put rules for commands that are granted this privledge. E.g. when installing Web Teleop, we put the following file in the directory:
+The solution is to enable the user to run some sudo commands without needing a password. There is a directory called `/etc/sudoers.d/` where you can put rules for commands that are granted this privilege. E.g. when installing Web Teleop, we put the following file in the directory:
 
 Filename: hello_sudoers
 ```

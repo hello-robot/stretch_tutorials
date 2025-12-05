@@ -1,6 +1,6 @@
 # Introduction to HelloNode
 
-HelloNode is a convenience class for creating a ROS 2 node for Stretch. The most common way to use this class is to extend it. In your extending class, the main funcion would call `HelloNode`'s main function. This would look like:
+HelloNode is a convenience class for creating a ROS 2 node for Stretch. The most common way to use this class is to extend it. In your extending class, the main function would call `HelloNode`'s main function. This would look like:
 
 ```python
 import hello_helpers.hello_misc as hm

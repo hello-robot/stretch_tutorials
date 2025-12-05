@@ -39,7 +39,7 @@ Begin by running the following command in your terminal:
 roslaunch stretch_core stretch_driver.launch
 ```
 
-To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to *nagivation* for the robot to receive *Twist* messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the *cmd_vel* topic name to *stretch/cmd_vel*.
+To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to *navigation* for the robot to receive *Twist* messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the *cmd_vel* topic name to *stretch/cmd_vel*.
 
 ```bash
 # Terminal 2

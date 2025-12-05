@@ -376,7 +376,7 @@ def main(self):
     """
     hm.HelloNode.main(self, 'aruco_tag_locator', 'aruco_tag_locator', wait_for_first_pointcloud=False)
 ```
-Create a funcion, `main()`, to do all of the setup for the `hm.HelloNode` class and initialize the `aruco_tag_locator` node.
+Create a function, `main()`, to do all of the setup for the `hm.HelloNode` class and initialize the `aruco_tag_locator` node.
 
 
 ```python

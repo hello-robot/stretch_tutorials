@@ -42,7 +42,7 @@ There are a couple of methods to save an image using the [image_view](http://wik
 # Terminal 4
 rosrun image_view image_view image:=/camera/color/image_raw_upright_view
 ```
-Then you can save the current image by right-clicking on the display window. By deafult, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.
+Then you can save the current image by right-clicking on the display window. By default, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.
 
 **OPTION 2:** Use the `image_saver` node to save an image to the terminals current work directory.
 ```bash

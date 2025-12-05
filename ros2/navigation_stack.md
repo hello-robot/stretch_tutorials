@@ -75,4 +75,4 @@ ros2 launch stretch_nav2 navigation.launch.py teleop_type:=keyboard map:=${HELLO
 ```
 
 ## Simple Commander API
-It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In your own launch file, you may include `navigation.launch` to bring up the navigation stack. Then, you can send pose goals using the Nav2 simple commander API to navigate the robot programatically. We will explore this in the next tutorial.
+It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In your own launch file, you may include `navigation.launch` to bring up the navigation stack. Then, you can send pose goals using the Nav2 simple commander API to navigate the robot programmatically. We will explore this in the next tutorial.

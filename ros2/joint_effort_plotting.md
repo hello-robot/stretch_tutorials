@@ -258,7 +258,7 @@ def get_result_callback(self, future):
         self.result = future.result().result
         self.get_logger().info('Sent position goal = {0}'.format(result))
 ```
-In the result callback we log the result of our poistion goal 
+In the result callback we log the result of our position goal 
 
 ```python
 def feedback_callback(self,feedback_msg):

@@ -163,7 +163,7 @@ def main(args=None):
         rclpy.shutdown()
 ```
 
-Create a funcion, `main()`, to do all of the setup in the class and issue the stow command. Initialize the `StowCommand()` class and set it to *node* and run the `main()` function.
+Create a function, `main()`, to do all of the setup in the class and issue the stow command. Initialize the `StowCommand()` class and set it to *node* and run the `main()` function.
 
 ```python
 if __name__ == '__main__':

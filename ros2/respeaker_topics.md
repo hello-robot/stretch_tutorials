@@ -113,7 +113,7 @@ For the `speech_audio` topic you can expect the same result as the `audio` topic
 ```{.bash .shell-prompt}
 ros2 topic echo /speech_audio   # Raw audio data when there is speech
 ```
-So if it's almost the same topic but now is going to ouput the data when you are talking then you guessed right, the result will look like the same as before.
+So if it's almost the same topic but now is going to output the data when you are talking then you guessed right, the result will look like the same as before.
 ```{.bash .no-copy}
 ---
 data:
