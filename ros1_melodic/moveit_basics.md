@@ -19,7 +19,7 @@ To begin running MoveIt! on stretch, run the demo launch file. This doesn't requ
 ```bash
 roslaunch stretch_moveit_config demo.launch
 ```
-This will brining up an RViz instance where you can move the robot around using [interactive markers](http://wiki.ros.org/rviz/Tutorials/Interactive%20Markers%3A%20Getting%20Started) and create plans between poses. You can reference the bottom gif as a guide to plan and execute motion.
+This will bringing up an RViz instance where you can move the robot around using [interactive markers](http://wiki.ros.org/rviz/Tutorials/Interactive%20Markers%3A%20Getting%20Started) and create plans between poses. You can reference the bottom gif as a guide to plan and execute motion.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/main/images/moveit.gif"/>

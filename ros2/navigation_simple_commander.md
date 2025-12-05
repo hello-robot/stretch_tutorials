@@ -16,7 +16,7 @@ stretch_robot_stow.py
 ```
 
 ## Setup
-Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the co-ordinates in the array called `security_route` in the [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30) file. 
+Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the coordinates in the array called `security_route` in the [simple_commander_demo.py](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30) file. 
 
 First, execute the following command while passing the correct map YAML. Then, press the 'Startup' button:
 

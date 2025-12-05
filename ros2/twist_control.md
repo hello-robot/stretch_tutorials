@@ -134,7 +134,7 @@ Using your preferred text editor, modify the topic name of the published *Twist*
 ```python
 self.pub = rospy.Publisher('/stretch_diff_drive_controller/cmd_vel', Twist, queue_size=1)
 ```
-After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the follwing in a new terminal
+After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the following in a new terminal
 ```
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py

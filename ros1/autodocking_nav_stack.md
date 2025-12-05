@@ -11,7 +11,7 @@ The [Stretch Docking Station](https://github.com/hello-robot/stretch_tool_share/
 Traditionally, high level task planning has been achieved using Finite State Machines or FSMs which break down each functional element of the task into states that have to be traversed in a cyclic manner to accomplish the major task. This approach has recently gone out of vogue in favour of [Behavior Trees](https://robohub.org/introduction-to-behavior-trees/) or BTs. BTs, also known as Directed Acyclic Graphs, have been popularized through their use in the gaming industry to impart complex behaviors to NPCs. BTs organize behaviors in a tree representation where the control flow is achieved not through cyclic state transitions but in a tree traversal fashion. Additionally, conditions and actions form distinct leafs in the tree which results in better modularity. This ensures that augmenting behaviors by way of additional leafs in the tree does not require a restructuring of previous and following leafs but only the final tree graph. This also means that actions in complex behaviors can be developed independently resulting in higher scalability.
 
 ## Py-trees
-We decided to implement this demo using the open-source behvaior trees library called [py-trees](https://py-trees.readthedocs.io/en/devel/introduction.html) because of its following features:
+We decided to implement this demo using the open-source behavior trees library called [py-trees](https://py-trees.readthedocs.io/en/devel/introduction.html) because of its following features:
 
 - Open-source
 - Pythonic for quicker adoption and turnaround
@@ -97,7 +97,7 @@ class AutodockingBT(hm.HelloNode):
 
 The create_root() method is where we construct the autodocking behavior tree. As seen in the figure above, the root node of the behavior tree is a sequence node called `autodocking_seq_root`. This sequence node executes its child nodes sequentially until either all of them succeed or one of them fails. It begins by executing its first child node called `dock_found_fb`. 
 
-The `dock_found_fb` node is a fallback node which starts executing from the left-most child node and only executes the following child node if the child node preceeding it fails. This is useful for executing recovery behaviors in case a required condition is not met. Similarly, `at_predock_fb` and `charging_fb` are also fallback nodes.
+The `dock_found_fb` node is a fallback node which starts executing from the left-most child node and only executes the following child node if the child node preceding it fails. This is useful for executing recovery behaviors in case a required condition is not met. Similarly, `at_predock_fb` and `charging_fb` are also fallback nodes.
 ```python
     def create_root(self):
         # behaviours
@@ -132,7 +132,7 @@ The node `predock_found_sub` is a behavior node which is a child of the `dock_fo
         )
 ```
 
-Next, we want to move to the predock_pose. We do this by passing the predock pose as a goal to the Move Base action server using the `predock_action`. This is followed by the `dock_action` action node which uses a mock visual servoing controller to back up into the docking station. This action uses the predock pose to align the robot to the docking station. Internally, it publishes Twist messages on the /stretch/cmd_vel topic after computing the linear and angular velocities based on the postional and angular errors as defined by the simple controller in the image above.
+Next, we want to move to the predock_pose. We do this by passing the predock pose as a goal to the Move Base action server using the `predock_action`. This is followed by the `dock_action` action node which uses a mock visual servoing controller to back up into the docking station. This action uses the predock pose to align the robot to the docking station. Internally, it publishes Twist messages on the /stretch/cmd_vel topic after computing the linear and angular velocities based on the positional and angular errors as defined by the simple controller in the image above.
 ```python
         predock_action = MoveBaseActionClient(
             self.tf2_buffer,
@@ -149,7 +149,7 @@ Next, we want to move to the predock_pose. We do this by passing the predock pos
         )
 ```
 
-Finally, we define the `is_charging_sub` behavior node which, like the `predock_found_sub`, subscribes to the `\battery` topic and checks for the `present` attribute of the BatteryState message to turn True. If this behavior node returns SUCCEES, the root node returns SUCCEESS as well.
+Finally, we define the `is_charging_sub` behavior node which, like the `predock_found_sub`, subscribes to the `\battery` topic and checks for the `present` attribute of the BatteryState message to turn True. If this behavior node returns SUCCESS, the root node returns SUCCESS as well.
 ```python
         is_charging_sub = py_trees_ros.subscribers.CheckData(
             name="battery_charging?",

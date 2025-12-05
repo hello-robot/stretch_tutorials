@@ -3,7 +3,7 @@
 
 ## Robot Operating System (ROS)
 
-Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allows for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of mutiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
+Despite the name, ROS is not an operating system. ROS is a middleware framework that is a collection of transport protocols, development and debugging tools, and open-source packages. As a transport protocol, ROS enables distributed communication via messages between nodes. As a development and debugging toolkit, ROS provides build systems that allows for writing applications in a wide variety of languages (Python and C++ are used in this tutorial track), a launch system to manage the execution of multiple nodes simultaneously, and command line tools to interact with the running system. Finally, as a popular ecosystem, there are many open-source ROS packages that allow users to quickly prototype with new sensors, actuators, planners, perception stacks, and more.
 
 This tutorial track is for users looking to get familiar with programming Stretch robots via ROS. We recommend going through the tutorials in the following order:
 

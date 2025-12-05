@@ -15,7 +15,7 @@ These tools perform common tasks that are useful when working with Stretch (e.g.
 ### `stretch_robot_system_check.py`
 [Link to source code](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_system_check.py)
 
-The robot system check tool runs a series of tests, such as if each subsystem is online, and reports pass or fail. If everything passes in the report, the robot is ready to be used. You would use this tool everytime you use the robot. A passing output should look like:
+The robot system check tool runs a series of tests, such as if each subsystem is online, and reports pass or fail. If everything passes in the report, the robot is ready to be used. You would use this tool every time you use the robot. A passing output should look like:
 
 <div class="shell-prompt highlight"><pre><span></span><code tabindex="0">stretch_robot_system_check.py<span class="w"> </span>
 For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
@@ -105,7 +105,7 @@ In addition to checking the robot's hardware, this tool also prints out a softwa
 ### `stretch_robot_home.py`
 [Link to source code](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_home.py)
 
-This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur everytime the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:
+This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur every time the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:
 
 ```{.whatever .shell-prompt}
 stretch_robot_home.py
