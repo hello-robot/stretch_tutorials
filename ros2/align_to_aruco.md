@@ -111,7 +111,7 @@ Now that we know how to program stretch to return the transform between known re
 
 By monitoring the /aruco/marker_array and /aruco/axes topics, we can visualize the markers in RViz. The detection node also publishes the tf pose of the detected markers. This can be visualized by using the TF plugin and selecting the detected marker to inspect the pose. Next, we will use exactly that to compute the transform between the detected marker and the base_link of the robot.
 
-Now, we can compute the transformation from the robot `base_link` frame to the `goal` pose and pass this as a 2D special Euclidian (SE2) pose to the mobile base.
+Now, we can compute the transformation from the robot `base_link` frame to the `goal` pose and pass this as a 2D special Euclidean (SE2) pose to the mobile base.
 
 Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.75m offset in the marker y-axis where Stretch would come to a stop.
 

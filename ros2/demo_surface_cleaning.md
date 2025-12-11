@@ -108,8 +108,8 @@ After validation, the node then proceeds to execute the wiping plan in a sequent
 
 This demo serves as an experimental setup to explore surface cleaning with Stretch. Please be advised that this code is not expected to work perfectly. Some of the shortcomings of the demo include:
 
-- The area of surface being cleaned is dependent on the fill rate of the RealSense point cloud. If the segemented cleaning surface has too many holes, Stretch might only attempt to clean a fraction of the total area.
+- The area of surface being cleaned is dependent on the fill rate of the RealSense point cloud. If the segmented cleaning surface has too many holes, Stretch might only attempt to clean a fraction of the total area.
 
-- As each Stretch is unique in its contacts thresholds after calibration, your robot might attempt too aggressively to press down the cloth upon the surface. Additonal tuning might be necessary.
+- As each Stretch is unique in its contacts thresholds after calibration, your robot might attempt too aggressively to press down the cloth upon the surface. Additional tuning might be necessary.
 
 Users are encouraged to try this demo and submit improvements.

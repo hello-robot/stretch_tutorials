@@ -61,7 +61,7 @@ Programming a splined trajectory is straightforward. For example, try the follow
 import stretch_body.robot
 r=stretch_body.robot.Robot()
 r.startup()
-#r.arm.motor.disable_sync_mode() **If you want to try running the code with this command you'll need to coment the r.push_command() and it will work as well
+#r.arm.motor.disable_sync_mode() **If you want to try running the code with this command you'll need to comment the r.push_command() and it will work as well
 
 #Define the waypoints
 times = [0.0, 10.0, 20.0]

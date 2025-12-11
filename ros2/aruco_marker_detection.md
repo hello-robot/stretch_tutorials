@@ -213,7 +213,7 @@ class LocateArUcoTag(hm.HelloNode):
         A function that initializes the subscriber and other needed variables.
         :param self: The self reference.
         """
-        # Initialize the inhereted hm.Hellonode class
+        # Initialize the inherited hm.Hellonode class
         hm.HelloNode.__init__(self)
         hm.HelloNode.main(self, 'aruco_tag_locator', 'aruco_tag_locator', wait_for_first_pointcloud=False)
         # Initialize subscriber
@@ -417,7 +417,7 @@ You need to import `rclpy` if you are writing a ROS [Node](http://docs.ros.org/e
 
 ```python
 def __init__(self):
-        # Initialize the inhereted hm.Hellonode class
+        # Initialize the inherited hm.Hellonode class
         hm.HelloNode.__init__(self)
         hm.HelloNode.main(self, 'aruco_tag_locator', 'aruco_tag_locator', wait_for_first_pointcloud=False)
         # Initialize subscriber

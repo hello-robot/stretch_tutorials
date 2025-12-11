@@ -50,7 +50,7 @@ class ObjectDetector:
         self.confidence_threshold = confidence_threshold
 ```
 
-The apply_to_image() method passes the stream of RGB images from the realsense camera to the YOLOv5s model and returns detections in the form of a dictionary consisting of class_id, label, confidence and bouding box coordinates. The last part is exactly what we need for further computations.
+The apply_to_image() method passes the stream of RGB images from the realsense camera to the YOLOv5s model and returns detections in the form of a dictionary consisting of class_id, label, confidence and bounding box coordinates. The last part is exactly what we need for further computations.
 ```python
 def apply_to_image(self, rgb_image, draw_output=False):
         results = self.model(rgb_image)
@@ -136,7 +136,7 @@ ros2 launch stretch_deep_perception stretch_detect_faces.launch.py
 ## Code Breakdown
 Ain't that something! If you followed the breakdown in object detection, you'll find that the only change if you are looking to detect faces, facial landmarks or estimate head pose instead of detecting objects is in using a different deep learning model that does just that. For this, we will explore how to use the OpenVINO toolkit. Let's head to the detect_faces.py [node](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/detect_faces.py) to begin.
 
-In the main() method, we see a similar structure as with the object detction node. We first create an instance of the detector using the HeadPoseEstimator class from the [head_estimator.py](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/head_estimator.py) script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
+In the main() method, we see a similar structure as with the object detection node. We first create an instance of the detector using the HeadPoseEstimator class from the [head_estimator.py](https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/head_estimator.py) script to configure the deep learning models. Next, we pass this to an instance of the DetectionNode class from the detection_node.py script and call the main function.
 ```python
     ...
         
