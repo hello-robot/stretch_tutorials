@@ -1,25 +1,25 @@
-# Writing ROS2 Nodes
+# Writing ROS 2 Nodes
 
 ## Introduction
 
-ROS2 nodes are the fundamental building blocks of any ROS2 application. A node is an executable that uses ROS2 to communicate with other nodes. Nodes can publish messages to topics, subscribe to topics to receive messages, provide services, or call services provided by other nodes. In this tutorial, you'll learn how to create your own ROS2 Python package and write a simple node that subscribes to Stretch's joint states.
+ROS 2 nodes are the fundamental building blocks of any ROS 2 application. A node is an executable that uses ROS 2 to communicate with other nodes. Nodes can publish messages to topics, subscribe to topics to receive messages, provide services, or call services provided by other nodes. In this tutorial, you'll learn how to create your own ROS 2 Python package and write a simple node that subscribes to Stretch's joint states.
 
-Think of nodes as individual programs that each have a specific responsibility - one node might handle camera data, another might control the robot's movement, and yet another might process sensor information. By breaking functionality into separate nodes, ROS2 applications become modular, easier to debug, and more maintainable.
+Think of nodes as individual programs that each have a specific responsibility - one node might handle camera data, another might control the robot's movement, and yet another might process sensor information. By breaking functionality into separate nodes, ROS 2 applications become modular, easier to debug, and more maintainable.
 
 ## Prerequisites
 
 Before starting this tutorial, you should have:
 
 1. **Basic Python knowledge**: Understanding of Python syntax, functions, and classes
-2. **ROS2 installation**: ROS2 Humble installed on your system (this comes pre-installed on Stretch robots)
+2. **ROS 2 installation**: ROS 2 Humble installed on your system (this comes pre-installed on Stretch robots)
 3. **Stretch robot setup**: Access to a Stretch robot or simulation environment
 4. **Basic terminal/command line familiarity**: Ability to navigate directories and run commands
 
-If you're new to ROS2 concepts, we recommend first reading through the [Introduction to ROS2](intro_to_ros2.md) tutorial.
+If you're new to ROS 2 concepts, we recommend first reading through the [Introduction to ROS 2](intro_to_ros2.md) tutorial.
 
-## Understanding the ROS2 Workspace Structure
+## Understanding the ROS 2 Workspace Structure
 
-Before we create our first node, let's understand how ROS2 organizes code. ROS2 uses a workspace structure where all your packages live in a `src` directory within your workspace. The standard workspace structure looks like this:
+Before we create our first node, let's understand how ROS 2 organizes code. ROS 2 uses a workspace structure where all your packages live in a `src` directory within your workspace. The standard workspace structure looks like this:
 
 ```
 ~/ament_ws/                    # Your workspace root
@@ -32,9 +32,9 @@ Before we create our first node, let's understand how ROS2 organizes code. ROS2 
     └── your_new_package/
 ```
 
-## Step 1: Creating a New ROS2 Python Package
+## Step 1: Creating a New ROS 2 Python Package
 
-Let's start by creating a new ROS2 package. A package is a collection of related nodes, launch files, configuration files, and other resources.
+Let's start by creating a new ROS 2 package. A package is a collection of related nodes, launch files, configuration files, and other resources.
 
 First, navigate to your workspace source directory:
 
@@ -88,11 +88,11 @@ This file tells Python how to install your package. Let's examine it:
 cat setup.py
 ```
 
-We'll need to modify this file to include our new node as an entry point so ROS2 can find and run it.
+We'll need to modify this file to include our new node as an entry point so ROS 2 can find and run it.
 
 ## Step 3: Writing Your First Node
 
-Now let's create our first ROS2 node that subscribes to the `/joint_states` topic and prints information about Stretch's joints.
+Now let's create our first ROS 2 node that subscribes to the `/joint_states` topic and prints information about Stretch's joints.
 
 Create a new Python file for our node:
 
@@ -112,7 +112,7 @@ from sensor_msgs.msg import JointState
 
 class JointStateSubscriber(Node):
     """
-    A ROS2 node that subscribes to joint states and prints joint information.
+    A ROS 2 node that subscribes to joint states and prints joint information.
     """
 
     def __init__(self):
@@ -159,9 +159,9 @@ class JointStateSubscriber(Node):
 
 def main(args=None):
     """
-    Main function to initialize ROS2, create the node, and spin.
+    Main function to initialize ROS 2, create the node, and spin.
     """
-    # Initialize ROS2 Python client library
+    # Initialize ROS 2 Python client library
     rclpy.init(args=args)
 
     # Create an instance of our node
@@ -186,14 +186,14 @@ if __name__ == '__main__':
 
 Let's break down what this code does:
 
-1. **Imports**: We import the necessary ROS2 Python libraries and message types
-2. **Class Definition**: We create a class that inherits from `Node`, which is the base class for all ROS2 nodes
+1. **Imports**: We import the necessary ROS 2 Python libraries and message types
+2. **Class Definition**: We create a class that inherits from `Node`, which is the base class for all ROS 2 nodes
 3. **Constructor (`__init__`)**:
    - Calls the parent constructor with our node name
    - Creates a subscription to the `/joint_states` topic
    - Sets up logging messages
 4. **Callback Function**: This function gets called every time a new message arrives on the subscribed topic
-5. **Main Function**: Initializes ROS2, creates our node, and keeps it running
+5. **Main Function**: Initializes ROS 2, creates our node, and keeps it running
 
 ## Step 4: Configuring Package Dependencies and Entry Points
 
@@ -220,11 +220,11 @@ entry_points={
 },
 ```
 
-This tells ROS2 that when someone runs `ros2 run stretch_joint_reader joint_state_subscriber`, it should execute the `main` function from our `joint_state_subscriber.py` file.
+This tells ROS 2 that when someone runs `ros2 run stretch_joint_reader joint_state_subscriber`, it should execute the `main` function from our `joint_state_subscriber.py` file.
 
 ## Step 5: Building Your Package
 
-Now that we've created our node and configured our package, we need to build it. ROS2 uses the `colcon` build system.
+Now that we've created our node and configured our package, we need to build it. ROS 2 uses the `colcon` build system.
 
 Navigate back to your workspace root:
 
@@ -342,7 +342,7 @@ from sensor_msgs.msg import JointState
 
 class FilteredJointStateSubscriber(Node):
     """
-    An enhanced ROS2 node that subscribes to joint states and filters for specific joints.
+    An enhanced ROS 2 node that subscribes to joint states and filters for specific joints.
     """
 
     def __init__(self):
@@ -438,7 +438,7 @@ source install/setup.bash
 Run the enhanced node:
 
 ```{.bash .shell-prompt}
-ros2 run stretch_joint_reader filtered_joint_subscriber
+ ros2 run stretch_joint_reader filtered_joint_subscriber
 ```
 
 This enhanced version will print a summary every 5 seconds showing only the joints you're interested in, making it easier to monitor specific parts of the robot.
@@ -472,7 +472,7 @@ This enhanced version will print a summary every 5 seconds showing only the join
 
 ### Debugging Tips
 
-1. **Use ROS2 command-line tools**:
+1. **Use ROS 2 command-line tools**:
    ```bash
    # List all available topics
    ros2 topic list
@@ -489,12 +489,12 @@ This enhanced version will print a summary every 5 seconds showing only the join
 
 2. **Add more logging**: Use `self.get_logger().info()`, `.warn()`, `.error()`, or `.debug()` to add debugging information to your code.
 
-3. **Check the ROS2 graph**: Use `rqt_graph` to visualize the connections between nodes:
+3. **Check the ROS 2 graph**: Use `rqt_graph` to visualize the connections between nodes:
    ```bash
    ros2 run rqt_graph rqt_graph
    ```
 
-## Understanding ROS2 Concepts
+## Understanding ROS 2 Concepts
 
 ### Topics and Messages
 
@@ -505,11 +505,11 @@ This enhanced version will print a summary every 5 seconds showing only the join
 
 ### Quality of Service (QoS)
 
-The queue size parameter (10 in our examples) is part of ROS2's Quality of Service system. It determines how many messages to buffer if your callback function can't process them fast enough.
+The queue size parameter (10 in our examples) is part of ROS 2's Quality of Service system. It determines how many messages to buffer if your callback function can't process them fast enough.
 
 ### Node Lifecycle
 
-1. **Initialization**: `rclpy.init()` sets up the ROS2 runtime
+1. **Initialization**: `rclpy.init()` sets up the ROS 2 runtime
 2. **Node Creation**: Creating your node instance
 3. **Spinning**: `rclpy.spin()` keeps the node alive and processes callbacks
 4. **Cleanup**: `destroy_node()` and `rclpy.shutdown()` clean up resources

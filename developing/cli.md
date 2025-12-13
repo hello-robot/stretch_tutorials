@@ -96,11 +96,11 @@ For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </spa
 <span class="k">         hello-robot-stretch-factory = </span><span class="m">0.4.13</span>
 <span class="k">         hello-robot-stretch-diagnostics = </span><span class="m">0.0.14</span>
 <span class="k">         hello-robot-stretch-urdf = </span><span class="m">0.0.18</span>
-<span class="s">[Pass] ROS2 Humble is ready</span>
+<span class="s">[Pass] ROS 2 Humble is ready</span>
 <span class="k">         Workspace at ~/ament_ws/src/stretch_ros2</span>
 </code></pre></div>
 
-In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS2, etc. software your system has installed. Check out the [Keeping your Software Up-to-date](../../../software/updating_software/#identifying-your-current-software) guide for a how-to on using this report to keep your robot's software up-to-date.
+In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS 2, etc. software your system has installed. Check out the [Keeping your Software Up-to-date](../../../software/updating_software/#identifying-your-current-software) guide for a how-to on using this report to keep your robot's software up-to-date.
 
 ### `stretch_robot_home.py`
 [Link to source code](https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_home.py)
