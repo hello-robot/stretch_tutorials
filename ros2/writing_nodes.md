@@ -189,9 +189,11 @@ Let's break down what this code does:
 1. **Imports**: We import the necessary ROS 2 Python libraries and message types
 2. **Class Definition**: We create a class that inherits from `Node`, which is the base class for all ROS 2 nodes
 3. **Constructor (`__init__`)**:
+
    - Calls the parent constructor with our node name
    - Creates a subscription to the `/joint_states` topic
    - Sets up logging messages
+
 4. **Callback Function**: This function gets called every time a new message arrives on the subscribed topic
 5. **Main Function**: Initializes ROS 2, creates our node, and keeps it running
 
@@ -248,6 +250,7 @@ Summary: 1 package finished [2.56s]
 ```
 
 If you encounter any errors, double-check that:
+
 - Your Python code has correct indentation
 - The `package.xml` and `setup.py` files are properly formatted
 - All file names match exactly
@@ -314,6 +317,7 @@ The joint state messages contain information about all of Stretch's joints:
 - **Effort**: Current effort/torque being applied to the joint
 
 Key joints you'll see include:
+
 - `joint_lift`: The vertical lift mechanism
 - `wrist_extension`: The telescoping arm extension
 - `joint_wrist_yaw`: Wrist rotation
@@ -448,27 +452,34 @@ This enhanced version will print a summary every 5 seconds showing only the join
 ### Build Errors
 
 **Problem**: `colcon build` fails with Python syntax errors
+
 - **Solution**: Check your Python code for proper indentation and syntax. Python is sensitive to indentation - use consistent spaces (typically 4 spaces per level).
 
 **Problem**: Package not found during build
+
 - **Solution**: Make sure you're in the correct workspace directory (`~/ament_ws`) and that your package is in the `src` folder.
 
 **Problem**: Missing dependencies error
+
 - **Solution**: Ensure all required dependencies are listed in your `package.xml` file.
 
 ### Runtime Errors
 
 **Problem**: `ros2 run` command not found or package not found
-- **Solution**: Make sure you've sourced your workspace: `source ~/ament_ws/install/setup.bash`
+
+- **Solution**: Make sure you've sourced your workspace: `source ~/ament_ws/install/setup.bash`.
 
 **Problem**: Node starts but no messages are received
+
 - **Solution**:
-  1. Check that the Stretch driver is running: `ros2 launch stretch_core stretch_driver.launch.py`
-  2. Verify the topic exists: `ros2 topic list | grep joint_states`
-  3. Check if messages are being published: `ros2 topic echo /joint_states`
+
+  1. Check that the Stretch driver is running: `ros2 launch stretch_core stretch_driver.launch.py`.
+  2. Verify the topic exists: `ros2 topic list | grep joint_states`.
+  3. Check if messages are being published: `ros2 topic echo /joint_states`.
 
 **Problem**: Permission denied when running the node
-- **Solution**: Make sure your Python file has execute permissions: `chmod +x joint_state_subscriber.py`
+
+- **Solution**: Make sure your Python file has execute permissions: `chmod +x joint_state_subscriber.py`.
 
 ### Debugging Tips
 
