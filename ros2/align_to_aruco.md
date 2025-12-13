@@ -4,7 +4,7 @@ ArUco markers are a type of fiducials that are used extensively in robotics for 
 
 There are three main parameters to creating an ArUco tag:
 
-- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more [below](#aruco-detection))
+- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS 2 nodes, this is explained more [below](#aruco-detection))
 - ID (A unique identifier for the tag, see [Create a New ArUco Marker](#create-a-new-aruco-marker) for reserved IDs)
 - Marker Size (The physical dimensions of the tag in mm, this can be customized freely.)
 

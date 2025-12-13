@@ -116,7 +116,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 ```
 
-The `sensor_msgs.msg` is imported so that we can subscribe to ROS `Image` messages. Import [CvBridge](http://wiki.ros.org/cv_bridge) to convert between ROS `Image` messages and OpenCV images and the `Node` is necessary to create a node in ROS2.
+The `sensor_msgs.msg` is imported so that we can subscribe to ROS `Image` messages. Import [CvBridge](http://wiki.ros.org/cv_bridge) to convert between ROS `Image` messages and OpenCV images and the `Node` is necessary to create a node in ROS 2.
 
 ```python
 def __init__(self):

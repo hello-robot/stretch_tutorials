@@ -4,13 +4,13 @@ In this tutorial, we will explore the method for offloading computationally inte
 - Increasing robot's efficiency by offloading high-power consuming processes. 
 - Utilizing available GPU hardware on powerful workstations to run large deep learning models.
 
-We will delve into the process of **offloading [Stretch Deep Perception](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception) ROS2 nodes**. These nodes are known for their demanding computational requirements and are frequently used in [Stretch Demos](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos). 
+We will delve into the process of **offloading [Stretch Deep Perception](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception) ROS 2 nodes**. These nodes are known for their demanding computational requirements and are frequently used in [Stretch Demos](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos). 
 
-*NOTE: All Stretch ROS2 packages are developed with Humble distro.*
+*NOTE: All Stretch ROS 2 packages are developed with Humble distro.*
 
 ## 1. Setting a ROS_DOMAIN_ID
 
-ROS2 utilizes [DDS](https://design.ros2.org/articles/ros_on_dds.html) as the default middleware for communication. **DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same [ROS_DOMAIN_ID](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html)**. This powerful mechanism ensures secure message passing between remote nodes as intended.
+ROS 2 utilizes [DDS](https://design.ros2.org/articles/ros_on_dds.html) as the default middleware for communication. **DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same [ROS_DOMAIN_ID](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html)**. This powerful mechanism ensures secure message passing between remote nodes as intended.
 
 By default, all ROS 2 nodes are configured with domain ID 0. To avoid conflicts, select a domain ID from the range of 0 to 101, and then set this chosen domain ID as the value for the `ROS_DOMAIN_ID` environment variable in both the Workstation and the Robot.
 ```{.bash .shell-prompt}
@@ -18,15 +18,15 @@ export ROS_DOMAIN_ID=<ID>
 ```
 
 ## 2. Setup the Workstation to work with Stretch
-The workstation needs to be installed with the stretch related ros2 packages to have access to robot meshes for Visualization in Rviz, custom interfaces dependencies and essential perception packages.
+The workstation needs to be installed with the stretch related ROS 2 packages to have access to robot meshes for Visualization in Rviz, custom interfaces dependencies and essential perception packages.
 
-This section assumes the workstation already has an active ROS2 distro and colcon dependencies pre-installed.
-You can find [ROS2 Installation step for Ubuntu here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Install-Binary.html#).
+This section assumes the workstation already has an active ROS 2 distro and colcon dependencies pre-installed.
+You can find [ROS 2 Installation step for Ubuntu here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Install-Binary.html#).
 
 
 #### Setup Essential stretch_ros2 Packages 
 
-Make sure the ROS2 distro is sourced.
+Make sure the ROS 2 distro is sourced.
 ```{.bash .shell-prompt}
 source /opt/ros/humble/setup.bash
 ```
