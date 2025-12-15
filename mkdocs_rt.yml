@@ -83,9 +83,9 @@ extra:
 
 nav:
   - Getting Started: ./getting_started.md
-  - ROS2 Basics:
+  - ROS 2 Basics:
     - Creating Packages & Nodes: ./writing_nodes.md
-    - Introduction to ROS2 Client (rclpy): ./intro_to_ros2.md
+    - Introduction to ROS 2 Client (rclpy): ./intro_to_ros2.md
     - Introduction to HelloNode: ./intro_to_hellonode.md
   - Simulation Tutorial: ./stretch_simulation.md
   - Teleoperation: ./teleoperating_stretch.md

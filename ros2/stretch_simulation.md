@@ -1,6 +1,6 @@
 # Stretch Simulation Tutorial
 
-This tutorial will guide you through setting up and using the Stretch robot simulation in ROS2.
+This tutorial will guide you through setting up and using the Stretch robot simulation in ROS 2.
 
 Note: You do not need to follow this tutorial if you are running on a Stretch robot.
 
@@ -16,7 +16,7 @@ By the end of this tutorial, you'll be able to:
 
 - Use the simulation for navigation and mapping
 
-- Integrate the simulation with your own ROS2 applications
+- Integrate the simulation with your own ROS 2 applications
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Before starting this tutorial, you should have:
 
 - Basic familiarity with Linux command line
 
-- Understanding of ROS2 concepts (nodes, topics, services). If you're new to ROS2 concepts, we recommend first reading through the [Introduction to ROS2](intro_to_ros2.md) tutorial.
+- Understanding of ROS 2 concepts (nodes, topics, services). If you're new to ROS 2 concepts, we recommend first reading through the [Introduction to ROS 2](intro_to_ros2.md) tutorial.
 
 - A computer meeting the system requirements below
 
@@ -41,32 +41,32 @@ Before starting this tutorial, you should have:
 
 ## Installation Guide
 
-### Step 1: Install ROS2 Humble (10 minutes)
+### Step 1: Install ROS 2 Humble (10 minutes)
 
-> **Note**: Skip this step if you're running on a Stretch robot, as ROS2 is already installed.
+> **Note**: Skip this step if you're running on a Stretch robot, as ROS 2 is already installed.
 
 ```bash
 # Add universe repository for additional packages
 sudo apt install software-properties-common
 sudo add-apt-repository universe
 
-# Install curl for downloading ROS2 keys
+# Install curl for downloading ROS 2 keys
 sudo apt update && sudo apt install curl -y
 
-# Add ROS2 official repository
+# Add ROS 2 official repository
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
-# Update package list and install ROS2
+# Update package list and install ROS 2
 sudo apt update
 sudo apt install ros-humble-desktop ros-dev-tools rviz python3-pip
 
-# Source ROS2 environment (you'll need to do this in every new terminal)
+# Source ROS 2 environment (you'll need to do this in every new terminal)
 source /opt/ros/humble/setup.bash
 ```
 
-**Expected output**: After installation, you should be able to run `ros2 --help` and see the ROS2 command options.
+**Expected output**: After installation, you should be able to run `ros2 --help` and see the ROS 2 command options.
 
 ### Step 2: Install Node.js and npm (5 minutes)
 
@@ -82,11 +82,11 @@ node --version  # Should show v22.x.x
 npm --version   # Should show npm version
 ```
 
-### Step 3: Set up the ROS2 Workspace (1 hour)
+### Step 3: Set up the ROS 2 Workspace (1 hour)
 
 > **Note**: Skip this step if you're running on a Stretch robot.
 
-A ROS2 workspace is a directory containing ROS2 packages. We'll create an `ament_ws` workspace with all the necessary Stretch packages.
+A ROS 2 workspace is a directory containing ROS 2 packages. We'll create an `ament_ws` workspace with all the necessary Stretch packages.
 
 **⚠️ Warning**: This will delete any existing `~/ament_ws` directory. Back up important files first.
 
@@ -94,7 +94,7 @@ A ROS2 workspace is a directory containing ROS2 packages. We'll create an `ament
 # Download and run the workspace setup script
 curl -sL https://raw.githubusercontent.com/hello-robot/stretch_ros2/refs/heads/humble/stretch_simulation/stretch_create_ament_workspace.sh > /tmp/stretch_create_ament_workspace.sh && sudo bash /tmp/stretch_create_ament_workspace.sh
 
-# Add ROS2 environment to your shell profile (optional but recommended)
+# Add ROS 2 environment to your shell profile (optional but recommended)
 echo 'source ~/ament_ws/install/setup.bash' >> ~/.bashrc
 ```
 
@@ -114,7 +114,7 @@ audio_common  realsense-ros  respeaker_ros2  ros2_numpy  rosbridge_suite  sllida
 URDF (Unified Robot Description Format) files describe the robot's physical structure, joints, and sensors. This step downloads the 3D models and configurations for the Stretch robot.
 
 ```bash
-# Source the ROS2 environment
+# Source the ROS 2 environment
 source ~/ament_ws/install/setup.bash
 
 # Install Stretch URDF tools
@@ -126,7 +126,7 @@ git clone https://github.com/hello-robot/stretch_urdf.git --depth 1 /tmp/stretch
 # Install Stretch body
 python3 -m pip install hello-robot-stretch-body
 
-# Update URDF files for ROS2
+# Update URDF files for ROS 2
 python3 /tmp/stretch_urdf/tools/stretch_urdf_ros_update.py
 python3 /tmp/stretch_urdf/tools/stretch_urdf_ros_update.py --ros2_rebuild
 ```
@@ -144,7 +144,7 @@ d405  d435i  stretch_description.xacro  stretch_main.xacro  # ... and many more 
 # Upgrade pip (important for dependency installation)
 pip3 install --upgrade pip
 
-# Source ROS2 environment
+# Source ROS 2 environment
 source ~/ament_ws/install/setup.bash
 
 # Run interactive setup script (will ask about robocasa environments)
@@ -175,7 +175,7 @@ ros2 launch stretch_simulation stretch_mujoco_driver.launch.py mode:=navigation
 
 **Expected output**:
 - A Mujoco viewer window should open showing the Stretch robot in a kitchen environment
-- ROS2 nodes should start without errors
+- ROS 2 nodes should start without errors
 - You should see log messages indicating successful initialization
 
 **Troubleshooting**:
@@ -354,7 +354,7 @@ ros2 param set /global_costmap/global_costmap inflation_layer.inflation_radius 0
 ros2 param set /local_costmap/local_costmap inflation_layer.inflation_radius 0.20
 ```
 
-## ROS2 Integration
+## ROS 2 Integration
 
 ### Key Topics
 
@@ -535,7 +535,7 @@ export MUJOCO_GL=egl  # For hardware acceleration
 
 - Check GPU drivers are properly installed
 
-**3. ROS2 nodes not communicating**
+**3. ROS 2 nodes not communicating**
 ```bash
 # Check if nodes are running
 ros2 node list

@@ -68,7 +68,7 @@ In this section, we'll cover where to find the files that are important for deve
 Your account's files all live under the home folder. This directory contains standard organizational folders like `Documents` or `Downloads`, as well as folders that are unique to Stretch's SDK, such as:
 
  - `stretch_user`: The [Stretch User folder](#the-stretch-user-folder) is required to be present in the home directory for Stretch's SDK to work correctly. It contains calibration data unique to your robot and assets (e.g. neural net checkpoints, maps for navigation, etc.) used by various programs. If you're missing this directory, reach out to support.
- - `ament_ws`: The Ament Workspace folder contains Stretch's ROS2 SDK. This directory will be covered in more detail in the [Using ROS 2 with Stretch](#TODO) tutorial. If this folder is missing, you may be using an older [robot distribution](../../../software/distributions/) and should consider upgrading.
+ - `ament_ws`: The Ament Workspace folder contains Stretch's ROS 2 SDK. This directory will be covered in more detail in the [Using ROS 2 with Stretch](#TODO) tutorial. If this folder is missing, you may be using an older [robot distribution](../../../software/distributions/) and should consider upgrading.
  - `catkin_ws`: The Catkin Workspace folder contains Stretch's ROS1 SDK. If this folder exists, you may be using an older [robot distribution](../../../software/distributions/) and should consider upgrading.
 
 ![files](./images/files.png)
@@ -79,8 +79,8 @@ The Stretch User folder contains calibration data unique to your robot and asset
 
  - `stretch-yyy-xxxx`: This is the [robot calibration directory](#the-robot-calibration-folder). Its naming scheme is "stretch-" following by "re1" for a Stretch RE1, "re2" for a Stretch 2, or "se3" for a Stretch 3, finally followed by your robot's four digit serial number.
  - `stretch_deep_perception_models`: This directory contains open deep learning models from third parties, including object detection, head detection, facial landmarks detection, and human pose detection.
- - `maps`: This directory contains [occupancy maps](https://www.cs.cmu.edu/~16831-f14/notes/F14/16831_lecture06_agiri_dmcconac_kumarsha_nbhakta.pdf) that are to be used with the Stretch Nav2 ROS2 package.
- - `debug`: This directory contains debug output from the Stretch FUNMAP ROS2 package.
+ - `maps`: This directory contains [occupancy maps](https://www.cs.cmu.edu/~16831-f14/notes/F14/16831_lecture06_agiri_dmcconac_kumarsha_nbhakta.pdf) that are to be used with the Stretch Nav2 ROS 2 package.
+ - `debug`: This directory contains debug output from the Stretch FUNMAP ROS 2 package.
  - `log`: This directory contains logfiles from various Stretch programs.
 
 ### The Robot Calibration Folder
@@ -169,7 +169,7 @@ TODO - CLI flags
 
 ### APT Package Manager
 
-APT is a system package manager used to install applications. It can install packages that have no GUI. For example, all ROS2 software is installed through APT. The APT CLI enables you to introspect and install new software onto Stretch. Since APT makes changes at the system level, it requires "super user access", which means each of the commands below is preceded by `sudo` and will ask for your password.
+APT is a system package manager used to install applications. It can install packages that have no GUI. For example, all ROS 2 software is installed through APT. The APT CLI enables you to introspect and install new software onto Stretch. Since APT makes changes at the system level, it requires "super user access", which means each of the commands below is preceded by `sudo` and will ask for your password.
 
 | Command         | Arguments                   | Description                                                   | Examples              |
 |-----------------|-----------------------------|---------------------------------------------------------------|-----------------------|

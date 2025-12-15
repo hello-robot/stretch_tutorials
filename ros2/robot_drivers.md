@@ -1,6 +1,6 @@
 # Robot Drivers
 
-This tutorial introduces the ROS2 drivers for Stretch and its sensors. These drivers reside in the `stretch_core` package, which is part of a suite of ROS2 packages available open-source [on Github](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_core#overview).
+This tutorial introduces the ROS 2 drivers for Stretch and its sensors. These drivers reside in the `stretch_core` package, which is part of a suite of ROS 2 packages available open-source [on Github](https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_core#overview).
 
 ## Stretch Driver
 

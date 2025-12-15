@@ -1,10 +1,10 @@
-# Motion Commands in ROS2
+# Motion Commands in ROS 2
 
 ## Quickstart
 
 Sending motion commands is as easy as:
 
- 1. Launch the ROS2 driver in a terminal:
+ 1. Launch the ROS 2 driver in a terminal:
     ```{.bash .shell-prompt .copy}
     ros2 launch stretch_core stretch_driver.launch.py
     ```
@@ -18,7 +18,7 @@ Sending motion commands is as easy as:
 
 ## Writing a node
 
-You can also write a ROS2 node to send motion commands:
+You can also write a ROS 2 node to send motion commands:
 
 ```python
 import hello_helpers.hello_misc as hm
@@ -108,7 +108,7 @@ The revolute joints will have their limits published in radians, and the prismat
 
 ## Translating and rotating the base 
 
-You can also write a ROS2 node to send motion commands to the base:
+You can also write a ROS 2 node to send motion commands to the base:
 
 ```python
 import hello_helpers.hello_misc as hm

@@ -28,7 +28,7 @@ Notice the 3 sections: Unit, Service, and Install.
 
 "Unit" describes the service and declares what the service needs. For web teleop, we need the robot to be connected to the network before launching our application, so we say `Wants=network-online.target` and `After=network-online.target`. There are many targets available. For example, you could target `graphical-session.target` if your application needs a screen to render to. Also notice `ExecStartPre=/bin/sh -c 'until ping -c1 web.hello-robot.com; do sleep 1; done;'` in the next section, which is a reliable way of ensuring the robot is connected to the network **and** able to connect to web.hello-robot.com before launching the service.
 
-"Service" describes what the service should run. `ExecStart=/home/hello-robot/ament_ws/src/stretch_web_teleop/launch_interface.sh -f` is telling systemd that I want it to run the `launch_interface.sh` bash script in my ROS2 workspace. I use the absolute path including `/home/hello-robot` because there is only one user on my robot called "hello-robot" and my unit file is specific to the "hello-robot" user. Here's what launch_interface.sh looks like:
+"Service" describes what the service should run. `ExecStart=/home/hello-robot/ament_ws/src/stretch_web_teleop/launch_interface.sh -f` is telling systemd that I want it to run the `launch_interface.sh` bash script in my ROS 2 workspace. I use the absolute path including `/home/hello-robot` because there is only one user on my robot called "hello-robot" and my unit file is specific to the "hello-robot" user. Here's what launch_interface.sh looks like:
 
 ```bash
 #!/bin/bash
@@ -55,7 +55,7 @@ echo "Stopping previous instances..."
 echo "Reload USB bus..."
 sudo udevadm control --reload-rules && sudo udevadm trigger &>> $REDIRECT_LOGFILE
 
-echo "Start ROS2..."
+echo "Start ROS 2..."
 sleep 2;
 screen -dm -S "web_teleop_ros" ros2 launch stretch_web_teleop web_interface.launch.py $MAP_ARG $TTS_ARG &>> $REDIRECT_LOGFILE
 sleep 3;
@@ -65,12 +65,12 @@ Notice that almost every command has `&>> $REDIRECT_LOGFILE` after it. The reaso
 
 This bash script performs four steps before starting the application:
 
- - Setting up the environment. It's important that env vars like HELLO_FLEET_ID are set and that ROS2 is enabled if your application is based on ROS2
+ - Setting up the environment. It's important that env vars like HELLO_FLEET_ID are set and that ROS 2 is enabled if your application is based on ROS 2
  - Freeing the robot process. Systemd can automatically restart services if they experience an error, so it's nice for this script to ensure the robot is freed up before continuing.
  - Stopping previous instances of web teleop.
  - Reloading the USB bus. `network-online.target` comes after the USB bus is configured in the boot sequence, but it doesn't hurt to ensure USB is ready.
 
-Lastly, the script launches our Web Teleop ROS2 application inside of GNU `screen`. We use `screen` because it collects ROS2 logs in a nicer way than other tools. However, because `screen` launches another process to run the app, we need to inform systemd that the application is still running in the background. Hence, we include `RemainAfterExit=yes` in the unit file
+Lastly, the script launches our Web Teleop ROS 2 application inside of GNU `screen`. We use `screen` because it collects ROS 2 logs in a nicer way than other tools. However, because `screen` launches another process to run the app, we need to inform systemd that the application is still running in the background. Hence, we include `RemainAfterExit=yes` in the unit file
 
 In the last section, "Install", we set `WantedBy=graphical-session.target`. It's important that our service is wanted by some other service, otherwise our service would never be executed by systemd. By telling systemd that our service is wanted by `graphical-session.target`, which is part of the boot sequence, our service also becomes part of the boot sequence.
 
@@ -93,7 +93,7 @@ This allows ALL users to run `shutdown`, `udevadm`, `pkill`, and `wifi-connect` 
 
 ### Where to put unit files
 
-The unit file described above is a "user unit file", as opposed to a "system unit file". User unit files run when the user logins. By default, the "hello-robot" user is configured to login automatically on boot. Furthermore, since the Web Teleop unit file needs a ROS2 workspace in the "hello-robot" user, it makes sense to use a user unit file.
+The unit file described above is a "user unit file", as opposed to a "system unit file". User unit files run when the user logins. By default, the "hello-robot" user is configured to login automatically on boot. Furthermore, since the Web Teleop unit file needs a ROS 2 workspace in the "hello-robot" user, it makes sense to use a user unit file.
 
 User unit files live in the `~/.config/systemd/user` directory. So when installing the Web Teleop application to launch on boot, we run:
 

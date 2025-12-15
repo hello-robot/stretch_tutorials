@@ -170,12 +170,12 @@ Notice that the spin method manifests itself as the spin_until_future_complete()
 
 ### What is ROS_DOMAIN_ID?
 
-ROS_DOMAIN_ID is an environment variable that determines which DDS (Data Distribution Service) domain your ROS2 nodes will communicate on. Think of it as a "channel" or "network ID" - only nodes with the same ROS_DOMAIN_ID can discover and communicate with each other.
+ROS_DOMAIN_ID is an environment variable that determines which DDS (Data Distribution Service) domain your ROS 2 nodes will communicate on. Think of it as a "channel" or "network ID" - only nodes with the same ROS_DOMAIN_ID can discover and communicate with each other.
 
 This is particularly useful in environments where:
-- Multiple robots or ROS2 systems are running on the same network
-- Multiple users are developing ROS2 applications simultaneously
-- You want to isolate your ROS2 communication from other systems
+- Multiple robots or ROS 2 systems are running on the same network
+- Multiple users are developing ROS 2 applications simultaneously
+- You want to isolate your ROS 2 communication from other systems
 
 The ROS_DOMAIN_ID can be any integer from 0 to 101 (some values may be reserved depending on your DDS implementation). The default value is 0.
 
@@ -184,7 +184,7 @@ The ROS_DOMAIN_ID can be any integer from 0 to 101 (some values may be reserved 
 When working with Stretch robots, setting the correct ROS_DOMAIN_ID is crucial because:
 
 1. **Multi-robot environments**: If you have multiple Stretch robots on the same network, each should use a different ROS_DOMAIN_ID to prevent cross-talk
-2. **Shared networks**: In lab or classroom settings, different users' ROS2 nodes won't interfere with each other if they use different domain IDs
+2. **Shared networks**: In lab or classroom settings, different users' ROS 2 nodes won't interfere with each other if they use different domain IDs
 3. **Debugging**: You can isolate your development environment from production systems
 
 ### Setting ROS_DOMAIN_ID in the Terminal
@@ -204,7 +204,7 @@ echo $ROS_DOMAIN_ID
 This setting will only persist for the current terminal session. Once you close the terminal, the setting is lost.
 
 !!! warning
-    All terminals where you run ROS2 nodes that need to communicate with each other must have the same ROS_DOMAIN_ID set. If you launch the Stretch driver in one terminal with `ROS_DOMAIN_ID=42` and try to run your node in another terminal with `ROS_DOMAIN_ID=0`, they won't be able to see each other!
+    All terminals where you run ROS 2 nodes that need to communicate with each other must have the same ROS_DOMAIN_ID set. If you launch the Stretch driver in one terminal with `ROS_DOMAIN_ID=42` and try to run your node in another terminal with `ROS_DOMAIN_ID=0`, they won't be able to see each other!
 
 ### Setting ROS_DOMAIN_ID Permanently in ~/.bashrc
 
@@ -247,7 +247,7 @@ You can always check what ROS_DOMAIN_ID is currently set:
 echo $ROS_DOMAIN_ID
 ```
 
-If this returns an empty line, it means ROS_DOMAIN_ID is not set, and ROS2 will use the default value of 0.
+If this returns an empty line, it means ROS_DOMAIN_ID is not set, and ROS 2 will use the default value of 0.
 
 ### Example: Using ROS_DOMAIN_ID with Multiple Robots
 
