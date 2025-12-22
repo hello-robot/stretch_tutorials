@@ -99,7 +99,6 @@ nav:
     - Overview: ./navigation_overview.md
     - Nav2 Basics: ./navigation_stack.md
     - Nav2 Simple Commander: ./navigation_simple_commander.md
-  - Perception Tutorial: ./perception.md
   - Deep Perception: ./deep_perception.md
   - ArUco Markers: ./aruco_marker_detection.md
   - Offloading Computation Tutorial: ./remote_compute.md
