@@ -35,7 +35,7 @@ ros2 run nav2_map_server map_saver_cli -f ${HELLO_FLEET_PATH}/maps/<map_name>
     The `<map_name>` does not include an extension. The map_saver node will save two files as `<map_name>.pgm` and `<map_name>.yaml`.
     
 !!! tip
-    Before starting navigation, ensure that the mapping process (`offline_mapping.launch.py`) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.
+    For a quick sanity check, you can inspect the saved map using a pre-installed tool called Eye of Gnome (eog) by running the following command:
 
 ```{.bash .shell-prompt}
 eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
@@ -44,7 +44,7 @@ eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
 ## Navigation
 
 !!! note
-    The `<map_name>` does not include an extension. The map_saver node will save two files as `<map_name>.pgm` and `<map_name>.yaml`.
+    Before starting navigation, ensure that the mapping process (`offline_mapping.launch.py`) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.
 
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
