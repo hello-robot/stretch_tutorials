@@ -42,6 +42,10 @@ eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
 ```
 
 ## Navigation
+
+!!! note
+    Before starting navigation, ensure that the mapping process (`offline_mapping.launch.py`) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.
+
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
 ```{.bash .shell-prompt}
