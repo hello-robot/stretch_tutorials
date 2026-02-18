@@ -4,7 +4,6 @@ This tutorial covers the command line tools included in the Stretch CLI. For a p
 
  - Stretch Body - Tools that perform common tasks that are useful when developing with Stretch.
  - Stretch PyFUNMAP - Tools that explore the capabilities of PyFUNMAP.
- - Stretch Diagnostics - Tools for diagnosing issues with your robot.
  - Stretch URDF - Tools for working with Stretch's URDFs.
  - Stretch Factory - Tools used at Hello Robot during the robot's bring-up.
 
@@ -94,7 +93,6 @@ For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </spa
 <span class="k">         hello-robot-stretch-body-tools = </span><span class="m">.6.3</span>
 <span class="k">         hello-robot-stretch-tool-share = </span><span class="m">0.2.8</span>
 <span class="k">         hello-robot-stretch-factory = </span><span class="m">0.4.13</span>
-<span class="k">         hello-robot-stretch-diagnostics = </span><span class="m">0.0.14</span>
 <span class="k">         hello-robot-stretch-urdf = </span><span class="m">0.0.18</span>
 <span class="s">[Pass] ROS 2 Humble is ready</span>
 <span class="k">         Workspace at ~/ament_ws/src/stretch_ros2</span>
@@ -318,12 +316,6 @@ This script prints the version information for various software packages on the 
 ## Stretch PyFUNMAP Tools
 
 ### pyfunmap_head_scan_visualizer.py
-
-
-## Stretch Diagnostics Tools
-
-### `stretch_diagnostic_check.py`
-
 
 ## Stretch URDF Tools
 
