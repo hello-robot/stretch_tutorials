@@ -43,6 +43,32 @@ To see all available options, run:
 stretch_realsense_visualizer.py --help
 ```
 
+```bash
+$ stretch_realsense_visualizer.py --help
+For use with S T R E T C H (R) from Hello Robot Inc.
+---------------------------------------------------------------------
+
+usage: stretch_realsense_visualizer.py [-h] [--no_gui] [--colormap COLORMAP]
+                                       [--save [SAVE]]
+                                       [--save_limit SAVE_LIMIT] [--d405]
+                                       [--exposure EXPOSURE]
+
+Tool to test the Realsense D435i Camera.
+
+options:
+  -h, --help            show this help message and exit
+  --no_gui              Show no GUI while reading images.
+  --colormap COLORMAP   Valid OpenCV colormaps at 'https://docs.opencv.org/mas
+                        ter/d3/d50/group__imgproc__colormap.html'.
+  --save [SAVE]         Save as .avi video to given filepath at end of script.
+  --save_limit SAVE_LIMIT
+                        The number of minutes of data to save.
+  --d405                By default, this tool shows the D435if head camera
+                        imagery. Setting this flag causes the tool to instead
+                        show the D405 wrist imagery.
+  --exposure EXPOSURE   Set the D405 exposure to ['low', 'medium', 'auto'] or
+                        an integer in the range [0, 165000]
+```
 
 ## Capture Image
 
