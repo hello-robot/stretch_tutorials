@@ -1,6 +1,76 @@
-# Capture Image
+# Realsense Camera
 
-## Example 7
+## Quick Hardware Check (No ROS 2 Required)
+
+Stretch includes a standalone visualization tool for debugging RealSense cameras without launching ROS 2.
+
+To view the head D435i camera:
+
+```bash
+stretch_realsense_visualizer.py
+```
+<div align="center">
+  <img src="../images/realsense_D435i.png" alt="base" width="500"/>
+</div>
+
+It opens a live window showing the RGB image on the left and the color-mapped depth image on the right.
+By default, it uses the head D435i, or the wrist D405 when launched with `--d405`.
+
+To view the gripper D405 camera:
+
+```bash
+stretch_realsense_visualizer.py --d405
+```
+<div align="center">
+  <img src="../images/realsense_D405.png" alt="base" width="500"/>
+</div>
+
+You can also adjust exposure settings using the `--exposure` flag. For example, to modify exposure on the D405:
+
+```bash
+stretch_realsense_visualizer.py --d405 --exposure low
+```
+
+The `--exposure` option supports `auto`, `low`, `medium`, or a manual integer value in the range `[0, 165000]`.
+
+!!! note
+    Exposure settings applied via this tool are temporary and only affect the running session. They do not persist and will not carry over to ROS 2 camera nodes.
+
+
+To see all available options, run:
+
+```bash
+stretch_realsense_visualizer.py --help
+```
+
+```bash
+$ stretch_realsense_visualizer.py --help
+For use with S T R E T C H (R) from Hello Robot Inc.
+---------------------------------------------------------------------
+
+usage: stretch_realsense_visualizer.py [-h] [--no_gui] [--colormap COLORMAP]
+                                       [--save [SAVE]]
+                                       [--save_limit SAVE_LIMIT] [--d405]
+                                       [--exposure EXPOSURE]
+
+Tool to test the Realsense D435i Camera.
+
+options:
+  -h, --help            show this help message and exit
+  --no_gui              Show no GUI while reading images.
+  --colormap COLORMAP   Valid OpenCV colormaps at 'https://docs.opencv.org/mas
+                        ter/d3/d50/group__imgproc__colormap.html'.
+  --save [SAVE]         Save as .avi video to given filepath at end of script.
+  --save_limit SAVE_LIMIT
+                        The number of minutes of data to save.
+  --d405                By default, this tool shows the D435if head camera
+                        imagery. Setting this flag causes the tool to instead
+                        show the D405 wrist imagery.
+  --exposure EXPOSURE   Set the D405 exposure to ['low', 'medium', 'auto'] or
+                        an integer in the range [0, 165000]
+```
+
+## Capture Image
 
 In this example, we will review a Python script that captures an image from the [RealSense camera](https://www.intelrealsense.com/depth-camera-d435i/).
 
