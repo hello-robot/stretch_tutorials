@@ -3,7 +3,6 @@
 This tutorial covers the command line tools included in the Stretch CLI. For a primer on using CLIs and the terminal, see [The Basics](basics.md#terminal) tutorial. The Stretch CLI is split among Stretch's Python packages. They are:
 
  - Stretch Body - Tools that perform common tasks that are useful when developing with Stretch.
- - Stretch PyFUNMAP - Tools that explore the capabilities of PyFUNMAP.
  - Stretch URDF - Tools for working with Stretch's URDFs.
  - Stretch Factory - Tools used at Hello Robot during the robot's bring-up.
 
@@ -312,10 +311,6 @@ Can we get rid of this?
 
 This script prints the version information for various software packages on the robot.
 
-
-## Stretch PyFUNMAP Tools
-
-### pyfunmap_head_scan_visualizer.py
 
 ## Stretch URDF Tools
 
