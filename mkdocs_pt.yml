@@ -86,7 +86,6 @@ nav:
   - Thread Safety: https://github.com/hello-robot/stretch_body/blob/master/docs/is_thread_safe/README.md
   # - ./sensors.md # TODO
   # - ./audio.md
-  # - ./pyfunmap.md
   # - ./ik.md
   # - ./visual_servoing.md
   # - ./other.md
