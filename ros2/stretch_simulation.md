@@ -242,7 +242,7 @@ cd ~/ament_ws/src/stretch_ros2/stretch_description/urdf
 cp ./stretch_uncalibrated.urdf stretch.urdf
 ```
 
-Patch the controller calibration to use the factor default one. Open `export_urdf.sh` and search for `controller_calibration_head`. Update that `cp` command with the following:
+Patch the controller calibration to use the factory default one. Open `export_urdf.sh` and search for `controller_calibration_head`. Update that `cp` command with the following:
 
 ```bash
 cp `ros2 pkg prefix stretch_core`/share/stretch_core/config/controller_calibration_head_factory_default.yaml ./exported_urdf/
@@ -260,7 +260,6 @@ cp -r ./exported_urdf/* $HELLO_FLEET_PATH/$HELLO_FLEET_ID/exported_urdf
 
 Finally, before launching, copy and rename the certificates to match the expected names:
 
-``` bash
 cd ~/ament_ws/src/stretch_web_teleop/certificates
 cp stretch-se3-local+6.pem server.crt
 cp stretch-se3-local+6-key.pem server.key
