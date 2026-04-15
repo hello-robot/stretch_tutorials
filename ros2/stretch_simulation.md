@@ -96,6 +96,9 @@ curl -sL https://raw.githubusercontent.com/hello-robot/stretch_ros2/refs/heads/h
 
 # Add ROS 2 environment to your shell profile (optional but recommended)
 echo 'source ~/ament_ws/install/setup.bash' >> ~/.bashrc
+
+# Then source .bashrc to continue using this terminal
+source ~/.bashrc
 ```
 
 **Troubleshooting**: If you encounter a numpy header error during compilation:
