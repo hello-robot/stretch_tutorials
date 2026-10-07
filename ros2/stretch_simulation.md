@@ -41,6 +41,10 @@ Before starting this tutorial, you should have:
 
 ## Installation Guide
 
+The following steps are for a native installation. The full guide can be found [here](https://github.com/hello-robot/stretch_ros2/blob/fa83cb283b98c247662c2315bc9b2c479b327a8c/stretch_simulation/README_SETUP.md). 
+
+Alternatively, you can use Docker. The Docker installation guide is [here](https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_simulation/README_DOCKER.md).
+
 ### Step 1: Install ROS 2 Humble (10 minutes)
 
 > **Note**: Skip this step if you're running on a Stretch robot, as ROS 2 is already installed.
@@ -92,7 +96,9 @@ A ROS 2 workspace is a directory containing ROS 2 packages. We'll create an `ame
 
 ```bash
 # Download and run the workspace setup script
-curl -sL https://raw.githubusercontent.com/hello-robot/stretch_ros2/refs/heads/humble/stretch_simulation/stretch_create_ament_workspace.sh > /tmp/stretch_create_ament_workspace.sh && sudo bash /tmp/stretch_create_ament_workspace.sh
+INSTALL_AMENT_WS_URL=https://raw.githubusercontent.com/hello-robot/stretch_ros2/refs/heads/humble/stretch_simulation/stretch_create_ament_workspace.sh
+curl -sL $INSTALL_AMENT_WS_URL > /tmp/stretch_create_ament_workspace.sh 
+bash /tmp/stretch_create_ament_workspace.sh
 
 # Add ROS 2 environment to your shell profile (optional but recommended)
 echo 'source ~/ament_ws/install/setup.bash' >> ~/.bashrc
