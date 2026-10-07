@@ -96,6 +96,9 @@ curl -sL https://raw.githubusercontent.com/hello-robot/stretch_ros2/refs/heads/h
 
 # Add ROS 2 environment to your shell profile (optional but recommended)
 echo 'source ~/ament_ws/install/setup.bash' >> ~/.bashrc
+
+# Then source .bashrc to continue using this terminal
+source ~/.bashrc
 ```
 
 **Troubleshooting**: If you encounter a numpy header error during compilation:
@@ -229,13 +232,25 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:
 
 ### Web Interface Control
 
-The web interface provides a graphical way to control the robot:
+The web interface provides a graphical way to control the robot.
+
+We will use the uncalibrated model for this demo.
 
 ```bash
 # Set up web teleop (one-time setup)
 cd ~/ament_ws/src/stretch_ros2/stretch_description/urdf
 cp ./stretch_uncalibrated.urdf stretch.urdf
+```
 
+Patch the controller calibration to use the factory default one. Open `export_urdf.sh` and search for `controller_calibration_head`. Update that `cp` command with the following:
+
+```bash
+cp `ros2 pkg prefix stretch_core`/share/stretch_core/config/controller_calibration_head_factory_default.yaml ./exported_urdf/
+```
+
+Complete the model export:
+
+```bash
 sudo apt install rpl
 ./export_urdf.sh
 
@@ -243,7 +258,15 @@ mkdir -p $HELLO_FLEET_PATH/$HELLO_FLEET_ID/exported_urdf
 cp -r ./exported_urdf/* $HELLO_FLEET_PATH/$HELLO_FLEET_ID/exported_urdf
 ```
 
+Finally, before launching, copy and rename the certificates to match the expected names:
+
+cd ~/ament_ws/src/stretch_web_teleop/certificates
+cp stretch-se3-local+6.pem server.crt
+cp stretch-se3-local+6-key.pem server.key
+```
+
 Launch web teleop:
+
 ```bash
 # Terminal 1: Simulation with cameras
 MUJOCO_GL=egl ros2 launch stretch_simulation stretch_mujoco_driver.launch.py use_mujoco_viewer:=false mode:=position use_cameras:=true
